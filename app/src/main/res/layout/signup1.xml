@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/flogin"
+        />
+
+    <ImageButton
+        android:id="@+id/retourS"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/ic_outline_circle_24"
+        android:src="@drawable/ic_baseline_navigate_before_24"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <LinearLayout
+        android:id="@+id/linprinc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.74"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp"
+     app:layout_constraintTop_toBottomOf="@+id/retourS"
+       >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="Sign up "
+        android:textColor="@color/bleufoncé"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:text="Veuillez remplir le informations ci-dessous"
+        android:textColor="@color/bleufoncé"
+        android:alpha="0.54"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Nom Prenom"
+        android:alpha="0.7"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/bleufoncé"
+        android:textSize="15dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_marginHorizontal="20dp"
+        android:background="@drawable/input"
+        android:hint="Saisisez votre User Name"
+        android:drawableLeft="@drawable/ic_outline_person_24"
+        android:drawablePadding="10dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:shadowColor="@color/bleufoncé"
+        android:minHeight="48dp"
+        android:paddingLeft="20dp"
+        android:fontFamily="@font/poppins_light"
+        android:layout_marginBottom="10dp"
+        android:textSize="15dp" />
+    <TextView
+        android:alpha="0.7"
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:text="Adresse mail"
+        android:textColor="@color/bleufoncé"
+        android:textSize="15dp"
+        android:paddingLeft="20dp"
+        android:fontFamily="sans-serif-medium"
+        />
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
+            android:hint="Saisiez votre et Nom prenom"
+            android:fontFamily="@font/poppins_light"
+            android:inputType="text"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:paddingLeft="15dp"
+            android:drawablePadding="15dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="15dp" />
+
+        <TextView
+            android:alpha="0.7"
+            android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:text="Numero de telephone "
+        android:textColor="@color/bleufoncé"
+        android:textSize="15dp"
+        android:fontFamily="sans-serif-medium"
+        android:paddingLeft="20dp"
+        />
+
+        <EditText
+            android:fontFamily="@font/poppins_light"
+            android:id="@+id/editTextText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/phoneicon"
+            android:hint="Saisiez votre numero de telephone"
+            android:drawablePadding="15dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:paddingLeft="20dp"
+            android:textSize="15dp" />
+        <TextView
+            android:paddingBottom="5dp"
+            android:alpha="0.7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:text="Mot de passe "
+        android:textColor="@color/bleufoncé"
+        android:textSize="15dp"
+        android:fontFamily="sans-serif-medium"
+        android:paddingLeft="20dp"
+        />
+        <EditText
+            android:id="@+id/editTextText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/mdp"
+            android:hint="Saisiez votre mot de passe"
+            android:drawablePadding="15dp"
+            android:fontFamily="@font/poppins_light"
+            android:inputType="numberPassword"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="15dp"
+            />
+        <TextView
+            android:paddingBottom="5dp"
+            android:alpha="0.7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="3dp"
+            android:text="Comfirmation du mot de passe "
+            android:textColor="@color/bleufoncé"
+            android:textSize="15dp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/mdp"
+            android:hint="Saisiez votre mot de passe"
+            android:drawablePadding="15dp"
+            android:fontFamily="@font/poppins_light"
+            android:inputType="numberPassword"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textSize="15dp"
+            />
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/suivant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/linprinc"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
+        android:layout_marginHorizontal="70dp"
+        android:background="@drawable/bouton"
+        android:padding="15dp"
+        android:text="Suivant"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_semibold"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintBottom_toBottomOf="parent"></LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

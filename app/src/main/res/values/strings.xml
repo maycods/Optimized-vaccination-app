@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">fronttttttttttttttttttt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="IDamb">
+        <item>amb0</item>
+        <item>amb2</item>
+        <item>amb3</item>
+        <item>amb4</item>
+        <item>amb5</item>
+    </string-array>
+    <string-array name="vaccines">
+        <item>Spootnik</item>
+        <item>Astra</item>
+        <item>Sinovac</item>
+    </string-array>
+
+</resources>

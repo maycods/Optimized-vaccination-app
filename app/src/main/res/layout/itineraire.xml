@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/calender_event"
+        android:layout_width="match_parent"
+        android:layout_height="900dp"
+        android:background="@drawable/carte"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-60dp"
+        />
+
+    <LinearLayout
+        android:background="@drawable/itin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.45"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Vous devez vacciner"
+            android:textColor="#4E4B66"
+            android:textSize="22dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="5 personnes "
+            android:textColor="#14142B"
+            android:textSize="35dp"></TextView>
+        <Button
+            android:id="@+id/itin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="70dp"
+            android:background="@drawable/bouton"
+            android:padding="15dp"
+            android:drawableLeft="@drawable/ic_outline_location_on_24"
+            android:text="itinairaire"
+            android:fontFamily="@font/poppins_semibold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+           />
+        <Button
+            android:id="@+id/annuler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="70dp"
+            android:background="@drawable/bouton2"
+            android:padding="15dp"
+            android:text="Annuler "
+            android:textColor="@color/bleufoncé"
+            android:textSize="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/flogin" />
+
+    <ImageButton
+        android:id="@+id/retourAm"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/ic_outline_circle_24"
+        android:src="@drawable/ic_baseline_navigate_before_24"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="20dp" />
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+<ImageView
+    android:layout_marginLeft="20dp"
+    android:layout_width="50dp"
+    android:layout_height="60dp"
+    android:layout_gravity="bottom"
+    android:src="@drawable/ic_baseline_local_shipping_24"></ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="Ambulancier "
+            android:textColor="@color/bleufoncé"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
+            android:paddingLeft="20dp"
+            android:text="Reservé aux ambulenciers"
+            android:textColor="@color/bleufoncé"
+            android:alpha="0.54"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:alpha="0.7"
+            android:paddingBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="3dp"
+            android:text="Matricule"
+            android:textColor="@color/bleufoncé"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="20dp"
+            />
+
+        <EditText
+            android:fontFamily="@font/poppins_light"
+            android:id="@+id/editTextText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/ic_baseline_app_registration_24"
+            android:hint="Saisiez la matricule de l'ambulance"
+            android:drawablePadding="15dp"
+            android:layout_marginBottom="12dp"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:paddingLeft="20dp"
+            android:textSize="15dp" />
+        <TextView
+            android:paddingBottom="5dp"
+            android:alpha="0.7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="3dp"
+            android:text="Code"
+            android:textColor="@color/bleufoncé"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="20dp"
+            />
+        <EditText
+            android:id="@+id/editTextText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/mdp"
+            android:hint="Saisiez le code "
+            android:paddingLeft="20dp"
+            android:drawablePadding="15dp"
+            android:fontFamily="@font/poppins_light"
+            android:inputType="numberPassword"
+            android:maxLines="1"
+            android:paddingRight="10dp"
+            android:paddingVertical="10dp"
+            android:textSize="15dp"
+            android:layout_marginBottom="0dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            >
+
+            <Button
+                android:id="@+id/loginam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="70dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/bouton"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="15dp"
+                android:text="Log in"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16dp" /></RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

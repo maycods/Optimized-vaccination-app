@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:id="@+id/notif"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/none"
+        android:src="@drawable/ic_outline_notifications_24"
+        tools:ignore="MissingConstraints">
+    </ImageButton>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:id="@+id/wlcm"
+        app:layout_constraintHeight_percent="0.12"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toBottomOf="@+id/notif"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bienvenue!"
+            android:textSize="45dp"
+            android:paddingLeft="20dp"
+            android:shadowColor="@color/bleufoncé"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/bleufoncé"
+           ></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Slogant"
+            android:textSize="25dp"
+            android:paddingLeft="25dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/bleufoncé"
+            android:textStyle="bold"
+            android:alpha="0.54"
+            ></TextView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.35"
+        android:id="@+id/divmenu"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toBottomOf="@+id/wlcm"
+        android:background="@drawable/bouteillecov"
+        >
+        <LinearLayout
+            android:id="@+id/gch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            >
+            <ImageButton
+                android:id="@+id/gauche"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/none"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_baseline_navigate_before_24"></ImageButton>
+        </LinearLayout>
+        <HorizontalScrollView
+            android:id="@+id/scrl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/rght"
+            android:layout_toEndOf="@+id/gch">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@+id/rght"
+                android:layout_toEndOf="@+id/gch"
+                android:orientation="horizontal"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="150dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Sinovac"
+                        android:textColor="@color/black"
+                        android:textSize="40dp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Nombre de dose: 2"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text=" Efficacité: 50%"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Origine: Chine"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Nombre de vaccins distribués: 92378"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="150dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Astra"
+                        android:textColor="@color/black"
+                        android:textSize="40dp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Nombre de dose: 2"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text=" Efficacité: 50%"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Origine: Chine"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Nombre de vaccins distribués: 92378"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="150dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Spootnik"
+                        android:textColor="@color/black"
+                        android:textSize="40dp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Nombre de dose: 2"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text=" Efficacité: 50%"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Origine: Chine"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/poppins_light"
+                        android:padding="5dp"
+                        android:text="Nombre de vaccins distribués: 92378"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+        <LinearLayout
+            android:id="@+id/rght"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <ImageButton
+                android:id="@+id/droite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/none"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_baseline_navigate_next_24"></ImageButton>
+        </LinearLayout>
+    </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    app:layout_constraintHeight_percent="0.45"
+    app:layout_constraintTop_toBottomOf="@+id/divmenu">
+
+    <Button
+        android:id="@+id/profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     android:layout_marginHorizontal="40dp"
+        android:padding="15dp"
+        android:text="Profile"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_semibold"
+        android:drawableLeft="@drawable/personblance"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:background="@drawable/bouton"
+        />
+    <Button
+        android:id="@+id/rdv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:padding="15dp"
+        android:drawableLeft="@drawable/ic_outline_calendar_today_24"
+        android:layout_marginTop="20dp"
+        android:text="Rendez-vous"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:background="@drawable/bouton"
+        />
+    <Button
+        android:id="@+id/prevention"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:padding="15dp"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="5dp"
+        android:drawableLeft="@drawable/ic_baseline_coronavirus_24"
+        android:text="Prevention covid"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:background="@drawable/bouton"
+        />
+    <Button
+        android:id="@+id/numvert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:padding="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Numero vert"
+        android:textAlignment="center"
+        android:drawableLeft="@drawable/phoneicon"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/bleufoncé"
+        android:textSize="16dp"
+        android:background="@drawable/bouton2"
+        />
+</LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

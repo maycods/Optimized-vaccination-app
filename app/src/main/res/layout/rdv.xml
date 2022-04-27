@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.09"
+        android:id="@+id/hder"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/bleufoncé">
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:id="@+id/retourR"
+            android:src="@drawable/ic_outline_navigate_before_25"
+            android:backgroundTint="@color/none"
+            ></ImageButton>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:text="Rendez-vous"></TextView>
+    </LinearLayout><!--
+    <com.skyhope.eventcalenderlibrary.CalenderEvent
+        android:id="@+id/calender_event"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintTop_toBottomOf="@+id/hder"
+        app:calender_background="@color/bleufoncé"
+        app:selected_day_text_color="@color/white"
+        app:selector_color="@color/bleu2"
+        app:current_month_day_color="@color/white"
+        app:month_color="@color/white"
+        app:week_name_color="@color/white"
+        app:next_icon="@drawable/rightarrow"
+        app:previous_icon="@drawable/leftarrow"
+        />-->
+    <LinearLayout
+        android:background="@drawable/itin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.51"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/bleufoncé"
+            android:paddingLeft="25dp"
+            android:text="Lieu de vaccination "></TextView>
+
+
+            <EditText
+                android:id="@+id/positionvacc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/input"
+                android:hint="Adresse de vaccination"
+                android:layout_marginHorizontal="20dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_outline_search_24"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="5dp"
+                android:shadowColor="@color/black"
+                android:textSize="15dp" />
+
+
+
+        <TextView
+            android:id="@+id/mapos"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/bleu2"
+            android:drawableLeft="@drawable/ic_gps"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Utiliser ma position"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/bleufoncé"
+            android:paddingLeft="25dp"
+            android:text="Type de vaccin "></TextView>
+
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Adresse vdde vaccination"
+            android:dropDownWidth="wrap_content"
+          android:spinnerMode="dropdown"
+            android:background="@drawable/input"
+            ></Spinner>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+        >
+
+          <Button
+              android:id="@+id/comfirmer"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:fontFamily="@font/poppins_semibold"
+              android:textAllCaps="false"
+              android:background="@drawable/bouton"
+              android:layout_marginHorizontal="70dp"
+              android:text="Comfirmer"
+              android:textColor="@color/white"
+              android:textSize="16dp"
+          ></Button>
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
