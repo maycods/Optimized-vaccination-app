@@ -15,4 +15,10 @@
         <item>Sinovac</item>
     </string-array>
 
+    <integer-array name="nombre">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+
 </resources>

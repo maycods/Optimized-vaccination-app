@@ -56,13 +56,13 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv);
-        mSearchText = (EditText)findViewById(R.id.positionvacc) ;
-        gps = (TextView) findViewById(R.id.mapos) ;//////////////////
+        //mSearchText = (EditText)findViewById(R.id.positionvacc) ;
+       // gps = (TextView) findViewById(R.id.mapos) ;//////////////////
         retour=(ImageButton)findViewById(R.id.retourR);
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        R.array.vaccines, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        R.array.vaccines, R.layout.spinn);
+        adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
@@ -72,7 +72,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                       startActivity(new Intent(Rendez_vous.this, Menu.class));
                                   }
                               });
-      gps.setOnClickListener(new View.OnClickListener() {
+      /*gps.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
               askGalleryPermissionLocation();
@@ -81,10 +81,10 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
       comfirmer.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              init();
+            //  init();
               // + spinner machin
           }
-      });
+      });*/
 
    }
 

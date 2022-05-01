@@ -7,20 +7,25 @@
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/border.xml" value="0.146" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/borderbottom.xml" value="0.146" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/bordertableheader.xml" value="0.23" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/bouton2.xml" value="0.1055" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/confirmer.xml" value="0.2245" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/ic_outline_navigate_before_25.xml" value="0.158" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/input.xml" value="0.1735" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/font/poppins_bold.xml" value="0.2890625" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/font/poppins_light.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/font/poppins_semibold.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/activity_main.xml" value="0.2604166666666667" />
-        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/admin.xml" value="0.1" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/admin.xml" value="0.264" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/dropdown.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/dropdownspinner.xml" value="0.2484375" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/first_page.xml" value="0.264" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/fragment_blank.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/fragment_first.xml" value="0.14427083333333332" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/fragment_maps.xml" value="0.1" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/fragment_second.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/info_perso_avant_modif.xml" value="0.264" />
-        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/infosperso.xml" value="0.2" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/info_perso_avant_modif.xml" value="0.176" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/infosperso.xml" value="0.264" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/itineraire.xml" value="0.264" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/login.xml" value="0.264" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/loginadmin.xml" value="0.25885416666666666" />
@@ -29,8 +34,11 @@
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/notif.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/notif_v.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/rdv.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/signup1.xml" value="0.264" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/signup1.xml" value="0.176" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/signup2.xml" value="0.264" />
+        <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/spinn.xml" value="0.2421875" />
+        <entry key="..\:/Users/mayah/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/mayah/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>

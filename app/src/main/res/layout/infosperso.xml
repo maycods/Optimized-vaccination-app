@@ -18,14 +18,12 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-
-        android:layout_marginBottom="20dp"
         android:background="@drawable/ic_outline_circle_24"
         android:src="@drawable/ic_baseline_navigate_before_24"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/nompage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +31,7 @@
         android:layout_marginLeft="20dp"
         android:text="Profile"
         android:textColor="@color/bleufoncé"
-        android:textSize="45dp"
+        android:textSize="35dp"
         android:textStyle="bold" />
 
     <TextView
@@ -41,17 +39,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nompage"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="25dp"
         android:alpha="0.54"
         android:paddingLeft="20dp"
         android:text="Voici vos informations personnelles "
         android:textColor="@color/bleufoncé"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:textStyle="bold" />
     <ScrollView
+        android:scrollbarSize="5dp"
+        android:scrollbarStyle="outsideOverlay"
         android:id="@+id/srll"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="410dp"
         android:layout_below="@+id/info"
         >
         <LinearLayout
@@ -83,16 +83,16 @@
                     android:drawableLeft="@drawable/ic_outline_person_26"
                     android:drawablePadding="15dp"
                     android:fontFamily="@font/poppins_light"
+                    android:textColorHint="@color/HINT"
                     android:hint="Saisiez votre numero de telephone"
                     android:textColor="@color/bleu2"
-                    android:textColorHint="@color/bleu2"
                     android:gravity="center_vertical"
                     android:inputType="text"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
             <LinearLayout
@@ -103,7 +103,83 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="15dp"
                 android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Adresse Mail"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/bleufoncé">
 
+                </TextView>
+
+                <EditText
+                    android:fontFamily="@font/poppins_light"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:textColorHint="@color/HINT"
+                    android:textColor="@color/bleu2"
+                    android:hint="Saisiez votre adresse mail"
+                    android:drawableLeft="@drawable/ic_baseline_mail_outline_27"
+                    android:drawablePadding="15dp"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textSize="15dp"/>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/nieme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mot de passe"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/bleufoncé">
+
+                </TextView>
+
+                <EditText
+                    android:fontFamily="@font/poppins_light"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/HINT"
+                    android:hint="Saisiez votre mot de passe"
+                    android:textColor="@color/bleu2"
+                    android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_outline_lock_25"
+                    android:drawablePadding="15dp"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textSize="15dp"/>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/nieme"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -120,85 +196,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
+                    android:textColorHint="@color/HINT"
                     android:drawableLeft="@drawable/ic_outline_local_phone_26"
                     android:drawablePadding="15dp"
                     android:hint="Saisiez votre numero de telephone"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:minHeight="48dp"
-                    android:paddingLeft="15dp"
-                    android:textColorHint="@color/bleu2"
-                    android:shadowColor="@color/black"
-                    android:textSize="16dp"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/nieme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
-                    android:text="Nombres de doses"
-                    android:textColor="@color/bleufoncé">
-
-                </TextView>
-
-                <TextView
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="2"
-                    android:textColor="@color/bleu2"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input"
+                    android:inputType="phone"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="20dp" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/d"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/nieme"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="15dp"
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Type de vaccin"
-                    android:paddingLeft="5dp"
-                    android:textColor="@color/bleufoncé">
-
-                </TextView>
-
-                <TextView
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Spootnik"
-                    android:textColor="@color/bleu2"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input"
-                    android:hint="Saisiez le type de vaccin"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:minHeight="48dp"
-                    android:paddingLeft="15dp"
-                    android:shadowColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -248,31 +255,31 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="15dp"
                 >
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Adresse Mail"
+                    android:text="Type de vaccin"
                     android:paddingLeft="5dp"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
 
-                <EditText
-                    android:fontFamily="@font/poppins_light"
+                <TextView
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Spootnik"
+                    android:textColor="@color/bleu2"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
-                    android:hint="Saisiez votre adresse mail"
-                    android:textColorHint="@color/bleu2"
-                    android:drawableLeft="@drawable/ic_baseline_mail_outline_27"
-                    android:drawablePadding="15dp"
+                    android:hint="Saisiez le type de vaccin"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="16dp"/>
+                    android:textSize="20dp"/>
+
 
             </LinearLayout>
             <LinearLayout
@@ -288,29 +295,25 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mot de passe"
                     android:paddingLeft="5dp"
+                    android:text="Nombres de doses"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
 
-                <EditText
-                    android:fontFamily="@font/poppins_light"
+                <TextView
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="2"
                     android:textColor="@color/bleu2"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Saisiez votre mot de passe"
-                    android:textColorHint="@color/bleu2"
                     android:background="@drawable/input"
-                    android:drawableLeft="@drawable/ic_outline_lock_25"
-                    android:drawablePadding="15dp"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="16dp"/>
-
+                    android:textSize="20dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

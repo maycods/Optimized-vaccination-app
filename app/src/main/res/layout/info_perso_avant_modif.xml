@@ -18,13 +18,13 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+
         android:background="@drawable/ic_outline_circle_24"
         android:src="@drawable/ic_baseline_navigate_before_24"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:layout_marginTop="15dp"
         android:id="@+id/nompage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_marginLeft="20dp"
         android:text="Profile"
         android:textColor="@color/bleufoncé"
-        android:textSize="45dp"
+        android:textSize="35dp"
         android:textStyle="bold" />
 
     <TextView
@@ -40,23 +40,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/nompage"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="30dp"
         android:alpha="0.54"
         android:paddingLeft="20dp"
         android:text="Voici vos informations personnelles "
         android:textColor="@color/bleufoncé"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:textStyle="bold" />
 
 <ScrollView
+    android:scrollbarSize="5dp"
     android:id="@+id/srll"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="330dp"
     android:layout_below="@+id/info"
     >
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="match_parent"
     android:orientation="vertical">
     <LinearLayout
         android:id="@+id/a"
@@ -318,7 +319,8 @@
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/srll"
         android:gravity="center"
         android:orientation="vertical">

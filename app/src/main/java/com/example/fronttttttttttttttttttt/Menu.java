@@ -26,7 +26,7 @@ public class Menu extends AppCompatActivity {
     private ImageButton  notif,L,r;
     private static final int REQUEST_CALL = 1;
 private HorizontalScrollView scrollView;
-    public static final int SCROLL_DELTA = 100;// Pixel.
+    public static final int SCROLL_DELTA = 900;// Pixel.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +82,7 @@ private HorizontalScrollView scrollView;
         r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int maxAmount = scrollView.getMaxScrollAmount();
+                int maxAmount = 2000;
 
                 int x =scrollView.getScrollX();
                 if(x + SCROLL_DELTA <= maxAmount) {

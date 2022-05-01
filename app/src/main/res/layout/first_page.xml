@@ -19,7 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintHeight_percent="0.38"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,11 +33,11 @@
         android:text="Welcome to app"
         android:fontFamily="sans-serif-medium"
         android:textColor="@color/bleufoncé"
-        android:textSize="45dp"
+        android:textSize="40dp"
         android:textAlignment="center"
         android:textStyle="bold"
          android:layout_height="wrap_content"
-        android:paddingTop="20dp"/>
+        android:paddingTop="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:text="Pour faciliter la vaccination contre le covid-19"
         android:textColor="@color/bleufoncé"
         android:alpha="0.6"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:textStyle="bold"
         android:textAlignment="center"
         android:gravity="center"/>
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="7dp"
             android:background="@drawable/bouton"
             android:fontFamily="@font/poppins_semibold"
@@ -83,15 +83,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_gravity="center"
-    android:gravity="center">
+android:layout_gravity="center"
+    android:gravity="center"
+   >
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
+            android:paddingLeft="25dp"
             android:text="Etes-vous un "
             android:textColor="@color/bleufoncé"
-            android:textSize="15dp"
+            android:textSize="13dp"
             android:textStyle="bold"
             />
 
@@ -100,9 +101,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/none"
-            android:textSize="15dp"
+            android:textSize="13dp"
             android:paddingLeft="5dp"
-            android:text="ambulancier?"
+            android:text="ambulancier  -"
             android:textAllCaps="false"
             android:textColor="@color/bleu2"
             />
@@ -111,9 +112,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/none"
-        android:textSize="15dp"
-        android:text="admin?"
-         android:paddingLeft="5dp"
+        android:textSize="13dp"
+        android:text="  admin"
+
          android:textAlignment="gravity"
          android:gravity="center_vertical"
         android:textAllCaps="false"

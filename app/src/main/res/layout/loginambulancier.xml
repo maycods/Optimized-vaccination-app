@@ -22,7 +22,8 @@
         android:src="@drawable/ic_baseline_navigate_before_24"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="20dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="25dp"/>
     <LinearLayout
 
         android:layout_width="match_parent"
@@ -90,7 +91,9 @@
             android:background="@drawable/input"
             android:drawableLeft="@drawable/ic_baseline_app_registration_24"
             android:hint="Saisiez la matricule de l'ambulance"
+            android:textColor="@color/bleufoncé"
             android:drawablePadding="15dp"
+            android:textColorHint="@color/HINT"
             android:layout_marginBottom="12dp"
             android:inputType="phone"
             android:maxLines="1"
@@ -119,6 +122,8 @@
             android:drawableLeft="@drawable/mdp"
             android:hint="Saisiez le code "
             android:paddingLeft="20dp"
+            android:textColor="@color/bleufoncé"
+            android:textColorHint="@color/HINT"
             android:drawablePadding="15dp"
             android:fontFamily="@font/poppins_light"
             android:inputType="numberPassword"

@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.32"
         android:id="@+id/divmenu"
@@ -14,7 +13,7 @@
         android:orientation="horizontal"
         tools:ignore="MissingConstraints"
         android:background="@drawable/ambulance2"
-        android:backgroundTint="@drawable/rectangledegra"
+
         >
 
         <LinearLayout
@@ -32,108 +31,158 @@
                 android:backgroundTint="@color/none"
                 android:src="@drawable/leftarrow"></ImageButton>
         </LinearLayout>
-        <ImageView
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_width="170dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-
-            ></ImageView>
 
         <HorizontalScrollView
             android:id="@+id/scrl"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scrollbarSize="00dp"
             android:layout_toStartOf="@+id/rght"
-            android:layout_toEndOf="@+id/gch"
-            android:scrollbarSize="00dp">
+            android:layout_toEndOf="@+id/gch">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
 
                 >
-            <LinearLayout
-                android:layout_marginRight="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/poppins_light"
-                    android:text="CHU Mustapha"
-                    android:textColor="@color/white"
-                    android:textSize="40dp"
-                    android:textStyle="bold"></TextView>
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginRight="38dp"
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:padding="5dp"
-                        android:text="25 doses"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="CHU Mustapha"
                         android:textColor="@color/white"
-                        android:textSize="16dp"></TextView>
+                        android:textSize="40dp"
+                        android:textStyle="bold"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="5dp"
+                            android:text="25 doses"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="5dp"
+                            android:text="4 ambulances"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="5dp"
+                            android:text="ID: EA12X"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"></TextView>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginRight="38dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:padding="5dp"
-                        android:text="4 ambulances"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="CHU Mustapha"
                         android:textColor="@color/white"
-                        android:textSize="16dp"></TextView>
+                        android:textSize="40dp"
+                        android:textStyle="bold"></TextView>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:padding="5dp"
-                        android:text="ID: EA12X"
-                        android:textColor="@color/white"
-                        android:textSize="16dp"></TextView>
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="5dp"
+                            android:text="25 doses"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="5dp"
+                            android:text="4 ambulances"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="5dp"
+                            android:text="ID: EA12X"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"></TextView>
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
 
-            </LinearLayout>
-
-
         </HorizontalScrollView>
+
         <LinearLayout
             android:id="@+id/rght"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="-4dp">
 
             <ImageButton
                 android:id="@+id/droite"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:scaleType="fitCenter"
-                android:backgroundTint="@color/none"
                 android:layout_gravity="center_vertical"
+                android:backgroundTint="@color/none"
+                android:scaleType="fitCenter"
                 android:src="@drawable/rightarrow"></ImageButton>
         </LinearLayout>
 
     </RelativeLayout>
+
+
     <TextView
         android:id="@+id/titre"
+        android:background="@color/white"
         android:fontFamily="sans-serif-medium"
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/divmenu"
@@ -143,11 +192,19 @@
         android:textColor="@color/black"
         android:text="Veuillez affecter les adresses des rendez- vous de demain aux ambulances  : "
         ></TextView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titre"
+        android:scrollbars="none"
+        android:layout_weight="1">
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-       app:layout_constraintHeight_percent="0.525"
+       app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titre"
         android:background="#5555">
         <TableRow
@@ -162,7 +219,7 @@
                 android:textColor="@color/bleufoncé"
                 android:textSize="15dp"
                 android:text="Adresse"
-               ></TextView>
+                ></TextView>
 
             <TextView
                 android:gravity="center_horizontal"
@@ -175,6 +232,7 @@
                 android:text="Ambulance"
                 ></TextView>
         </TableRow>
+
         <TableRow
             android:background="@drawable/border">
             <TextView
@@ -214,6 +272,7 @@
                 ></TextView>
 
             <Spinner
+                android:id="@+id/spinner3"
                 android:gravity="center_horizontal"
                 android:fontFamily="@font/poppins_light"
                 android:layout_width="0dp"
@@ -236,6 +295,30 @@
                 android:textColor="@color/black"
                 android:text="Adresse1 bab el  zzouar .. "
                 ></TextView>
+
+            <Spinner
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:spinnerMode="dropdown"
+                />
+        </TableRow>
+        <TableRow
+            android:background="@drawable/border">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins_light"
+                android:gravity="center_horizontal"
+                android:paddingVertical="10dp"
+                android:text="Adresse1 bab el  zzouar .. "
+                android:textColor="@color/black"></TextView>
 
             <Spinner
                 android:gravity="center_horizontal"
@@ -320,30 +403,6 @@
                 android:spinnerMode="dropdown"
                 />
         </TableRow>
-        <TableRow
-        android:background="@drawable/border">
-        <TextView
-            android:gravity="center_horizontal"
-            android:fontFamily="@font/poppins_light"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
-            android:textColor="@color/black"
-            android:text="Adresse1 bab el  zzouar .. "
-            ></TextView>
-
-        <Spinner
-            android:gravity="center_horizontal"
-            android:fontFamily="@font/poppins_light"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingVertical="10dp"
-            android:textColor="@color/black"
-            android:spinnerMode="dropdown"
-            />
-    </TableRow>
         <TableRow
             android:background="@color/white">
             <TextView
@@ -368,7 +427,6 @@
                 android:spinnerMode="dropdown"
                 />
         </TableRow>
-
         <TableRow
             android:background="@color/white">
             <TextView
@@ -393,10 +451,106 @@
                 android:spinnerMode="dropdown"
                 />
         </TableRow>
+        <TableRow
+            android:background="@drawable/border">
+            <TextView
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:text="Adresse1 bab el  zzouar .. "
+                ></TextView>
 
+            <Spinner
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:spinnerMode="dropdown"
+                />
+        </TableRow>
+        <TableRow
+            android:background="@drawable/border">
+            <TextView
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:text="Adresse1 bab el  zzouar .. "
+                ></TextView>
 
+            <Spinner
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:spinnerMode="dropdown"
+                />
+        </TableRow>
+        <TableRow
+            android:background="@drawable/border">
+            <TextView
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:text="Adresse1 bab el  zzouar .. "
+                ></TextView>
 
+            <Spinner
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:spinnerMode="dropdown"
+                />
+        </TableRow>
+        <TableRow
+            android:background="@drawable/border">
+            <TextView
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:text="Adresse1 bab el  zzouar .. "
+                ></TextView>
+
+            <Spinner
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:spinnerMode="dropdown"
+                />
+        </TableRow>
 
     </TableLayout>
+ </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

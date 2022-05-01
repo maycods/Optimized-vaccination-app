@@ -23,7 +23,8 @@
         android:src="@drawable/ic_baseline_navigate_before_24"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="20dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="25dp"/>
     <LinearLayout
 
         android:layout_width="match_parent"
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:paddingBottom="5dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:text="Administrateur "
                 android:textColor="@color/bleufoncé"
                 android:textSize="40dp"
@@ -90,16 +91,18 @@
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/input"
             android:drawableLeft="@drawable/mdp"
+            android:textColorHint="@color/HINT"
             android:hint="Saisiez le code de l'administrateur"
+            android:textColor="@color/bleufoncé"
             android:paddingLeft="20dp"
             android:drawablePadding="15dp"
             android:fontFamily="@font/poppins_light"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:paddingRight="10dp"
             android:paddingVertical="10dp"
             android:textSize="15dp"
-            android:layout_marginBottom="0dp"
+
             />
         <RelativeLayout
             android:layout_width="match_parent"
