@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mayah/.gradle/caches/transforms-3/2d91cb6242a0bc00706dab07d0650e2d/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/annuler.xml" value="0.1" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/border.xml" value="0.146" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/borderbottom.xml" value="0.146" />
@@ -39,6 +40,9 @@
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/spinn.xml" value="0.2421875" />
         <entry key="..\:/Users/mayah/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/mayah/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/drawable/bouton2.xml" value="0.17" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/drawable/boutongrise.xml" value="0.17" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup2.xml" value="0.4971698113207547" />
       </map>
     </option>
   </component>

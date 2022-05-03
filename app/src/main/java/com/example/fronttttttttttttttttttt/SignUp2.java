@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,9 +19,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -35,7 +42,8 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
     private String spinnerChoiceT;
     private  Integer spinnerChoiceD;
     ArrayAdapter<CharSequence> adapter;
-    ArrayAdapter<Integer> adapter2;
+    ArrayAdapter<CharSequence> adapter2;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,61 +52,68 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
         typevac=findViewById(R.id.vactype);
         vacc=findViewById(R.id.vacciné);
         inscrit =findViewById(R.id.inscrit);
+        mAuth = FirebaseAuth.getInstance();
         retourS2 =findViewById(R.id.retourS2);
-
+        db=  FirebaseFirestore.getInstance();
 
         Spinner spinner = findViewById(R.id.vactype);
+        spinner.setEnabled(false);
+       spinner.setClickable(false);
+
         adapter= ArrayAdapter.createFromResource(this,
                 R.array.vaccines, R.layout.spinn);
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
 
         Spinner spinner2 = findViewById(R.id.nbrdoses);
-        Integer[] items = new Integer[]{1,2,3};
-       adapter2 = new ArrayAdapter<Integer>(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, items);
-        spinner2.setAdapter(adapter2);
-        spinner2.setOnItemSelectedListener(this);
+        spinner2.setEnabled(false);
+        spinner2.setClickable(false);
+
+        adapter2= ArrayAdapter.createFromResource(this,
+                R.array.nombre, R.layout.spinn);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         vacc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i){
-                    case R.id.oui://todo gerer les spinner les griser ou pas
 
-                    case R.id.non:
+                   if(i== R.id.oui){
+                       typevac.setEnabled(true);
+                       dose.setEnabled(true);
+                       typevac.setBackgroundColor(0x00000000);
+                       dose.setBackgroundColor(0x00000000);
+                       typevac.setBackgroundResource(R.drawable.bouton2);
+                       dose.setBackgroundResource(R.drawable.bouton2);
 
-                }
+                        spinner2.setAdapter(adapter2);
+                        spinner2.setOnItemSelectedListener(SignUp2.this);
+                        spinner.setAdapter(adapter);
+                        spinner.setOnItemSelectedListener(SignUp2.this);
+                }else{
+                       if(i== R.id.non){
+                           typevac.setEnabled(false);
+                           typevac.setAdapter(null);
+                          dose.setAdapter(null);
+                           dose.setEnabled(false);
+                           typevac.setBackgroundResource(R.drawable.boutongrise);
+                           dose.setBackgroundResource(R.drawable.boutongrise);
+
+
+                       }
+                   }
             }
         });
         inscrit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db=  FirebaseFirestore.getInstance();
                 String email= mail.getText().toString().trim();
                 String tell= tel.getText().toString().trim();
                 String mdp1= mdp.getText().toString().trim();
                 String mdp2= mdpc.getText().toString().trim();
                 String nompre= nomprenom.getText().toString().trim();
-
-                if(tell.isEmpty()  ){
-                    tel.setError("ce champ est obligatoire");
-                }
-                if(nompre.isEmpty()  ){
-                  nomprenom.setError("ce champ est obligatoire");
-                }
-                if(mdp1.isEmpty()  ){
-                    mdp.setError("ce champ est obligatoire");
-                }
-                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches() ){
-                    mail.setError("Fournissez une adresse mail valide");
-                }
-              /* if(!mdp2.equals(mdp1) ){
-                    mdpc.setError("mot de passe ne match pas");
-                }*/
-
-                HashMap<String,Object> user=new HashMap<String,Object>();
-                user.put("NomPrenom",nompre);
+/*
+           // db.createUserWithEmailAndPassward(email,mdp);
+                 HashMap<String,String> user=new HashMap<>();
+                user.put("NomPrenom",nompre.toString());
                 user.put("telephone",tell);
                 user.put("Email",email);
                 user.put("Mot de passe ",mdp1);
@@ -116,7 +131,9 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getApplicationContext(),"lost",Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
+
+
             }
         });
         retourS2.setOnClickListener(new View.OnClickListener() {
@@ -155,4 +172,6 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
             case R.id.vactype:
         }
     }*/
+
+
 }

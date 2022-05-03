@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:padding="10dp"
-            android:text="Etes-vous vaccinné(e)? "
+            android:text="Etes-vous vaccinné (e) ? "
             android:textColor="@color/bleufoncé"
             android:textSize="20dp"
            android:fontFamily="sans-serif-medium" />
@@ -105,18 +105,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:padding="10dp"
-            android:text="Si oui, avec quel vaccin? "
+            android:text="Si oui, avec quel vaccin ?"
             android:textColor="@color/bleufoncé"
             android:textSize="20dp"
             android:fontFamily="sans-serif-medium" />
 
         <Spinner
+            android:saveEnabled="true"
             android:id="@+id/vactype"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:background="@drawable/bouton2"
-            android:drawableLeft="@drawable/vaccine"
+            android:background="@drawable/boutongrise"
             android:maxLines="1"
             android:dropDownSelector="@color/bleu2"
             android:shadowColor="@color/bleufoncé"
@@ -131,31 +131,28 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:padding="10dp"
-            android:text="Si oui, combien de rappel? "
+            android:text="Si oui, combien de rappel ?"
             android:textColor="@color/bleufoncé"
             android:textSize="20dp"
             android:fontFamily="sans-serif-medium" />
 
         <Spinner
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:saveEnabled="true"
             android:id="@+id/nbrdoses"
-            android:dropDownSelector="@color/bleu2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:background="@drawable/bouton2"
-            android:hint="Saisisez le nom du vaccin"
-            android:drawableLeft="@drawable/vaccinations"
-            android:drawablePadding="10dp"
-            android:inputType="number"
+            android:background="@drawable/boutongrise"
             android:maxLines="1"
-            android:textColor="@color/bleufoncé"
+            android:dropDownSelector="@color/bleu2"
             android:shadowColor="@color/bleufoncé"
             android:minHeight="48dp"
             android:paddingLeft="20dp"
             android:fontFamily="@font/poppins_light"
-            android:textSize="15dp" />
+            android:layout_marginBottom="20dp"
+            android:textSize="15dp"
+
+           />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
