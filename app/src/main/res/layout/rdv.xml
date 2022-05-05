@@ -28,6 +28,7 @@
             android:padding="15dp"
             android:text="Rendez-vous"></TextView>
     </LinearLayout>
+
     <com.skyhope.eventcalenderlibrary.CalenderEvent
         android:id="@+id/calender_event"
         android:layout_width="match_parent"
