@@ -230,7 +230,7 @@
                 <TextView
                     android:fontFamily="@font/poppins_semibold"
                     android:text="12/08/2021"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -267,7 +267,7 @@
                 <TextView
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Spootnik"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -284,7 +284,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_marginBottom="15dp"
-                android:id="@+id/mdp"
+                android:id="@+id/ch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -314,6 +314,42 @@
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="15dp"
+                android:id="@+id/mdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/m"
+                android:layout_marginHorizontal="20dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Nombres de chance restante "
+                    android:textColor="@color/bleufoncé">
+
+                </TextView>
+
+                <TextView
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="0"
+                    android:textColor="@color/bleu2"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textSize="20dp" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

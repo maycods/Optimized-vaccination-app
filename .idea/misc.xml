@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin.xml" value="0.264" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/info_perso_avant_modif.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/infosperso.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/notif.xml" value="0.264" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/rdv.xml" value="0.1" />
         <entry key="..\:/Users/mayah/.gradle/caches/transforms-3/2d91cb6242a0bc00706dab07d0650e2d/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/annuler.xml" value="0.1" />
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/drawable/border.xml" value="0.146" />

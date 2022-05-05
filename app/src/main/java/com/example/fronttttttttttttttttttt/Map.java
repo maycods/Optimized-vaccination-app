@@ -35,6 +35,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
     private static final int[] COLORS = new int[]{R.color.purple_200};
     Population pop = new Population();
     LatLng A ,B,C,D;
+
     LatLng ListePositions [] ={A=new LatLng(	35.55,  6.17 ),B =new LatLng( 35.6976541, -0.6337376),C =new LatLng(35.6976541,5.6337376),D=new LatLng(36.4798683,2.8005677)};
     Object  M[][] = new Object[ListePositions.length+1][ListePositions.length+1];
     Vector<Integer> a = new Vector<Integer>(ListePositions.length*ListePositions.length-ListePositions.length);
@@ -268,14 +269,6 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
 
            return pop.bestC(M).getSolution();
         }
-
-
-
-
-
-
-
-
-    }
+}
 
 

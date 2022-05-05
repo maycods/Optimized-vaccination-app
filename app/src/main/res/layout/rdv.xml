@@ -27,7 +27,7 @@
             android:textColor="@color/white"
             android:padding="15dp"
             android:text="Rendez-vous"></TextView>
-    </LinearLayout><!--
+    </LinearLayout>
     <com.skyhope.eventcalenderlibrary.CalenderEvent
         android:id="@+id/calender_event"
         android:layout_width="match_parent"
@@ -42,7 +42,8 @@
         app:week_name_color="@color/white"
         app:next_icon="@drawable/rightarrow"
         app:previous_icon="@drawable/leftarrow"
-        />-->
+        tools:ignore="MissingClass" />
+
     <LinearLayout
         android:background="@drawable/itin"
         android:layout_width="match_parent"

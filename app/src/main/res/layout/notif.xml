@@ -7,105 +7,111 @@
     android:background="@color/none"
     xmlns:app="http://schemas.android.com/apk/res-auto"
   >
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:padding="15dp"
-    android:layout_height="300dp"
-    android:minHeight="250dp"
-    android:layout_width="wrap_content"
-android:background="@drawable/notification"
-android:layout_centerInParent="true"
-android:elevation="20dp"
-    >
 
-    <ImageButton
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/close"
-        android:backgroundTint="@color/none"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_baseline_close_24"
-        tools:ignore="MissingConstraints">
+        android:layout_centerInParent="true"
+        android:background="@drawable/notification"
+        android:elevation="20dp"
+        android:minHeight="250dp"
+        android:padding="15dp">
 
-    </ImageButton>
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/none"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+            tools:layout_editor_absoluteY="15dp">
 
-    <ImageView
-        android:id="@+id/imgC"
-        android:paddingBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/virus"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
+        </ImageButton>
 
-    <TextView
-        android:id="@+id/textV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:gravity="center"
-        android:text="Comfirmation du Rendez-vous le:"
-        android:textStyle="bold"
-        android:textColor="@color/blueB"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgC" />
+        <ImageView
+            android:id="@+id/imgC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:src="@drawable/virus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textV2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/bleufoncé"
-        android:text="20/02/2032 "
-        android:textSize="25dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textV" />
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textV2" />
+        <TextView
+            android:id="@+id/textV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:gravity="center"
+            android:text="Comfirmation du Rendez-vous le:"
+            android:textColor="@color/blueB"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgC" />
 
-    <Button
-        android:id="@+id/btn_cancel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bouton"
-        android:text="Comfirmer"
-        android:textSize="13dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:layout_marginLeft="30dp"
-        android:paddingHorizontal="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-    />
+        <TextView
+            android:id="@+id/textV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="20/02/2032 "
+            android:textAlignment="center"
+            android:textColor="@color/bleufoncé"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textV" />
 
-    <Button
-        android:id="@+id/btn_okay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bouton"
-        android:backgroundTint="@color/bleu2"
-        android:text="Annuler"
-        android:textSize="13dp"
-        android:paddingHorizontal="40dp"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-     app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textV2" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bouton"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
+            android:text="Comfirmer"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_okay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/bouton"
+            android:backgroundTint="@color/bleu2"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="15dp"
+            android:text="Annuler"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
