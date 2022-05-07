@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NotifV extends AppCompatActivity {
+public class NotifV extends AppCompatActivity {//TODO COMFIRMER ET ANNULER
     private ImageButton close;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@drawable/flogin"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/flogin"></ImageView>
+        android:layout_height="match_parent">
+
+
 
     <ImageButton
         android:id="@+id/retourP"
@@ -48,16 +48,12 @@
         android:textSize="15dp"
         android:textStyle="bold" />
 
-<ScrollView
-    android:scrollbarSize="5dp"
-    android:id="@+id/srll"
-    android:layout_width="match_parent"
-    android:layout_height="330dp"
-    android:layout_below="@+id/info"
-    >
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_below="@id/info"
+    android:id="@+id/srll"
     android:orientation="vertical">
     <LinearLayout
         android:id="@+id/a"
@@ -278,7 +274,6 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_marginBottom="15dp"
         android:id="@+id/mdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -314,48 +309,47 @@
 
     </LinearLayout>
 </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/srll"
+            android:layout_marginVertical="35dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/generer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="70dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bouton"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Generer pass sanitaire"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/modifier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="70dp"
+                android:background="@drawable/bouton2"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingHorizontal="80dp"
+                android:text="Modifer"
+                android:textAllCaps="false"
+                android:textColor="@color/bleufoncé"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/srll"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/generer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="70dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/bouton"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Generer pass sanitaire"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
-
-        <Button
-            android:id="@+id/modifier"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="70dp"
-            android:background="@drawable/bouton2"
-            android:fontFamily="@font/poppins_semibold"
-            android:paddingHorizontal="80dp"
-            android:text="Modifer"
-            android:textAllCaps="false"
-            android:textColor="@color/bleufoncé"
-            android:textSize="16dp" />
-
-    </LinearLayout>
-
-
-</RelativeLayout>

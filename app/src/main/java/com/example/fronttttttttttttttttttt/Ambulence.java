@@ -26,6 +26,7 @@ public class Ambulence extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Ambulence.this, Itineraire.class));
+                //TODO LOGIN AMBULANCE
             }
         });
 

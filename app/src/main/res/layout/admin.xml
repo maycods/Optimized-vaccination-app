@@ -13,7 +13,6 @@
         android:orientation="horizontal"
         tools:ignore="MissingConstraints"
         android:background="@drawable/ambulance2"
-
         >
 
         <LinearLayout
@@ -26,9 +25,9 @@
                 android:id="@+id/gauche"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:scaleType="fitCenter"
                 android:layout_gravity="center_vertical"
                 android:backgroundTint="@color/none"
+                android:scaleType="fitCenter"
                 android:src="@drawable/leftarrow"></ImageButton>
         </LinearLayout>
 
@@ -44,7 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-
+                android:layout_toStartOf="@+id/rght"
+                android:layout_toEndOf="@+id/gch"
                 >
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -165,7 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="-4dp">
+           >
 
             <ImageButton
                 android:id="@+id/droite"
@@ -211,7 +211,7 @@
             android:background="@drawable/bordertableheader">
             <TextView
                 android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/poppins_bold"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
@@ -222,8 +222,8 @@
                 ></TextView>
 
             <TextView
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_semibold"
+
+                android:fontFamily="@font/poppins_bold"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -264,7 +264,7 @@
                 android:gravity="center_horizontal"
                 android:fontFamily="@font/poppins_light"
                 android:layout_width="0dp"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:layout_height="wrap_content"
                 android:paddingVertical="10dp"
                 android:textColor="@color/black"
@@ -272,14 +272,11 @@
                 ></TextView>
 
             <Spinner
-                android:id="@+id/spinner3"
                 android:gravity="center_horizontal"
+                android:id="@+id/spinner3"
                 android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
                 android:spinnerMode="dropdown"
                 />
         </TableRow>
@@ -302,7 +299,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingVertical="10dp"
                 android:textColor="@color/black"
                 android:spinnerMode="dropdown"
                 />
@@ -403,78 +399,7 @@
                 android:spinnerMode="dropdown"
                 />
         </TableRow>
-        <TableRow
-            android:background="@color/white">
-            <TextView
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:text="Adresse1 bab el  zzouar .. "
-                ></TextView>
 
-            <Spinner
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:spinnerMode="dropdown"
-                />
-        </TableRow>
-        <TableRow
-            android:background="@color/white">
-            <TextView
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:text="Adresse1 bab el  zzouar .. "
-                ></TextView>
-
-            <Spinner
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:spinnerMode="dropdown"
-                />
-        </TableRow>
-        <TableRow
-            android:background="@drawable/border">
-            <TextView
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:text="Adresse1 bab el  zzouar .. "
-                ></TextView>
-
-            <Spinner
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:spinnerMode="dropdown"
-                />
-        </TableRow>
         <TableRow
             android:background="@drawable/border">
             <TextView

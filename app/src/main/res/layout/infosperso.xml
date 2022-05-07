@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+android:background="@drawable/flogin"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/flogin"></ImageView>
+        android:layout_height="match_parent">
+
+
 
     <ImageButton
         android:id="@+id/retourPM"
@@ -46,18 +46,18 @@
         android:textColor="@color/bleufoncé"
         android:textSize="15dp"
         android:textStyle="bold" />
-    <ScrollView
-        android:scrollbarSize="5dp"
-        android:scrollbarStyle="outsideOverlay"
+
+    <RelativeLayout
         android:id="@+id/srll"
         android:layout_width="match_parent"
-        android:layout_height="410dp"
-        android:layout_below="@+id/info"
-        >
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:orientation="vertical">
+
             <LinearLayout
                 android:id="@+id/a"
                 android:layout_width="match_parent"
@@ -83,18 +83,19 @@
                     android:drawableLeft="@drawable/ic_outline_person_26"
                     android:drawablePadding="15dp"
                     android:fontFamily="@font/poppins_light"
-                    android:textColorHint="@color/HINT"
-                    android:hint="Saisiez votre numero de telephone"
-                    android:textColor="@color/bleu2"
                     android:gravity="center_vertical"
+                    android:hint="Saisiez votre numero de telephone"
                     android:inputType="text"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
+                    android:textColor="@color/bleu2"
+                    android:textColorHint="@color/HINT"
                     android:textSize="15dp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/z"
                 android:layout_width="match_parent"
@@ -103,36 +104,37 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="15dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Adresse Mail"
                     android:paddingLeft="5dp"
+                    android:text="Adresse Mail"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
 
                 <EditText
-                    android:fontFamily="@font/poppins_light"
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
-                    android:textColorHint="@color/HINT"
-                    android:textColor="@color/bleu2"
-                    android:hint="Saisiez votre adresse mail"
                     android:drawableLeft="@drawable/ic_baseline_mail_outline_27"
                     android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:gravity="center_vertical"
+                    android:hint="Saisiez votre adresse mail"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="15dp"/>
-
+                    android:textColor="@color/bleu2"
+                    android:textColorHint="@color/HINT"
+                    android:textSize="15dp" />
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nieme"
                 android:layout_width="match_parent"
@@ -141,45 +143,46 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="15dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mot de passe"
                     android:paddingLeft="5dp"
+                    android:text="Mot de passe"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
 
                 <EditText
-                    android:fontFamily="@font/poppins_light"
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/HINT"
-                    android:hint="Saisiez votre mot de passe"
-                    android:textColor="@color/bleu2"
                     android:background="@drawable/input"
                     android:drawableLeft="@drawable/ic_outline_lock_25"
                     android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:gravity="center_vertical"
+                    android:hint="Saisiez votre mot de passe"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="15dp"/>
-
+                    android:textColor="@color/bleu2"
+                    android:textColorHint="@color/HINT"
+                    android:textSize="15dp" />
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/d"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_below="@+id/nieme"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="15dp"
-                >
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -190,107 +193,107 @@
                 </TextView>
 
                 <EditText
-                    android:fontFamily="@font/poppins_light"
-                    android:textColor="@color/bleu2"
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
-                    android:textColorHint="@color/HINT"
                     android:drawableLeft="@drawable/ic_outline_local_phone_26"
                     android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:gravity="center_vertical"
                     android:hint="Saisiez votre numero de telephone"
                     android:inputType="phone"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="15dp"/>
+                    android:textColor="@color/bleu2"
+                    android:textColorHint="@color/HINT"
+                    android:textSize="15dp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/f"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_below="@+id/d"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="15dp"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Date de Rendez-vous"
                     android:paddingLeft="5dp"
+                    android:text="Date de Rendez-vous"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
 
                 <TextView
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="12/08/2021"
-                    android:textColor="@color/bleufoncé"
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
                     android:drawableLeft="@drawable/ic_outline_calendar_today_26"
                     android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
                     android:hint="Saisiez la date de redez-vous"
                     android:inputType="text"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:text="12/08/2021"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/m"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_below="@+id/f"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="15dp"
-                >
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Type de vaccin"
                     android:paddingLeft="5dp"
+                    android:text="Type de vaccin"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
 
                 <TextView
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Spootnik"
-                    android:textColor="@color/bleufoncé"
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
                     android:hint="Saisiez le type de vaccin"
                     android:inputType="text"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:text="Spootnik"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
 
 
             </LinearLayout>
+
             <LinearLayout
-                android:layout_marginBottom="15dp"
                 android:id="@+id/ch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_below="@+id/m"
                 android:layout_marginHorizontal="20dp"
-                >
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -302,82 +305,42 @@
                 </TextView>
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
                     android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
                     android:text="2"
                     android:textColor="@color/bleu2"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input"
-                    android:maxLines="1"
-                    android:minHeight="48dp"
-                    android:paddingLeft="15dp"
-                    android:shadowColor="@color/black"
                     android:textSize="20dp" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_marginBottom="15dp"
-                android:id="@+id/mdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/m"
-                android:layout_marginHorizontal="20dp"
-                >
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
-                    android:text="Nombres de chance restante "
-                    android:textColor="@color/bleufoncé">
-
-                </TextView>
-
-                <TextView
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="0"
-                    android:textColor="@color/bleu2"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input"
-                    android:maxLines="1"
-                    android:minHeight="48dp"
-                    android:paddingLeft="15dp"
-                    android:shadowColor="@color/black"
-                    android:textSize="20dp" />
-
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/srll"
-        android:gravity="center"
-        android:orientation="vertical">
+    </RelativeLayout>
 
 
         <Button
             android:id="@+id/comfirmer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn"
+            android:layout_below="@id/srll"
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="70dp"
+            android:layout_marginVertical="40dp"
             android:background="@drawable/bouton"
             android:fontFamily="@font/poppins_semibold"
-            android:paddingHorizontal="70dp"
+            android:paddingHorizontal="60dp"
             android:text="comfirmer"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16dp" />
 
-    </LinearLayout>
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
 

@@ -5,7 +5,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
@@ -17,20 +20,25 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-public class Menu extends AppCompatActivity {
+public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCINS
     private Button profilee, prev, num, Rdv;
     private ImageButton  notif,L,r;
     private static final int REQUEST_CALL = 1;
-private HorizontalScrollView scrollView;
-    public static final int SCROLL_DELTA = 900;// Pixel.
+    private HorizontalScrollView scrollView;
+    DisplayMetrics displayMetrics = new DisplayMetrics();
+
+    public static  int SCROLL_DELTA;// Pixel.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        SCROLL_DELTA = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, displayMetrics.widthPixels/3 +35, getResources().getDisplayMetrics());
         scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
         notif = (ImageButton) findViewById(R.id.notif);
         r = (ImageButton) findViewById(R.id.droite);
@@ -40,10 +48,14 @@ private HorizontalScrollView scrollView;
         num = (Button) findViewById(R.id.numvert);
         prev = (Button) findViewById(R.id.prevention);
 
-        notif.setOnClickListener(new View.OnClickListener() {
+        notif.setOnClickListener(new View.OnClickListener() { //TODO NOTIFF
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Menu.this, NotifR.class));
+                    Intent intent=  new Intent(Menu.this, NotifR.class);
+                startActivity(intent);
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+                        WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+
             }
         });
         profilee.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +128,14 @@ private HorizontalScrollView scrollView;
         }
     }
 
+    @Override
+    public void onBackPressed() {
 
 
+            Intent a = new Intent(Menu.this,MainActivity.class);
+            startActivity(a);
+
+
+    }
 }
 

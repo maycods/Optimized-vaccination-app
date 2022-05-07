@@ -94,15 +94,15 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
                            typevac.setAdapter(null);
                           dose.setAdapter(null);
                            dose.setEnabled(false);
-                           typevac.setBackgroundResource(R.drawable.boutongrise);
-                           dose.setBackgroundResource(R.drawable.boutongrise);
+                           typevac.setBackgroundResource(R.drawable.bouton);
+                           dose.setBackgroundResource(R.drawable.bouton);
 
 
                        }
                    }
             }
         });
-        inscrit.setOnClickListener(new View.OnClickListener() {
+        inscrit.setOnClickListener(new View.OnClickListener() {//TODO SIGN UP
             @Override
             public void onClick(View view) {
                 String email= mail.getText().toString().trim();
@@ -139,7 +139,7 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
         retourS2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SignUp2.this, SignUp.class));
+                onBackPressed();
             }
         });
 

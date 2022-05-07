@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
-
+//TODO BOUTON JE SS ARRIV2 ET TT TESTER QD CARTE BANCAIRE PRETE
 public class Map extends FragmentActivity implements OnMapReadyCallback, RoutingListener {
     GoogleMap map;
     int d=0;

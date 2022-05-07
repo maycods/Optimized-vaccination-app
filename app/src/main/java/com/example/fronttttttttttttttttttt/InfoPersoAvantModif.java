@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 public class InfoPersoAvantModif extends Activity {
 private Button modifier,generer;
 private ImageButton retourpp;
+//TODO AFFICHER INFO  PERSO DE BDD
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ private ImageButton retourpp;
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(InfoPersoAvantModif.this,Info_Perso.class));
+
             }
         });
 

@@ -15,6 +15,7 @@ public class Info_Perso extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infosperso);
        retour= (ImageButton)findViewById(R.id.retourPM);
+       //TODO CHANGER INFOS DE BDD
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

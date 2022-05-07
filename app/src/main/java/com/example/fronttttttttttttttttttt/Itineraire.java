@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Itineraire extends Activity {
+public class Itineraire extends Activity {//TODO AFFICHER NOMBRE DE DOSES
     private Button annuler,itineraire;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class Itineraire extends Activity {
         @Override
         public void onClick(View view) {
             startActivity(new Intent(Itineraire.this,Ambulence.class));
+
         }
     });
         itineraire.setOnClickListener(new View.OnClickListener() {

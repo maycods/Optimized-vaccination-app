@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
         });
 
     }
-    public void openMenu(){
+    public void openMenu(){//TODO LOGIN
         Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
     }

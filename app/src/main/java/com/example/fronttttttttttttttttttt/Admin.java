@@ -26,6 +26,7 @@ public class Admin extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Admin.this,AdminPage.class ));
+                //TODO LOGIN ADMIN
             }
         });
     }

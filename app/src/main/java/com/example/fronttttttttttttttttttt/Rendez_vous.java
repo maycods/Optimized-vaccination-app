@@ -45,7 +45,7 @@ import com.nabinbhandari.android.permissions.Permissions;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+//TODO ON COMPLETE + GPS TESTER SI CA MARCHE QD CARTE BANCAIRE PRETE
 public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedListener {
     private ImageButton retour;
     private EditText mSearchText;
