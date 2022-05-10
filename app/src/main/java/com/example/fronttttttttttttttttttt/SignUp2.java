@@ -41,11 +41,17 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
     private  FirebaseFirestore db;
     private String spinnerChoiceT;
     private  Integer spinnerChoiceD;
+
     ArrayAdapter<CharSequence> adapter;
     ArrayAdapter<CharSequence> adapter2;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String nom_prenom = getIntent().getStringExtra("nom_prenom");
+        String email = getIntent().getStringExtra("email");
+        String telephone = getIntent().getStringExtra("telephone");
+        String mdp = getIntent().getStringExtra("mdp");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup2);
        dose=findViewById(R.id.nbrdoses);
@@ -59,7 +65,6 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
         Spinner spinner = findViewById(R.id.vactype);
         spinner.setEnabled(false);
        spinner.setClickable(false);
-
         adapter= ArrayAdapter.createFromResource(this,
                 R.array.vaccines, R.layout.spinn);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -105,34 +110,46 @@ public class SignUp2 extends SignUp implements AdapterView.OnItemSelectedListene
         inscrit.setOnClickListener(new View.OnClickListener() {//TODO SIGN UP
             @Override
             public void onClick(View view) {
-                String email= mail.getText().toString().trim();
-                String tell= tel.getText().toString().trim();
-                String mdp1= mdp.getText().toString().trim();
-                String mdp2= mdpc.getText().toString().trim();
-                String nompre= nomprenom.getText().toString().trim();
-/*
-           // db.createUserWithEmailAndPassward(email,mdp);
-                 HashMap<String,String> user=new HashMap<>();
-                user.put("NomPrenom",nompre.toString());
-                user.put("telephone",tell);
-                user.put("Email",email);
-                user.put("Mot de passe ",mdp1);
-                user.put("Nombre de doses:",spinnerChoiceD);
-                user.put("type de vaccin",spinnerChoiceT);
-
-                db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                mAuth.createUserWithEmailAndPassword(email,mdp).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(getApplicationContext(),"jp",Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(SignUp2.this, Menu.class));
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(),"lost",Toast.LENGTH_LONG).show();
-                    }
-                });*/
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
+                        if(task.isSuccessful()){
+
+                            HashMap<String, Object> user = new HashMap<String, Object>();
+                            User U =new User();
+                           String j =  Integer.toString(User.nbrU) ;
+
+
+                            user.put("NomPrenom", nom_prenom);
+                            user.put("telephone", telephone);
+                            user.put("Email", email);
+                            user.put("Mot de passe ", mdp);
+                            user.put("Nombre de doses:",spinnerChoiceD);
+                            user.put("type de vaccin",spinnerChoiceT);
+
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            db.collection("User").document(mAuth.getUid())
+                                    .set(user)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(getApplicationContext(), "The user has been registered ",
+                                                    Toast.LENGTH_SHORT).show();
+
+
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("Fail", "Error", e);
+                                        }
+                                    });
+
+                        }
+                    }
+                });
 
             }
         });

@@ -65,48 +65,44 @@ public class SignUp extends Activity {
                 String nompre= nomprenom.getText().toString().trim();
 
                 Log.d("email",String.valueOf(email));
-                mAuth.createUserWithEmailAndPassword(email,mdp1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if(task.isSuccessful()){
-
-                            HashMap<String, String> user = new HashMap<String, String>();
-                            User U =new User();
-                           String j =  Integer.toString(User.nbrU) ;
-
-                            user.put("NomPrenom", nompre);
-                            user.put("telephone", tell);
-                            user.put("Email", email);
-                            user.put("Mot de passe ", mdp1);
-
-
-                            FirebaseFirestore db = FirebaseFirestore.getInstance();
-                            db.collection("User").document(j)
-                                    .set(user)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Log.d("cds", "DocumentSnapshot successfully written!");
-                                            Toast.makeText(getApplicationContext(), "The user has been registered ",
-                                                    Toast.LENGTH_SHORT).show();
-
-
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.w("hhh", "Error writing document", e);
-                                        }
-                                    });
-                            Toast.makeText(getApplicationContext(),"La connexion a fctné ",Toast.LENGTH_LONG).show();
-
-                        }else{
-                            Toast.makeText(getApplicationContext(),"La connexion a echoué ",Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+//                mAuth.createUserWithEmailAndPassword(email,mdp1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//
+//                        if(task.isSuccessful()){
+//
+//                            HashMap<String, String> user = new HashMap<String, String>();
+//                            User U =new User();
+//                           String j =  Integer.toString(User.nbrU) ;
+//
+//                            user.put("NomPrenom", nompre);
+//                            user.put("telephone", tell);
+//                            user.put("Email", email);
+//                            user.put("Mot de passe ", mdp1);
+//
+//
+//                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+//                            db.collection("User").document(j)
+//                                    .set(user)
+//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                        @Override
+//                                        public void onSuccess(Void aVoid) {
+//                                            Toast.makeText(getApplicationContext(), "The user has been registered ",
+//                                                    Toast.LENGTH_SHORT).show();
+//
+//
+//                                        }
+//                                    })
+//                                    .addOnFailureListener(new OnFailureListener() {
+//                                        @Override
+//                                        public void onFailure(@NonNull Exception e) {
+//                                            Log.w("Fail", "Error", e);
+//                                        }
+//                                    });
+//
+//                        }
+//                    }
+//                });
 
 
 /*x
@@ -153,8 +149,12 @@ public class SignUp extends Activity {
                     mdpc.requestFocus();
                     return;
                 }*/
-
-                startActivity(new Intent(SignUp.this, SignUp2.class));
+                Intent i =new Intent(SignUp.this,SignUp2.class);
+                i.putExtra("nom_prenom" ,nompre);
+                i.putExtra("email" ,email);
+                i.putExtra("telephone" ,tell);
+                i.putExtra("mdp" ,mdp1);
+                startActivity(i);
             }
         });
         retourS.setOnClickListener(new View.OnClickListener() {
