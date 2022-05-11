@@ -43,18 +43,14 @@ public class SignUp extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup1);
-
         mail=(EditText)findViewById(R.id.mails);
         tel=(EditText)findViewById(R.id.tels);
         nomprenom=(EditText)findViewById(R.id.nomprenoms);
         mdp=(EditText)findViewById(R.id.mdps);
         mdpc=(EditText)findViewById(R.id.mdpcs);
-        mAuth = FirebaseAuth.getInstance();
-        mUser =mAuth.getCurrentUser();
         suivant =(Button) findViewById(R.id.suivant);
         retourS =(ImageButton) findViewById(R.id.retourS);
-        firebaseDatabase =FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("users");
+
         suivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,48 +60,8 @@ public class SignUp extends Activity {
                 String mdp2= mdpc.getText().toString().trim();
                 String nompre= nomprenom.getText().toString().trim();
 
-                Log.d("email",String.valueOf(email));
-//                mAuth.createUserWithEmailAndPassword(email,mdp1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                        if(task.isSuccessful()){
-//
-//                            HashMap<String, String> user = new HashMap<String, String>();
-//                            User U =new User();
-//                           String j =  Integer.toString(User.nbrU) ;
-//
-//                            user.put("NomPrenom", nompre);
-//                            user.put("telephone", tell);
-//                            user.put("Email", email);
-//                            user.put("Mot de passe ", mdp1);
-//
-//
-//                            FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                            db.collection("User").document(j)
-//                                    .set(user)
-//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                        @Override
-//                                        public void onSuccess(Void aVoid) {
-//                                            Toast.makeText(getApplicationContext(), "The user has been registered ",
-//                                                    Toast.LENGTH_SHORT).show();
-//
-//
-//                                        }
-//                                    })
-//                                    .addOnFailureListener(new OnFailureListener() {
-//                                        @Override
-//                                        public void onFailure(@NonNull Exception e) {
-//                                            Log.w("Fail", "Error", e);
-//                                        }
-//                                    });
-//
-//                        }
-//                    }
-//                });
 
 
-/*x
                 if(nompre.isEmpty()  ){
                     nomprenom.setError("ce champ est obligatoire");
                     nomprenom.requestFocus();
@@ -148,7 +104,7 @@ public class SignUp extends Activity {
                     mdpc.setError("Le mots de passe ne sont pas identiques");
                     mdpc.requestFocus();
                     return;
-                }*/
+                }
                 Intent i =new Intent(SignUp.this,SignUp2.class);
                 i.putExtra("nom_prenom" ,nompre);
                 i.putExtra("email" ,email);
