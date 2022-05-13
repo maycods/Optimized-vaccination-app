@@ -49,22 +49,27 @@
         <entry key="..\:/Users/mayah/AndroidStudioProjects/fronttttttttttttttttttt/app/src/main/res/layout/spinn.xml" value="0.2421875" />
         <entry key="..\:/Users/mayah/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/mayah/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/drawable/bordertableheader.xml" value="0.252" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/drawable/bouton2.xml" value="0.17" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/drawable/boutongrise.xml" value="0.17" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin.xml" value="0.4" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/drawable/sidestroke.xml" value="0.252" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/font/poppins_bold.xml" value="0.2890625" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/font/poppins_light.xml" value="0.2890625" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin.xml" value="0.264" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/first_page.xml" value="0.176" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/fragment_maps.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/info_perso_avant_modif.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/infosperso.xml" value="0.176" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/itineraire.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/itineraire.xml" value="0.176" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/login.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/loginadmin.xml" value="0.21302083333333333" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/menu.xml" value="0.1" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/loginambulancier.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/menu.xml" value="0.2" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/notif.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/notif_v.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/rdv.xml" value="0.21302083333333333" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup1.xml" value="0.21302083333333333" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup2.xml" value="0.176" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup1.xml" value="0.264" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup2.xml" value="0.264" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/spinn.xml" value="0.21302083333333333" />
       </map>
     </option>

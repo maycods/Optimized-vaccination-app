@@ -192,46 +192,53 @@
         android:textColor="@color/black"
         android:text="Veuillez affecter les adresses des rendez- vous de demain aux ambulances  : "
         ></TextView>
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+app:layout_constraintTop_toBottomOf="@+id/titre"
+        android:background="@drawable/bordertableheader"
+        >
+        <TextView
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:textColor="@color/bleufoncé"
+            android:textSize="15dp"
+            android:text="Adresse"
+            ></TextView>
 
+        <TextView
+            android:fontFamily="@font/poppins_bold"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:textColor="@color/bleufoncé"
+            android:text="Ambulance"
+            android:textAlignment="center"
+            ></TextView>
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titre"
+        app:layout_constraintBottom_toTopOf="@id/cfrmplace"
+        app:layout_constraintTop_toBottomOf="@id/header"
         android:scrollbars="none"
-        android:layout_weight="1">
+        android:layout_weight="1"
+
+>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-       app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titre"
-        android:background="#5555">
-        <TableRow
-            android:background="@drawable/bordertableheader">
-            <TextView
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:textColor="@color/bleufoncé"
-                android:textSize="15dp"
-                android:text="Adresse"
-                ></TextView>
+        app:layout_constraintTop_toBottomOf="@id/header"
+        >
 
-            <TextView
-
-                android:fontFamily="@font/poppins_bold"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:textColor="@color/bleufoncé"
-                android:text="Ambulance"
-                ></TextView>
-        </TableRow>
 
         <TableRow
             android:background="@drawable/border">
@@ -475,7 +482,30 @@
 
     </TableLayout>
  </ScrollView>
-
+<LinearLayout
+ android:background="@drawable/sidestroke"
+    android:id="@+id/cfrmplace"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+android:paddingVertical="20dp"
+    >
+    <Button
+        android:id="@+id/inscrit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="70dp"
+        android:background="@drawable/bouton"
+        android:backgroundTint="@color/bleu2"
+        android:fontFamily="@font/poppins_semibold"
+        android:padding="15dp"
+        android:layout_marginVertical="15dp"
+        android:text="Confirmer"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+</LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
