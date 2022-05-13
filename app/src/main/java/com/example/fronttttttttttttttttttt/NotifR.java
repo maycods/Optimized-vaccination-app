@@ -13,7 +13,7 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.notif);
+        setContentView(R.layout.notif_v);
         close=(ImageButton)findViewById(R.id.close);
         close.setOnClickListener(new View.OnClickListener() {
             @Override

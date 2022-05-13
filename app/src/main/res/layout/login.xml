@@ -75,7 +75,7 @@
 
         <EditText
             android:fontFamily="@font/poppins_light"
-            android:id="@+id/editTextText2"
+            android:id="@+id/emailL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -104,29 +104,30 @@
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="20dp"
             />
+
+
         <EditText
-            android:id="@+id/editTextText4"
+            android:fontFamily="@font/poppins_light"
+            android:id="@+id/PasswL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/input"
             android:drawableLeft="@drawable/mdp"
             android:hint="Saisiez votre mot de passe"
-            android:paddingLeft="20dp"
             android:textColorHint="@color/HINT"
+            android:drawablePadding="15dp"
+            android:layout_marginBottom="12dp"
             android:textColor="@color/bleufoncé"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/poppins_light"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:paddingRight="10dp"
-            android:paddingVertical="10dp"
-            android:textSize="15dp"
-            android:layout_marginBottom="0dp"
-            />
+            android:minHeight="48dp"
+            android:paddingLeft="20dp"
+            android:textSize="15dp" />
 
 
-            <Button
+
+        <Button
                 android:id="@+id/login1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
