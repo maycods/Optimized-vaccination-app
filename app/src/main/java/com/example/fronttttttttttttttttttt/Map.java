@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,10 +35,11 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
     GoogleMap map;
     int d=0;
     private List<Polyline> polylines;
+    private Button arriv,okk;
+    private TextView leT,T;
     private static final int[] COLORS = new int[]{R.color.purple_200};
     Population pop = new Population();
     LatLng A ,B,C,D;
-
     LatLng ListePositions [] ={A=new LatLng(	35.55,  6.17 ),B =new LatLng( 35.6976541, -0.6337376),C =new LatLng(35.6976541,5.6337376),D=new LatLng(36.4798683,2.8005677)};
     Object  M[][] = new Object[ListePositions.length+1][ListePositions.length+1];
     Vector<Integer> a = new Vector<Integer>(ListePositions.length*ListePositions.length-ListePositions.length);
@@ -52,8 +56,28 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
             mapFragment.getMapAsync(this);*/
 
            remplirM(M);
-
-
+arriv=findViewById(R.id.arrived);
+okk=findViewById(R.id.ok);
+leT=findViewById(R.id.leté);
+T=findViewById(R.id.adreTOtype);
+arriv.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        leT.setText("Le type de vaccin à administrer est");
+        T.setText("Spootnik");
+        okk.setVisibility(View.VISIBLE);
+        arriv.setVisibility(View.GONE);
+    }
+});
+okk.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        leT.setText("Votre prochaine destination est");
+        T.setText("na naana nanana");
+        okk.setVisibility(View.GONE);
+        arriv.setVisibility(View.VISIBLE);
+    }
+});
 
         }
         public void remplirM(Object M[][]){
@@ -121,8 +145,6 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
 
 
         }
-
-
         private void getRouteTiMarker(LatLng ok,LatLng ol) {
             Routing routing = new Routing.Builder()
                     .key("AIzaSyBDwDlIFf_vWmwO9HPWFvdVsIsQ7Edzarg")
@@ -134,7 +156,6 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
             routing.execute();
 
         }
-
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
         map =googleMap;//nrmt boucle

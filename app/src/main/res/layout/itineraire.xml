@@ -15,36 +15,167 @@
         tools:layout_editor_absoluteY="-60dp"
         />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/itin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.45"
+        app:layout_constraintHeight_percent="0.55"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
 
-            android:fontFamily="@font/poppins_light"
-            android:text="Vous devez vacciner"
-            android:textColor="#4E4B66"
-            android:textSize="22dp"></TextView>
+        <RelativeLayout
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.55"
+            android:id="@+id/divmenu"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:id="@+id/gch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                >
+                <ImageButton
+                    android:id="@+id/gauche"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/none"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_baseline_navigate_before_24"></ImageButton>
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="5 personnes "
-            android:textColor="#14142B"
-            android:textSize="35dp"></TextView>
+            <HorizontalScrollView
+                android:id="@+id/scrl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@+id/rght"
+                android:layout_toEndOf="@+id/gch"
+                android:scrollbarSize="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/rght"
+                    android:layout_toEndOf="@+id/gch"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="45dp"
+                        android:layout_toStartOf="@+id/rght"
+                        android:layout_toEndOf="@+id/gch"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="30dp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="Vous devez vacciner"
+                            android:textColor="#4E4B66"
+                            android:textSize="20dp"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="5 personnes "
+                            android:textColor="#14142B"
+                            android:textSize="30dp"></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="avec"
+                            android:textColor="#4E4B66"
+                            android:textSize="20dp"></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Spootnik"
+                            android:textColor="#14142B"
+                            android:textSize="30dp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_marginRight="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="30dp"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="Vous devez vacciner"
+                            android:textColor="#4E4B66"
+                            android:textSize="20dp"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="5 personnes "
+                            android:textColor="#14142B"
+                            android:textSize="30dp"></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="avec"
+                            android:textColor="#4E4B66"
+                            android:textSize="20dp"></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Astra"
+                            android:textColor="#14142B"
+                            android:textSize="30dp"></TextView>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+            <LinearLayout
+                android:id="@+id/rght"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+
+                <ImageButton
+                    android:id="@+id/droite"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/none"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_baseline_navigate_next_24"></ImageButton>
+            </LinearLayout>
+        </RelativeLayout>
         <Button
+            app:layout_constraintTop_toBottomOf="@+id/divmenu"
             android:id="@+id/itin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,6 +191,7 @@
            />
         <Button
             android:id="@+id/annuler"
+            app:layout_constraintTop_toBottomOf="@id/itin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -72,6 +204,6 @@
             android:fontFamily="@font/poppins_semibold"
             android:textAllCaps="false"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

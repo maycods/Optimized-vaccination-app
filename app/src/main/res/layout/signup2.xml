@@ -149,25 +149,31 @@
             android:minHeight="48dp"
             android:paddingLeft="20dp"
             android:fontFamily="@font/poppins_light"
-            android:layout_marginBottom="30dp"
             android:textSize="15dp"
 
            />
-
-
-        <Button
-            android:id="@+id/inscrit"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="70dp"
-            android:background="@drawable/bouton"
-            android:fontFamily="@font/poppins_semibold"
-            android:padding="15dp"
-            android:layout_marginVertical="20dp"
-            android:text="Submit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:layout_height="match_parent"
+android:layout_gravity="center"
+            android:gravity="center"
+
+            >
+
+            <Button
+                android:id="@+id/inscrit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="70dp"
+                android:layout_marginVertical="15dp"
+                android:background="@drawable/bouton"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
             <Button
                 android:id="@+id/verif"
                 android:layout_width="match_parent"
@@ -176,17 +182,13 @@
                 android:background="@drawable/bouton2"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="15dp"
-                android:layout_marginVertical="20dp"
+                android:layout_marginVertical="15dp"
                 android:text="verified"
                 android:textAllCaps="false"
                 android:textColor="@color/bleufoncé"
                 android:textSize="16dp"
                 android:visibility="gone" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
 
-            >
 
         </RelativeLayout>
 
