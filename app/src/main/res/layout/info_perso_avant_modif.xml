@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,18 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageButton
+            android:id="@+id/retourP"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
 
-
-    <ImageButton
-        android:id="@+id/retourP"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-
-        android:background="@drawable/ic_outline_circle_24"
-        android:src="@drawable/ic_baseline_navigate_before_24"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:background="@drawable/ic_outline_circle_24"
+            android:src="@drawable/ic_baseline_navigate_before_24"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_marginTop="15dp"
@@ -74,6 +73,7 @@
         </TextView>
 
         <TextView
+            android:id="@+id/Nom_prenom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/input"
@@ -81,7 +81,7 @@
             android:drawablePadding="15dp"
             android:fontFamily="@font/poppins_semibold"
           android:text="Houacine Maya"
-            android:textColor="@color/bleu2"
+            android:textColor="@color/bleufoncé"
             android:gravity="center_vertical"
             android:inputType="text"
             android:maxLines="1"
@@ -112,7 +112,7 @@
         <TextView
             android:fontFamily="@font/poppins_semibold"
             android:text="0781685398"
-            android:textColor="@color/bleu2"
+            android:textColor="@color/bleufoncé"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -147,12 +147,15 @@
         </TextView>
 
         <TextView
+            android:id="@+id/nbrdoses"
             android:fontFamily="@font/poppins_semibold"
             android:text="2"
-            android:textColor="@color/bleu2"
+            android:textColor="@color/bleufoncé"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/checkv"
+            android:drawablePadding="15dp"
             android:background="@drawable/input"
             android:hint="Saisiez le nombre de doses"
             android:inputType="text"
@@ -183,14 +186,17 @@
         </TextView>
 
         <TextView
+            android:id="@+id/vaccin"
             android:fontFamily="@font/poppins_semibold"
             android:text="Spootnik"
-            android:textColor="@color/bleu2"
+            android:textColor="@color/bleufoncé"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/input"
             android:hint="Saisiez le type de vaccin"
+            android:drawableLeft="@drawable/cov"
+            android:drawablePadding="15dp"
             android:inputType="text"
             android:maxLines="1"
             android:minHeight="48dp"
@@ -221,7 +227,7 @@
         <TextView
             android:fontFamily="@font/poppins_semibold"
             android:text="12/08/2021"
-            android:textColor="@color/bleu2"
+            android:textColor="@color/bleufoncé"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -258,8 +264,8 @@
 
         <TextView
             android:fontFamily="@font/poppins_semibold"
-            android:text="coucou@gmail.com"
-            android:textColor="@color/bleu2"
+            android:text="MayaHouacine@gmail.com"
+            android:textColor="@color/bleufoncé"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -293,8 +299,8 @@
 
         <TextView
             android:fontFamily="@font/poppins_semibold"
-            android:text="123"
-            android:textColor="@color/bleu2"
+            android:text="mayaH12345"
+            android:textColor="@color/bleufoncé"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

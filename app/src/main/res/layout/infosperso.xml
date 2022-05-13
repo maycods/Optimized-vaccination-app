@@ -90,7 +90,7 @@ android:background="@drawable/flogin"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:textColorHint="@color/HINT"
                     android:textSize="15dp" />
 
@@ -128,7 +128,7 @@ android:background="@drawable/flogin"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:textColorHint="@color/HINT"
                     android:textSize="15dp" />
 
@@ -167,7 +167,7 @@ android:background="@drawable/flogin"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:textColorHint="@color/HINT"
                     android:textSize="15dp" />
 
@@ -206,7 +206,7 @@ android:background="@drawable/flogin"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:textColorHint="@color/HINT"
                     android:textSize="15dp" />
 
@@ -244,7 +244,7 @@ android:background="@drawable/flogin"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:text="12/08/2021"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:textSize="20dp" />
 
             </LinearLayout>
