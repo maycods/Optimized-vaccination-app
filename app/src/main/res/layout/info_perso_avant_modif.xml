@@ -49,266 +49,263 @@
         android:textStyle="bold" />
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@id/info"
-    android:id="@+id/srll"
-    android:orientation="vertical">
-    <LinearLayout
-        android:id="@+id/a"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/z"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:text="Nom Prénom"
-            android:textColor="@color/bleufoncé">
-
-        </TextView>
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/srll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/input"
-            android:drawableLeft="@drawable/ic_outline_person_26"
-            android:drawablePadding="15dp"
-            android:fontFamily="@font/poppins_semibold"
-          android:text="Houacine Maya"
-            android:textColor="@color/bleu2"
-            android:gravity="center_vertical"
-            android:inputType="text"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            android:shadowColor="@color/black"
-            android:textSize="20dp" />
+            android:layout_below="@id/info"
+            android:orientation="vertical">
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/z"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/nieme"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/z"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:text="Numero de tel"
-            android:textColor="@color/bleufoncé">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Nom Prénom"
+                    android:textColor="@color/bleufoncé">
 
-        </TextView>
+                </TextView>
 
-        <TextView
-            android:fontFamily="@font/poppins_semibold"
-            android:text="0781685398"
-            android:textColor="@color/bleu2"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input"
-            android:drawableLeft="@drawable/ic_outline_local_phone_26"
-            android:drawablePadding="15dp"
-            android:hint="Saisiez votre numero de telephone"
-            android:inputType="text"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            android:shadowColor="@color/black"
-            android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/nom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_outline_person_26"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/nieme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="vertical">
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:text="Nombres de doses"
-            android:textColor="@color/bleufoncé">
+            <LinearLayout
+                android:id="@+id/z"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/nieme"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
 
-        </TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Numero de tel"
+                    android:textColor="@color/bleufoncé">
 
-        <TextView
-            android:fontFamily="@font/poppins_semibold"
-            android:text="2"
-            android:textColor="@color/bleu2"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input"
-            android:hint="Saisiez le nombre de doses"
-            android:inputType="text"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            android:shadowColor="@color/black"
-            android:textSize="20dp" />
+                </TextView>
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/d"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/nieme"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        >
+                <TextView
+                    android:id="@+id/tel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_outline_local_phone_26"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Type de vaccin"
-            android:paddingLeft="5dp"
-            android:textColor="@color/bleufoncé">
+            </LinearLayout>
 
-        </TextView>
+            <LinearLayout
+                android:id="@+id/nieme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Spootnik"
-            android:textColor="@color/bleu2"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input"
-            android:hint="Saisiez le type de vaccin"
-            android:inputType="text"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            android:shadowColor="@color/black"
-            android:textSize="20dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Nombres de doses"
+                    android:textColor="@color/bleufoncé">
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/f"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/d"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        >
+                </TextView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date de Rendez-vous"
-            android:paddingLeft="5dp"
-            android:textColor="@color/bleufoncé">
+                <TextView
+                    android:id="@+id/dos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:hint="Saisiez le nombre de doses"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:text="2"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
 
-        </TextView>
+            </LinearLayout>
 
-        <TextView
-            android:fontFamily="@font/poppins_semibold"
-            android:text="12/08/2021"
-            android:textColor="@color/bleu2"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input"
-            android:drawableLeft="@drawable/ic_outline_calendar_today_26"
-            android:drawablePadding="15dp"
-            android:hint="Saisiez la date de redez-vous"
-            android:inputType="text"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            android:shadowColor="@color/black"
-            android:textSize="20dp"/>
+            <LinearLayout
+                android:id="@+id/d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nieme"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/m"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/f"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Type de vaccin"
+                    android:textColor="@color/bleufoncé">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Adresse Mail"
-            android:paddingLeft="5dp"
-            android:textColor="@color/bleufoncé">
+                </TextView>
 
-        </TextView>
+                <TextView
+                    android:id="@+id/typ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:fontFamily="@font/poppins_semibold"
-            android:text="coucou@gmail.com"
-            android:textColor="@color/bleu2"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input"
-            android:drawableLeft="@drawable/ic_baseline_mail_outline_27"
-            android:drawablePadding="15dp"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            android:shadowColor="@color/black"
-            android:textSize="20dp"/>
+            </LinearLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/mdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/m"
-        android:layout_marginHorizontal="20dp"
-        >
+            <LinearLayout
+                android:id="@+id/f"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/d"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mot de passe"
-            android:paddingLeft="5dp"
-            android:textColor="@color/bleufoncé">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Date de Rendez-vous"
+                    android:textColor="@color/bleufoncé">
 
-        </TextView>
+                </TextView>
 
-        <TextView
-            android:fontFamily="@font/poppins_semibold"
-            android:text="123"
-            android:textColor="@color/bleu2"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input"
-            android:drawableLeft="@drawable/ic_outline_lock_25"
-            android:drawablePadding="15dp"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            android:shadowColor="@color/black"
-            android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_outline_calendar_today_26"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
 
-    </LinearLayout>
-</LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/m"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/f"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Adresse Mail"
+                    android:textColor="@color/bleufoncé">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_baseline_mail_outline_27"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/m"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Mot de passe"
+                    android:textColor="@color/bleufoncé">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/mdpp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_outline_lock_25"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleu2"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+        </LinearLayout>
 
 
         <LinearLayout

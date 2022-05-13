@@ -55,7 +55,7 @@ android:background="@drawable/flogin"
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="350dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -77,6 +77,7 @@ android:background="@drawable/flogin"
                 </TextView>
 
                 <EditText
+                    android:id="@+id/nomedit"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/input"
@@ -115,6 +116,7 @@ android:background="@drawable/flogin"
                 </TextView>
 
                 <EditText
+                    android:id="@+id/mailedit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
@@ -154,6 +156,7 @@ android:background="@drawable/flogin"
                 </TextView>
 
                 <EditText
+                    android:id="@+id/mdpedit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
@@ -193,6 +196,7 @@ android:background="@drawable/flogin"
                 </TextView>
 
                 <EditText
+                    android:id="@+id/teledit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
@@ -212,7 +216,7 @@ android:background="@drawable/flogin"
 
             </LinearLayout>
 
-            <LinearLayout
+            <!--    <LinearLayout
                 android:id="@+id/f"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -263,6 +267,7 @@ android:background="@drawable/flogin"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:text="Type de vaccin"
+                    android:textSize="15dp"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
@@ -319,7 +324,7 @@ android:background="@drawable/flogin"
                     android:textSize="20dp" />
 
             </LinearLayout>
-
+-->
 
         </LinearLayout>
     </RelativeLayout>

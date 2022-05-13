@@ -163,16 +163,16 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                     if(mAuth.getCurrentUser().isEmailVerified()){
 
                         HashMap<String, Object> user = new HashMap<String, Object>();
-                        user.put("Nom et Prenom ", nompre);
-                        user.put("Email ", email);
-                        user.put("Mot de passe ", mdp);
-                        user.put("Numero de Telephone ", tel);
+                        user.put("Nom et Prenom", nompre);
+                        user.put("Email", email);
+                        user.put("Mot de passe", mdp);
+                        user.put("Numero de Telephone", tel);
                         user.put("Nombre de doses", spinnerChoiceD);
-                        user.put("Type de vaccin ", spinnerChoiceT);
+                        user.put("Type de vaccin", spinnerChoiceT);
                         user.put("Nombre de chance", 3);
 
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        db.collection("User").document(mAuth.getUid())
+                        db.collection("user").document(mAuth.getUid())
                                 .set(user)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
