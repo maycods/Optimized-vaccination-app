@@ -86,7 +86,7 @@
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -122,7 +122,7 @@
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textColor="@color/bleu2"
+                    android:textColor="@color/bleufoncé"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -154,12 +154,13 @@
                     android:gravity="center_vertical"
                     android:hint="Saisiez le nombre de doses"
                     android:inputType="text"
+                    android:drawableLeft="@drawable/checkv"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:text="2"
-                    android:textColor="@color/bleu2"
+
+                    android:textColor="@color/bleufoncé"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -190,11 +191,13 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center_vertical"
                     android:maxLines="1"
+                    android:drawableLeft="@drawable/cor"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-                    android:textColor="@color/bleu2"
-                    android:textSize="20dp" />
+                    android:textColor="@color/bleufoncé"
+                    android:textSize="20dp"
+                    />
 
             </LinearLayout>
 

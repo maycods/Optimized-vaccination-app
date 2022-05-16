@@ -17,6 +17,8 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.icu.util.LocaleData;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -44,6 +46,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
 import com.google.zxing.WriterException;
@@ -51,6 +54,9 @@ import com.google.zxing.WriterException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Locale;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -58,7 +64,7 @@ import androidmads.library.qrgenearator.QRGEncoder;
 public class InfoPersoAvantModif extends Activity {
 private Button modifier,generer;
 private ImageButton retourpp;
-private TextView nom,mail,tel,dose,type,rdv,motdp;
+private TextView nom,mail,tel,dose,type,rdv,motdp,age;
 Bitmap bmp ,bmpQR ;
 TextView Nom_prenom;
 TextView Dose;
@@ -86,6 +92,7 @@ int pageWidth =1200;
         type=findViewById(R.id.typ);
         rdv=findViewById(R.id.date);
         motdp=findViewById(R.id.mdpp);
+        age=findViewById(R.id.age);
         currentId=user.getUid();
 
         reference=db.collection("user").document(currentId);
@@ -99,11 +106,13 @@ int pageWidth =1200;
                             mail.setText(task.getResult().getString("Email"));
                             dose.setText(task.getResult().get("Nombre de doses",Integer.class).toString());
                             type.setText(task.getResult().getString("Type de vaccin"));
+                            age.setText(task.getResult().getString("Age"));
                             motdp.setText(task.getResult().getString("Mot de passe"));
 
                             i.putExtra("nomprenom" ,task.getResult().getString("Nom et Prenom"));
                             i.putExtra("email" ,task.getResult().getString("Email"));
                             i.putExtra("tele" ,task.getResult().getString("Numero de Telephone"));
+                            i.putExtra("dateN" ,task.getResult().getString("Age"));
                             i.putExtra("mdp" ,task.getResult().getString("Mot de passe"));
 
                         }else{
@@ -116,9 +125,8 @@ int pageWidth =1200;
     modifier =(Button) findViewById(R.id.modifier);
      generer=(Button) findViewById(R.id.generer);
     retourpp=(ImageButton)findViewById(R.id.retourP);
-    Nom_prenom=(TextView) findViewById(R.id.Nom_prenom);
-    Dose=(TextView) findViewById(R.id.nbrdoses);
-    Vaccin=(TextView) findViewById(R.id.vaccin);
+    Nom_prenom=(TextView) findViewById(R.id.nom);
+
     bmp = BitmapFactory.decodeResource(getResources(),R.drawable.pass);
     //bmpQR = BitmapFactory.decodeResource(getResources(),R.drawable.qr);
 
@@ -129,6 +137,7 @@ int pageWidth =1200;
             }
         });
         generer.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
@@ -138,7 +147,7 @@ int pageWidth =1200;
                 int width = point.x;
                 int height = point.y;
                 int dimen = width < height ? width : height;
-                String info =Nom_prenom.getText().toString() +" \n"+ Vaccin.getText().toString()+" \n"+ Dose.getText().toString();
+                String info =Nom_prenom.getText().toString() +" \n"+ Vaccin.getText().toString()+" \n"+ dose.getText().toString();
                 Log.d("info",String.valueOf(info.trim()));
                 dimen = dimen * 3 / 4;
                 qrgEncoder = new QRGEncoder(info.trim(), null, QRGContents.Type.TEXT, dimen);
@@ -169,9 +178,11 @@ int pageWidth =1200;
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public  void createpdf(){
-        Log.d("kkkk","pass sanitaire");
+
         String nbrD =Dose.getText().toString().trim();
+        String DATE =age.getText().toString().trim();
 
         String V =Vaccin.getText().toString().trim();
         if((Integer.parseInt(nbrD)>=2 & !Vaccin.equals("Jonson&Jonson"))|| (Integer.parseInt(nbrD)>=1 & Vaccin.equals("Jonson&Jonson"))){
@@ -189,9 +200,29 @@ int pageWidth =1200;
             titlePaint.setTextSize(70);
             canva.drawText(" Votre passe sanitaire : ",pageWidth/2,610,titlePaint);
 
+            titlePaint.setTextAlign(Paint.Align.LEFT);
+            titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+            titlePaint.setTextSize(40);
+            canva.drawText(" Nom et Prenom : "+Nom_prenom,pageWidth/2,680,titlePaint);
+
+            titlePaint.setTextAlign(Paint.Align.LEFT);
+            titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+            titlePaint.setTextSize(40);
+            canva.drawText(" Age : "+age,pageWidth/2,690,titlePaint);
+
+            titlePaint.setTextAlign(Paint.Align.LEFT);
+            titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+            titlePaint.setTextSize(40);
+            canva.drawText(" Type de vaccin : "+type,pageWidth/2,690,titlePaint);
+
+            titlePaint.setTextAlign(Paint.Align.LEFT);
+            titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+            titlePaint.setTextSize(40);
+            canva.drawText(" Nombre de dose  : "+nbrD,pageWidth/2,690,titlePaint);
+
             Bitmap bmp2 = Bitmap.createScaledBitmap(bmpQR,600,600,true);
 
-            canva.drawBitmap(bmp2,300,700,myPaint);
+            canva.drawBitmap(bmp2,300,780,myPaint);
 
             passSanitaire.finishPage(maPage);
   String myFilePath = Environment.getExternalStorageDirectory().getPath() + "/passeSanitaire.pdf";

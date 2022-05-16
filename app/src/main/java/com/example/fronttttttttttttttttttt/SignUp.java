@@ -34,7 +34,7 @@ import java.util.HashMap;
 public class SignUp extends Activity {
     private Button suivant ;
     private ImageButton retourS;
-    protected EditText nomprenom ,mail , tel , mdp , mdpc;
+    protected EditText nomprenom ,mail , tel , mdp , mdpc , age;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     FirebaseDatabase firebaseDatabase;
@@ -50,6 +50,7 @@ public class SignUp extends Activity {
         mdpc=(EditText)findViewById(R.id.mdpcs);
         suivant =(Button) findViewById(R.id.suivant);
         retourS =(ImageButton) findViewById(R.id.retourS);
+        age=(EditText)findViewById(R.id.age);
 
         suivant.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,12 +60,19 @@ public class SignUp extends Activity {
                 String mdp1= mdp.getText().toString().trim();
                 String mdp2= mdpc.getText().toString().trim();
                 String nompre= nomprenom.getText().toString().trim();
+                String Age= age.getText().toString().trim();
+
 
 
 
                 if(nompre.isEmpty()  ){
                     nomprenom.setError("ce champ est obligatoire");
                     nomprenom.requestFocus();
+                    return;
+                }
+                if(Age.isEmpty()  ){
+                    age.setError("ce champ est obligatoire");
+                    age.requestFocus();
                     return;
                 }
                 if(email.isEmpty()){
@@ -110,6 +118,7 @@ public class SignUp extends Activity {
                 i.putExtra("email" ,email);
                 i.putExtra("telephone" ,tell);
                 i.putExtra("mdp" ,mdp1);
+                i.putExtra("Age" ,Age);
                 startActivity(i);
             }
         });

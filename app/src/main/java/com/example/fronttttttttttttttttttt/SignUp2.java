@@ -64,6 +64,8 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
         String email = getIntent().getStringExtra("email");
         String tel = getIntent().getStringExtra("telephone");
         String mdp = getIntent().getStringExtra("mdp");
+        String Age = getIntent().getStringExtra("Age");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup2);
         dose=findViewById(R.id.nbrdoses);
@@ -167,6 +169,8 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                         user.put("Email", email);
                         user.put("Mot de passe", mdp);
                         user.put("Numero de Telephone", tel);
+
+                        user.put("Age", Age);
                         user.put("Nombre de doses", spinnerChoiceD);
                         user.put("Type de vaccin", spinnerChoiceT);
                         user.put("Nombre de chance", 3);
