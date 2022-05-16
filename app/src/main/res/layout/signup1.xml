@@ -175,7 +175,7 @@
             android:drawableLeft="@drawable/phoneicon"
             android:hint="Saisiez votre numero de telephone"
             android:fontFamily="@font/poppins_light"
-            android:inputType="textEmailAddress"
+            android:inputType="number"
             android:textColor="@color/bleufoncé"
             android:maxLines="1"
             android:minHeight="48dp"

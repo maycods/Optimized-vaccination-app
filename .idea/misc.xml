@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/anniv.xml" value="0.2455" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/annuler.xml" value="0.2455" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/border.xml" value="0.2555" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/bordertableheader.xml" value="0.2455" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/bouton.xml" value="0.2455" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/bouton2.xml" value="0.2555" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/cor.xml" value="0.2455" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/ic_outline_assignment_ind_24.xml" value="0.215" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/ic_outline_calendar_today_24.xml" value="0.136" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin.xml" value="0.264" />

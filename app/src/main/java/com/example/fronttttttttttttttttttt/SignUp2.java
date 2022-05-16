@@ -169,7 +169,6 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                         user.put("Email", email);
                         user.put("Mot de passe", mdp);
                         user.put("Numero de Telephone", tel);
-
                         user.put("Age", Age);
                         user.put("Nombre de doses", spinnerChoiceD);
                         user.put("Type de vaccin", spinnerChoiceT);
