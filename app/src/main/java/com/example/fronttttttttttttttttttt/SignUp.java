@@ -65,7 +65,7 @@ public class SignUp extends Activity {
 
 
 
-                if(nompre.isEmpty()  ){
+                if(nompre.isEmpty() ){
                     nomprenom.setError("ce champ est obligatoire");
                     nomprenom.requestFocus();
                     return;

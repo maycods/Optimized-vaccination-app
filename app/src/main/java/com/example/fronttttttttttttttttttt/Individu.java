@@ -91,7 +91,7 @@ public class Individu {
                         f()*Distance(pop.bestC(M).getSolution(),solution));
 
                 solution=twoOpt(solution, (int) (Math.random()*(solution.length-2)),velocity);
-                this.calculCout(M);//todo JE PENSE mtn que on a variable cout ndirou kima l algo on met a jour les cout fl algo principale directe
+                this.calculCout(M);
 
             }
             else

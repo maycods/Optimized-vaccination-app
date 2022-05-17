@@ -58,7 +58,6 @@ mdp.setText(mdpo);
         reference=db.collection("user").document(currentId);
 
        retour= (ImageButton)findViewById(R.id.retourPM);
-       //TODO CHANGER INFOS DE BDD
         confirmer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
