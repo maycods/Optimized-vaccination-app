@@ -12,11 +12,15 @@
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/cor.xml" value="0.2455" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/ic_outline_assignment_ind_24.xml" value="0.215" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/ic_outline_calendar_today_24.xml" value="0.136" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/white_border.xml" value="0.1" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin.xml" value="0.264" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/first_page.xml" value="0.2078125" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/fragment_first.xml" value="0.215625" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/fragment_maps.xml" value="0.2078125" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/fragment_second.xml" value="0.215625" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/info_perso_avant_modif.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/infosperso.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/itineraire.xml" value="0.10486322188449848" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/login.xml" value="0.176" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/login_ambulancier.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/loginadmin.xml" value="0.20208333333333334" />
