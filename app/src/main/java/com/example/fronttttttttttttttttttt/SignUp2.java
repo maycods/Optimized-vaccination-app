@@ -79,7 +79,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
 
         Spinner spinner = findViewById(R.id.vactype);
         spinner.setEnabled(false);
-       spinner.setClickable(false);
+       spinner.setClickable(false);verif=findViewById(R.id.verif);
         adapter= ArrayAdapter.createFromResource(this, R.array.vaccines, R.layout.spinn);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner2 = findViewById(R.id.nbrdoses);

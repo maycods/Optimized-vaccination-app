@@ -41,6 +41,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUp" android:theme="@style/Theme.Fronttttttttttttttttttt" />
+        <activity android:name=".SignupA" android:theme="@style/Theme.Fronttttttttttttttttttt" />
+        <activity android:name=".SignupU" android:theme="@style/Theme.Fronttttttttttttttttttt" />
         <activity android:name=".SignUp2" android:theme="@style/Theme.Fronttttttttttttttttttt"/>
         <activity android:name=".Menu" android:theme="@style/Theme.Fronttttttttttttttttttt"/>
         <activity android:name=".Itineraire" android:theme="@style/Theme.Fronttttttttttttttttttt"/>

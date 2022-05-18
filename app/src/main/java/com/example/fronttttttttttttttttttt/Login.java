@@ -16,6 +16,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
     private Button login1;
@@ -57,11 +61,25 @@ public class Login extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email,mdp1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(Login.this , "rakgna",Toast.LENGTH_LONG).show();
                         if(task.isSuccessful()){
-                            Toast.makeText(Login.this , "Vous ete connecte",Toast.LENGTH_LONG).show();
-                            Intent i =new Intent(Login.this,Menu.class);
-                            startActivity(i);
+                            DocumentReference reference;
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
+                            String currentId;
+                            currentId=user.getUid();
+                            reference=db.collection("user").document(currentId);
+                            reference.get()
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if(task.getResult().exists()){
+                                                Toast.makeText(Login.this , "Vous ete connecte",Toast.LENGTH_LONG).show();
+                                                Intent i =new Intent(Login.this,Menu.class);
+                                                startActivity(i);
+                                            }
+                                        }
+                                    });
+
                         }
                         else {
                             Toast.makeText(Login.this , "Vous vous ete trompe d'email ou mot de passe . veuillez reessayer ",Toast.LENGTH_LONG).show();
