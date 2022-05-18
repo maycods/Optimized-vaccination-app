@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="3dp"
-            android:text="Matricule"
+            android:text="email"
             android:textColor="@color/bleufoncé"
             android:textSize="20dp"
             android:fontFamily="sans-serif-medium"
@@ -84,18 +84,18 @@
 
         <EditText
             android:fontFamily="@font/poppins_light"
-            android:id="@+id/editTextText2"
+            android:id="@+id/emailLA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/input"
             android:drawableLeft="@drawable/ic_baseline_app_registration_24"
-            android:hint="Saisiez la matricule de l'ambulance"
+            android:hint="Saisiez votre email"
             android:textColor="@color/bleufoncé"
             android:drawablePadding="15dp"
             android:textColorHint="@color/HINT"
             android:layout_marginBottom="12dp"
-            android:inputType="phone"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:minHeight="48dp"
             android:paddingLeft="20dp"
@@ -113,26 +113,26 @@
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="20dp"
             />
+
         <EditText
-            android:id="@+id/editTextText4"
+            android:fontFamily="@font/poppins_light"
+            android:id="@+id/codeLA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/input"
             android:drawableLeft="@drawable/mdp"
             android:hint="Saisiez le code "
-            android:paddingLeft="20dp"
             android:textColor="@color/bleufoncé"
-            android:textColorHint="@color/HINT"
             android:drawablePadding="15dp"
-            android:fontFamily="@font/poppins_light"
-            android:inputType="numberPassword"
+            android:textColorHint="@color/HINT"
+            android:layout_marginBottom="12dp"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:paddingRight="10dp"
-            android:paddingVertical="10dp"
-            android:textSize="15dp"
-            android:layout_marginBottom="0dp"
-            />
+            android:minHeight="48dp"
+            android:paddingLeft="20dp"
+            android:textSize="15dp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -151,7 +151,21 @@
                 android:text="Log in"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="16dp" /></RelativeLayout>
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/signupAA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="70dp"
+                android:layout_marginTop="150dp"
+                android:background="#0011364D"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="vous n'avez pas de compte inscrivez vous "
+                android:textColor="@color/bleufoncé"
+                android:textSize="12dp"></Button>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

@@ -48,9 +48,7 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
-
 import com.google.zxing.WriterException;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -199,33 +197,33 @@ int pageWidth =1200;
             canva.drawText(" Université des Sciences et de la Technologie Houari Boumediene",pageWidth/2,450,titlePaint);
 
             titlePaint.setTextAlign(Paint.Align.CENTER);
-            titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+            titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.BOLD));//bld sans serif font
             titlePaint.setTextSize(70);
             canva.drawText(" Votre passe sanitaire : ",pageWidth/2,630,titlePaint);
 
-            titlePaint.setTextAlign(Paint.Align.LEFT);
+            titlePaint.setTextAlign(Paint.Align.CENTER);
             titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
             titlePaint.setTextSize(30);
-            canva.drawText(" Nom et Prenom : "+Nom_prenom.getText().toString().trim(),10,720,titlePaint);
+            canva.drawText(" Nom et Prenom : "+Nom_prenom.getText().toString().trim(),pageWidth/2,720,titlePaint);
 
-            titlePaint.setTextAlign(Paint.Align.LEFT);
+            titlePaint.setTextAlign(Paint.Align.CENTER);
             titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
             titlePaint.setTextSize(30);
-            canva.drawText(" Age : "+age.getText().toString().trim(),10,790,titlePaint);
+            canva.drawText(" Age : "+age.getText().toString().trim()+"ans",pageWidth/2,790,titlePaint);
 
-            titlePaint.setTextAlign(Paint.Align.LEFT);
+            titlePaint.setTextAlign(Paint.Align.CENTER);
             titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
             titlePaint.setTextSize(30);
-            canva.drawText(" Type de vaccin : "+type.getText().toString().trim(),10,870,titlePaint);
+            canva.drawText(" Type de vaccin : "+type.getText().toString().trim(),pageWidth/2,870,titlePaint);
 
-            titlePaint.setTextAlign(Paint.Align.LEFT);
+            titlePaint.setTextAlign(Paint.Align.CENTER);
             titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
             titlePaint.setTextSize(30);
-            canva.drawText(" Nombre de dose administre  : "+doseS,10,950,titlePaint);
+            canva.drawText(" Nombre de dose administre  : "+doseS,pageWidth/2,950,titlePaint);
 
             Bitmap bmp2 = Bitmap.createScaledBitmap(bmpQR,400,400,true);
 
-            canva.drawBitmap(bmp2,430,1050,myPaint);
+            canva.drawBitmap(bmp2,440,1050,myPaint);
 
             passSanitaire.finishPage(maPage);
   String myFilePath = Environment.getExternalStorageDirectory().getPath() + "/passeSanitaire.pdf";

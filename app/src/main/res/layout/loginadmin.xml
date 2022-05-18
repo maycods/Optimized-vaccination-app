@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <ImageView
@@ -52,7 +51,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="5dp"
                 android:layout_marginLeft="5dp"
-                android:text="Administrateur "
+                android:text="Utilisateur "
                 android:textColor="@color/bleufoncé"
                 android:textSize="40dp"
                 android:textStyle="bold" />
@@ -63,14 +62,44 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="25dp"
             android:paddingLeft="20dp"
-            android:text="Reservé à l'adminstrateur"
+            android:text="Reservé aux Utilisateur"
             android:textColor="@color/bleufoncé"
             android:alpha="0.54"
             android:textSize="20dp"
             android:textStyle="bold" />
 
+        <TextView
+            android:alpha="0.7"
+            android:paddingBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="3dp"
+            android:text="email"
+            android:textColor="@color/bleufoncé"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="20dp"
+            />
 
-
+        <EditText
+            android:fontFamily="@font/poppins_light"
+            android:id="@+id/emailLU"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/ic_baseline_app_registration_24"
+            android:hint="Saisiez votre email"
+            android:textColor="@color/bleufoncé"
+            android:drawablePadding="15dp"
+            android:textColorHint="@color/HINT"
+            android:layout_marginBottom="12dp"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:paddingLeft="20dp"
+            android:textSize="15dp" />
         <TextView
             android:paddingBottom="5dp"
             android:alpha="0.7"
@@ -84,26 +113,26 @@
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="20dp"
             />
+
         <EditText
-            android:id="@+id/editTextText4"
+            android:fontFamily="@font/poppins_light"
+            android:id="@+id/codeLU"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/input"
             android:drawableLeft="@drawable/mdp"
-            android:textColorHint="@color/HINT"
-            android:hint="Saisiez le code de l'administrateur"
+            android:hint="Saisiez le code "
             android:textColor="@color/bleufoncé"
-            android:paddingLeft="20dp"
             android:drawablePadding="15dp"
-            android:fontFamily="@font/poppins_light"
+            android:textColorHint="@color/HINT"
+            android:layout_marginBottom="12dp"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:paddingRight="10dp"
-            android:paddingVertical="10dp"
-            android:textSize="15dp"
+            android:minHeight="48dp"
+            android:paddingLeft="20dp"
+            android:textSize="15dp" />
 
-            />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -115,14 +144,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="70dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="60dp"
                 android:background="@drawable/bouton"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="15dp"
                 android:text="Log in"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="16dp" /></RelativeLayout>
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/signupUU"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="70dp"
+                android:layout_marginTop="150dp"
+                android:background="#0011364D"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="vous n'avez pas de compte inscrivez vous "
+                android:textColor="@color/bleufoncé"
+                android:textSize="12dp"></Button>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

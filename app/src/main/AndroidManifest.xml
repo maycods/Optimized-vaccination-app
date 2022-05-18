@@ -88,6 +88,10 @@
             android:name=".Map"
             android:theme="@style/Theme.Fronttttttttttttttttttt" />
 
+ 
+        <activity android:name=".SignupA" android:theme="@style/Theme.Fronttttttttttttttttttt" />
+        <activity android:name=".SignupU" android:theme="@style/Theme.Fronttttttttttttttttttt" />
+      
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
