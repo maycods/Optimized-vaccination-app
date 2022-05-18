@@ -1,7 +1,5 @@
 package com.example.fronttttttttttttttttttt;
-
 import static android.service.controls.ControlsProviderService.TAG;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,6 +9,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.metrics.Event;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -41,21 +42,35 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.nabinbhandari.android.permissions.PermissionHandler;
 import com.nabinbhandari.android.permissions.Permissions;
+import com.skyhope.eventcalenderlibrary.CalenderEvent;
+import com.skyhope.eventcalenderlibrary.listener.CalenderDayClickListener;
+import com.skyhope.eventcalenderlibrary.model.DayContainerModel;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 //TODO ON COMPLETE + GPS TESTER SI CA MARCHE QD CARTE BANCAIRE PRETE
 public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedListener {
     private ImageButton retour;
     private EditText mSearchText;
     private Button comfirmer;
     private  TextView gps;
+    private Date date=null;
     private FusedLocationProviderClient fusedLocationProviderClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv);
+
+        CalenderEvent calenderEvent = findViewById(R.id.calender_event);
+
         //mSearchText = (EditText)findViewById(R.id.positionvacc) ;
        // gps = (TextView) findViewById(R.id.mapos) ;//////////////////
         retour=(ImageButton)findViewById(R.id.retourR);
@@ -65,6 +80,25 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        calenderEvent.initCalderItemClickCallback(new CalenderDayClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onGetDay(DayContainerModel dayContainerModel) {
+
+                SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+               String date= dateFormat.format(new Date());
+               LocalDate jourj =null;
+               LocalDate aujourhui = null;
+             //   jourj=LocalDate.parse(String.format("yyyy-MM-dd",dayContainerModel.getDate()));
+                    aujourhui = LocalDate.parse(date);
+                 Toast.makeText(getApplicationContext(), String.valueOf(jourj), Toast.LENGTH_LONG).show();
+                     Toast.makeText(getApplicationContext(), String.valueOf(aujourhui), Toast.LENGTH_LONG).show();
+          //      if (jourj.after(aujourdhui)) {
+           //     }
+
+            }
+        });
 
     retour.setOnClickListener(new View.OnClickListener() {
                                   @Override
@@ -171,17 +205,12 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                     Location location = task.getResult();
                                     if (location != null) {
                                         LatLng position =new LatLng( location.getLatitude(), location.getLongitude());
-
                                     } else {
                                         Toast.makeText(getApplicationContext(), "no location", Toast.LENGTH_LONG).show();
                                     }
-
                                 }else{ Toast.makeText(getApplicationContext(), "no success", Toast.LENGTH_LONG).show();}
-
-
                             }
                         });
-
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "catch", Toast.LENGTH_LONG).show();
             }

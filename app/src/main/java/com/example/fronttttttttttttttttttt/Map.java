@@ -246,7 +246,7 @@ okk.setOnClickListener(new View.OnClickListener() {
 
         public LatLng[] algoPrincipal()
         {
-            int nbClan=5,nbPod=2,nbIndiv=60,fmin=0,fmax=1,L=100,IT=1000;//todo :elle a mit nbPod =2 donc t3 chaque clan faut verifier avec la prof
+            int nbClan=5,nbPod=2,nbIndiv=60,fmin=0,fmax=1,L=100,IT=1000;//elle a mit nbPod =2 donc t3 chaque clan faut verifier avec la prof
 
             Long  T=System.currentTimeMillis();
            //2;

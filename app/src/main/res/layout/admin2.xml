@@ -209,7 +209,7 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
             android:paddingVertical="10dp"
             android:textColor="@color/bleufoncé"
             android:textSize="15dp"
-            android:text="Adresse"
+            android:text="Hopital"
             ></TextView>
 
         <TextView
@@ -220,7 +220,7 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
             android:textColor="@color/bleufoncé"
-            android:text="Ambulance"
+            android:text="Dose"
             android:textAlignment="center"
             ></TextView>
     </LinearLayout>
@@ -239,7 +239,8 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
             app:layout_constraintTop_toBottomOf="@id/header"
             >
             <TableRow
-                android:background="@drawable/border">
+                android:background="@drawable/border"
+                >
                 <TextView
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/poppins_light"
@@ -248,22 +249,20 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
+                    android:text="Mustapha Bacha "
                     ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <NumberPicker
+                    android:id="@+id/hourpicker"
                     android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
+                    android:layout_width="0dp"
+                    android:backgroundTint="@color/bleufoncé"
+                    android:layout_height="fill_parent"
                     />
             </TableRow>
             <TableRow
-                android:background="@drawable/border">
+                android:background="@drawable/border"
+                >
                 <TextView
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/poppins_light"
@@ -272,21 +271,20 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
+                    android:text="Mustapha Bacha "
                     ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <NumberPicker
+
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
+                    android:layout_width="0dp"
+                    android:backgroundTint="@color/bleufoncé"
+                    android:layout_height="fill_parent"
                     />
             </TableRow>
             <TableRow
-                android:background="@drawable/border">
+                android:background="@drawable/border"
+                >
                 <TextView
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/poppins_light"
@@ -295,46 +293,42 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
+                    android:text="Mustapha Bacha "
                     ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <NumberPicker
+
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
+                    android:layout_width="0dp"
+                    android:backgroundTint="@color/bleufoncé"
+                    android:layout_height="fill_parent"
                     />
             </TableRow>
             <TableRow
-                android:background="@drawable/border">
-
+                android:background="@drawable/border"
+                >
                 <TextView
+                    android:gravity="center_horizontal"
+                    android:fontFamily="@font/poppins_light"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:fontFamily="@font/poppins_light"
-                    android:gravity="center_horizontal"
-                    android:paddingVertical="10dp"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    android:textColor="@color/black"></TextView>
-
-                <Spinner
-                    android:id="@+id/spinner3"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
+                    android:text="Mustapha Bacha "
+                    ></TextView>
+
+                <NumberPicker
+
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:backgroundTint="@color/bleufoncé"
+                    android:layout_height="fill_parent"
                     />
             </TableRow>
             <TableRow
-                android:background="@drawable/border">
+                android:background="@drawable/border"
+                >
                 <TextView
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/poppins_light"
@@ -343,22 +337,20 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
+                    android:text="Mustapha Bacha "
                     ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <NumberPicker
+
                     android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
+                    android:layout_width="0dp"
+                    android:backgroundTint="@color/bleufoncé"
+                    android:layout_height="fill_parent"
                     />
             </TableRow>
             <TableRow
-                android:background="@drawable/border">
+                android:background="@drawable/border"
+                >
                 <TextView
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/poppins_light"
@@ -367,71 +359,64 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
+                    android:text="Mustapha Bacha "
                     ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <NumberPicker
+
                     android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
+                    android:layout_width="0dp"
+                    android:backgroundTint="@color/bleufoncé"
+                    android:layout_height="fill_parent"
                     />
             </TableRow>
             <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
+            android:background="@drawable/border"
+            >
+            <TextView
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:text="Mustapha Bacha "
+                ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
+            <NumberPicker
 
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:backgroundTint="@color/bleufoncé"
+                android:layout_height="fill_parent"
+                />
+        </TableRow>
             <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
+            android:background="@drawable/border"
+            >
+            <TextView
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/poppins_light"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:text="Mustapha Bacha "
+                ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
+            <NumberPicker
+
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:backgroundTint="@color/bleufoncé"
+                android:layout_height="fill_parent"
+                />
+        </TableRow>
             <TableRow
-                android:background="@drawable/border">
+                android:background="@drawable/border"
+                >
                 <TextView
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/poppins_light"
@@ -440,22 +425,20 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
+                    android:text="Mustapha Bacha "
                     ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <NumberPicker
+
                     android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
+                    android:layout_width="0dp"
+                    android:backgroundTint="@color/bleufoncé"
+                    android:layout_height="fill_parent"
                     />
             </TableRow>
             <TableRow
-                android:background="@drawable/border">
+                android:background="@drawable/border"
+                >
                 <TextView
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/poppins_light"
@@ -464,23 +447,25 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
+                    android:text="Mustapha Bacha "
                     ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <NumberPicker
+
                     android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
+                    android:layout_width="0dp"
+                    android:backgroundTint="@color/bleufoncé"
+                    android:layout_height="fill_parent"
                     />
             </TableRow>
 
         </TableLayout>
 
+
+
+
+
+      <!---->
 
  </ScrollView>
 <LinearLayout
@@ -493,7 +478,7 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
 android:paddingVertical="5dp"
     >
     <Button
-        android:id="@+id/inscritt"
+        android:id="@+id/inscrittt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="70dp"

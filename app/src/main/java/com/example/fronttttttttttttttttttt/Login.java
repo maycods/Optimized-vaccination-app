@@ -22,7 +22,7 @@ public class Login extends AppCompatActivity {
     private ImageButton retourL;
     private EditText mail , mdp ;
     private FirebaseAuth mAuth;
-    private Intent intent = new Intent(this, Menu.class);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

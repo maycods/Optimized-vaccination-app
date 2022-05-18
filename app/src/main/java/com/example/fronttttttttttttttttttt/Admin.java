@@ -25,7 +25,7 @@ public class Admin extends Activity {
         loginad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Admin.this,AdminPage.class ));
+                startActivity(new Intent(Admin.this,adminmenu.class ));
                 //TODO LOGIN ADMIN
             }
         });

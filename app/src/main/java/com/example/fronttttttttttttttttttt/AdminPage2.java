@@ -2,8 +2,6 @@ package com.example.fronttttttttttttttttttt;
 
 import static com.example.fronttttttttttttttttttt.Menu.SCROLL_DELTA;
 
-import static java.lang.Integer.parseInt;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Paint;
@@ -23,38 +21,37 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
-import java.util.Formatter;
 
-public class AdminPage extends Activity  implements AdapterView.OnItemSelectedListener {
+public class AdminPage2 extends Activity  implements NumberPicker.OnValueChangeListener, NumberPicker.OnScrollListener {
     private ImageButton L,r;
     private HorizontalScrollView scrollView;
     public static  int SCROLL;
+    private NumberPicker npick;
     private Button cfrm;
-    String ambulance=null,Ambulance;
     DisplayMetrics displayMetric = new DisplayMetrics();
     //TODO AFFICHER HOPITEAU INFO DE BDD
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin);
-
-        cfrm=findViewById(R.id.inscritt);
+        setContentView(R.layout.admin2);
+        npick=findViewById(R.id.hourpicker);
+        setNumberPickerTextColor(npick,R.color.black);
+        init();
+        cfrm=findViewById(R.id.inscrittt);
         scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
         getWindowManager().getDefaultDisplay().getMetrics(displayMetric);
         SCROLL = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, displayMetric.widthPixels/2-50 , getResources().getDisplayMetrics());
-       Spinner spinner = findViewById(R.id.spinner3);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.IDamb, R.layout.spinn);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
         r = (ImageButton) findViewById(R.id.droite);
         L = (ImageButton) findViewById(R.id.gauche);
         cfrm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-Ambulance=ambulance;
-Toast.makeText(getApplicationContext(),String.valueOf(Ambulance),Toast.LENGTH_LONG).show();
+                int a;
+                if(npick.getValue() == 0){
+                  a=999;
+                }else{
+                a=npick.getValue()-1;}
+                Toast.makeText (getApplicationContext(), String.valueOf(a), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -80,19 +77,59 @@ Toast.makeText(getApplicationContext(),String.valueOf(Ambulance),Toast.LENGTH_LO
             }
         });
     }
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
 
-//TODO AFFECTATION
 
-        Spinner t2 =(Spinner) adapterView;
-        ambulance = (String) adapterView.getItemAtPosition(i);
+    private void init() {
+        npick.setOnValueChangedListener(this);
+     npick.setOnScrollListener(this);
+        npick.setMaxValue(999);
+        npick.setMinValue(0);
+        npick.setValue(0);
+    }
+        public static void setNumberPickerTextColor(NumberPicker numberPicker, int color)
+    {
+
+        try{
+            @SuppressLint("SoonBlockedPrivateApi") Field selectorWheelPaintField = numberPicker.getClass()
+                    .getDeclaredField("mSelectorWheelPaint");
+            selectorWheelPaintField.setAccessible(true);
+            ((Paint)selectorWheelPaintField.get(numberPicker)).setColor(color);
+        }
+        catch(NoSuchFieldException e){
+            Log.w("set", e);
+        }
+        catch(IllegalAccessException e){
+            Log.w("set", e);
+        }
+        catch(IllegalArgumentException e){
+            Log.w("set", e);
+        }
+
+        final int count = numberPicker.getChildCount();
+        for(int i = 0; i < count; i++){
+            View child = numberPicker.getChildAt(i);
+            if(child instanceof EditText)
+                ((EditText)child).setTextColor(color);
+        }
+        numberPicker.invalidate();
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+    public void onScrollStateChange(NumberPicker numberPicker, int i) {
+      /*  switch (i) {
+            case NumberPicker.OnScrollListener.SCROLL_STATE_FLING:
+
+                break;
+            case NumberPicker.OnScrollListener.SCROLL_STATE_IDLE:
+                Toast.makeText (this, "no sliding", Toast.LENGTH_LONG).show();
+                break;
+            case NumberPicker.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+
+                break;
+        }*/
+    }
+    @Override
+    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
 
     }
-
-
 }

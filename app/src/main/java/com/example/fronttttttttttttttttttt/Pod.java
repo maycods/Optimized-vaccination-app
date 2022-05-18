@@ -15,7 +15,7 @@ public class Pod {
 
         private int idP;
         private LinkedList<Individu> ListIndividus = new LinkedList <Individu>();
-        private LatLng[] temp;//todo
+        private LatLng[] temp;
         public Pod (int i)
         {
             idP=i;
@@ -116,7 +116,7 @@ public class Pod {
             if (ListIndividus.size() != 0) {
                 Log.d("tagtag",String.valueOf(ListIndividus.get(0).getSolution()[0]));
                 temp = new LatLng[Individu.A];
-                getTemp()[0] =ListIndividus.get(0).getSolution()[0];//todo
+                getTemp()[0] =ListIndividus.get(0).getSolution()[0];
 
                 //Recuperer la taille de la solution , dans ce cas on modifie de la taille 1 à length-1
                 int size = ListIndividus.get(0).getSolution().length;
@@ -129,7 +129,7 @@ public class Pod {
                     }
                     temp[i] =new LatLng(moyenneLatitude / (size - 2), moyenneLongitude / (size - 2));
 
-                }temp[size - 1] =ListIndividus.get(0).getSolution()[0];//todo
+                }temp[size - 1] =ListIndividus.get(0).getSolution()[0];
                 LatLng [] sol = new LatLng[0];
                 Pod p =new Pod(ListIndividus);
                 Clan c= new Clan(-5);
