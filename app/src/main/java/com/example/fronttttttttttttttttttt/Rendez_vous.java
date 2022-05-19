@@ -74,6 +74,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
         mSearchText = (EditText)findViewById(R.id.search_des) ;
          gps = (TextView) findViewById(R.id.mapos) ;
         retour=(ImageButton)findViewById(R.id.retourR);
+        comfirmer=(Button) findViewById(R.id.comfirmerr);
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
         R.array.vaccines, R.layout.spinn);
@@ -117,13 +118,13 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
               askGalleryPermissionLocation();
           }
       });
-//      comfirmer.setOnClickListener(new View.OnClickListener() {
-//          @Override
-//          public void onClick(View view) {
-//            //  init();
-//              // + spinner machin
-//          }
-//      });
+
+      comfirmer.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              geoLocate();
+              Toast.makeText(getApplicationContext(),"Votre rendez-vous a ete prit ",Toast.LENGTH_LONG).show();                                     }
+      });
 
    }
 
@@ -137,40 +138,27 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
     }
 
-    private void init(){
 
-        mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if(actionId == EditorInfo.IME_ACTION_SEARCH
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || keyEvent.getAction() == KeyEvent.ACTION_DOWN
-                        || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER){
-
-                    geoLocate();
-                }
-
-                return false;
-            }
-        });
-    }
     private void geoLocate(){
         String searchString = mSearchText.getText().toString();
 
         Geocoder geocoder = new Geocoder(Rendez_vous.this);
         List<Address> list = new ArrayList<>();
+
         try{
             list = geocoder.getFromLocationName(searchString, 1);
+
         }catch (IOException e){
             Log.e(TAG, "geoLocate: IOException: " + e.getMessage() );
         }
-
         if(list.size() > 0){
             Address address = list.get(0);
             Position =new LatLng( address.getLatitude(),address.getLongitude());
-            Toast.makeText(this,"localisation"+address,Toast.LENGTH_LONG).show();
 
-        }else{
+
+        }
+
+        else{
             Toast.makeText(getApplicationContext(),"invalid location",Toast.LENGTH_LONG).show();
         }
     }
@@ -194,7 +182,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
     }
     @SuppressLint("MissingPermission")
     private void getCurrentLocationn(){
-
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)||locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ) {
 
@@ -209,8 +196,19 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                 if (task.isSuccessful()) {
                                     Location location = task.getResult();
                                     if (location != null) {
-                                        Position =new LatLng( location.getLatitude(), location.getLongitude());
-                                        Log.d("hhhhh",String.valueOf(Position.longitude));
+                                       LatLng P =new LatLng( location.getLatitude(), location.getLongitude());
+                                        Geocoder geocoder = new Geocoder(Rendez_vous.this);
+                                        List<Address> list1 = new ArrayList<>();
+                                        try {
+                                            list1 = geocoder.getFromLocation(P.latitude,P.longitude,1);
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                        if(list1.size() > 0){
+                                            Address address = list1.get(0);
+                                            Log.d("GPS",String.valueOf(address.getAddressLine(0)));
+                                            mSearchText.setText(address.getAddressLine(0));
+                                        }
 
                                     } else {
                                         Toast.makeText(getApplicationContext(), "no location", Toast.LENGTH_LONG).show();
@@ -222,7 +220,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 Toast.makeText(getApplicationContext(), "catch", Toast.LENGTH_LONG).show();
             }
         }else{
-            Toast.makeText(getApplicationContext(),"", Toast.LENGTH_LONG).show();
         }
     }
 
