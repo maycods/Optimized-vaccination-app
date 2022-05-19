@@ -50,6 +50,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -98,7 +99,13 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
              //   jourj=LocalDate.parse(String.format("yyyy-MM-dd",dayContainerModel.getDate()));
                     aujourhui = LocalDate.parse(date);
-                 Toast.makeText(getApplicationContext(), String.valueOf(jourj), Toast.LENGTH_LONG).show();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+
+                //convert String to LocalDate
+                LocalDate localDate = LocalDate.parse(dayContainerModel.getDate(), formatter);
+
+                Toast.makeText(getApplicationContext(), String.valueOf(localDate), Toast.LENGTH_LONG).show();
                      Toast.makeText(getApplicationContext(), String.valueOf(aujourhui), Toast.LENGTH_LONG).show();
           //      if (jourj.after(aujourdhui)) {
            //     }

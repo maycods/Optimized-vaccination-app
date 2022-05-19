@@ -53,7 +53,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="25dp"
             android:paddingLeft="20dp"
-            android:text="N'oubliez pas de vous protege !"
+            android:text="N'oubliez pas de vous proteger !"
             android:textColor="@color/bleufoncé"
             android:alpha="0.54"
             android:textSize="20dp"
