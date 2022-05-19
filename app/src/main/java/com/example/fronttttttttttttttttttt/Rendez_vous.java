@@ -104,7 +104,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
             }
         });
-        askGalleryPermissionLocation();
+
     retour.setOnClickListener(new View.OnClickListener() {
                                   @Override
                                   public void onClick(View view) {
@@ -114,7 +114,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
       gps.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-//              askGalleryPermissionLocation();
+              askGalleryPermissionLocation();
           }
       });
 //      comfirmer.setOnClickListener(new View.OnClickListener() {
@@ -184,7 +184,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
         Permissions.check(this/*context*/, permissions, null, null, new PermissionHandler() {
             @Override
             public void onGranted() {
-                // do your task.
                 getCurrentLocationn();
                 Toast.makeText(getApplicationContext(), "permission granted", Toast.LENGTH_LONG).show();
 
@@ -211,7 +210,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                     Location location = task.getResult();
                                     if (location != null) {
                                         Position =new LatLng( location.getLatitude(), location.getLongitude());
-                                        Log.d("hhhhh",String.valueOf(Position.latitude));
+                                        Log.d("hhhhh",String.valueOf(Position.longitude));
 
                                     } else {
                                         Toast.makeText(getApplicationContext(), "no location", Toast.LENGTH_LONG).show();
