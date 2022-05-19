@@ -64,14 +64,15 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
     private  TextView gps;
     private Date date=null;
     private FusedLocationProviderClient fusedLocationProviderClient;
+    private LatLng Position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv);
         CalenderEvent calenderEvent = findViewById(R.id.calender_event);
 
-        //mSearchText = (EditText)findViewById(R.id.positionvacc) ;
-       // gps = (TextView) findViewById(R.id.mapos) ;//////////////////
+        mSearchText = (EditText)findViewById(R.id.search_des) ;
+         gps = (TextView) findViewById(R.id.mapos) ;
         retour=(ImageButton)findViewById(R.id.retourR);
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -103,26 +104,26 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
             }
         });
-
+        askGalleryPermissionLocation();
     retour.setOnClickListener(new View.OnClickListener() {
                                   @Override
                                   public void onClick(View view) {
                                       startActivity(new Intent(Rendez_vous.this, Menu.class));
                                   }
                               });
-      /*gps.setOnClickListener(new View.OnClickListener() {
+      gps.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              askGalleryPermissionLocation();
+//              askGalleryPermissionLocation();
           }
       });
-      comfirmer.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            //  init();
-              // + spinner machin
-          }
-      });*/
+//      comfirmer.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View view) {
+//            //  init();
+//              // + spinner machin
+//          }
+//      });
 
    }
 
@@ -166,7 +167,8 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
         if(list.size() > 0){
             Address address = list.get(0);
-           LatLng Position  =new LatLng( address.getLatitude(),address.getLongitude());
+            Position =new LatLng( address.getLatitude(),address.getLongitude());
+            Toast.makeText(this,"localisation"+address,Toast.LENGTH_LONG).show();
 
         }else{
             Toast.makeText(getApplicationContext(),"invalid location",Toast.LENGTH_LONG).show();
@@ -208,7 +210,9 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                 if (task.isSuccessful()) {
                                     Location location = task.getResult();
                                     if (location != null) {
-                                        LatLng position =new LatLng( location.getLatitude(), location.getLongitude());
+                                        Position =new LatLng( location.getLatitude(), location.getLongitude());
+                                        Log.d("hhhhh",String.valueOf(Position.latitude));
+
                                     } else {
                                         Toast.makeText(getApplicationContext(), "no location", Toast.LENGTH_LONG).show();
                                     }
