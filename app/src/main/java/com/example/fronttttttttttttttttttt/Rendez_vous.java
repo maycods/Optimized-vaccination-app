@@ -68,7 +68,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv);
-
         CalenderEvent calenderEvent = findViewById(R.id.calender_event);
 
         //mSearchText = (EditText)findViewById(R.id.positionvacc) ;
@@ -90,6 +89,11 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                String date= dateFormat.format(new Date());
                LocalDate jourj =null;
                LocalDate aujourhui = null;
+
+                Date currentDate = new Date();
+               // SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MMM/yyyy");
+                String dateOnly = dateFormat.format(currentDate);
+
              //   jourj=LocalDate.parse(String.format("yyyy-MM-dd",dayContainerModel.getDate()));
                     aujourhui = LocalDate.parse(date);
                  Toast.makeText(getApplicationContext(), String.valueOf(jourj), Toast.LENGTH_LONG).show();

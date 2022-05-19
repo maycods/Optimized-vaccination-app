@@ -31,7 +31,7 @@ private Button amb,user,dose,affamb;
 amb.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-      //  startActivity(new Intent(adminmenu.this,adminmenu.class ));
+        startActivity(new Intent(adminmenu.this,SignupA.class ));
     }
 });
 dose.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +43,7 @@ dose.setOnClickListener(new View.OnClickListener() {
  user.setOnClickListener(new View.OnClickListener() {
      @Override
      public void onClick(View view) {
-        // startActivity(new Intent(adminmenu.this,adminmenu.class ));
+         startActivity(new Intent(adminmenu.this,SignupU.class ));
      }
  });
     affamb.setOnClickListener(new View.OnClickListener() {

@@ -164,7 +164,6 @@ int pageWidth =1200;
             @Override
             public void onClick(View view) {
 
-
                 startActivity(i);
 
             }

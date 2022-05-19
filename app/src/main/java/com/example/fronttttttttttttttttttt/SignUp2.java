@@ -37,9 +37,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.protobuf.StringValue;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
@@ -55,10 +57,10 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
     ArrayAdapter<CharSequence> adapter2;
     int iii=0;
     private FirebaseAuth mAuth;
+    private    ArrayList<String> a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         String nompre = getIntent().getStringExtra("nom_prenom");
         String email = getIntent().getStringExtra("email");
@@ -80,13 +82,32 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
         Spinner spinner = findViewById(R.id.vactype);
         spinner.setEnabled(false);
        spinner.setClickable(false);verif=findViewById(R.id.verif);
-        adapter= ArrayAdapter.createFromResource(this, R.array.vaccines, R.layout.spinn);
+     db.collection("Vaccin").document("IDV").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful() && task.getResult().exists() && task.getResult() != null){
+
+                 a =  task.getResult().get("TypeVaccin",ArrayList.class);//getdata()
+                 Log.d("kooooooooo",a.get(0));
+
+                }else {
+                    Log.d("kooooooooo","l");
+                }
+            }
+        });
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item,
+                        a);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner2 = findViewById(R.id.nbrdoses);
         spinner2.setEnabled(false);
         spinner2.setClickable(false);
+
         adapter2= ArrayAdapter.createFromResource(this,R.array.nombre, R.layout.spinn);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+
 
         vacc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -135,17 +156,11 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
                                             Toast.makeText(view.getContext(), "l'email de confirmation a ete envoyé", Toast.LENGTH_LONG).show();
-
                                             inscrit.setVisibility(View.GONE);
                                             verif.setVisibility(View.VISIBLE);
                                         }
                                     }
                                 });
-
-
-
-
-
       }else {
              Toast.makeText(getApplicationContext(),"vous avez deja creer un compte avec cette adresse email",Toast.LENGTH_LONG).show();
           }
