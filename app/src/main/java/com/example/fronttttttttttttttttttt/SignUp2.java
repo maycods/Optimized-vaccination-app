@@ -57,7 +57,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
     ArrayAdapter<CharSequence> adapter2;
     int iii=0;
     private FirebaseAuth mAuth;
-    private    ArrayList<String> a;
+    ArrayList<String> a=new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +87,9 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful() && task.getResult().exists() && task.getResult() != null){
 
-                 a =  task.getResult().get("TypeVaccin",ArrayList.class);//getdata()
-                 Log.d("kooooooooo",a.get(0));
+                a.addAll ((ArrayList<String>) task.getResult().get("TypeVaccin"));
+                 Log.d("kooooooooo",a.get(1));
+
 
                 }else {
                     Log.d("kooooooooo","l");
@@ -96,8 +97,9 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
             }
         });
 
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item,
+                (this, R.layout.spinn,
                         a);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner2 = findViewById(R.id.nbrdoses);
@@ -118,7 +120,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                        dose.setEnabled(true);
                        typevac.setBackgroundColor(0x00000000);
                        dose.setBackgroundColor(0x00000000);
-                       typevac.setBackgroundResource(R.drawable.bouton2);
+                    //   typevac.setBackgroundResource(R.drawable.bouton);
                        dose.setBackgroundResource(R.drawable.bouton2);
 
                         spinner2.setAdapter(adapter2);
