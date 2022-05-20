@@ -181,7 +181,7 @@ public class Ambulence extends AppCompatActivity {
                 boolean e;
 
 
-                mAuth.signInWithEmailAndPassword(email,mdp1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+             /*   mAuth.signInWithEmailAndPassword(email,mdp1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -198,10 +198,10 @@ public class Ambulence extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             if(task.getResult().exists()){
-                                                Toast.makeText(Ambulence.this , "Vous ete connecte",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(Ambulence.this , "Vous ete connecte",Toast.LENGTH_LONG).show();*/
                                                 Intent i =new Intent(Ambulence.this,Itineraire.class);
                                                 startActivity(i);
-                                            }else{
+                                         /*   }else{
                                                 Toast.makeText(getApplicationContext(),"ce n'est pas un compte d'ambulancier",Toast.LENGTH_LONG).show();
                                             }
                                         }
@@ -212,7 +212,7 @@ public class Ambulence extends AppCompatActivity {
                             Toast.makeText(Ambulence.this , "Vous vous ete trompe d'email ou mot de passe . veuillez reessayer ",Toast.LENGTH_LONG).show();
                         }
                     }
-                });
+                });*/
 
 
             }

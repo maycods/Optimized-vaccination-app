@@ -51,9 +51,9 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
         setContentView(R.layout.fragment_maps);
 
             polylines = new ArrayList<>();
-        /*   SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+           SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
-            mapFragment.getMapAsync(this);*/
+            mapFragment.getMapAsync(this);
 
            remplirM(M);
 arriv=findViewById(R.id.arrived);
@@ -88,8 +88,8 @@ okk.setOnClickListener(new View.OnClickListener() {
             for( j=1; j<=ListePositions.length;j++) {
                 for( i=1; i<=ListePositions.length;i++){
                     if(i!=j) {
-                    //    getRouteTiMarker((LatLng) M[0][j],(LatLng) M[i][0]);
-                        M[i][j]=Vtest[l];
+                        getRouteTiMarker((LatLng) M[0][j],(LatLng) M[i][0]);
+                       // M[i][j]=Vtest[l];
                         l++;
                     }else{
                         M[i][j]=null;
@@ -105,7 +105,7 @@ okk.setOnClickListener(new View.OnClickListener() {
             PolylineOptions polyOptions = new PolylineOptions();
             polyOptions.addAll(route.get(0).getPoints());
             Polyline polyline = map.addPolyline(polyOptions);
-           // polylines.add(polyline);
+            polylines.add(polyline);
 
 
              a.add(route.get(0).getDurationValue());
@@ -145,17 +145,7 @@ okk.setOnClickListener(new View.OnClickListener() {
 
 
         }
-        private void getRouteTiMarker(LatLng ok,LatLng ol) {
-            Routing routing = new Routing.Builder()
-                    .key("AIzaSyBDwDlIFf_vWmwO9HPWFvdVsIsQ7Edzarg")
-                    .travelMode(AbstractRouting.TravelMode.DRIVING)
-                    .withListener(this)
-                    .alternativeRoutes(false)
-                    .waypoints(ok,ol)
-                    .build();
-            routing.execute();
 
-        }
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
         map =googleMap;//nrmt boucle
@@ -164,18 +154,6 @@ okk.setOnClickListener(new View.OnClickListener() {
         map.addMarker(new MarkerOptions().position(C).title("destination"));
         map.addMarker(new MarkerOptions().position(D).title("destination"));
         }
-        @Override
-        public void onRoutingCancelled() {}
-        @Override
-        public void onRoutingFailure(RouteException e) {
-            if(e != null) {
-                Toast.makeText(this, "Error Route : " + e.getMessage(), Toast.LENGTH_LONG).show();
-            }else {
-                Toast.makeText(this, "Something went wrong in the routing, Try again", Toast.LENGTH_SHORT).show();
-            }
-        }
-        @Override
-        public void onRoutingStart() {}
 
         public LatLng[] generationIndividu()
         {
@@ -290,6 +268,30 @@ okk.setOnClickListener(new View.OnClickListener() {
 
            return pop.bestC(M).getSolution();
         }
+
+    @Override
+    public void onRoutingCancelled() {}
+    @Override
+    public void onRoutingFailure(RouteException e) {
+        if(e != null) {
+            Toast.makeText(this, "Error Route : " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(this, "Something went wrong in the routing, Try again", Toast.LENGTH_SHORT).show();
+        }
+    }
+    @Override
+    public void onRoutingStart() {}
+    private void getRouteTiMarker(LatLng ok,LatLng ol) {
+        Routing routing = new Routing.Builder()
+                .key("AIzaSyA4BfbpwpFZaEqldokXZ72A01dte2BfJtA")
+                .travelMode(AbstractRouting.TravelMode.DRIVING)
+                .withListener(this)
+                .alternativeRoutes(false)
+                .waypoints(ok,ol)
+                .build();
+        routing.execute();
+
+    }
 }
 
 

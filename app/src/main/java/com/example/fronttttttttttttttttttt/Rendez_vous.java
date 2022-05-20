@@ -54,6 +54,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.List;
 import java.util.Locale;
 
@@ -90,26 +91,21 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
                 SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
                String date= dateFormat.format(new Date());
-               LocalDate jourj =null;
-               LocalDate aujourhui = null;
+                String jourj;
+                LocalDate  aujourhui = LocalDate.parse(date);
+             if(dayContainerModel.getMonthNumber() + 1 != 10 && dayContainerModel.getMonthNumber() + 1 != 11 && dayContainerModel.getMonthNumber() + 1 != 12) {
+                jourj = dayContainerModel.getYear() + "-0" + String.valueOf(dayContainerModel.getMonthNumber()+1) + "-" + dayContainerModel.getDay();
+             }else{
+                 jourj = dayContainerModel.getYear() + "-" + String.valueOf(dayContainerModel.getMonthNumber()+1)+ "-" + dayContainerModel.getDay();
+             }
+                LocalDate  j = LocalDate.parse(jourj);
+                Toast.makeText(getApplicationContext(), String.valueOf(j), Toast.LENGTH_LONG).show();
 
-                Date currentDate = new Date();
-               // SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MMM/yyyy");
-                String dateOnly = dateFormat.format(currentDate);
-
-             //   jourj=LocalDate.parse(String.format("yyyy-MM-dd",dayContainerModel.getDate()));
-                    aujourhui = LocalDate.parse(date);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-
-                //convert String to LocalDate
-                LocalDate localDate = LocalDate.parse(dayContainerModel.getDate(), formatter);
-
-                Toast.makeText(getApplicationContext(), String.valueOf(localDate), Toast.LENGTH_LONG).show();
-                     Toast.makeText(getApplicationContext(), String.valueOf(aujourhui), Toast.LENGTH_LONG).show();
-          //      if (jourj.after(aujourdhui)) {
-           //     }
-
+                if(aujourhui.isAfter(j) || aujourhui.isEqual(j)){
+                    Toast.makeText(getApplicationContext(), "vous pouvez pas prendre un rendez-vous pour aujourd hui ou avant", Toast.LENGTH_LONG).show();
+                }else{
+                    //get j in the hashmap
+                }
             }
         });
 
