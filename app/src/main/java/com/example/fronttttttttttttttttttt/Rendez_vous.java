@@ -1,10 +1,13 @@
 package com.example.fronttttttttttttttttttt;
 import static android.service.controls.ControlsProviderService.TAG;
+import static java.lang.Integer.parseInt;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -28,6 +31,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -39,7 +43,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.protobuf.StringValue;
+import com.google.protobuf.Value;
 import com.nabinbhandari.android.permissions.PermissionHandler;
 import com.nabinbhandari.android.permissions.Permissions;
 import com.skyhope.eventcalenderlibrary.CalenderEvent;
@@ -47,6 +60,7 @@ import com.skyhope.eventcalenderlibrary.listener.CalenderDayClickListener;
 import com.skyhope.eventcalenderlibrary.model.DayContainerModel;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -55,18 +69,27 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-//TODO ON COMPLETE + GPS TESTER SI CA MARCHE QD CARTE BANCAIRE PRETE
+// TODO: 21/05/2022  si possible rendre calendrier fixe apres confirmation
 public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedListener {
     private ImageButton retour;
     private EditText mSearchText;
     private Button comfirmer;
     private  TextView gps;
-    private Date date=null;
+    private String date1 = "";
+    private String choixV=null;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LatLng Position;
+    private String typeV;
+    private ArrayList<String> listV=new ArrayList<String>();
+    private ArrayAdapter<CharSequence> adapter;
+    private Spinner V;
+    private HashMap<String, Object> RDV = new HashMap<String, Object>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,11 +101,63 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
         retour=(ImageButton)findViewById(R.id.retourR);
         comfirmer=(Button) findViewById(R.id.comfirmerr);
         Spinner spinner = findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        R.array.vaccines, R.layout.spinn);
+        spinner.setEnabled(false);
+        spinner.setClickable(false);
+         V = findViewById(R.id.spinner1);
+
+
+//idpatient
+        DocumentReference reference;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
+        String currentId=user.getUid();
+
+
+//vaccin
+        db.collection("Vaccin").document("IDV").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful() && task.getResult().exists() && task.getResult() != null)
+                {
+                    listV.addAll ((ArrayList<String>) task.getResult().get("TypeVaccin"));
+
+                }
+            }
+        });
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, R.layout.spinn,
+                        listV);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+
+        reference=db.collection("user").document(currentId);
+        reference.get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.getResult().exists()) {
+                            typeV = (String) task.getResult().get("Type de vaccin");
+                            Log.d("wow", String.valueOf(typeV));
+                            if (typeV==""){
+                                V.setEnabled(true);
+                                spinner.setAdapter(adapter);
+                                V.setBackgroundColor(0x00000000);
+                                V.setBackgroundResource(R.drawable.bouton2);
+                                V.setOnItemSelectedListener(Rendez_vous.this);
+
+                        }
+                            else{
+                                Log.d("not null",String.valueOf(listV.indexOf(choixV)));
+                                V.setEnabled(false);
+                                spinner.setAdapter(adapter);
+                                V.setBackgroundColor(0x00000000);
+                                V.setBackgroundResource(R.drawable.bouton2);
+                                V.setSelection(listV.indexOf(typeV));
+
+                            }
+
+                        }}});
+
+//Date
 
         calenderEvent.initCalderItemClickCallback(new CalenderDayClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -90,26 +165,35 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
             public void onGetDay(DayContainerModel dayContainerModel) {
 
                 SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
-               String date= dateFormat.format(new Date());
+                String date= dateFormat.format(new Date());
                 String jourj;
                 LocalDate  aujourhui = LocalDate.parse(date);
-             if(dayContainerModel.getMonthNumber() + 1 != 10 && dayContainerModel.getMonthNumber() + 1 != 11 && dayContainerModel.getMonthNumber() + 1 != 12) {
-                jourj = dayContainerModel.getYear() + "-0" + String.valueOf(dayContainerModel.getMonthNumber()+1) + "-" + dayContainerModel.getDay();
-             }else{
-                 jourj = dayContainerModel.getYear() + "-" + String.valueOf(dayContainerModel.getMonthNumber()+1)+ "-" + dayContainerModel.getDay();
-             }
-                LocalDate  j = LocalDate.parse(jourj);
-                Toast.makeText(getApplicationContext(), String.valueOf(j), Toast.LENGTH_LONG).show();
 
-                if(aujourhui.isAfter(j) || aujourhui.isEqual(j)){
-                    Toast.makeText(getApplicationContext(), "vous pouvez pas prendre un rendez-vous pour aujourd hui ou avant", Toast.LENGTH_LONG).show();
-                }else{
-                    //get j in the hashmap
-                }
+                    if(dayContainerModel.getMonthNumber() + 1 != 10 && dayContainerModel.getMonthNumber() + 1 != 11 && dayContainerModel.getMonthNumber() + 1 != 12) {
+                        jourj = dayContainerModel.getYear() + "-0" + String.valueOf(dayContainerModel.getMonthNumber()+1) + "-" + dayContainerModel.getDay();
+                    }else{
+                        jourj = dayContainerModel.getYear() + "-" + String.valueOf(dayContainerModel.getMonthNumber()+1)+ "-" + dayContainerModel.getDay();
+                    }
+                    LocalDate  j = LocalDate.parse(jourj);
+
+                    Toast.makeText(getApplicationContext(), String.valueOf(j), Toast.LENGTH_LONG).show();
+
+                    if(aujourhui.isAfter(j) || aujourhui.isEqual(j)){
+                        Toast.makeText(getApplicationContext(), "vous pouvez pas prendre un rendez-vous pour aujourd hui ou avant", Toast.LENGTH_LONG).show();
+
+                    }else{
+                        date1 = jourj +" "+"00:00:00";
+                        Timestamp timestamp = Timestamp.valueOf(date1);
+                        RDV.put("dateR",timestamp);
+                        p=true;
+
+                    }
+
+
             }
         });
 
-    retour.setOnClickListener(new View.OnClickListener() {
+      retour.setOnClickListener(new View.OnClickListener() {
                                   @Override
                                   public void onClick(View view) {
                                       startActivity(new Intent(Rendez_vous.this, Menu.class));
@@ -121,27 +205,83 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
               askGalleryPermissionLocation();
           }
       });
-
       comfirmer.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
               geoLocate();
-              Toast.makeText(getApplicationContext(),"Votre rendez-vous a ete prit ",Toast.LENGTH_LONG).show();                                     }
+              String search = mSearchText.getText().toString().trim();
+              if(search.isEmpty()){
+                  mSearchText.setError("ce champ est obligatoire");
+                  mSearchText.requestFocus();
+                  return;
+              }
+              if(date1.isEmpty()){
+                  Toast.makeText(getApplicationContext(), "inserer une date correcte", Toast.LENGTH_LONG).show();
+                  return;
+              }
+
+              RDV.put("IDP",currentId);
+              RDV.put("Localisation",Position);
+              RDV.put("confR",false);
+              RDV.put("confV",false);
+
+              db.collection("Rendez-vous").document()
+                      .set(RDV)
+                      .addOnSuccessListener(new OnSuccessListener<Void>() {
+                          @Override
+                          public void onSuccess(Void aVoid) {
+                              Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
+                                      Toast.LENGTH_SHORT).show();
+                              mSearchText.setFocusable(false);
+                              V.setEnabled(false);
+                              spinner.setAdapter(adapter);
+                              V.setBackgroundColor(0x00000000);
+                              V.setBackgroundResource(R.drawable.bouton2);
+                              V.setOnItemSelectedListener(Rendez_vous.this);
+                              V.setSelection(listV.indexOf(choixV));
+                              calenderEvent.requestFocus();                              comfirmer.setBackground(ContextCompat.getDrawable(Rendez_vous.this, R.drawable.bouton2));
+                              comfirmer.setTextColor(Color.parseColor("#11364D"));
+                              comfirmer.setText("prendre un autre rendez-vous");
+                              comfirmer.setOnClickListener(new View.OnClickListener() {
+                                  @Override
+                                  public void onClick(View v) {
+                                      startActivity(new Intent(Rendez_vous.this,Rendez_vous.class));
+
+                                  }
+                              });
+
+                          }
+                      })
+                      .addOnFailureListener(new OnFailureListener() {
+                          @Override
+                          public void onFailure(@NonNull Exception e) {
+                              Log.w("Fail", "Error", e);
+
+
+                          }
+                      });
+              //j jours
+              //Position pos
+              //
+                                                   }
       });
 
    }
-
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Log.d("spner","ici");
+        Spinner Spinner =(Spinner) adapterView;
+        if(Spinner.getId() == R.id.spinner1) {
+            choixV = (String) adapterView.getItemAtPosition(i);
+            Log.d("je sui",String.valueOf(choixV));
+            V.setSelection(listV.indexOf(choixV));
+            RDV.put("Type de vaccin",choixV);
+        }
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
+    public void onNothingSelected(AdapterView<?> adapterView) {
     }
-
-
     private void geoLocate(){
         String searchString = mSearchText.getText().toString();
 

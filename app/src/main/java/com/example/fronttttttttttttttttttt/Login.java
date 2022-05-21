@@ -74,7 +74,7 @@ public class Login extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             if(task.getResult().exists()){
-                                                Toast.makeText(Login.this , "Vous ete connecte",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(Login.this , "Vous ete connecte",Toast.LENGTH_SHORT).show();
                                                 Intent i =new Intent(Login.this,Menu.class);
                                                 startActivity(i);
                                             }

@@ -81,7 +81,8 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
 
         Spinner spinner = findViewById(R.id.vactype);
         spinner.setEnabled(false);
-       spinner.setClickable(false);verif=findViewById(R.id.verif);
+       spinner.setClickable(false);
+       verif=findViewById(R.id.verif);
      db.collection("Vaccin").document("IDV").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -131,7 +132,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                        if(i== R.id.non){
                            typevac.setEnabled(false);
                            typevac.setAdapter(null);
-                          dose.setAdapter(null);
+                           dose.setAdapter(null);
                            dose.setEnabled(false);
                            typevac.setBackgroundResource(R.drawable.bouton);
                            dose.setBackgroundResource(R.drawable.bouton);
