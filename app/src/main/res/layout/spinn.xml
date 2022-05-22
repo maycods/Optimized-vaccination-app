@@ -12,6 +12,5 @@
     android:textSize="15sp"
     android:fontFamily="@font/poppins_light"
     android:textColor="@color/bleufoncé"
-
     android:padding="5dp"
     />
