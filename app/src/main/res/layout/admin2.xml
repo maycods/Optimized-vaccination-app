@@ -204,13 +204,26 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
             android:gravity="center_horizontal"
             android:fontFamily="@font/poppins_bold"
             android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
             android:textColor="@color/bleufoncé"
             android:textSize="15dp"
             android:text="Hopital"
             ></TextView>
+
+        <TextView
+            android:fontFamily="@font/poppins_bold"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:textColor="@color/bleufoncé"
+            android:text="Type"
+            android:textAlignment="center"
+            ></TextView>
+
+
 
         <TextView
             android:id="@+id/ambTOdos"
@@ -230,240 +243,41 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
         app:layout_constraintBottom_toTopOf="@id/cfrmplace"
         app:layout_constraintTop_toBottomOf="@id/header"
         android:scrollbars="none"
-        android:layout_weight="1"
->
 
+>
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/cfrmplace"
             app:layout_constraintTop_toBottomOf="@id/header"
             >
-            <TableRow
-                android:background="@drawable/border"
-                >
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Mustapha Bacha "
-                    ></TextView>
 
-                <NumberPicker
-                    android:id="@+id/hourpicker"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:backgroundTint="@color/bleufoncé"
-                    android:layout_height="fill_parent"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border"
-                >
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Mustapha Bacha "
-                    ></TextView>
-
-                <NumberPicker
-
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:backgroundTint="@color/bleufoncé"
-                    android:layout_height="fill_parent"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border"
-                >
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Mustapha Bacha "
-                    ></TextView>
-
-                <NumberPicker
-
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:backgroundTint="@color/bleufoncé"
-                    android:layout_height="fill_parent"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border"
-                >
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Mustapha Bacha "
-                    ></TextView>
-
-                <NumberPicker
-
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:backgroundTint="@color/bleufoncé"
-                    android:layout_height="fill_parent"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border"
-                >
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Mustapha Bacha "
-                    ></TextView>
-
-                <NumberPicker
-
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:backgroundTint="@color/bleufoncé"
-                    android:layout_height="fill_parent"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border"
-                >
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Mustapha Bacha "
-                    ></TextView>
-
-                <NumberPicker
-
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:backgroundTint="@color/bleufoncé"
-                    android:layout_height="fill_parent"
-                    />
-            </TableRow>
-            <TableRow
-            android:background="@drawable/border"
-            >
-            <TextView
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:text="Mustapha Bacha "
-                ></TextView>
-
-            <NumberPicker
-
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:backgroundTint="@color/bleufoncé"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recy1"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                />
-        </TableRow>
-            <TableRow
-            android:background="@drawable/border"
-            >
-            <TextView
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/poppins_light"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:text="Mustapha Bacha "
-                ></TextView>
+                > </androidx.recyclerview.widget.RecyclerView>
 
-            <NumberPicker
-
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:backgroundTint="@color/bleufoncé"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recy2"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                />
-        </TableRow>
-            <TableRow
-                android:background="@drawable/border"
-                >
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Mustapha Bacha "
-                    ></TextView>
+                > </androidx.recyclerview.widget.RecyclerView>
 
-                <NumberPicker
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recy3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                > </androidx.recyclerview.widget.RecyclerView>
 
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:backgroundTint="@color/bleufoncé"
-                    android:layout_height="fill_parent"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border"
-                >
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Mustapha Bacha "
-                    ></TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recy4"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                > </androidx.recyclerview.widget.RecyclerView>
 
-                <NumberPicker
-
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:backgroundTint="@color/bleufoncé"
-                    android:layout_height="fill_parent"
-                    />
-            </TableRow>
 
         </TableLayout>
-
-
-
-
 
       <!---->
 

@@ -20,14 +20,38 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.lang.reflect.Field;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class AdminPage2 extends Activity  implements NumberPicker.OnValueChangeListener, NumberPicker.OnScrollListener {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+
+public class AdminPage2 extends Activity   {
     private ImageButton L,r;
     private HorizontalScrollView scrollView;
     public static  int SCROLL;
     private NumberPicker npick;
     private Button cfrm;
+    RecyclerView recyclerView,recyclerView2,recyclerView3,recyclerView4;
+    FirebaseFirestore db;
+    ArrayList<Hopital> list;
+    MyAdapter myAdapter;
     DisplayMetrics displayMetric = new DisplayMetrics();
     //TODO AFFICHER HOPITEAU INFO DE BDD
     @Override
@@ -35,17 +59,46 @@ public class AdminPage2 extends Activity  implements NumberPicker.OnValueChangeL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin2);
         npick=findViewById(R.id.hourpicker);
-        setNumberPickerTextColor(npick,R.color.black);
-        init();
         cfrm=findViewById(R.id.inscrittt);
         scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
         getWindowManager().getDefaultDisplay().getMetrics(displayMetric);
         SCROLL = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, displayMetric.widthPixels/2-50 , getResources().getDisplayMetrics());
         r = (ImageButton) findViewById(R.id.droite);
         L = (ImageButton) findViewById(R.id.gauche);
+        recyclerView=findViewById(R.id.recy1);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+     recyclerView2=findViewById(R.id.recy2);
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView3=findViewById(R.id.recy3);
+        recyclerView3.setHasFixedSize(true);
+        recyclerView3.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView4=findViewById(R.id.recy4);
+        recyclerView4.setHasFixedSize(true);
+        recyclerView4.setLayoutManager(new LinearLayoutManager(this));
+
+        db = FirebaseFirestore.getInstance();
+        list = new ArrayList<Hopital>();
+        myAdapter=new MyAdapter(AdminPage2.this ,list,-1);
+
+        recyclerView.setAdapter(myAdapter);
+        myAdapter=new MyAdapter(AdminPage2.this ,list,0);
+
+        recyclerView2.setAdapter(myAdapter);
+        myAdapter=new MyAdapter(AdminPage2.this ,list,1);
+
+        recyclerView3.setAdapter(myAdapter);
+        myAdapter=new MyAdapter(AdminPage2.this ,list,2);
+
+        recyclerView4.setAdapter(myAdapter);
+        EventChangeListener();
         cfrm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//todo doses dans bdd
                 int a;
                 if(npick.getValue() == 0){
                   a=999;
@@ -54,7 +107,6 @@ public class AdminPage2 extends Activity  implements NumberPicker.OnValueChangeL
                 Toast.makeText (getApplicationContext(), String.valueOf(a), Toast.LENGTH_LONG).show();
             }
         });
-
         L.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,59 +129,26 @@ public class AdminPage2 extends Activity  implements NumberPicker.OnValueChangeL
             }
         });
     }
+private void EventChangeListener(){
+        db.collection("Hopital").
+                addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.d("kop", error.getMessage());
+                            return;
+                        }
+                        for (DocumentChange dc : value.getDocumentChanges()) {
+                            if (dc.getType() == DocumentChange.Type.ADDED) {
+                                list.add(dc.getDocument().toObject(Hopital.class));
+
+                            }
+                            myAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+        });
+}
 
 
-    private void init() {
-        npick.setOnValueChangedListener(this);
-     npick.setOnScrollListener(this);
-        npick.setMaxValue(999);
-        npick.setMinValue(0);
-        npick.setValue(0);
-    }
-        public static void setNumberPickerTextColor(NumberPicker numberPicker, int color)
-    {
-
-        try{
-            @SuppressLint("SoonBlockedPrivateApi") Field selectorWheelPaintField = numberPicker.getClass()
-                    .getDeclaredField("mSelectorWheelPaint");
-            selectorWheelPaintField.setAccessible(true);
-            ((Paint)selectorWheelPaintField.get(numberPicker)).setColor(color);
-        }
-        catch(NoSuchFieldException e){
-            Log.w("set", e);
-        }
-        catch(IllegalAccessException e){
-            Log.w("set", e);
-        }
-        catch(IllegalArgumentException e){
-            Log.w("set", e);
-        }
-
-        final int count = numberPicker.getChildCount();
-        for(int i = 0; i < count; i++){
-            View child = numberPicker.getChildAt(i);
-            if(child instanceof EditText)
-                ((EditText)child).setTextColor(color);
-        }
-        numberPicker.invalidate();
-    }
-
-    @Override
-    public void onScrollStateChange(NumberPicker numberPicker, int i) {
-      /*  switch (i) {
-            case NumberPicker.OnScrollListener.SCROLL_STATE_FLING:
-
-                break;
-            case NumberPicker.OnScrollListener.SCROLL_STATE_IDLE:
-                Toast.makeText (this, "no sliding", Toast.LENGTH_LONG).show();
-                break;
-            case NumberPicker.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-
-                break;
-        }*/
-    }
-    @Override
-    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-
-    }
 }

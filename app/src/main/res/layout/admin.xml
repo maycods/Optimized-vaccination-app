@@ -73,30 +73,39 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="25 doses"
+                            android:text="4 ambulanciers"
+                            android:paddingBottom="5dp"
                             android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
+                            android:textSize="17dp"></TextView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="4 ambulances"
+                            android:text="Spootnik: 105"
                             android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
+                            android:textSize="15dp"></TextView>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="ID: EA12X"
+                            android:text="Astra : 42"
                             android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-
+                            android:textSize="15dp"></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="johnson: 45"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="sinovac 40"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"></TextView>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -220,7 +229,7 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
             android:textColor="@color/bleufoncé"
-            android:text="Ambulance"
+            android:text="Ambulancier"
             android:textAlignment="center"
             ></TextView>
     </LinearLayout>
@@ -252,232 +261,19 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                     ></TextView>
 
                 <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
-
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
-
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/poppins_light"
-                    android:gravity="center_horizontal"
-                    android:paddingVertical="10dp"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    android:textColor="@color/black"></TextView>
-
-                <Spinner
                     android:id="@+id/spinner3"
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/poppins_light"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
-
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
-
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
-
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
                     android:textColor="@color/black"
                     android:spinnerMode="dropdown"
                     />
             </TableRow>
 
-            <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
 
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
-            <TableRow
-                android:background="@drawable/border">
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:text="Adresse1 bab el  zzouar .. "
-                    ></TextView>
-
-                <Spinner
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingVertical="10dp"
-                    android:textColor="@color/black"
-                    android:spinnerMode="dropdown"
-                    />
-            </TableRow>
 
         </TableLayout>
 

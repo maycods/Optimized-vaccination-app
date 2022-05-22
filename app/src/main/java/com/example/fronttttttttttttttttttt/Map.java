@@ -1,6 +1,7 @@
 package com.example.fronttttttttttttttttttt;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import com.directions.route.Route;
 import com.directions.route.RouteException;
 import com.directions.route.Routing;
 import com.directions.route.RoutingListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -34,9 +36,11 @@ import java.util.Vector;
 public class Map extends FragmentActivity implements OnMapReadyCallback, RoutingListener {
     GoogleMap map;
     int d=0;
+    int r=0;
     private List<Polyline> polylines;
     private Button arriv,okk;
     private TextView leT,T;
+    Boolean b = false;
     private static final int[] COLORS = new int[]{R.color.purple_200};
     Population pop = new Population();
     LatLng A ,B,C,D;
@@ -67,6 +71,8 @@ arriv.setOnClickListener(new View.OnClickListener() {
         T.setText("Spootnik");
         okk.setVisibility(View.VISIBLE);
         arriv.setVisibility(View.GONE);
+        polylines.get(r).setColor(R.color.bleu2);
+r++;
     }
 });
 okk.setOnClickListener(new View.OnClickListener() {
@@ -101,22 +107,22 @@ okk.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onRoutingSuccess(ArrayList<Route> route, int shortestRouteIndex) {
 
-            polylines = new ArrayList<>();//todo ici on veut circuit
+            polylines = new ArrayList<Polyline>();
             PolylineOptions polyOptions = new PolylineOptions();
+            polyOptions.color(getResources().getColor(R.color.black));
             polyOptions.addAll(route.get(0).getPoints());
-            Polyline polyline = map.addPolyline(polyOptions);
-            polylines.add(polyline);
 
+            if(b==true){
+                polylines.add(map.addPolyline(polyOptions));
+            }
+             a.add(route.get(0).getDurationValue());   d++;
+     //       Toast.makeText(getApplicationContext(), "Route " + (1) + ": distance  " + route.get(0).getDistanceText() + ": duration  " + route.get(0).getDurationText(), Toast.LENGTH_LONG).show();
 
-             a.add(route.get(0).getDurationValue());
-            Toast.makeText(getApplicationContext(), "Route " + (1) + ": distance  " + route.get(0).getDistanceText() + ": duration  " + route.get(0).getDurationText(), Toast.LENGTH_LONG).show();
-          d++;
-         /*   if(polylines.size()>0) {
-                for (Polyline poly : polylines) {
-                    poly.remove();
-                }
-            }*/
-
+//           if(polylines.size()>0) {
+//                for (Polyline poly : polylines) {
+//                    poly.remove();
+//                }
+//            }
  if(d==(ListePositions.length*ListePositions.length)-ListePositions.length){
      int k=0;
      for( int j=1; j<=ListePositions.length;j++) {
@@ -128,31 +134,33 @@ okk.setOnClickListener(new View.OnClickListener() {
                  M[i][j]=null;
              }
          }
-     } for( int j=0; j<=ListePositions.length;j++) {
-         for( int i=0; i<=ListePositions.length;i++) {
-             Log.d("success", String.valueOf(M[i][j]));
-         }}
+     }
+
 
      LatLng[] Q= algoPrincipal();
      int i;
+     b=true;
      for(  i=0; i< sol.length-1;i++) {
          getRouteTiMarker(Q[i],Q[i+1]);
      } getRouteTiMarker(Q[i],Q[0]);
+
      for( i=0; i< sol.length;i++) {
          Log.d("finnnn", String.valueOf(Q[i]));
      }
  }
 
-
         }
-
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
-        map =googleMap;//nrmt boucle
-        map.addMarker(new MarkerOptions().position(B).title("destination"));
-        map.addMarker(new MarkerOptions().position(A).title("destination"));
-        map.addMarker(new MarkerOptions().position(C).title("destination"));
-        map.addMarker(new MarkerOptions().position(D).title("destination"));
+        map =googleMap;
+        int i=0;
+            map.moveCamera(CameraUpdateFactory.newLatLng(sol[0]));
+
+        while(i < sol.length-1){
+            map.addMarker(new MarkerOptions().position(sol[i])).setTitle("Arret numero: "+(i+1));
+           i++;
+        }
+
         }
 
         public LatLng[] generationIndividu()
@@ -283,7 +291,7 @@ okk.setOnClickListener(new View.OnClickListener() {
     public void onRoutingStart() {}
     private void getRouteTiMarker(LatLng ok,LatLng ol) {
         Routing routing = new Routing.Builder()
-                .key("AIzaSyA4BfbpwpFZaEqldokXZ72A01dte2BfJtA")
+                .key("AIzaSyClZLvJ8oWCxBw3YlHUMl3846QnJZC_X-4")
                 .travelMode(AbstractRouting.TravelMode.DRIVING)
                 .withListener(this)
                 .alternativeRoutes(false)

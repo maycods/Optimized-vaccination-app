@@ -23,7 +23,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Admin extends Activity {
-    private Button loginad ,signup;
+    private Button loginad ;
     private ImageButton retourad;
     private EditText mail , code ;
     private FirebaseAuth mAuth;
@@ -33,17 +33,10 @@ public class Admin extends Activity {
         setContentView(R.layout.loginadmin);
         retourad =(ImageButton) findViewById(R.id.retourAd);
         loginad =(Button) findViewById(R.id.loginad);
-        signup =(Button) findViewById(R.id.signupUU);
         mail=(EditText)findViewById(R.id.emailLU);
         code=(EditText)findViewById(R.id.codeLU);
         mAuth = FirebaseAuth.getInstance();
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Admin.this, SignupU.class));
 
-            }
-        });
         retourad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +86,7 @@ public class Admin extends Activity {
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             if(task.getResult().exists()){
                                                 Toast.makeText(Admin.this , "Vous ete connecte",Toast.LENGTH_LONG).show();
-                                                Intent i =new Intent(Admin.this,AdminPage.class);
+                                                Intent i =new Intent(Admin.this,adminmenu.class);
                                                 startActivity(i);
                                             }else{
                                                 Toast.makeText(getApplicationContext(),"ce n'est pas un compte d'un admin tgdeb",Toast.LENGTH_LONG).show();

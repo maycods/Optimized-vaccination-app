@@ -153,18 +153,6 @@
                 android:textColor="@color/white"
                 android:textSize="16dp" />
 
-            <Button
-                android:id="@+id/signupUU"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="70dp"
-                android:layout_marginTop="150dp"
-                android:background="#0011364D"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="vous n'avez pas de compte inscrivez vous "
-                android:textColor="@color/bleufoncé"
-                android:textSize="12dp"></Button>
-
         </RelativeLayout>
 
     </LinearLayout>
