@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -39,22 +40,22 @@ int i;
         switch (i){
             case -1:
                 holder.typev.setText("Spootnik");
-                holder.npick.setValue(hopital.getDosSp());
+                holder.npick.setText(String.valueOf(hopital.getDosSp()));
 
                 break;
             case 0:
                 holder.typev.setText("Astrazeneca");
-                holder.npick.setValue(hopital.getDosA());
+                holder.npick.setText(String.valueOf(hopital.getDosA()));
 
                 break;
             case 1:
                 holder.typev.setText("Sinovac");
-                holder.npick.setValue(hopital.getDosSi());
+                holder.npick.setText(String.valueOf(hopital.getDosSi()));
 
                 break;
             case 2:
                 holder.typev.setText("johnson");
-                holder.npick.setValue(hopital.getDosJ());
+                holder.npick.setText(String.valueOf(hopital.getDosJ()));
                 break;
         }
     }
@@ -67,7 +68,7 @@ int i;
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView hopital, typev;
-        NumberPicker npick;
+        EditText npick;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

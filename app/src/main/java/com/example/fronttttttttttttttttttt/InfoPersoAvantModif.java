@@ -18,6 +18,8 @@ import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.icu.util.LocaleData;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -35,6 +37,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -48,12 +51,20 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.WriterException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import androidmads.library.qrgenearator.QRGContents;
@@ -62,9 +73,9 @@ import androidmads.library.qrgenearator.QRGEncoder;
 public class InfoPersoAvantModif extends Activity {
 private Button modifier,generer;
 private ImageButton retourpp;
-private TextView nom,mail,tel,dose,type,rdv,motdp,age;
+private TextView nom,mail,tel,dose,type,rdv,motdp,age,Nom_prenom,position,date;
 Bitmap bmp ,bmpQR,USTHB ;
-TextView Nom_prenom;
+
 
 QRGEncoder qrgEncoder;
 int pageWidth =1200;
@@ -76,12 +87,13 @@ int pageWidth =1200;
         setContentView(R.layout.info_perso_avant_modif);
 
         Intent i =new Intent(InfoPersoAvantModif.this,Info_Perso.class);
-
+        position=findViewById(R.id.pos);
         DocumentReference reference;
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
         String currentId;
         nom=findViewById(R.id.nom);
+        date=findViewById(R.id.date);
         tel=findViewById(R.id.tel);
         mail=findViewById(R.id.mail);
         dose=findViewById(R.id.dos);
@@ -90,6 +102,29 @@ int pageWidth =1200;
         age=findViewById(R.id.age);
         USTHB=BitmapFactory.decodeResource(getResources(),R.drawable.usthblogo);
         currentId=user.getUid();
+
+        db.collection("Rendez-vous").whereEqualTo("IDP",currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        GeoPoint geoo = (GeoPoint) document.get("Localisation");
+                        Geocoder geocoder=new Geocoder(getApplicationContext());
+                        try {
+                          List<Address> a =  geocoder.getFromLocation(geoo.getLatitude(),geoo.getLongitude(),1);
+                            position.setText(a.get(0).getAddressLine(0));
+                            Timestamp timestamp = (Timestamp) document.get("dateR");
+                           date.setText(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                } else {
+                    Log.d("l", "Error getting documents: ", task.getException());
+                }
+            }
+        });
 
         reference=db.collection("user").document(currentId);
         reference.get()
@@ -124,7 +159,6 @@ int pageWidth =1200;
     Nom_prenom=(TextView) findViewById(R.id.nom);
 
     bmp = BitmapFactory.decodeResource(getResources(),R.drawable.pass);
-    //bmpQR = BitmapFactory.decodeResource(getResources(),R.drawable.qr);
 
         retourpp.setOnClickListener(new View.OnClickListener() {
             @Override

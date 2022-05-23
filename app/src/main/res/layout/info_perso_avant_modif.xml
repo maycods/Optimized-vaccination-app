@@ -87,7 +87,7 @@
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
             </LinearLayout>
             <LinearLayout
@@ -102,7 +102,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="15dp"
                     android:text="Age"
                     android:textColor="@color/bleufoncé">
 
@@ -115,15 +115,14 @@
                     android:background="@drawable/input"
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center_vertical"
-                    android:inputType="text"
+                    android:drawablePadding="15dp"
                     android:drawableLeft="@drawable/annivb"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-
                     android:textColor="@color/bleufoncé"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
             </LinearLayout>
 
@@ -159,7 +158,7 @@
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
             </LinearLayout>
 
@@ -183,21 +182,19 @@
 
                 <TextView
                     android:id="@+id/dos"
+                    android:drawablePadding="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center_vertical"
-                    android:hint="Saisiez le nombre de doses"
-                    android:inputType="text"
                     android:drawableLeft="@drawable/checkv"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
-
                     android:textColor="@color/bleufoncé"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
             </LinearLayout>
 
@@ -227,12 +224,13 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center_vertical"
                     android:maxLines="1"
+                    android:drawablePadding="15dp"
                     android:drawableLeft="@drawable/cor"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     />
 
             </LinearLayout>
@@ -269,10 +267,43 @@
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/h"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/d"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Lieu de Rendez-vous"
+                    android:textColor="@color/bleufoncé">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/pos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_gps"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleufoncé"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/m"
                 android:layout_width="match_parent"
@@ -305,7 +336,7 @@
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
             </LinearLayout>
 

@@ -26,10 +26,13 @@
             android:textColor="@color/black"
             ></TextView>
 
-        <NumberPicker
+        <EditText
+            android:textSize="15dp"
+            android:textColor="@color/black"
             android:id="@+id/hourpicker"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:inputType="number"
             android:layout_height="match_parent"
             />
 

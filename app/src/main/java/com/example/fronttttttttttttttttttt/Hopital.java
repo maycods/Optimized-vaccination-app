@@ -2,11 +2,15 @@ package com.example.fronttttttttttttttttttt;
 
 public class Hopital {
     private String NomH;
-private int dosSp,dosA,dosJ,dosSi;
+private int DoseSpootnik,DoseAstra,DoseJohnson,DoseSinovac;
 
 
-    public Hopital(String NomH) {
+    public Hopital(String NomH,int dsp,int da,int dj,int dsi) {
         this.NomH = NomH;
+        DoseSinovac= dsi;
+        this.DoseAstra= da;
+        this.DoseJohnson= dj;
+         this.DoseSpootnik=dsp;
     }
     public Hopital() {
 
@@ -17,18 +21,18 @@ private int dosSp,dosA,dosJ,dosSi;
     }
 
     public int getDosSp() {
-        return dosSp;
+        return DoseSpootnik;
     }
 
     public int getDosA() {
-        return dosA;
+        return DoseAstra;
     }
 
     public int getDosJ() {
-        return dosJ;
+        return DoseJohnson;
     }
 
     public int getDosSi() {
-        return dosSi;
+        return DoseSinovac;
     }
 }

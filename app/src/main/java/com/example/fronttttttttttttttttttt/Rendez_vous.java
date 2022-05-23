@@ -192,7 +192,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                         Timestamp timestamp = Timestamp.valueOf(date1);
                         RDV.put("dateR",timestamp);
 
-
                     }
 
 
@@ -256,7 +255,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                           @Override
                           public void onFailure(@NonNull Exception e) {
                               Log.w("Fail", "Error", e);
-
 
                           }
                       });
