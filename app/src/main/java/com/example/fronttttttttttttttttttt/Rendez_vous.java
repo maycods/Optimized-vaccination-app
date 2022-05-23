@@ -51,6 +51,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.google.protobuf.StringValue;
 import com.google.protobuf.Value;
 import com.nabinbhandari.android.permissions.PermissionHandler;
@@ -185,7 +186,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                         date1 = jourj +" "+"00:00:00";
                         Timestamp timestamp = Timestamp.valueOf(date1);
                         RDV.put("dateR",timestamp);
-                        p=true;
+                        //p=true;
 
                     }
 
@@ -221,7 +222,8 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
               }
 
               RDV.put("IDP",currentId);
-              RDV.put("Localisation",Position);
+              GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
+              RDV.put("Localisation",geo);
               RDV.put("confR",false);
               RDV.put("confV",false);
 
@@ -256,7 +258,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                           @Override
                           public void onFailure(@NonNull Exception e) {
                               Log.w("Fail", "Error", e);
-
 
                           }
                       });

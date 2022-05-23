@@ -26,6 +26,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,7 +48,7 @@ public class AdminPage2 extends Activity   {
     private ImageButton L,r;
     private HorizontalScrollView scrollView;
     public static  int SCROLL;
-    private NumberPicker npick;
+    private EditText npick;
     private Button cfrm;
     RecyclerView recyclerView,recyclerView2,recyclerView3,recyclerView4;
     FirebaseFirestore db;
@@ -58,7 +60,7 @@ public class AdminPage2 extends Activity   {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin2);
-        npick=findViewById(R.id.hourpicker);
+       npick=findViewById(R.id.hourpicker);
         cfrm=findViewById(R.id.inscrittt);
         scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
         getWindowManager().getDefaultDisplay().getMetrics(displayMetric);
@@ -99,13 +101,27 @@ public class AdminPage2 extends Activity   {
         cfrm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {//todo doses dans bdd
-                int a;
-                if(npick.getValue() == 0){
+                int a=2;
+               /*if(npick.getText() == "0"){
                   a=999;
                 }else{
-                a=npick.getValue()-1;}
-                Toast.makeText (getApplicationContext(), String.valueOf(a), Toast.LENGTH_LONG).show();
-            }
+                a=npick.getValue()-1;}*/
+
+               /* db.collection("Hopital").document().update("Type de Vaccin",a).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getApplicationContext(),"modifié avec success",Toast.LENGTH_LONG).show();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(),"une erreur a eu lieu",Toast.LENGTH_LONG).show();
+                    }
+                });*/
+                }
+
+
         });
         L.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,10 +155,10 @@ private void EventChangeListener(){
                             return;
                         }
                         for (DocumentChange dc : value.getDocumentChanges()) {
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
+                           // if (dc.getType() == DocumentChange.Type.ADDED) {
                                 list.add(dc.getDocument().toObject(Hopital.class));
 
-                            }
+                           // }
                             myAdapter.notifyDataSetChanged();
                         }
                     }
