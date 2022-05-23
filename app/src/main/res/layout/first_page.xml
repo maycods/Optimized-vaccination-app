@@ -114,7 +114,7 @@ android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:background="@color/none"
         android:textSize="13dp"
-        android:text="  admin"
+        android:text=" Utilisateur "
 
          android:textAlignment="gravity"
          android:gravity="center_vertical"

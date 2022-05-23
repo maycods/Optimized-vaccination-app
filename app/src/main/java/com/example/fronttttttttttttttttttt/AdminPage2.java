@@ -101,11 +101,11 @@ public class AdminPage2 extends Activity   {
         cfrm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int a;
-                if(npick.getValue() == 0){
-                  a=999;
-                }else{
-                a=npick.getValue()-1;}*/
+//                int a;
+//                if(npick.getValue() == 0){
+//                  a=999;
+//                }else{
+//                a=npick.getValue()-1;}
 
                /* db.collection("Hopital").document().update("Type de Vaccin",a).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

@@ -49,9 +49,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -132,6 +135,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 (this, R.layout.spinn,
                         listV);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        Log.d("useeeeeeer",String.valueOf(currentId));
 
         reference=db.collection("user").document(currentId);
         reference.get()
@@ -150,18 +154,14 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
                         }
                             else {
-                                Log.d("not null", String.valueOf(listV.indexOf(choixV)));
+                                V.setSelection(listV.indexOf(typeV));
                                 V.setEnabled(false);
                                 spinner.setAdapter(adapter);
                                 V.setBackgroundColor(0x00000000);
                                 V.setBackgroundResource(R.drawable.bouton2);
-                                V.setSelection(listV.indexOf(typeV));
+
                                 RDV.put("Type de vaccin", typeV);
                             }
-
-
-
-
                         }}});
 
 //Date
@@ -224,40 +224,51 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                   Toast.makeText(getApplicationContext(), "inserer une date correcte", Toast.LENGTH_LONG).show();
                   return;
               }
+              db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                  @Override
+                  public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                      for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
+                      {
+                          if(documentChange.getDocument().getId().isEmpty()){
+                              RDV.put("IDP",currentId);
+                              GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
+                              RDV.put("Localisation",geo);
+                              RDV.put("confR",false);
+                              RDV.put("confV",false);
 
-              RDV.put("IDP",currentId);
-              GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
-              RDV.put("Localisation",geo);
-              RDV.put("confR",false);
-              RDV.put("confV",false);
+                              db.collection("Rendez-vous").document()
+                                      .set(RDV)
+                                      .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                          @Override
+                                          public void onSuccess(Void aVoid) {
+                                              Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
+                                                      Toast.LENGTH_SHORT).show();
+                                              mSearchText.setFocusable(false);
+                                              V.setEnabled(false);
+                                              spinner.setAdapter(adapter);
+                                              V.setBackgroundColor(0x00000000);
+                                              V.setBackgroundResource(R.drawable.bouton2);
+                                              V.setOnItemSelectedListener(Rendez_vous.this);
+                                              V.setSelection(listV.indexOf(choixV));
+                                              calenderEvent.requestFocus();
 
-              db.collection("Rendez-vous").document()
-                      .set(RDV)
-                      .addOnSuccessListener(new OnSuccessListener<Void>() {
-                          @Override
-                          public void onSuccess(Void aVoid) {
-                              Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
+                                          }
+                                      })
+                                      .addOnFailureListener(new OnFailureListener() {
+                                          @Override
+                                          public void onFailure(@NonNull Exception e) {
+                                              Log.w("Fail", "Error", e);
+
+                                          }
+                                      });
+                          }
+                          else {
+                              Toast.makeText(getApplicationContext(), "le rendez-vous  deja a ete prit ",
                                       Toast.LENGTH_SHORT).show();
-                              mSearchText.setFocusable(false);
-                              V.setEnabled(false);
-                              spinner.setAdapter(adapter);
-                              V.setBackgroundColor(0x00000000);
-                              V.setBackgroundResource(R.drawable.bouton2);
-                              V.setOnItemSelectedListener(Rendez_vous.this);
-                              V.setSelection(listV.indexOf(choixV));
-                              calenderEvent.requestFocus();
-                              //db.collection("user").document(currentId).update("RDV",);
-
-
                           }
-                      })
-                      .addOnFailureListener(new OnFailureListener() {
-                          @Override
-                          public void onFailure(@NonNull Exception e) {
-                              Log.w("Fail", "Error", e);
+                      }}
+              });
 
-                          }
-                      });
               //j jours
               //Position pos
               //

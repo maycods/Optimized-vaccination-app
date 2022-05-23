@@ -27,16 +27,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.protobuf.Value;
 
 import java.util.HashMap;
 
 public class SignupA extends Activity {
-    private Button sinscrire ,verif;
+    private Button sinscrire ;
     private ImageButton retourS;
-    protected EditText nomprenom ,mail , tel  , code , ageN;
-    int iii=0;
+    protected EditText nomprenom ,mail , tel  , code , ageN,hop;
+
     private  FirebaseFirestore db;
     private FirebaseAuth mAuth;
     @Override
@@ -48,11 +53,12 @@ public class SignupA extends Activity {
         nomprenom=(EditText)findViewById(R.id.nomprenomsA);
         code=(EditText)findViewById(R.id.codeA);
         ageN=(EditText)findViewById(R.id.ageA);
+        hop=(EditText)findViewById(R.id.hopA);
         sinscrire =(Button) findViewById(R.id.sinscrireA);
         retourS =(ImageButton) findViewById(R.id.retourS1);
         mAuth = FirebaseAuth.getInstance();
         db=  FirebaseFirestore.getInstance();
-        verif=findViewById(R.id.verif);
+
 
 
 
@@ -65,10 +71,15 @@ public class SignupA extends Activity {
                 String email= mail.getText().toString().trim();
                 String tell= tel.getText().toString().trim();
                 String codeA= code.getText().toString().trim();
-  Log.d("email",String.valueOf(email));
+                String NH = hop.getText().toString().trim();
                 if(nompre.isEmpty()){
                     nomprenom.setError("ce champ est obligatoire");
                     nomprenom.requestFocus();
+                    return;
+                }
+                if(NH.isEmpty()){
+                    hop.setError("ce champ est obligatoire");
+                    hop.requestFocus();
                     return;
                 }
                 if(Age.isEmpty()){
@@ -109,78 +120,70 @@ public class SignupA extends Activity {
                     code.requestFocus();
                     return;
                 }
-                mAuth.createUserWithEmailAndPassword(email,codeA).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                db.collection("Hopital").whereEqualTo("NomH",NH).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
+                            String H = documentChange.getDocument().getId();
+                            if(H.isEmpty()){
+                                hop.setError("Inserer une adresse valide");
+                                hop.requestFocus();
+                                return;
+                            }
+                            else {
+                                mAuth.createUserWithEmailAndPassword(email,codeA).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if(task.isSuccessful()){
-                            FirebaseUser m = mAuth.getCurrentUser();
+                                        if(task.isSuccessful()){
+                                            HashMap<String, Object> AM = new HashMap<String, Object>();
+                                            AM.put("Nom et Prenom", nomprenom.getText().toString().trim());
+                                            AM.put("Email", mail.getText().toString().trim());
+                                            AM.put("Mot de passe", code.getText().toString().trim());
+                                            AM.put("Numero de Telephone", tel.getText().toString().trim());
+                                            AM.put("Age", ageN.getText().toString().trim());
+                                            AM.put("Hopital", hop.getText().toString().trim());
+                                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                            db.collection("Ambulancier").document(mAuth.getUid())
+                                                    .set(AM)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(getApplicationContext(), "le compte a été crée ",
+                                                                    Toast.LENGTH_SHORT).show();
+                                                            startActivity(new Intent(SignupA.this,adminmenu.class));
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Log.w("Fail", "Error", e);
 
-                            m.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(view.getContext(), "l'email de confirmation a ete envoyé", Toast.LENGTH_LONG).show();
 
-                                        sinscrire.setVisibility(View.GONE);
-                                        verif.setVisibility(View.VISIBLE); }
-                                }
-                            });}
-                        else { Toast.makeText(getApplicationContext(),"vous avez deja creer un compte avec cette adresse email",Toast.LENGTH_LONG).show(); }
-                    }
+                                                        }
+                                                    });
+                                        }
+                                        else { Toast.makeText(getApplicationContext(),"vous avez deja creer un compte avec cette adresse email",Toast.LENGTH_LONG).show(); }
+                                    }
 
-                });
+                                });
+                            }
+
+                        }
+                    }});
+
+
 
             }
         });
-        verif.setOnClickListener(new  View.OnClickListener() {
+
+
+        retourS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(iii==0){ Toast.makeText(view.getContext(), "appuyer une 2eme fois pour confirmer que vous avez bien appuyé sur le lien l'email", Toast.LENGTH_LONG).show();mAuth.getCurrentUser().reload();iii++;}
-                if(iii==1){
-                    mAuth.getCurrentUser().reload();
-                    if(mAuth.getCurrentUser().isEmailVerified()){
-
-                        HashMap<String, Object> user = new HashMap<String, Object>();
-                        user.put("Nom et Prenom", nomprenom.getText().toString().trim());
-                        user.put("Email", mail.getText().toString().trim());
-                        user.put("Mot de passe", code.getText().toString().trim());
-                        user.put("Numero de Telephone", tel.getText().toString().trim());
-                        user.put("Age", ageN.getText().toString().trim());
-                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        db.collection("Ambulancier").document(mAuth.getUid())
-                                .set(user)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(getApplicationContext(), "le compte a été crée ",
-                                                Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(SignupA.this,Itineraire.class));
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w("Fail", "Error", e);
-
-
-                                    }
-                                });
-
-                    }else{
-                        Toast.makeText(getApplicationContext(), "Non vous navez pas verifié l email", Toast.LENGTH_LONG).show();
-                    }
-                }}
-            });
-
-
-
-//        retourS.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//             //   startActivity(new Intent(SignUp.this, MainActivity.class));
-//            }
-//        });
+              startActivity(new Intent(SignupA.this, adminmenu.class));
+            }
+        });
     }}
 
 

@@ -127,7 +127,7 @@
             android:drawablePadding="15dp"
             android:textColorHint="@color/HINT"
             android:layout_marginBottom="12dp"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:minHeight="48dp"
             android:paddingLeft="20dp"
@@ -152,19 +152,6 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
-
-            <Button
-                android:id="@+id/signupAA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="70dp"
-                android:layout_marginTop="150dp"
-                android:background="#0011364D"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="vous n'avez pas de compte inscrivez vous "
-                android:textColor="@color/bleufoncé"
-                android:textSize="12dp"></Button>
-
         </RelativeLayout>
 
     </LinearLayout>

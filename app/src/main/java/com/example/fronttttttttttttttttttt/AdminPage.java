@@ -155,11 +155,11 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
     private void EventChangeListener(){
 
 
-        LocalDate aujourhui = LocalDate.now().minusDays(1);
+        LocalDate aujourhui = LocalDate.now().plusDays(1);
         String date1 = aujourhui +" "+"00:00:00";
         Timestamp timestamp = Timestamp.valueOf(date1);
-        Log.d("loc",String.valueOf(timestamp));
-            db.collection("Rendez-vous").whereEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        Log.d("loccccc",String.valueOf(timestamp));
+            db.collection("Rendez-vous").whereEqualTo("dateR",timestamp).whereEqualTo("confR",true).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
@@ -184,7 +184,6 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                     String IDR =  documentChange.getDocument().getId();
                     RDVV A = new RDVV(IDR,typeV,address);
                     RDV.add(A);
-
                     myAdapter.notifyDataSetChanged();
 
 
