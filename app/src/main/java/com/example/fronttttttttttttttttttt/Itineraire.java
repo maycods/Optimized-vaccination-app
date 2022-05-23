@@ -37,7 +37,9 @@ import com.nabinbhandari.android.permissions.Permissions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Itineraire extends FragmentActivity {//TODO AFFICHER NOMBRE DE DOSES
+public class Itineraire extends FragmentActivity {
+    //TODO AFFICHER NOMBRE DE DOSES
+
     private Button annuler,itineraire;
     GoogleMap map;
 //    private List<Polyline> polylines;

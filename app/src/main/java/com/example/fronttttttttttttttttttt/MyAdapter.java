@@ -22,6 +22,7 @@ int i;
         this.context = context;
         this.list = list;
         this.i=i;
+
     }
 
     @NonNull

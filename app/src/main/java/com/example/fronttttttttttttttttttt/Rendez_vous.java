@@ -48,9 +48,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.protobuf.StringValue;
 import com.google.protobuf.Value;
 import com.nabinbhandari.android.permissions.PermissionHandler;
@@ -145,15 +149,18 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                 V.setOnItemSelectedListener(Rendez_vous.this);
 
                         }
-                            else{
-                                Log.d("not null",String.valueOf(listV.indexOf(choixV)));
+                            else {
+                                Log.d("not null", String.valueOf(listV.indexOf(choixV)));
                                 V.setEnabled(false);
                                 spinner.setAdapter(adapter);
                                 V.setBackgroundColor(0x00000000);
                                 V.setBackgroundResource(R.drawable.bouton2);
                                 V.setSelection(listV.indexOf(typeV));
-
+                                RDV.put("Type de vaccin", typeV);
                             }
+
+
+
 
                         }}});
 
@@ -176,7 +183,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                     }
                     LocalDate  j = LocalDate.parse(jourj);
 
-                    Toast.makeText(getApplicationContext(), String.valueOf(j), Toast.LENGTH_LONG).show();
 
                     if(aujourhui.isAfter(j) || aujourhui.isEqual(j)){
                         Toast.makeText(getApplicationContext(), "vous pouvez pas prendre un rendez-vous pour aujourd hui ou avant", Toast.LENGTH_LONG).show();
@@ -185,7 +191,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                         date1 = jourj +" "+"00:00:00";
                         Timestamp timestamp = Timestamp.valueOf(date1);
                         RDV.put("dateR",timestamp);
-                        p=true;
+
 
                     }
 
@@ -221,7 +227,8 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
               }
 
               RDV.put("IDP",currentId);
-              RDV.put("Localisation",Position);
+              GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
+              RDV.put("Localisation",geo);
               RDV.put("confR",false);
               RDV.put("confV",false);
 
@@ -239,16 +246,9 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                               V.setBackgroundResource(R.drawable.bouton2);
                               V.setOnItemSelectedListener(Rendez_vous.this);
                               V.setSelection(listV.indexOf(choixV));
-                              calenderEvent.requestFocus();                              comfirmer.setBackground(ContextCompat.getDrawable(Rendez_vous.this, R.drawable.bouton2));
-                              comfirmer.setTextColor(Color.parseColor("#11364D"));
-                              comfirmer.setText("prendre un autre rendez-vous");
-                              comfirmer.setOnClickListener(new View.OnClickListener() {
-                                  @Override
-                                  public void onClick(View v) {
-                                      startActivity(new Intent(Rendez_vous.this,Rendez_vous.class));
+                              calenderEvent.requestFocus();
+                              //db.collection("user").document(currentId).update("RDV",);
 
-                                  }
-                              });
 
                           }
                       })
@@ -269,13 +269,15 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
    }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Log.d("spner","ici");
-        Spinner Spinner =(Spinner) adapterView;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
+        String currentId=user.getUid();        Spinner Spinner =(Spinner) adapterView;
         if(Spinner.getId() == R.id.spinner1) {
             choixV = (String) adapterView.getItemAtPosition(i);
             Log.d("je sui",String.valueOf(choixV));
             V.setSelection(listV.indexOf(choixV));
             RDV.put("Type de vaccin",choixV);
+            db.collection("user").document(currentId).update("Type de vaccin", choixV);
         }
     }
 

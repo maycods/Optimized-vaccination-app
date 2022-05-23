@@ -25,7 +25,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCINS
+//TODO AFFICHER DE LA BD LES VACCINS
+public class Menu extends AppCompatActivity {
     private Button profilee, prev, num, Rdv;
     private ImageButton  notif,L,r;
     private static final int REQUEST_CALL = 1;
@@ -47,8 +48,8 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
         Rdv = (Button) findViewById(R.id.rdv);
         num = (Button) findViewById(R.id.numvert);
         prev = (Button) findViewById(R.id.prevention);
-
-        notif.setOnClickListener(new View.OnClickListener() { //TODO NOTIFF
+        notif.setOnClickListener(new View.OnClickListener() {
+            //TODO NOTIFF
             @Override
             public void onClick(View view) {
                     Intent intent=  new Intent(Menu.this, NotifR.class);

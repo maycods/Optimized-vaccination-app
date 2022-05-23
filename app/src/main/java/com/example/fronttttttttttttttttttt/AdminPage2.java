@@ -42,6 +42,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
+// TODO: 22/05/2022 confirmer
 public class AdminPage2 extends Activity   {
     private ImageButton L,r;
     private HorizontalScrollView scrollView;
@@ -53,7 +54,6 @@ public class AdminPage2 extends Activity   {
     ArrayList<Hopital> list;
     MyAdapter myAdapter;
     DisplayMetrics displayMetric = new DisplayMetrics();
-    //TODO AFFICHER HOPITEAU INFO DE BDD
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +98,7 @@ public class AdminPage2 extends Activity   {
         EventChangeListener();
         cfrm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {//todo doses dans bdd
+            public void onClick(View view) {
                 int a;
                 if(npick.getValue() == 0){
                   a=999;
