@@ -103,12 +103,6 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
 
         });
 
-//if(){
-//
-//}
-
-
-
         profilee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
