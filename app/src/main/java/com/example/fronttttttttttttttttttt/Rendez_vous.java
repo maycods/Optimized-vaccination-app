@@ -135,7 +135,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 (this, R.layout.spinn,
                         listV);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        Log.d("useeeeeeer",String.valueOf(currentId));
 
         reference=db.collection("user").document(currentId);
         reference.get()

@@ -50,7 +50,7 @@ public class RDVV {
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
                 {
-                    String NOM = documentChange.getDocument().getData().get("Nom et Prenom").toString();
+                    String NOM = documentChange.getDocument().getId().toString();
                     listV.add(NOM);
                 }
             }

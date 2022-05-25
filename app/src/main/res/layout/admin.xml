@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
 
     <RelativeLayout
         android:layout_height="0dp"
@@ -35,138 +37,19 @@
             android:id="@+id/scrl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbarSize="00dp"
             android:layout_toStartOf="@+id/rght"
-            android:layout_toEndOf="@+id/gch">
+            android:layout_toEndOf="@+id/gch"
+            android:scrollbarSize="00dp">
 
             <LinearLayout
+                android:id="@+id/hopinf"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_toStartOf="@+id/rght"
                 android:layout_toEndOf="@+id/gch"
-                >
-                <LinearLayout
-                    android:id="@+id/hopinf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginRight="38dp"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="CHU Mustapha"
-                        android:textColor="@color/white"
-                        android:textSize="40dp"
-                        android:textStyle="bold"></TextView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="4 ambulanciers"
-                            android:paddingBottom="5dp"
-                            android:textColor="@color/white"
-                            android:textSize="17dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Spootnik: 105"
-                            android:textColor="@color/white"
-                            android:textSize="15dp"></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Astra : 42"
-                            android:textColor="@color/white"
-                            android:textSize="15dp"></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="johnson: 45"
-                            android:textColor="@color/white"
-                            android:textSize="15dp"></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="sinovac 40"
-                            android:textColor="@color/white"
-                            android:textSize="15dp"></TextView>
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginRight="38dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="CHU Mustapha"
-                        android:textColor="@color/white"
-                        android:textSize="40dp"
-                        android:textStyle="bold"></TextView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="25 doses"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="4 ambulances"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="ID: EA12X"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                android:orientation="horizontal">
 
             </LinearLayout>
-
 
         </HorizontalScrollView>
 
@@ -174,8 +57,7 @@
             android:id="@+id/rght"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-           >
+            android:layout_alignParentRight="true">
 
             <ImageButton
                 android:id="@+id/droite"

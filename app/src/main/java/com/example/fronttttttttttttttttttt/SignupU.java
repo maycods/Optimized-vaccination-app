@@ -139,7 +139,7 @@ public class SignupU extends Activity {
 
                                         }
                                     });
-                          }
+                        }
                         else { Toast.makeText(getApplicationContext(),"vous avez deja creer un compte avec cette adresse email",Toast.LENGTH_LONG).show(); }
                     }
 
@@ -157,7 +157,6 @@ public class SignupU extends Activity {
             }
         });
     }}
-
 
 
 

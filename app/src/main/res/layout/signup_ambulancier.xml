@@ -13,42 +13,42 @@
         android:layout_height="match_parent"
         android:id="@+id/cst">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/flogin" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/flogin" />
 
-    <ImageButton
-        android:id="@+id/retourS1"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/ic_outline_circle_24"
-        android:src="@drawable/ic_baseline_navigate_before_24"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="20dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.92"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1">
-                <LinearLayout
+        <ImageButton
+            android:id="@+id/retourS1"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/ic_outline_circle_24"
+            android:src="@drawable/ic_baseline_navigate_before_24"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.92"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1">
+            <LinearLayout
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/retourS"
-                    >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/retourS"
+                >
                 <ImageView
                     android:layout_marginLeft="20dp"
                     android:layout_width="50dp"
@@ -66,240 +66,240 @@
                     android:textColor="@color/bleufoncé"
                     android:textSize="30dp"
                     android:textStyle="bold" />
-                </LinearLayout>
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="20dp"
-            android:text="Veuillez remplir le informations ci-dessous"
-            android:textColor="@color/bleufoncé"
-            android:alpha="0.54"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Nom Prenom"
-                        android:alpha="0.7"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/bleufoncé"
-                        android:textSize="15dp"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="20dp"
-                        />
-
-                    <EditText
-                        android:textColorHint="@color/HINT"
-                        android:id="@+id/nomprenomsA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:background="@drawable/input"
-                        android:hint="Saisisez son Nom et prenom"
-                        android:drawableLeft="@drawable/ic_outline_person_24"
-                        android:drawablePadding="10dp"
-                        android:inputType="textPersonName"
-                        android:maxLines="1"
-                        android:shadowColor="@color/bleufoncé"
-                        android:textColor="@color/bleufoncé"
-                        android:minHeight="48dp"
-                        android:paddingLeft="20dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="15dp" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Age"
-                        android:alpha="0.7"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/bleufoncé"
-                        android:textSize="15dp"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="20dp"
-                        />
-
-                    <EditText
-                        android:textColorHint="@color/HINT"
-                        android:id="@+id/ageA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:background="@drawable/input"
-                        android:hint="Saisisez son Age "
-                        android:drawableLeft="@drawable/anniv"
-                        android:drawablePadding="10dp"
-                        android:inputType="datetime"
-                        android:maxLines="1"
-                        android:shadowColor="@color/bleufoncé"
-                        android:textColor="@color/bleufoncé"
-                        android:minHeight="48dp"
-                        android:paddingLeft="20dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="15dp" />
-                    <TextView
-                        android:alpha="0.7"
-                        android:paddingBottom="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="3dp"
-                        android:text="Adresse mail"
-                        android:textColor="@color/bleufoncé"
-                        android:textSize="15dp"
-                        android:paddingLeft="20dp"
-                        android:fontFamily="sans-serif-medium"
-                        />
-
-                    <EditText
-                        android:textColorHint="@color/HINT"
-                        android:id="@+id/mailsA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:background="@drawable/input"
-                        android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
-                        android:hint="Saisiez son adresse mail"
-                        android:fontFamily="@font/poppins_light"
-                        android:inputType="textEmailAddress"
-                        android:textColor="@color/bleufoncé"
-                        android:maxLines="1"
-                        android:minHeight="48dp"
-                        android:paddingLeft="15dp"
-                        android:drawablePadding="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:alpha="0.7"
-                        android:paddingBottom="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="3dp"
-                        android:text="Numero de telephone "
-                        android:textColor="@color/bleufoncé"
-                        android:textSize="15dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:paddingLeft="20dp"
-                        />
-                    <EditText
-                        android:textColorHint="@color/HINT"
-                        android:id="@+id/telsA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:background="@drawable/input"
-                        android:drawableLeft="@drawable/phoneicon"
-                        android:hint="Saisiez son numero de telephone"
-                        android:fontFamily="@font/poppins_light"
-                        android:inputType="number"
-                        android:textColor="@color/bleufoncé"
-                        android:maxLines="1"
-                        android:minHeight="48dp"
-                        android:paddingLeft="15dp"
-                        android:drawablePadding="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:paddingBottom="5dp"
-                        android:alpha="0.7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="3dp"
-                        android:text="Code"
-                        android:textColor="@color/bleufoncé"
-                        android:textSize="15dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:paddingLeft="20dp"
-                        />
-
-                    <EditText
-                        android:textColorHint="@color/HINT"
-                        android:id="@+id/codeA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:background="@drawable/input"
-                        android:drawableLeft="@drawable/mdp"
-                        android:hint="Saisiez son code "
-                        android:fontFamily="@font/poppins_light"
-                        android:inputType="textPassword"
-                        android:textColor="@color/bleufoncé"
-                        android:maxLines="1"
-                        android:minHeight="48dp"
-                        android:paddingLeft="15dp"
-                        android:drawablePadding="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="15dp" />
-        <TextView
-            android:paddingBottom="5dp"
-            android:alpha="0.7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="3dp"
-            android:text="Hopital"
-            android:textColor="@color/bleufoncé"
-            android:textSize="15dp"
-            android:fontFamily="sans-serif-medium"
-            android:paddingLeft="20dp"
-            />
-
-        <EditText
-            android:textColorHint="@color/HINT"
-            android:id="@+id/hopA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/input"
-            android:drawableLeft="@drawable/hop"
-            android:hint="Saisir l'hôpital dans le quelle il travaille "
-            android:fontFamily="@font/poppins_light"
-            android:inputType="text"
-            android:textColor="@color/bleufoncé"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            android:drawablePadding="15dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="15dp" />
-
-
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            >
-
-            <Button
-                android:id="@+id/sinscrireA"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="70dp"
-                android:layout_marginVertical="20dp"
-                android:background="@drawable/bouton"
-                android:fontFamily="@font/poppins_semibold"
-                android:gravity="center"
-                android:padding="15dp"
-                android:text="s'inscrire"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
-        </RelativeLayout>
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:text="Veuillez remplir le informations ci-dessous"
+                android:textColor="@color/bleufoncé"
+                android:alpha="0.54"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Nom Prenom"
+                android:alpha="0.7"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/bleufoncé"
+                android:textSize="15dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                />
+
+            <EditText
+                android:textColorHint="@color/HINT"
+                android:id="@+id/nomprenomsA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/input"
+                android:hint="Saisisez son Nom et prenom"
+                android:drawableLeft="@drawable/ic_outline_person_24"
+                android:drawablePadding="10dp"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:shadowColor="@color/bleufoncé"
+                android:textColor="@color/bleufoncé"
+                android:minHeight="48dp"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_marginBottom="8dp"
+                android:textSize="15dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Age"
+                android:alpha="0.7"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/bleufoncé"
+                android:textSize="15dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                />
+
+            <EditText
+                android:textColorHint="@color/HINT"
+                android:id="@+id/ageA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/input"
+                android:hint="Saisisez son Age "
+                android:drawableLeft="@drawable/anniv"
+                android:drawablePadding="10dp"
+                android:inputType="datetime"
+                android:maxLines="1"
+                android:shadowColor="@color/bleufoncé"
+                android:textColor="@color/bleufoncé"
+                android:minHeight="48dp"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_marginBottom="10dp"
+                android:textSize="15dp" />
+            <TextView
+                android:alpha="0.7"
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="3dp"
+                android:text="Adresse mail"
+                android:textColor="@color/bleufoncé"
+                android:textSize="15dp"
+                android:paddingLeft="20dp"
+                android:fontFamily="sans-serif-medium"
+                />
+
+            <EditText
+                android:textColorHint="@color/HINT"
+                android:id="@+id/mailsA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/input"
+                android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
+                android:hint="Saisiez son adresse mail"
+                android:fontFamily="@font/poppins_light"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/bleufoncé"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:paddingLeft="15dp"
+                android:drawablePadding="15dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="15dp" />
+
+            <TextView
+                android:alpha="0.7"
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="3dp"
+                android:text="Numero de telephone "
+                android:textColor="@color/bleufoncé"
+                android:textSize="15dp"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="20dp"
+                />
+            <EditText
+                android:textColorHint="@color/HINT"
+                android:id="@+id/telsA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/input"
+                android:drawableLeft="@drawable/phoneicon"
+                android:hint="Saisiez son numero de telephone"
+                android:fontFamily="@font/poppins_light"
+                android:inputType="number"
+                android:textColor="@color/bleufoncé"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:paddingLeft="15dp"
+                android:drawablePadding="15dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="15dp" />
+
+            <TextView
+                android:paddingBottom="5dp"
+                android:alpha="0.7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="3dp"
+                android:text="Code"
+                android:textColor="@color/bleufoncé"
+                android:textSize="15dp"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="20dp"
+                />
+
+            <EditText
+                android:textColorHint="@color/HINT"
+                android:id="@+id/codeA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/input"
+                android:drawableLeft="@drawable/mdp"
+                android:hint="Saisiez son code "
+                android:fontFamily="@font/poppins_light"
+                android:inputType="textPassword"
+                android:textColor="@color/bleufoncé"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:paddingLeft="15dp"
+                android:drawablePadding="15dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="15dp" />
+            <TextView
+                android:paddingBottom="5dp"
+                android:alpha="0.7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="3dp"
+                android:text="Hopital"
+                android:textColor="@color/bleufoncé"
+                android:textSize="15dp"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="20dp"
+                />
+
+            <EditText
+                android:textColorHint="@color/HINT"
+                android:id="@+id/hopA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/input"
+                android:drawableLeft="@drawable/hop"
+                android:hint="Saisir l'hôpital dans le quelle il travaille "
+                android:fontFamily="@font/poppins_light"
+                android:inputType="text"
+                android:textColor="@color/bleufoncé"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:paddingLeft="15dp"
+                android:drawablePadding="15dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="15dp" />
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+                <Button
+                    android:id="@+id/sinscrireA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="70dp"
+                    android:layout_marginVertical="20dp"
+                    android:background="@drawable/bouton"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="s'inscrire"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+        </LinearLayout>
 
 
 

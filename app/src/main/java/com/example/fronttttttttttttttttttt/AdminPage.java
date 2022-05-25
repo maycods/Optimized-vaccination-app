@@ -3,6 +3,10 @@ package com.example.fronttttttttttttttttttt;
 import static android.service.controls.ControlsProviderService.TAG;
 import static com.example.fronttttttttttttttttttt.Menu.SCROLL_DELTA;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import static java.lang.Integer.parseInt;
 
 import android.annotation.SuppressLint;
@@ -59,12 +63,12 @@ import java.util.List;
 
 public class AdminPage extends Activity  implements AdapterView.OnItemSelectedListener {
     private ImageButton L,r;
+    private LinearLayout top;
     private HorizontalScrollView scrollView;
     public static  int SCROLL;
     private Button cfrm;
-    private ArrayAdapter<CharSequence> adapter;
     private Spinner A;
-    RecyclerView recyclerView,recyclerView1;
+    RecyclerView recyclerView;
     AdapterR myAdapter;
     FirebaseFirestore db;
     GeoPoint geo;
@@ -74,6 +78,8 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
     String ambulance=null,Ambulance;
     DisplayMetrics displayMetric = new DisplayMetrics();
     private ArrayList<String> listV=new ArrayList<String>();
+    RelativeLayout dv;
+
 
     //TODO AFFICHER HOPITEAU INFO DE BDD
 
@@ -83,11 +89,13 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin);
         cfrm=findViewById(R.id.inscritt);
+        dv =(RelativeLayout)findViewById(R.id.divmenu) ;
         scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
         getWindowManager().getDefaultDisplay().getMetrics(displayMetric);
         SCROLL = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, displayMetric.widthPixels/2-50 , getResources().getDisplayMetrics());
         r = (ImageButton) findViewById(R.id.droite);
         L = (ImageButton) findViewById(R.id.gauche);
+        top =(LinearLayout) findViewById(R.id.hopinf);
 
 
         recyclerView=findViewById(R.id.recy0);
@@ -95,10 +103,93 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
+
         db = FirebaseFirestore.getInstance();
         RDV = new ArrayList<RDVV>();
         myAdapter=new AdapterR(AdminPage.this ,RDV);
         recyclerView.setAdapter(myAdapter);
+        db.collection("Hopital").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
+                {
+                    //L1
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT);
+                    LinearLayout lt = new LinearLayout(getApplicationContext());
+                    lt.setPadding(38,60,0,0);
+                    if (documentChange.getDocument().get("NomH").toString().equals("Kouba")){
+                        lt.setPadding(0,60,140,0);
+                    }
+                    lt.setLayoutParams(params);
+                    lt.setOrientation(LinearLayout.VERTICAL);
+                    //NomH
+                    TextView T = new TextView(getApplicationContext());
+                    T.setText(documentChange.getDocument().get("NomH").toString());
+                    LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                    params1.setMargins(0,0,25,0);
+                    T.setLayoutParams(params1);
+                    T.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.BOLD));
+                    T.setTextColor(Color.rgb(255,255,255));
+                    T.setTextSize(40);
+                    lt.addView(T);
+                    //L2
+                    LinearLayout lt2 = new LinearLayout(getApplicationContext());
+                    params.setMargins(5,0,10,0);
+                    lt2.setLayoutParams(params);
+                    lt2.setOrientation(LinearLayout.VERTICAL);
+
+                    TextView NBA = new TextView(getApplicationContext());
+                    NBA.setText("Ambulanceier : "+documentChange.getDocument().get("nbA"));
+                    NBA.setLayoutParams(params1);
+                    NBA.setPadding(0,10,0,15);
+                    NBA.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.BOLD));
+                    NBA.setTextColor(Color.rgb(255,255,255));
+                    NBA.setTextSize(17);
+                    lt2.addView(NBA);
+
+                    TextView Sp = new TextView(getApplicationContext());
+                    Sp.setText("sputnik : "+documentChange.getDocument().get("DoseSpootnik").toString());
+                    Sp.setLayoutParams(params1);
+                    Sp.setPadding(0,0,0,5);
+                    Sp.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+                    Sp.setTextColor(Color.rgb(255,255,255));
+                    Sp.setTextSize(15);
+                    lt2.addView(Sp);
+
+                    TextView AS = new TextView(getApplicationContext());
+                    AS.setText("AstraZeneka : "+documentChange.getDocument().get("DoseAstra").toString());
+                    AS.setLayoutParams(params1);
+                    AS.setPadding(0,0,0,5);
+                    AS.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+                    AS.setTextColor(Color.rgb(255,255,255));
+                    AS.setTextSize(15);
+                    lt2.addView(AS);
+
+                    TextView JS = new TextView(getApplicationContext());
+                    JS.setText("Johnson & Johnson : "+documentChange.getDocument().get("DoseAstra").toString());
+                    JS.setLayoutParams(params1);
+                    JS.setPadding(0,0,0,5);
+                    JS.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+                    JS.setTextColor(Color.rgb(255,255,255));
+                    JS.setTextSize(15);
+                    lt2.addView(JS);
+
+                    TextView SV = new TextView(getApplicationContext());
+                    SV.setText("Astrazenica : "+documentChange.getDocument().get("DoseAstra").toString());
+                    SV.setLayoutParams(params1);
+                    SV.setPadding(0,0,0,5);
+                    SV.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
+                    SV.setTextColor(Color.rgb(255,255,255));
+                    SV.setTextSize(15);
+                    lt2.addView(SV);
+
+
+                    lt.addView(lt2);
+                    top.addView(lt);
+                }
+            }
+        });
+
 
 
         EventChangeListener();
@@ -182,6 +273,7 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                     String IDP =  documentChange.getDocument().getData().get("IDP").toString();
                     String typeV =  documentChange.getDocument().getData().get("Type de vaccin").toString();
                     String IDR =  documentChange.getDocument().getId();
+                    Log.d("adddddd",address);
                     RDVV A = new RDVV(IDR,typeV,address);
                     RDV.add(A);
                     myAdapter.notifyDataSetChanged();

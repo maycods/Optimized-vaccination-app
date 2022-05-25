@@ -125,6 +125,9 @@ public class SignupA extends Activity {
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                         for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
                             String H = documentChange.getDocument().getId();
+                            String nom = documentChange.getDocument().get("NomH").toString();
+                            String nb = documentChange.getDocument().get("nbA").toString();
+                            Log.d("jjj",nom+nb);
                             if(H.isEmpty()){
                                 hop.setError("Inserer une adresse valide");
                                 hop.requestFocus();
@@ -143,8 +146,9 @@ public class SignupA extends Activity {
                                             AM.put("Numero de Telephone", tel.getText().toString().trim());
                                             AM.put("Age", ageN.getText().toString().trim());
                                             AM.put("Hopital", hop.getText().toString().trim());
+                                            db.collection("Hopital").document(H).update("nbA",Integer.parseInt(nb)+1);
                                             FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                            db.collection("Ambulancier").document(mAuth.getUid())
+                                            db.collection("Ambulancier").document(nom+nb)
                                                     .set(AM)
                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
@@ -181,11 +185,10 @@ public class SignupA extends Activity {
         retourS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              startActivity(new Intent(SignupA.this, adminmenu.class));
+                startActivity(new Intent(SignupA.this, adminmenu.class));
             }
         });
     }}
-
 
 
 
