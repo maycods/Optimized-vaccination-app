@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    tools:context=".MainActivity"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cst">
 
     <ImageView
         android:id="@+id/imageView"
@@ -94,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
-                        android:hint="Saisisez votre User Name"
+                        android:hint="Saisisez son Nom et prenom"
                         android:drawableLeft="@drawable/ic_outline_person_24"
                         android:drawablePadding="10dp"
                         android:inputType="textPersonName"
@@ -126,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
-                        android:hint="Saisisez votre Age "
+                        android:hint="Saisisez son Age "
                         android:drawableLeft="@drawable/anniv"
                         android:drawablePadding="10dp"
                         android:inputType="datetime"
@@ -160,7 +166,7 @@
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
                         android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
-                        android:hint="Saisiez votre et Nom prenom"
+                        android:hint="Saisiez son adresse mail"
                         android:fontFamily="@font/poppins_light"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/bleufoncé"
@@ -192,7 +198,7 @@
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
                         android:drawableLeft="@drawable/phoneicon"
-                        android:hint="Saisiez votre numero de telephone"
+                        android:hint="Saisiez son numero de telephone"
                         android:fontFamily="@font/poppins_light"
                         android:inputType="number"
                         android:textColor="@color/bleufoncé"
@@ -225,7 +231,7 @@
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
                         android:drawableLeft="@drawable/mdp"
-                        android:hint="Saisiez votre code "
+                        android:hint="Saisiez son code "
                         android:fontFamily="@font/poppins_light"
                         android:inputType="textPassword"
                         android:textColor="@color/bleufoncé"
@@ -235,14 +241,46 @@
                         android:drawablePadding="15dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="15dp" />
+        <TextView
+            android:paddingBottom="5dp"
+            android:alpha="0.7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="3dp"
+            android:text="Hopital"
+            android:textColor="@color/bleufoncé"
+            android:textSize="15dp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="20dp"
+            />
+
+        <EditText
+            android:textColorHint="@color/HINT"
+            android:id="@+id/hopA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/hop"
+            android:hint="Saisir l'hôpital dans le quelle il travaille "
+            android:fontFamily="@font/poppins_light"
+            android:inputType="text"
+            android:textColor="@color/bleufoncé"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:paddingLeft="15dp"
+            android:drawablePadding="15dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="15dp" />
+
 
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
+
             >
 
             <Button
@@ -250,7 +288,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="70dp"
-                android:layout_marginVertical="15dp"
+                android:layout_marginVertical="20dp"
                 android:background="@drawable/bouton"
                 android:fontFamily="@font/poppins_semibold"
                 android:gravity="center"
@@ -259,26 +297,12 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
-            <Button
-                android:id="@+id/verif"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="70dp"
-                android:background="@drawable/bouton2"
-                android:fontFamily="@font/poppins_semibold"
-                android:padding="15dp"
-                android:layout_marginVertical="15dp"
-                android:text="verified"
-                android:textAllCaps="false"
-                android:textColor="@color/bleufoncé"
-                android:textSize="16dp"
-                android:visibility="gone" />
-
-
         </RelativeLayout>
 
     </LinearLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

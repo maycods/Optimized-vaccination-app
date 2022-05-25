@@ -114,18 +114,32 @@ public class SignupU extends Activity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-                            FirebaseUser m = mAuth.getCurrentUser();
+                            HashMap<String, Object> UT = new HashMap<String, Object>();
+                            UT.put("Nom et Prenom", nomprenom.getText().toString().trim());
+                            UT.put("Email", mail.getText().toString().trim());
+                            UT.put("Mot de passe", code.getText().toString().trim());
+                            UT.put("Numero de Telephone", tel.getText().toString().trim());
+                            UT.put("Age", ageN.getText().toString().trim());
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            db.collection("Admin").document(mAuth.getUid())
+                                    .set(UT)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(getApplicationContext(), "le compte a été crée ",
+                                                    Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(SignupU.this,adminmenu.class));
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("Fail", "Error", e);
 
-                            m.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(view.getContext(), "l'email de confirmation a ete envoyé", Toast.LENGTH_LONG).show();
 
-                                        sinscrire.setVisibility(View.GONE);
-                                        verif.setVisibility(View.VISIBLE); }
-                                }
-                            });}
+                                        }
+                                    });
+                          }
                         else { Toast.makeText(getApplicationContext(),"vous avez deja creer un compte avec cette adresse email",Toast.LENGTH_LONG).show(); }
                     }
 
@@ -133,54 +147,15 @@ public class SignupU extends Activity {
 
             }
         });
-        verif.setOnClickListener(new  View.OnClickListener() {
+
+
+
+        retourS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(iii==0){ Toast.makeText(view.getContext(), "appuyer une 2eme fois pour confirmer que vous avez bien appuyé sur le lien l'email", Toast.LENGTH_LONG).show();mAuth.getCurrentUser().reload();iii++;}
-                if(iii==1){
-                    mAuth.getCurrentUser().reload();
-                    if(mAuth.getCurrentUser().isEmailVerified()){
-
-                        HashMap<String, Object> user = new HashMap<String, Object>();
-                        user.put("Nom et Prenom", nomprenom.getText().toString().trim());
-                        user.put("Email", mail.getText().toString().trim());
-                        user.put("Mot de passe", code.getText().toString().trim());
-                        user.put("Numero de Telephone", tel.getText().toString().trim());
-                        user.put("Age", ageN.getText().toString().trim());
-                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        db.collection("Admin").document(mAuth.getUid())
-                                .set(user)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(getApplicationContext(), "le compte a été crée ",
-                                                Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(SignupU.this,AdminPage.class));
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w("Fail", "Error", e);
-
-
-                                    }
-                                });
-
-                    }else{
-                        Toast.makeText(getApplicationContext(), "Non vous navez pas verifié l email", Toast.LENGTH_LONG).show();
-                    }
-                }}
+                startActivity(new Intent(SignupU.this, adminmenu.class));
+            }
         });
-
-
-
-//        retourS.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//             //   startActivity(new Intent(SignUp.this, MainActivity.class));
-//            }
-//        });
     }}
 
 
