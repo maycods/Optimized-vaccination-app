@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/input"
-                android:hint="Saisisez votre User Name"
+                android:hint="Saisir le nom et prenom"
                 android:drawableLeft="@drawable/ic_outline_person_24"
                 android:drawablePadding="10dp"
                 android:inputType="textPersonName"
@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Age"
+                android:text="Date de naissance"
                 android:alpha="0.7"
                 android:fontFamily="sans-serif-medium"
                 android:textColor="@color/bleufoncé"
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/input"
-                android:hint="Saisisez votre Age "
+                android:hint="Saisir la date de naissance "
                 android:drawableLeft="@drawable/anniv"
                 android:drawablePadding="10dp"
                 android:inputType="datetime"
@@ -165,7 +165,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/input"
                 android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
-                android:hint="Saisiez votre et Nom prenom"
+                android:hint="Saisir l'adresse mail"
                 android:fontFamily="@font/poppins_light"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/bleufoncé"
@@ -197,7 +197,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/input"
                 android:drawableLeft="@drawable/phoneicon"
-                android:hint="Saisiez votre numero de telephone"
+                android:hint="Saisir le numero de telephone"
                 android:fontFamily="@font/poppins_light"
                 android:inputType="number"
                 android:textColor="@color/bleufoncé"
@@ -233,7 +233,7 @@
                 android:drawableLeft="@drawable/mdp"
                 android:drawablePadding="15dp"
                 android:fontFamily="@font/poppins_light"
-                android:hint="Saisiez votre code "
+                android:hint="Saisir le code"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:minHeight="48dp"
@@ -244,39 +244,23 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_marginBottom="40dp"
                 android:layout_height="match_parent"
-
+                android:gravity="center"
                 >
-
                 <Button
                     android:id="@+id/sinscrireU"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="70dp"
-                    android:layout_marginVertical="20dp"
                     android:background="@drawable/bouton"
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center"
                     android:padding="15dp"
-                    android:text="S'inscrire"
+                    android:text="Submit"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
-                <Button
-                    android:id="@+id/verif"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="70dp"
-                    android:background="@drawable/bouton2"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="15dp"
-                    android:layout_marginVertical="20dp"
-                    android:text="verified"
-                    android:textAllCaps="false"
-                    android:textColor="@color/bleufoncé"
-                    android:textSize="16dp"
-                    android:visibility="gone" />
-
 
             </RelativeLayout>
 

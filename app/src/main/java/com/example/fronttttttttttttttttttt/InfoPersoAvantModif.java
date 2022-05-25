@@ -76,7 +76,6 @@ private ImageButton retourpp;
 private TextView nom,mail,tel,dose,type,rdv,motdp,age,Nom_prenom,position,date;
 Bitmap bmp ,bmpQR,USTHB ;
 
-
 QRGEncoder qrgEncoder;
 int pageWidth =1200;
 

@@ -1,11 +1,11 @@
 package com.example.fronttttttttttttttttttt;
 
 public class Hopital {
-    private String NomH;
-private int DoseSpootnik,DoseAstra,DoseJohnson,DoseSinovac;
+    public String NomH;
+public long DoseSpootnik,DoseAstra,DoseJohnson,DoseSinovac;
 
 
-    public Hopital(String NomH,int dsp,int da,int dj,int dsi) {
+    public Hopital(String NomH,long dsp,long da,long dj,long dsi) {
         this.NomH = NomH;
         DoseSinovac= dsi;
         this.DoseAstra= da;
@@ -13,26 +13,7 @@ private int DoseSpootnik,DoseAstra,DoseJohnson,DoseSinovac;
          this.DoseSpootnik=dsp;
     }
     public Hopital() {
-
     }
 
-    public String getNomH() {
-        return NomH;
-    }
 
-    public int getDosSp() {
-        return DoseSpootnik;
-    }
-
-    public int getDosA() {
-        return DoseAstra;
-    }
-
-    public int getDosJ() {
-        return DoseJohnson;
-    }
-
-    public int getDosSi() {
-        return DoseSinovac;
-    }
 }

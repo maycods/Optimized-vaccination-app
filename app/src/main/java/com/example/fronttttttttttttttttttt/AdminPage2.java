@@ -2,6 +2,7 @@ package com.example.fronttttttttttttttttttt;
 
 import static com.example.fronttttttttttttttttttt.Menu.SCROLL_DELTA;
 
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Paint;
@@ -29,6 +30,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,8 +52,6 @@ public class AdminPage2 extends Activity   {
     private ImageButton L,r;
     private HorizontalScrollView scrollView;
     public static  int SCROLL;
-    private EditText npick;
-    private Button cfrm;
     RecyclerView recyclerView,recyclerView2,recyclerView3,recyclerView4;
     FirebaseFirestore db;
     ArrayList<Hopital> list;
@@ -60,8 +61,6 @@ public class AdminPage2 extends Activity   {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin2);
-       npick=findViewById(R.id.hourpicker);
-        cfrm=findViewById(R.id.inscrittt);
         scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
         getWindowManager().getDefaultDisplay().getMetrics(displayMetric);
         SCROLL = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, displayMetric.widthPixels/2-50 , getResources().getDisplayMetrics());
@@ -85,44 +84,20 @@ public class AdminPage2 extends Activity   {
 
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<Hopital>();
-        myAdapter=new MyAdapter(AdminPage2.this ,list,-1);
+        myAdapter=new MyAdapter(AdminPage2.this ,list,-1,db);
 
         recyclerView.setAdapter(myAdapter);
-        myAdapter=new MyAdapter(AdminPage2.this ,list,0);
+        myAdapter=new MyAdapter(AdminPage2.this ,list,7,db);
 
         recyclerView2.setAdapter(myAdapter);
-        myAdapter=new MyAdapter(AdminPage2.this ,list,1);
+        myAdapter=new MyAdapter(AdminPage2.this ,list,1,db);
 
         recyclerView3.setAdapter(myAdapter);
-        myAdapter=new MyAdapter(AdminPage2.this ,list,2);
+        myAdapter=new MyAdapter(AdminPage2.this ,list,2,db);
 
         recyclerView4.setAdapter(myAdapter);
         EventChangeListener();
-        cfrm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                int a;
-//                if(npick.getValue() == 0){
-//                  a=999;
-//                }else{
-//                a=npick.getValue()-1;}
 
-               /* db.collection("Hopital").document().update("Type de Vaccin",a).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(getApplicationContext(),"modifié avec success",Toast.LENGTH_LONG).show();
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(),"une erreur a eu lieu",Toast.LENGTH_LONG).show();
-                    }
-                });*/
-                }
-
-
-        });
         L.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,6 +121,7 @@ public class AdminPage2 extends Activity   {
         });
     }
 private void EventChangeListener(){
+
         db.collection("Hopital").
                 addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -155,10 +131,9 @@ private void EventChangeListener(){
                             return;
                         }
                         for (DocumentChange dc : value.getDocumentChanges()) {
-                           // if (dc.getType() == DocumentChange.Type.ADDED) {
+                           if (dc.getType() == DocumentChange.Type.ADDED) {
                                 list.add(dc.getDocument().toObject(Hopital.class));
-
-                           // }
+                           }
                             myAdapter.notifyDataSetChanged();
                         }
                     }
