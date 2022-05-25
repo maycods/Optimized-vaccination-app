@@ -27,6 +27,26 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+<string name="jj">Johnson</string>
+<string name="sp">Sputnik V</string>
+<string name="sino">Sinovac</string>
+<string name="astra">AstraZeneka</string>
+
+    <string name="d3si">3 doses</string>
+    <string name="d2asp">2 doses</string>
+    <string name="d1j">1 doses</string>
+
+    <string name="esi">Efficacité: 51%</string>
+    <string name="esp">Efficacité: 91,6%</string>
+    <string name="ej">Efficacité:  6,9%</string>
+    <string name="ea">Efficacité: 76%</string>
+
+    <string name="osp">Origine: Russie</string>
+    <string name="oa">Origine: Suédo-Britannique</string>
+    <string name="osi">Origine: Chine</string>
+    <string name="oj">Origine: Etats-Unis</string>
+
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 

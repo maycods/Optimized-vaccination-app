@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         android:id="@+id/cst">
         <ImageButton
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
@@ -103,15 +102,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="90dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="90dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="55dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins_light"
-                        android:text="Sinovac"
+                        android:text="@string/sino"
                         android:textColor="@color/black"
                         android:textSize="35dp"
                         android:textStyle="bold"></TextView>
@@ -122,9 +121,9 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text=" 2 doses"
+                        android:text="@string/d3si"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -132,9 +131,9 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text=" Efficacité: 50%"
+                        android:text="@string/esi"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -142,33 +141,25 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text="Origine: Chine"
+                        android:text="@string/osi"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.7"
-                        android:fontFamily="@font/poppins_light"
-                        android:padding="2dp"
-                        android:text="92378 vaccins distribués"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="90dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="90dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="55dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins_light"
-                        android:text="Astra"
+                        android:text="@string/sp"
                         android:textColor="@color/black"
                         android:textSize="35dp"
                         android:textStyle="bold"></TextView>
@@ -179,9 +170,9 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text=" 2 doses"
+                        android:text="@string/d2asp"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -189,9 +180,9 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text=" Efficacité: 50%"
+                        android:text="@string/esp"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -199,33 +190,25 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text="Origine: Chine"
+                        android:text="@string/osp"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.7"
-                        android:fontFamily="@font/poppins_light"
-                        android:padding="2dp"
-                        android:text="92378 vaccins distribués"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="90dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="90dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="55dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins_light"
-                        android:text="Spoutnik"
+                        android:text="@string/jj"
                         android:textColor="@color/black"
                         android:textSize="35dp"
                         android:textStyle="bold"></TextView>
@@ -236,9 +219,9 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text=" 2 doses"
+                        android:text="@string/d1j"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -246,9 +229,9 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text=" Efficacité: 50%"
+                        android:text="@string/ej"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -256,33 +239,25 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text="Origine: Chine"
+                        android:text="@string/oj"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.7"
-                        android:fontFamily="@font/poppins_light"
-                        android:padding="2dp"
-                        android:text="92378 vaccins distribués"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="90dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="70dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="55dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins_light"
-                        android:text="Johnson"
+                        android:text="@string/astra"
                         android:textColor="@color/black"
                         android:textSize="35dp"
                         android:textStyle="bold"></TextView>
@@ -293,9 +268,9 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text=" 2 doses"
+                        android:text="@string/d2asp"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -303,9 +278,9 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text=" Efficacité: 50%"
+                        android:text="@string/ea"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -313,22 +288,12 @@
                         android:alpha="0.7"
                         android:fontFamily="@font/poppins_light"
                         android:padding="2dp"
-                        android:text="Origine: Chine"
+                        android:text="@string/oa"
                         android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+                        android:textSize="18dp"></TextView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.7"
-                        android:fontFamily="@font/poppins_light"
-                        android:padding="2dp"
-                        android:text="92378 vaccins distribués"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"></TextView>
+
                 </LinearLayout>
-
-
             </LinearLayout>
 
 

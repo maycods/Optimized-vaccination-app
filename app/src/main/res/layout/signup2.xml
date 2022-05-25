@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:padding="10dp"
-            android:text="Etes-vous vaccinné (e) ? "
+            android:text="Etes-vous vaccinné(e) ? "
             android:textColor="@color/bleufoncé"
             android:textSize="20dp"
            android:fontFamily="sans-serif-medium" />

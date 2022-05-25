@@ -103,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
-                    android:text="Age"
+                    android:text="Date de naissance"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
@@ -171,31 +171,31 @@
                 android:layout_marginBottom="15dp"
                 android:orientation="vertical">
 
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
-                    android:text="Nombres de doses"
+                    android:text="Adresse Mail"
                     android:textColor="@color/bleufoncé">
 
                 </TextView>
 
                 <TextView
-                    android:id="@+id/dos"
-                    android:drawablePadding="15dp"
+                    android:id="@+id/mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_baseline_mail_outline_27"
+                    android:drawablePadding="15dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center_vertical"
-                    android:drawableLeft="@drawable/checkv"
                     android:maxLines="1"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
                     android:textSize="17dp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -228,6 +228,7 @@
                     android:drawableLeft="@drawable/cor"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
+                    android:text="//////////////////////"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
                     android:textSize="17dp"
@@ -243,7 +244,42 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="15dp"
                 android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Nombres de doses"
+                    android:textColor="@color/bleufoncé">
 
+                </TextView>
+
+                <TextView
+                    android:id="@+id/dos"
+                    android:drawablePadding="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/checkv"
+                    android:text="//////////////////////"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleufoncé"
+                    android:textSize="17dp" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/h"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/d"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -263,18 +299,20 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center_vertical"
                     android:maxLines="1"
+                    android:text="//////////////////////"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
                     android:textSize="17dp" />
 
+
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/h"
+                android:id="@+id/m"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/d"
+                android:layout_below="@+id/f"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="15dp"
                 android:orientation="vertical">
@@ -299,41 +337,7 @@
                     android:gravity="center_vertical"
                     android:minHeight="48dp"
                     android:paddingLeft="15dp"
-                    android:shadowColor="@color/black"
-                    android:textColor="@color/bleufoncé"
-                    android:textSize="17dp" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/m"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/f"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
-                    android:text="Adresse Mail"
-                    android:textColor="@color/bleufoncé">
-
-                </TextView>
-
-                <TextView
-                    android:id="@+id/mail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input"
-                    android:drawableLeft="@drawable/ic_baseline_mail_outline_27"
-                    android:drawablePadding="15dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:gravity="center_vertical"
-                    android:maxLines="1"
-                    android:minHeight="48dp"
-                    android:paddingLeft="15dp"
+                    android:text="//////////////////////"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
                     android:textSize="17dp" />

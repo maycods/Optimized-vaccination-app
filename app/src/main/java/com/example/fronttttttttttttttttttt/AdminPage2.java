@@ -52,8 +52,6 @@ public class AdminPage2 extends Activity   {
     private ImageButton L,r;
     private HorizontalScrollView scrollView;
     public static  int SCROLL;
-    private EditText npick;
-    private Button cfrm;
     RecyclerView recyclerView,recyclerView2,recyclerView3,recyclerView4;
     FirebaseFirestore db;
     ArrayList<Hopital> list;
@@ -63,8 +61,6 @@ public class AdminPage2 extends Activity   {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin2);
-       npick=findViewById(R.id.hourpicker);
-
         scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
         getWindowManager().getDefaultDisplay().getMetrics(displayMetric);
         SCROLL = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, displayMetric.widthPixels/2-50 , getResources().getDisplayMetrics());

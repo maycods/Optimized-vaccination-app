@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingLeft="20dp"
-            android:text="Veuillez remplir le informations ci-dessous"
+            android:text="Veuillez remplir les informations ci-dessous"
             android:textColor="@color/bleufoncé"
             android:alpha="0.54"
             android:textSize="18dp"
@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
-                        android:hint="Saisisez son Nom et prenom"
+                        android:hint="Saisir le Nom et le prenom"
                         android:drawableLeft="@drawable/ic_outline_person_24"
                         android:drawablePadding="10dp"
                         android:inputType="textPersonName"
@@ -116,7 +116,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Age"
+                        android:text="Date de naissance"
                         android:alpha="0.7"
                         android:fontFamily="sans-serif-medium"
                         android:textColor="@color/bleufoncé"
@@ -132,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
-                        android:hint="Saisisez son Age "
+                        android:hint="Saisir la date de naissance "
                         android:drawableLeft="@drawable/anniv"
                         android:drawablePadding="10dp"
                         android:inputType="datetime"
@@ -166,7 +166,7 @@
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
                         android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
-                        android:hint="Saisiez son adresse mail"
+                        android:hint="Saisir l'adresse mail"
                         android:fontFamily="@font/poppins_light"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/bleufoncé"
@@ -198,7 +198,7 @@
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
                         android:drawableLeft="@drawable/phoneicon"
-                        android:hint="Saisiez son numero de telephone"
+                        android:hint="Saisir le numero de telephone"
                         android:fontFamily="@font/poppins_light"
                         android:inputType="number"
                         android:textColor="@color/bleufoncé"
@@ -231,7 +231,7 @@
                         android:layout_marginHorizontal="20dp"
                         android:background="@drawable/input"
                         android:drawableLeft="@drawable/mdp"
-                        android:hint="Saisiez son code "
+                        android:hint="Saisir le code "
                         android:fontFamily="@font/poppins_light"
                         android:inputType="textPassword"
                         android:textColor="@color/bleufoncé"
@@ -256,14 +256,15 @@
             />
 
         <EditText
+
             android:textColorHint="@color/HINT"
             android:id="@+id/hopA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/input"
-            android:drawableLeft="@drawable/hop"
-            android:hint="Saisir l'hôpital dans le quelle il travaille "
+            android:drawableLeft="@drawable/ic_baseline_local_hospital_25"
+            android:hint="Saisir l'hôpital d'affiliaton "
             android:fontFamily="@font/poppins_light"
             android:inputType="text"
             android:textColor="@color/bleufoncé"
@@ -271,16 +272,13 @@
             android:minHeight="48dp"
             android:paddingLeft="15dp"
             android:drawablePadding="15dp"
-            android:layout_marginBottom="10dp"
             android:textSize="15dp" />
-
-
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
+            android:gravity="center"
             >
 
             <Button
@@ -293,7 +291,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:gravity="center"
                 android:padding="15dp"
-                android:text="s'inscrire"
+                android:text="Submit"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
