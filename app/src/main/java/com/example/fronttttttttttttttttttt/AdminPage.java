@@ -77,7 +77,7 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
     private Spinner V;
     String ambulance=null,Ambulance;
     DisplayMetrics displayMetric = new DisplayMetrics();
-    private ArrayList<String> listV=new ArrayList<String>();
+    private ArrayList<RDVV> listAR=new ArrayList<RDVV>();
     RelativeLayout dv;
 
 
@@ -114,13 +114,14 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
                 {
                     //L1
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
                     LinearLayout lt = new LinearLayout(getApplicationContext());
-                    lt.setPadding(38,60,0,0);
+                    lt.setPadding(38,0,0,0);
                     if (documentChange.getDocument().get("NomH").toString().equals("Kouba")){
-                        lt.setPadding(0,60,140,0);
+                        lt.setPadding(0,0,140,0);
                     }
                     lt.setLayoutParams(params);
+                    lt.getLayoutParams().height= LinearLayout.LayoutParams.MATCH_PARENT;
                     lt.setOrientation(LinearLayout.VERTICAL);
                     //NomH
                     TextView T = new TextView(getApplicationContext());
@@ -228,19 +229,9 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
 
 
     }
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
 
-//TODO AFFECTATION
 
-        Spinner t2 =(Spinner) adapterView;
-        ambulance = (String) adapterView.getItemAtPosition(i);
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
     @RequiresApi(api = Build.VERSION_CODES.O)
 
     private void EventChangeListener(){
@@ -249,7 +240,6 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
         LocalDate aujourhui = LocalDate.now().plusDays(1);
         String date1 = aujourhui +" "+"00:00:00";
         Timestamp timestamp = Timestamp.valueOf(date1);
-        Log.d("loccccc",String.valueOf(timestamp));
             db.collection("Rendez-vous").whereEqualTo("dateR",timestamp).whereEqualTo("confR",true).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -274,7 +264,7 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                     String typeV =  documentChange.getDocument().getData().get("Type de vaccin").toString();
                     String IDR =  documentChange.getDocument().getId();
                     Log.d("adddddd",address);
-                    RDVV A = new RDVV(IDR,typeV,address);
+                    RDVV A = new RDVV(IDR,typeV,address,IDP);
                     RDV.add(A);
                     myAdapter.notifyDataSetChanged();
 
@@ -282,20 +272,17 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                 }
             }
         });
-        db.collection("Ambulancier").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
-                {
-                    String NOM = documentChange.getDocument().getData().get("Nom et Prenom").toString();
-                    listV.add(NOM);
-                    RDVV A = new RDVV();
-                    A.setListV(listV);
 
-                }
-            }
-        });
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

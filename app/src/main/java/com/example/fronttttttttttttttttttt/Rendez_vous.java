@@ -223,50 +223,66 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                   Toast.makeText(getApplicationContext(), "inserer une date correcte", Toast.LENGTH_LONG).show();
                   return;
               }
-              db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                  @Override
-                  public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                      for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
-                      {
-                          if(documentChange.getDocument().getId().isEmpty()){
-                              RDV.put("IDP",currentId);
-                              GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
-                              RDV.put("Localisation",geo);
-                              RDV.put("confR",false);
-                              RDV.put("confV",false);
 
-                              db.collection("Rendez-vous").document()
-                                      .set(RDV)
-                                      .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                          @Override
-                                          public void onSuccess(Void aVoid) {
-                                              Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
+
+                              db.collection("Rendez-vous").whereEqualTo("IDP",currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                  @Override
+                                  public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                      if(task.isSuccessful()){
+
+
+                                          if(task.getResult().getDocuments().isEmpty()){
+
+                                              Log.d("kkkk","lllll");
+                                              RDV.put("IDP",currentId);
+                                              GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
+                                              RDV.put("Localisation",geo);
+                                              RDV.put("confR",false);
+                                              RDV.put("confV",false);
+                                              RDV.put("AMB","");
+                                              Toast.makeText(getApplicationContext(), " ",
                                                       Toast.LENGTH_SHORT).show();
-                                              mSearchText.setFocusable(false);
-                                              V.setEnabled(false);
-                                              spinner.setAdapter(adapter);
-                                              V.setBackgroundColor(0x00000000);
-                                              V.setBackgroundResource(R.drawable.bouton2);
-                                              V.setOnItemSelectedListener(Rendez_vous.this);
-                                              V.setSelection(listV.indexOf(choixV));
-                                              calenderEvent.requestFocus();
+                                              db.collection("Rendez-vous").document()
+                                                      .set(RDV)
+                                                      .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                          @Override
+                                                          public void onSuccess(Void aVoid) {
+                                                              Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
+                                                                      Toast.LENGTH_SHORT).show();
+                                                              mSearchText.setFocusable(false);
+                                                              V.setEnabled(false);
+                                                              spinner.setAdapter(adapter);
+                                                              V.setBackgroundColor(0x00000000);
+                                                              V.setBackgroundResource(R.drawable.bouton2);
+                                                              V.setOnItemSelectedListener(Rendez_vous.this);
+                                                              V.setSelection(listV.indexOf(choixV));
+                                                              calenderEvent.requestFocus();
+
+                                                          }
+                                                      })
+                                                      .addOnFailureListener(new OnFailureListener() {
+                                                          @Override
+                                                          public void onFailure(@NonNull Exception e) {
+                                                              Log.w("Fail", "Error", e);
+
+                                                          }
+                                                      });
+
+
+                                              Toast.makeText(getApplicationContext(), "le rendez-vous  deja a ete prit ",
+                                                      Toast.LENGTH_SHORT).show();
 
                                           }
-                                      })
-                                      .addOnFailureListener(new OnFailureListener() {
-                                          @Override
-                                          public void onFailure(@NonNull Exception e) {
-                                              Log.w("Fail", "Error", e);
-
+                                          else{
+                                              Toast.makeText(getApplicationContext(), "Vous avez deja prit un rendez-vous ",
+                                                      Toast.LENGTH_LONG).show();
+                                              startActivity(new Intent(Rendez_vous.this, Rendez_vous.class));
                                           }
-                                      });
-                          }
-                          else {
-                              Toast.makeText(getApplicationContext(), "le rendez-vous  deja a ete prit ",
-                                      Toast.LENGTH_SHORT).show();
-                          }
-                      }}
-              });
+                                      }
+                                  }
+                              });
+
+
 
               //j jours
               //Position pos
@@ -359,6 +375,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                         }
                                         if(list1.size() > 0){
                                             Address address = list1.get(0);
+
                                             Log.d("GPS",String.valueOf(address.getAddressLine(0)));
                                             mSearchText.setText(address.getAddressLine(0));
                                         }

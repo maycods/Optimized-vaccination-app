@@ -146,13 +146,15 @@ public class SignupA extends Activity {
                                             AM.put("Numero de Telephone", tel.getText().toString().trim());
                                             AM.put("Age", ageN.getText().toString().trim());
                                             AM.put("Hopital", hop.getText().toString().trim());
+                                            AM.put("id",nom+nb);
                                             db.collection("Hopital").document(H).update("nbA",Integer.parseInt(nb)+1);
                                             FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                            db.collection("Ambulancier").document(nom+nb)
+                                            db.collection("Ambulancier").document(mAuth.getUid())
                                                     .set(AM)
                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
+
                                                             Toast.makeText(getApplicationContext(), "le compte a été crée ",
                                                                     Toast.LENGTH_SHORT).show();
                                                             startActivity(new Intent(SignupA.this,adminmenu.class));

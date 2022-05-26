@@ -198,6 +198,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+
                                         Toast.makeText(getApplicationContext(), "le compte a été crée ",
                                                 Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(SignUp2.this,Menu.class));

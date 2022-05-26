@@ -10,6 +10,7 @@
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/bouton.xml" value="0.2455" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/bouton2.xml" value="0.2555" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/cor.xml" value="0.2455" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.1795" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/ic_outline_assignment_ind_24.xml" value="0.215" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/ic_outline_calendar_today_24.xml" value="0.136" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/white_border.xml" value="0.1" />
@@ -35,7 +36,7 @@
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/rdv.xml" value="0.264" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup1.xml" value="0.2" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup2.xml" value="0.11302083333333333" />
-        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup_ambulancier.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup_ambulancier.xml" value="0.264" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signupu.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/spinn.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/mayah/.gradle/caches/transforms-3/2d91cb6242a0bc00706dab07d0650e2d/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.27447916666666666" />

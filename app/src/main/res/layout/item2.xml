@@ -27,5 +27,14 @@
         android:textColor="@color/black"
         android:spinnerMode="dropdown"
         />
+    <ImageButton
+        android:layout_gravity="center"
+        android:id="@+id/chater1"
+        android:background="@color/white"
+        android:src="@drawable/ic_baseline_check_24"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:saveEnabled="true"
+        ></ImageButton>
 
 </TableRow>

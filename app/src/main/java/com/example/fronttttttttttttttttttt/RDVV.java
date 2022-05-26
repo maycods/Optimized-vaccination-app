@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RDVV {
-    String IDR,typdV , LOC;
+    String IDR,typdV,LOC,IDP;
      ArrayList<String> listV=new ArrayList<String>();
 
 
@@ -32,10 +32,11 @@ public class RDVV {
         return LOC;
     }
 
-    public RDVV(String IDR , String typdV, String LOC) {
+    public RDVV(String IDR , String typdV, String LOC ,String IDP) {
         this.IDR = IDR;
         this.typdV = typdV;
         this.LOC = LOC;
+        this.IDP =IDP;
 
     }
 
@@ -50,8 +51,8 @@ public class RDVV {
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
                 {
-                    String NOM = documentChange.getDocument().getId().toString();
-                    listV.add(NOM);
+                    String ID = documentChange.getDocument().get("id").toString();
+                    listV.add(ID);
                 }
             }
         });
