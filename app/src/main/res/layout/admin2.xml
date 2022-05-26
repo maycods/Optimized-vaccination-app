@@ -31,134 +31,22 @@
                 android:src="@drawable/leftarrow"></ImageButton>
         </LinearLayout>
 
-        <HorizontalScrollView
-            android:id="@+id/scrl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbarSize="00dp"
-            android:layout_toStartOf="@+id/rght"
-            android:layout_toEndOf="@+id/gch">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_toStartOf="@+id/rght"
                 android:layout_toEndOf="@+id/gch"
                 >
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginRight="38dp"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="CHU Mustapha"
-                        android:textColor="@color/white"
-                        android:textSize="40dp"
-                        android:textStyle="bold"></TextView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="25 doses"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="4 ambulances"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="ID: EA12X"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginRight="38dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="CHU Mustapha"
-                        android:textColor="@color/white"
-                        android:textSize="40dp"
-                        android:textStyle="bold"></TextView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="25 doses"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="4 ambulances"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:padding="5dp"
-                            android:text="ID: EA12X"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"></TextView>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyfok"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+></androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
 
-
-        </HorizontalScrollView>
 
         <LinearLayout
             android:id="@+id/rght"
@@ -189,7 +77,7 @@
         android:padding="10dp"
         android:textSize="16dp"
         android:textColor="@color/black"
-        android:text="Veuillez affecter les adresses les rendez- vous de demain aux ambulances  : "
+        android:text="Veuillez affecterle nombre de doses  de chaque type de vaccin aux hopitaux : "
         ></TextView>
     <LinearLayout
         android:id="@+id/header"

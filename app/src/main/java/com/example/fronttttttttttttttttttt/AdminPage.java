@@ -202,7 +202,6 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
             Toast.makeText(getApplicationContext(),String.valueOf(Ambulance),Toast.LENGTH_LONG).show();
             }
         });
-
         L.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -224,7 +223,6 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                 return;
             }
         });
-        //spinner
 
 
 
