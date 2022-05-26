@@ -244,9 +244,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_marginBottom="40dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 >
                 <Button
                     android:id="@+id/sinscrireU"
@@ -258,6 +256,7 @@
                     android:gravity="center"
                     android:padding="15dp"
                     android:text="Submit"
+                    android:layout_marginTop="30dp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="16dp" />

@@ -81,7 +81,7 @@
         android:padding="10dp"
         android:textSize="16dp"
         android:textColor="@color/black"
-        android:text="Veuillez affecter les adresses les rendez- vous de demain aux ambulances  : "
+        android:text="Veuillez affecter les adresses des rendez- vous de demain aux ambulances  : "
         ></TextView>
     <LinearLayout
         android:id="@+id/header"

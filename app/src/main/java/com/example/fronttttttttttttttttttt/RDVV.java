@@ -15,9 +15,6 @@ public class RDVV {
     String IDR,typdV , LOC;
      ArrayList<String> listV=new ArrayList<String>();
 
-
-
-
     Timestamp dateR;
 
     public String getIDR() {

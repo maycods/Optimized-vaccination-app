@@ -91,7 +91,7 @@
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/font/poppins_light.xml" value="0.2890625" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/activity_adminmenu.xml" value="0.152" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin.xml" value="0.264" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin2.xml" value="0.176" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin2.xml" value="0.264" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/content_adminmenu.xml" value="0.22530996152201796" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/first_page.xml" value="0.2" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/fragment_first.xml" value="0.13168020521590423" />
@@ -101,6 +101,7 @@
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/infosperso.xml" value="0.264" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/item.xml" value="0.536" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/item2.xml" value="0.21248396750748183" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/item3.xml" value="0.22530996152201796" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/itineraire.xml" value="0.176" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/login.xml" value="0.176" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/loginadmin.xml" value="0.21302083333333333" />
@@ -109,10 +110,10 @@
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/notif.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/notif_v.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/rdv.xml" value="0.21302083333333333" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup1.xml" value="0.264" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup1.xml" value="0.2" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup2.xml" value="0.264" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup_ambulancier.xml" value="0.264" />
-        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signupu.xml" value="0.264" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup_ambulancier.xml" value="0.176" />
+        <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/signupu.xml" value="0.152" />
         <entry key="..\:/Users/mayah/Documents/GitHub/PFEofficial/app/src/main/res/layout/spinn.xml" value="0.21302083333333333" />
       </map>
     </option>
