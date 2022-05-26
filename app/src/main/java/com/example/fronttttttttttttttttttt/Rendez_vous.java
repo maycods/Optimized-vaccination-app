@@ -229,10 +229,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                   @Override
                                   public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                       if(task.isSuccessful()){
-
-
                                           if(task.getResult().getDocuments().isEmpty()){
-
                                               Log.d("kkkk","lllll");
                                               RDV.put("IDP",currentId);
                                               GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
@@ -240,8 +237,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                               RDV.put("confR",false);
                                               RDV.put("confV",false);
                                               RDV.put("AMB","");
-                                              Toast.makeText(getApplicationContext(), " ",
-                                                      Toast.LENGTH_SHORT).show();
                                               db.collection("Rendez-vous").document()
                                                       .set(RDV)
                                                       .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -269,13 +264,12 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                                       });
 
 
-                                              Toast.makeText(getApplicationContext(), "le rendez-vous  deja a ete prit ",
-                                                      Toast.LENGTH_SHORT).show();
+
 
                                           }
                                           else{
-                                              Toast.makeText(getApplicationContext(), "Vous avez deja prit un rendez-vous ",
-                                                      Toast.LENGTH_LONG).show();
+                                              Toast.makeText(getApplicationContext(), "le rendez-vous a deja  ete prit ",
+                                                      Toast.LENGTH_SHORT).show();
                                               startActivity(new Intent(Rendez_vous.this, Rendez_vous.class));
                                           }
                                       }

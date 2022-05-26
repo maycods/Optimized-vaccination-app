@@ -69,7 +69,7 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder> {
                     // On selecting a spinner item
                     String item = parent.getItemAtPosition(position).toString();
                     // Showing selected spinner item
-                    //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+                    Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
                 }
 
