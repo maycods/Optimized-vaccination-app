@@ -82,7 +82,7 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                           LocalDate g  =LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
                             LocalDate JJ = LocalDate.now().plusDays(1);
                             Log.d("lplplp",String.valueOf(System.currentTimeMillis()));
-                            if(g.isEqual(JJ) && System.currentTimeMillis()/1000< Long.parseLong("46800") && !(boolean) document.get("confR")){
+                            if(g.isEqual(JJ)/* && System.currentTimeMillis()/1000< Long.parseLong("46800") */&& !(boolean) document.get("confR")){
 
                                 notif.setEnabled(true);
                                 notif.setImageResource (R.drawable.ic_outline_notifications_active_25);

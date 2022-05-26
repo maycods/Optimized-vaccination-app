@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,11 +16,13 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -43,6 +46,7 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
         close=(ImageButton)findViewById(R.id.close);
         db = FirebaseFirestore.getInstance();
         date=findViewById(R.id.textV2);
+
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +88,13 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(NotifR.this,Menu.class));
-//todo delete rdv nb ch --
+               db.collection("user").document(currentId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        db.collection("user").document(currentId).update("Nombre de chance",Integer.parseInt(String.valueOf(documentSnapshot.get("Nombre de chance")))-1);
+                    }
+                });
+
 
                 db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
