@@ -106,7 +106,8 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
 
         db = FirebaseFirestore.getInstance();
         RDV = new ArrayList<RDVV>();
-        myAdapter=new AdapterR(AdminPage.this ,RDV);
+
+        myAdapter=new AdapterR(AdminPage.this ,RDV,db,1);
         recyclerView.setAdapter(myAdapter);
         db.collection("Hopital").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -198,8 +199,8 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
         cfrm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Ambulance=ambulance;
-            Toast.makeText(getApplicationContext(),String.valueOf(Ambulance),Toast.LENGTH_LONG).show();
+                Ambulance=ambulance;
+                Toast.makeText(getApplicationContext(),String.valueOf(Ambulance),Toast.LENGTH_LONG).show();
             }
         });
         L.setOnClickListener(new View.OnClickListener() {
@@ -233,19 +234,16 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
     @RequiresApi(api = Build.VERSION_CODES.O)
 
     private void EventChangeListener(){
-
-
         LocalDate aujourhui = LocalDate.now().plusDays(1);
         String date1 = aujourhui +" "+"00:00:00";
         Timestamp timestamp = Timestamp.valueOf(date1);
-            db.collection("Rendez-vous").whereEqualTo("dateR",timestamp).whereEqualTo("confR",true).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("Rendez-vous").whereEqualTo("dateR",timestamp).whereEqualTo("confR",true).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
                 {
-                    String address="";
-                     HashMap<String, Object> RDVT = new HashMap<String, Object>();
 
+                    String address="";
                     geo= (GeoPoint) documentChange.getDocument().get("Localisation");
                     Geocoder geocoder = new Geocoder(AdminPage.this);
                     List<Address> list1 = new ArrayList<>();
@@ -255,7 +253,7 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                         e1.printStackTrace();
                     }
                     if(list1.size() > 0){
-                         address = list1.get(0).getAddressLine(0);
+                        address = list1.get(0).getAddressLine(0);
 
                     }
                     String IDP =  documentChange.getDocument().getData().get("IDP").toString();
@@ -264,10 +262,9 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                     Log.d("adddddd",address);
                     RDVV A = new RDVV(IDR,typeV,address,IDP);
                     RDV.add(A);
-                    myAdapter.notifyDataSetChanged();
-
 
                 }
+                myAdapter.notifyDataSetChanged();
             }
         });
 

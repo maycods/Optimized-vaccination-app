@@ -36,13 +36,14 @@ dependencies {
     implementation 'com.github.mahimrocky:EventCalender:v1.0.0'
     implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'com.github.jd-alexander:library:1.1.0'
-    implementation 'com.google.firebase:firebase-database:20.0.4'
-    implementation 'com.google.firebase:firebase-firestore:24.1.1'
-    implementation 'com.google.firebase:firebase-auth:21.0.3'
+
     implementation 'androidx.navigation:navigation-fragment:2.4.2'
     implementation 'androidx.navigation:navigation-ui:2.4.2'
-    implementation 'com.google.firebase:firebase-messaging:23.0.5'
+
     implementation 'androidx.wear.tiles:tiles-material:1.1.0-alpha03'
+    implementation 'com.google.firebase:firebase-firestore:24.1.2'
+    implementation 'com.google.firebase:firebase-auth:21.0.5'
+    implementation 'com.google.firebase:firebase-database:20.0.5'
     androidTestImplementation "com.google.android.gms:play-services-maps:10.0.1"
     implementation 'com.nabinbhandari.android:permissions:3.8'
     implementation 'androidx.appcompat:appcompat:1.4.1'

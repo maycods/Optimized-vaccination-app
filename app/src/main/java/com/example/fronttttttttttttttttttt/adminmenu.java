@@ -60,31 +60,31 @@ ImageButton notf;
         yesterday.setHours(0);
         Timestamp timestamp = new Timestamp(yesterday.getTime());
 
-        db.collection("Rendez-vous").whereLessThanOrEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
-                {
-                   if( documentChange.getDocument().get("confV").equals(false)){
-                       notf.setEnabled(true);
-                       notf.setImageResource (R.drawable.ic_outline_notifications_active_25);
-                       String idu =  (String) documentChange.getDocument().get("IDP");
-                       notf.setOnClickListener(new View.OnClickListener() {
-                           @Override
-                           public void onClick(View view) {
-                               Intent intent=  new Intent(adminmenu.this, notifAdmin.class);
-                               intent.putExtra("iduser" , idu);
-                               startActivity(intent);
-                               getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
-                                       WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-
-                           }
-                       });
-                   }
-                }
-
-            }
-        });
+//        db.collection("Rendez-vous").whereLessThanOrEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
+//            @Override
+//            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+//                for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
+//                {
+//                   if( documentChange.getDocument().get("confV").equals(false)){
+//                       notf.setEnabled(true);
+//                       notf.setImageResource (R.drawable.ic_outline_notifications_active_25);
+//                       String idu =  (String) documentChange.getDocument().get("IDP");
+//                       notf.setOnClickListener(new View.OnClickListener() {
+//                           @Override
+//                           public void onClick(View view) {
+//                               Intent intent=  new Intent(adminmenu.this, notifAdmin.class);
+//                               intent.putExtra("iduser" , idu);
+//                               startActivity(intent);
+//                               getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+//                                       WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+//
+//                           }
+//                       });
+//                   }
+//                }
+//
+//            }
+//        });
 
         //
 
