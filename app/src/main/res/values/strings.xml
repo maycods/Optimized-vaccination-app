@@ -27,10 +27,10 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-<string name="jj">Johnson</string>
-<string name="sp">Sputnik V</string>
-<string name="sino">Sinovac</string>
-<string name="astra">AstraZeneka</string>
+    <string name="jj">Johnson</string>
+    <string name="sp">Sputnik V</string>
+    <string name="sino">Sinovac</string>
+    <string name="astra">AstraZeneka</string>
 
     <string name="d3si">3 doses</string>
     <string name="d2asp">2 doses</string>

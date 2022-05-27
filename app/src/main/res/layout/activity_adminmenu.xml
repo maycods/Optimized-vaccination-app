@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:paddingRight="20dp"
-        android:id="@+id/notif"
+        android:id="@+id/notifad"
         app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="@color/none"
         android:src="@drawable/ic_outline_notifications_24"

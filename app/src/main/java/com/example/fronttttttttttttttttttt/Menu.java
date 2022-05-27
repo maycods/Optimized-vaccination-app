@@ -68,7 +68,6 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
         num = (Button) findViewById(R.id.numvert);
         prev = (Button) findViewById(R.id.prevention);
         notif.setEnabled(false);
-        DocumentReference reference;
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentId=user.getUid();

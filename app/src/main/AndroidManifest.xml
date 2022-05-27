@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.fronttttttttttttttttttt">
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,12 +19,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fronttttttttttttttttttt">
         <activity
+            android:name=".notifAdmin"
+            android:exported="false" />
+        <activity
             android:name=".adminmenu"
             android:exported="false"
             android:label="@string/title_activity_adminmenu"
             android:theme="@style/Theme.Fronttttttttttttttttttt.NoActionBar" />
         <!--
-
              To get one, follow the directions here:
 
                 https://developers.google.com/maps/documentation/android-sdk/get-api-key
@@ -89,14 +93,17 @@
         <activity
             android:name=".Map"
             android:theme="@style/Theme.Fronttttttttttttttttttt" />
+        <activity
+            android:name=".SignupA"
+            android:theme="@style/Theme.Fronttttttttttttttttttt" />
+        <activity
+            android:name=".SignupU"
+            android:theme="@style/Theme.Fronttttttttttttttttttt" />
 
- 
-        <activity android:name=".SignupA" android:theme="@style/Theme.Fronttttttttttttttttttt" />
-        <activity android:name=".SignupU" android:theme="@style/Theme.Fronttttttttttttttttttt" />
-      
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <service
             android:name=".notif"
             android:exported="false"
