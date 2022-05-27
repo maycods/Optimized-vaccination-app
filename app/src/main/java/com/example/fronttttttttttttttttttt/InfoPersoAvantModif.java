@@ -23,6 +23,7 @@ import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -45,6 +46,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Text;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -92,6 +95,7 @@ int pageWidth =1200;
         FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
         String currentId;
         nom=findViewById(R.id.nom);
+        motdp=findViewById(R.id.mdppp);
         date=findViewById(R.id.date);
         tel=findViewById(R.id.tel);
         mail=findViewById(R.id.mail);
@@ -114,6 +118,8 @@ int pageWidth =1200;
                             position.setText(a.get(0).getAddressLine(0));
                             Timestamp timestamp = (Timestamp) document.get("dateR");
                            date.setText(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
+                            i.putExtra("endroit" ,a.get(0).getAddressLine(0));
+                            i.putExtra("datee" ,new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate()));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -135,16 +141,13 @@ int pageWidth =1200;
                             tel.setText(task.getResult().getString("Numero de Telephone"));
                             mail.setText(task.getResult().getString("Email"));
                             dose.setText(task.getResult().get("Nombre de doses",Integer.class).toString());
-                            type.setText(task.getResult().getString("Type de vaccin"));
-                            age.setText(task.getResult().getString("Age"));
-
-
-                            i.putExtra("nomprenom" ,task.getResult().getString("Nom et Prenom"));
-                            i.putExtra("email" ,task.getResult().getString("Email"));
+                            if( task.getResult().getString("Type de vaccin")!=null){
+                            type.setText(task.getResult().getString("Type de vaccin"));}
+                            age.setText(task.getResult().getString("Date de naissance"));
+                            motdp.setText(task.getResult().getString("Mot de passe"));
+                            //motdp.onTouchEvent(motdp.setInputType(InputType.TYPE_CLASS_TEXT));
                             i.putExtra("tele" ,task.getResult().getString("Numero de Telephone"));
-                            i.putExtra("Type" ,task.getResult().getString("Age"));
-
-
+                            i.putExtra("mdp" ,task.getResult().getString("Mot de passe"));
                         }else{
                             Toast.makeText(getApplicationContext(),"jcpo",Toast.LENGTH_LONG).show();
                         }

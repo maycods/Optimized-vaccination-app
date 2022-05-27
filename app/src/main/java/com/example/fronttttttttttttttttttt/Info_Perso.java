@@ -28,7 +28,7 @@ import java.util.HashMap;
 public class Info_Perso extends Activity {
     private ImageButton retour;
     private Button confirmer;
-    private EditText nom,tel,mail,mdp;
+    private EditText tel,mdp,dtt,lio;
     private  DocumentReference reference;
     String currentId;
     @Override
@@ -36,20 +36,18 @@ public class Info_Perso extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infosperso);
 
-        String nompr = getIntent().getStringExtra("nomprenom");
-        String maile = getIntent().getStringExtra("email");
         String telo = getIntent().getStringExtra("tele");
         String mdpo = getIntent().getStringExtra("mdp");
-
-nom=findViewById(R.id.nomedit);
+     String  endr = getIntent().getStringExtra("endroit");
+     String dat = getIntent().getStringExtra("datee");
+dtt=findViewById(R.id.dtedit);
+lio=findViewById(R.id.lieuedit);
 tel=findViewById(R.id.teledit);
-mail=findViewById(R.id.mailedit);
 mdp=findViewById(R.id.mdpedit);
 confirmer=findViewById(R.id.comfirmer);
-
-nom.setText(nompr);
+dtt.setText(dat);
+lio.setText(endr);
 tel.setText(telo);
-mail.setText(maile);
 mdp.setText(mdpo);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -61,14 +59,11 @@ mdp.setText(mdpo);
         confirmer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email= mail.getText().toString().trim();
+
                 String tell= tel.getText().toString().trim();
                 String mdpp= mdp.getText().toString().trim();
-                String nompre= nom.getText().toString().trim();
 
-
-                            db.collection("user").document(currentId).update("Nom et Prenom",nompre,"Email"
-                                    ,email,"Mot de passe",mdpp,"Numero de Telephone",tell).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            db.collection("user").document(currentId).update("Mot de passe",mdpp,"Numero de Telephone",tell).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Toast.makeText(getApplicationContext(),"modifié avec success",Toast.LENGTH_LONG).show();

@@ -134,7 +134,7 @@
                 android:hint="Saisir la date de naissance "
                 android:drawableLeft="@drawable/anniv"
                 android:drawablePadding="10dp"
-                android:inputType="datetime"
+                android:inputType="date"
                 android:maxLines="1"
                 android:shadowColor="@color/bleufoncé"
                 android:textColor="@color/bleufoncé"

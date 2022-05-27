@@ -2,6 +2,7 @@ package com.example.fronttttttttttttttttttt;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.versionedparcelable.NonParcelField;
 
@@ -29,12 +31,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 
 public class SignUp extends Activity {
     private Button suivant ;
     private ImageButton retourS;
-    protected EditText nomprenom ,mail , tel , mdp , mdpc , age;
+    protected EditText nomprenom ,mail , tel , mdp , mdpc , dnn;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     FirebaseDatabase firebaseDatabase;
@@ -50,9 +54,10 @@ public class SignUp extends Activity {
         mdpc=(EditText)findViewById(R.id.mdpcs);
         suivant =(Button) findViewById(R.id.suivant);
         retourS =(ImageButton) findViewById(R.id.retourS);
-        age=(EditText)findViewById(R.id.age);
+        dnn=(EditText)findViewById(R.id.dn);
 
         suivant.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 String email= mail.getText().toString().trim();
@@ -60,7 +65,7 @@ public class SignUp extends Activity {
                 String mdp1= mdp.getText().toString().trim();
                 String mdp2= mdpc.getText().toString().trim();
                 String nompre= nomprenom.getText().toString().trim();
-                String Age= age.getText().toString().trim();
+                String daten= dnn.getText().toString().trim();
 
 
 
@@ -70,17 +75,27 @@ public class SignUp extends Activity {
                     nomprenom.requestFocus();
                     return;
                 }
-                if(Age.isEmpty()  ){
-                    age.setError("ce champ est obligatoire");
-                    age.requestFocus();
+                if(daten.isEmpty()  ){
+                    dnn.setError("ce champ est obligatoire");
+                    dnn.requestFocus();
                     return;
-                }
+                }else{
+                            try {
+                                LocalDate.parse(daten);
+                                Log.d("xe",String.valueOf( LocalDate.parse(daten)));
+                                // tell the user the format is right
+                            } catch (DateTimeParseException dtpe) {
+                              dnn.setError("cette date n'est pas valide voici le format: yyyy-MM-dd");
+                              dnn.requestFocus();
+                              return;
+                            }
+
+                    }
                 if(email.isEmpty()){
                     mail.setError("ce champ est obligatoire");
                     mail.requestFocus();
                     return;
-                }
-                else{
+                }else{
                       if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                           mail.setError("Fournissez une adresse mail valide");
                           mail.requestFocus();
@@ -118,7 +133,7 @@ public class SignUp extends Activity {
                 i.putExtra("email" ,email);
                 i.putExtra("telephone" ,tell);
                 i.putExtra("mdp" ,mdp1);
-                i.putExtra("Age" ,Age);
+                i.putExtra("dn" ,daten);
                 startActivity(i);
             }
         });

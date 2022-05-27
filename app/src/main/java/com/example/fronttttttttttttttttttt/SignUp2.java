@@ -66,7 +66,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
         String email = getIntent().getStringExtra("email");
         String tel = getIntent().getStringExtra("telephone");
         String mdp = getIntent().getStringExtra("mdp");
-        String Age = getIntent().getStringExtra("Age");
+        String dnn = getIntent().getStringExtra("dn");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup2);
@@ -121,7 +121,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                        dose.setEnabled(true);
                        typevac.setBackgroundColor(0x00000000);
                        dose.setBackgroundColor(0x00000000);
-                    //   typevac.setBackgroundResource(R.drawable.bouton);
+                       typevac.setBackgroundResource(R.drawable.bouton);
                        dose.setBackgroundResource(R.drawable.bouton2);
 
                         spinner2.setAdapter(adapter2);
@@ -187,7 +187,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                         user.put("Email", email);
                         user.put("Mot de passe", mdp);
                         user.put("Numero de Telephone", tel);
-                        user.put("Age", Age);
+                        user.put("Date de naissance", dnn);
                         user.put("Nombre de doses", spinnerChoiceD);
                         user.put("Type de vaccin", spinnerChoiceT);
                         user.put("Nombre de chance", 3);

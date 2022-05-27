@@ -102,7 +102,7 @@
 
         <EditText
             android:textColorHint="@color/HINT"
-            android:id="@+id/age"
+            android:id="@+id/dn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -110,7 +110,7 @@
             android:hint="Saisir votre date de naissance "
             android:drawableLeft="@drawable/anniv"
             android:drawablePadding="10dp"
-            android:inputType="number"
+            android:inputType="date"
             android:maxLines="1"
             android:shadowColor="@color/bleufoncé"
             android:textColor="@color/bleufoncé"

@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.fronttttttttttttttttttt"
-        minSdk 21
+        minSdk 25
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -42,6 +42,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.4.2'
     implementation 'androidx.navigation:navigation-ui:2.4.2'
     implementation 'com.google.firebase:firebase-messaging:23.0.5'
+    implementation 'androidx.wear.tiles:tiles-material:1.1.0-alpha03'
     androidTestImplementation "com.google.android.gms:play-services-maps:10.0.1"
     implementation 'com.nabinbhandari.android:permissions:3.8'
     implementation 'androidx.appcompat:appcompat:1.4.1'

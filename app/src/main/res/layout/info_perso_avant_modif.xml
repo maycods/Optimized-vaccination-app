@@ -197,7 +197,41 @@
                     android:textColor="@color/bleufoncé"
                     android:textSize="17dp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/z"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Mot de passe"
+                    android:textColor="@color/bleufoncé">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/mdppp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/input"
+                    android:drawableLeft="@drawable/ic_outline_lock_25"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_vertical"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:minHeight="48dp"
+                    android:paddingLeft="15dp"
+                    android:shadowColor="@color/black"
+                    android:textColor="@color/bleufoncé"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/d"
                 android:layout_width="match_parent"
