@@ -79,7 +79,6 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>  {
             public void onClick(View v) {
                 ArrayList<String> pos =new ArrayList<>();
                 db.collection("Ambulancier").addSnapshotListener(new EventListener<QuerySnapshot>() {
-
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                         for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
@@ -90,41 +89,44 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>  {
                             listR.addAll ((ArrayList<String>)documentChange.getDocument().get("listR"));
                             if(listR.contains(RA.getIDR()) && ID != holder.it.get(holder.it.size()-1)){
                                 Log.d("hna",String.valueOf(RA));
-                                pos.set(1,IDA);
+                                pos.add(1,IDA);
                             }
                             if (ID == holder.it.get(holder.it.size()-1) &&  !listR.contains(RA.getIDR())){
                                 Log.d("hna11",String.valueOf(RA));
-                                pos.set(0,IDA);
+                                pos.add(0,IDA);
+                                //pos.set(0,IDA);
                             }
 
                         }
                     }
                 });
-                if (pos.size()==2){
+                if (pos.size()==2) {
                     db.collection("Ambulancier").document(pos.get(0)).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()){
-                                ArrayList<String> k =new ArrayList<>();
-                                k.addAll((ArrayList<String>)task.getResult().get("lisrR"));
+                            if (task.isSuccessful()) {
+                                ArrayList<String> k = new ArrayList<>();
+                                k.addAll((ArrayList<String>) task.getResult().get("listR"));
                                 k.remove(k.indexOf(RA.getIDR()));
-                                db.collection("Ambulancier").document(pos.get(1)).update("listR",k);
+                                db.collection("Ambulancier").document(pos.get(1)).update("listR", k);
                             }
                         }
                     });
                 }
+         if(pos.size()==2){
+             db.collection("Ambulancier").document(pos.get(1)).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                 @Override
+                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                     if (task.isSuccessful()){
+                         ArrayList<String> k =new ArrayList<>();
+                         k.addAll((ArrayList<String>)task.getResult().get("lisrR"));
+                         k.add(RA.getIDR());
+                         db.collection("Ambulancier").document(pos.get(0)).update("listR",k);
+                     }
+                 }
+             });
+         }
 
-                db.collection("Ambulancier").document(pos.get(1)).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()){
-                            ArrayList<String> k =new ArrayList<>();
-                            k.addAll((ArrayList<String>)task.getResult().get("lisrR"));
-                            k.add(RA.getIDR());
-                            db.collection("Ambulancier").document(pos.get(0)).update("listR",k);
-                        }
-                    }
-                });
 
             }
         });
