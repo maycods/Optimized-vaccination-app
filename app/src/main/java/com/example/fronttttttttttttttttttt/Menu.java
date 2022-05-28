@@ -33,9 +33,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -97,8 +100,20 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                                     }
                                 });
                             }
+//                            if(g.isEqual(JJ) && System.currentTimeMillis()/1000> Long.parseLong("46800") && !(boolean) document.get("confR")){
+//
+//                                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+//                                    @Override
+//                                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+//                                        for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
+//                                            String IDR =documentChange.getDocument().getId();
+//                                            db.collection("Rendez-vous").document(IDR).delete();
+//                                        }
+//                                    }
+//                                });
+//                            }
                             Log.d("todayyy",String.valueOf(today));
-                           if(g.isEqual(today)&& (boolean) document.get("confR") && (boolean) document.get("comfJJ")) {
+                           if(g.isEqual(today)&& (boolean) document.get("confR") /* && System.currentTimeMillis()/1000< Long.parseLong("64800") */&& (boolean) document.get("comfJJ")) {
                                notif.setEnabled(true);
                                notif.setImageResource (R.drawable.ic_outline_notifications_active_25);
                                notif.setOnClickListener(new View.OnClickListener() {
