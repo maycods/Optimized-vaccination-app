@@ -76,6 +76,13 @@ mdp.setText(mdpo);
         reference=db.collection("user").document(currentId);
 
        retour= (ImageButton)findViewById(R.id.retourPM);
+        if(dat== null) {
+            lio.setHint("rendez-vous non encore pris");
+            dtt.setHint("rendez-vous non encore pris");
+            lio.setEnabled(false);
+            dtt.setEnabled(false);
+        }
+
         confirmer.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -86,39 +93,43 @@ mdp.setText(mdpo);
                 String loc= lio.getText().toString().trim();
                 String dt= dtt.getText().toString().trim();
 
-                try {
-                    LocalDate.parse(dt);
-                } catch (DateTimeParseException dtpe) {
-                    dtt.setError("cette date n'est pas valide");
-                    dtt.requestFocus();
-                    return;
-                }
-                Geocoder geocoder=new Geocoder(getApplicationContext());
-                    db.collection("Rendez-vous").whereEqualTo("IDP",currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+       Log.d("mmmm",dat);
+                if(dat!=null){
+                    try {
+                        LocalDate.parse(dt);
+                    } catch (DateTimeParseException dtpe) {
+                        dtt.setError("cette date n'est pas valide");
+                        dtt.requestFocus();
+                        return;
+                    }
+                    Geocoder geocoder=new Geocoder(getApplicationContext());
+                    db.collection("Rendez-vous").whereEqualTo("IDP", currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()) {
+                            if (task.isSuccessful()) {
                                 String idd = task.getResult().getDocuments().get(0).getId();
                                 try {
                                     List<Address> list = geocoder.getFromLocationName(loc, 1);
-                                    GeoPoint a = new GeoPoint(list.get(0).getLatitude(),list.get(0).getLongitude());
+                                    GeoPoint a = new GeoPoint(list.get(0).getLatitude(), list.get(0).getLongitude());
                                     Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dt);
                                     Timestamp timestamp = new Timestamp(date);
                                     db.collection("Rendez-vous").document(idd).update("Localisation", a, "dateR", timestamp);
-                                    Toast.makeText(getApplicationContext(),"Modifié avec success",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Modifié avec success", Toast.LENGTH_LONG).show();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                         }
                     });
+                }
+
 
 
                         db.collection("user").document(currentId).update("Mot de passe",mdpp,"Numero de Telephone",tell).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     user.updatePassword(mdpp);
-                                    Toast.makeText(getApplicationContext(),"modifié avec success",Toast.LENGTH_LONG).show();
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
