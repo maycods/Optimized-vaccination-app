@@ -54,7 +54,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
     private String spinnerChoiceT=null;
     private  Integer spinnerChoiceD=0;
     ArrayAdapter<CharSequence> adapter2;
-    int iii=0;
+    int iii=0,j=0;
     private FirebaseAuth mAuth;
     ArrayList<String> a=new ArrayList<String>();
 
@@ -88,8 +88,6 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                 if(task.isSuccessful() && task.getResult().exists() && task.getResult() != null){
 
                 a.addAll ((ArrayList<String>) task.getResult().get("TypeVaccin"));
-                 Log.d("kooooooooo",a.get(1));
-
 
                 }else {
                     Log.d("kooooooooo","l");
@@ -157,6 +155,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                                             Toast.makeText(view.getContext(), "l'email de confirmation a ete envoyé", Toast.LENGTH_LONG).show();
                                             inscrit.setVisibility(View.GONE);
                                             verif.setVisibility(View.VISIBLE);
+                                            j++;
                                         }
                                     }
                                 });
@@ -218,6 +217,10 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
             @Override
             public void onClick(View view) {
                 onBackPressed();
+                if(j==1 ){
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                   user.delete();
+                }
             }
         });
 
