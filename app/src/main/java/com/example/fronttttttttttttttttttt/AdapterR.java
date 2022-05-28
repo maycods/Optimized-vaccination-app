@@ -1,6 +1,7 @@
 package com.example.fronttttttttttttttttttt;
 
 import static com.example.fronttttttttttttttttttt.RDVV.fillRDV;
+import static com.google.firebase.firestore.DocumentChange.Type.MODIFIED;
 
 import android.content.Context;
 import android.location.Address;
@@ -36,6 +37,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.HashMap;
 import java.util.List;
 
 public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>  {
@@ -43,17 +45,15 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>  {
     ArrayList<RDVV> list;
     private ArrayAdapter<String> dataAdapter;
     FirebaseFirestore db;
-    int i =1;
-    ArrayList<String> listR = new ArrayList<>();
 
 
 
-    public AdapterR(Context context, ArrayList<RDVV> list,FirebaseFirestore db,int i) {
+
+
+    public AdapterR(Context context, ArrayList<RDVV> list,FirebaseFirestore db) {
         this.context = context;
         this.list = list;
         this.db=db;
-        this.i=i;
-
         dataAdapter = new ArrayAdapter<String>(context,
                 android.R.layout.simple_spinner_item, RDVV.fillRDV());
         dataAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
@@ -72,63 +72,12 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>  {
         holder.RD.setText(RA.getLOC());
         holder.npick.setAdapter(dataAdapter);
         holder.npick.setOnItemSelectedListener(holder);
-
-        int i=1;
         holder.chaterr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<String> pos =new ArrayList<>();
-                db.collection("Ambulancier").addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                        for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
-                        {
-                            String IDA = documentChange.getDocument().getId();
-                            String ID = documentChange.getDocument().get("id").toString();
-
-                            listR.addAll ((ArrayList<String>)documentChange.getDocument().get("listR"));
-                            if(listR.contains(RA.getIDR()) && ID != holder.it.get(holder.it.size()-1)){
-                                Log.d("hna",String.valueOf(RA));
-                                pos.add(1,IDA);
-                            }
-                            if (ID == holder.it.get(holder.it.size()-1) &&  !listR.contains(RA.getIDR())){
-                                Log.d("hna11",String.valueOf(RA));
-                                pos.add(0,IDA);
-                                //pos.set(0,IDA);
-                            }
-
-                        }
-                    }
-                });
-                if (pos.size()==2) {
-                    db.collection("Ambulancier").document(pos.get(0)).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                ArrayList<String> k = new ArrayList<>();
-                                k.addAll((ArrayList<String>) task.getResult().get("listR"));
-                                k.remove(k.indexOf(RA.getIDR()));
-                                db.collection("Ambulancier").document(pos.get(1)).update("listR", k);
-                            }
-                        }
-                    });
-                }
-         if(pos.size()==2){
-             db.collection("Ambulancier").document(pos.get(1)).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                 @Override
-                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                     if (task.isSuccessful()){
-                         ArrayList<String> k =new ArrayList<>();
-                         k.addAll((ArrayList<String>)task.getResult().get("lisrR"));
-                         k.add(RA.getIDR());
-                         db.collection("Ambulancier").document(pos.get(0)).update("listR",k);
-                     }
-                 }
-             });
-         }
-
-
+                db.collection("Rendez-vous").document(RA.getIDR()).update("AMB",holder.it.get(0));
             }
+
         });
     }
 
@@ -160,9 +109,13 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>  {
             Spinner Spinner =(Spinner) adapterView;
             if(Spinner.getId() == R.id.ambs) {
                 item = (String) adapterView.getItemAtPosition(i);
+                Log.d("itemmmm",String.valueOf(item));
                 ArrayList<String> K = new ArrayList<>();
                 K.add(item);
+                it.clear();
                 it.addAll(K);
+                Log.d("itemmmm",String.valueOf(it));
+
                 npick.setSelection(fillRDV().indexOf(item));
 
 

@@ -141,9 +141,8 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if(task.getResult().exists()) {
+                        if(task.isSuccessful()) {
                             typeV = (String) task.getResult().get("Type de vaccin");
-                            Log.d("wow", String.valueOf(typeV));
                             if (typeV==""){
                                 V.setEnabled(true);
                                 spinner.setAdapter(adapter);
@@ -154,11 +153,10 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                         }
                             else {
                                 V.setSelection(listV.indexOf(typeV));
-                                V.setEnabled(false);
+                                V.setClickable(false);
                                 spinner.setAdapter(adapter);
                                 V.setBackgroundColor(0x00000000);
                                 V.setBackgroundResource(R.drawable.bouton2);
-
                                 RDV.put("Type de vaccin", typeV);
                             }
                         }}});
@@ -236,6 +234,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                               RDV.put("Localisation",geo);
                                               RDV.put("confR",false);
                                               RDV.put("confV",false);
+                                              RDV.put("comfJJ",true);
                                               RDV.put("AMB","");
                                               db.collection("Rendez-vous").document()
                                                       .set(RDV)
