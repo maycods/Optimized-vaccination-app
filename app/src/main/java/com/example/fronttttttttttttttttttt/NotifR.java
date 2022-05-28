@@ -61,7 +61,6 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
-                    String IDR =documentChange.getDocument().getId();
                     Timestamp timestamp = (Timestamp) documentChange.getDocument().get("dateR");
                     date.setText(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
                 }
@@ -71,7 +70,6 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(NotifR.this,Menu.class));
-
                 db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -94,8 +92,6 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
                         db.collection("user").document(currentId).update("Nombre de chance",Integer.parseInt(String.valueOf(documentSnapshot.get("Nombre de chance")))-1);
                     }
                 });
-
-
                 db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
