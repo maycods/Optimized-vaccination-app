@@ -1,18 +1,26 @@
 package com.example.fronttttttttttttttttttt;
 
+import static com.example.fronttttttttttttttttttt.RDVV.fillRDV;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.versionedparcelable.NonParcelField;
@@ -30,6 +38,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -39,15 +48,19 @@ import com.google.protobuf.Value;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SignupA extends Activity {
+public class SignupA extends Activity implements AdapterView.OnItemSelectedListener {
     private Button sinscrire ;
     private ImageButton retourS;
-    protected EditText nomprenom ,mail , tel  , code , ageN,hop;
-
+    protected EditText nomprenom ,mail , tel  , code , ageN;
+    private Spinner SPH;
     private  FirebaseFirestore db;
     private FirebaseAuth mAuth;
+    private String item;
+    private HashMap<String, Object> AM = new HashMap<String, Object>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,15 +70,36 @@ public class SignupA extends Activity {
         nomprenom=(EditText)findViewById(R.id.nomprenomsA);
         code=(EditText)findViewById(R.id.codeA);
         ageN=(EditText)findViewById(R.id.ageA);
-        hop=(EditText)findViewById(R.id.hopA);
+
         sinscrire =(Button) findViewById(R.id.sinscrireA);
         retourS =(ImageButton) findViewById(R.id.retourS1);
+        SPH =(Spinner) findViewById(R.id.sphp);
         mAuth = FirebaseAuth.getInstance();
         db=  FirebaseFirestore.getInstance();
 
 
 
+        db.collection("Hopital").
+                addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        ArrayList<String> hopital = new ArrayList<>();
+                        if (error != null) {
+                            Log.d("kop", error.getMessage());
+                            return;
+                        }
+                        for (DocumentChange dc : value.getDocumentChanges()) {
+                            hopital.add(dc.getDocument().getId());
+                        }
+                        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getApplicationContext(),
+                                android.R.layout.simple_spinner_item, hopital);
+                        Adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                        SPH.setAdapter(Adapter);
+                    }
+                });
 
+
+        SPH.setOnItemSelectedListener(SignupA.this);
         sinscrire.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -76,17 +110,13 @@ public class SignupA extends Activity {
                 String email= mail.getText().toString().trim();
                 String tell= tel.getText().toString().trim();
                 String codeA= code.getText().toString().trim();
-                String NH = hop.getText().toString().trim();
+
                 if(nompre.isEmpty()){
                     nomprenom.setError("ce champ est obligatoire");
                     nomprenom.requestFocus();
                     return;
                 }
-                if(NH.isEmpty()){
-                    hop.setError("ce champ est obligatoire");
-                    hop.requestFocus();
-                    return;
-                }
+
                 if(Age.isEmpty()  ){
                     ageN.setError("ce champ est obligatoire");
                     ageN.requestFocus();
@@ -134,62 +164,60 @@ public class SignupA extends Activity {
                     code.requestFocus();
                     return;
                 }
-                db.collection("Hopital").whereEqualTo("NomH",NH).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                        for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
-                            String H = documentChange.getDocument().getId();
-                            String nom = documentChange.getDocument().get("NomH").toString();
-                            String nb = documentChange.getDocument().get("nbA").toString();
-                            Log.d("jjj",nom+nb);
-                            if(H.isEmpty()){
-                                hop.setError("Inserer une adresse valide");
-                                hop.requestFocus();
-                                return;
-                            }
-                            else {
-                                mAuth.createUserWithEmailAndPassword(email,codeA).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                Log.d("hna0","nhnj");
+
+                Log.d("hna2",String.valueOf(item));
+            db.collection("Hopital").document(item).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()){
+
+                        String nomH=task.getResult().get("NomH").toString();
+                        String nbA = task.getResult().get("nbA").toString();
+                        Log.d("hna3",String.valueOf(nomH));
+                        AM.put("Hopital",nomH);
+                        AM.put("id",nomH+nbA);
+            mAuth.createUserWithEmailAndPassword(email,codeA).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    if(task.isSuccessful()){
+                        Log.d("hna4",String.valueOf(nomH));
+                        AM.put("Nom et Prenom", nomprenom.getText().toString().trim());
+                        AM.put("Email", mail.getText().toString().trim());
+                        AM.put("Mot de passe", code.getText().toString().trim());
+                        AM.put("Numero de Telephone", tel.getText().toString().trim());
+                        AM.put("Date de Naissance", ageN.getText().toString().trim());
+                        db.collection("Hopital").document(item).update("nbA",nbA+1);
+                        Log.d("hna4",String.valueOf(AM.get("Email")));
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("Ambulancier").document(mAuth.getUid())
+                                .set(AM)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                        if(task.isSuccessful()){
-                                            HashMap<String, Object> AM = new HashMap<String, Object>();
-                                            AM.put("Nom et Prenom", nomprenom.getText().toString().trim());
-                                            AM.put("Email", mail.getText().toString().trim());
-                                            AM.put("Mot de passe", code.getText().toString().trim());
-                                            AM.put("Numero de Telephone", tel.getText().toString().trim());
-                                            AM.put("Date de Naissance", ageN.getText().toString().trim());
-                                            AM.put("Hopital", hop.getText().toString().trim());
-                                            AM.put("id",nom+nb);
-                                            db.collection("Hopital").document(H).update("nbA",Integer.parseInt(nb)+1);
-                                            FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                            db.collection("Ambulancier").document(mAuth.getUid())
-                                                    .set(AM)
-                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                        @Override
-                                                        public void onSuccess(Void aVoid) {
-
-                                                            Toast.makeText(getApplicationContext(), "le compte a été crée ",
-                                                                    Toast.LENGTH_SHORT).show();
-                                                            startActivity(new Intent(SignupA.this,adminmenu.class));
-                                                        }
-                                                    })
-                                                    .addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            Log.w("Fail", "Error", e);
-
-
-                                                        }
-                                                    });
-                                        }
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(getApplicationContext(), "le compte a été crée ",
+                                                Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(SignupA.this,adminmenu.class));
                                     }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w("Fail", "Error", e);
 
+
+                                    }
                                 });
-                            }
+                    }
+                }
 
-                        }
-                    }});
+            });
+                    }
+                }
+            });
+
+
 
 
 
@@ -203,7 +231,78 @@ public class SignupA extends Activity {
                 startActivity(new Intent(SignupA.this, adminmenu.class));
             }
         });
-    }}
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Spinner Spinner =(Spinner) parent;
+        if(Spinner.getId() == R.id.sphp) {
+             item = (String) parent.getItemAtPosition(position);
+
+            SPH.setSelection(position);
+               Log.d("hna1",String.valueOf(item));
+            String email= mail.getText().toString().trim();
+            String codeA= code.getText().toString().trim();
+
+//            db.collection("Hopital").document(item).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                @Override
+//                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                    if (task.isSuccessful()){
+//
+//                        String nomH=task.getResult().get("NomH").toString();
+//                        String nbA = task.getResult().get("nbA").toString();
+//                        Log.d("hna3",String.valueOf(nomH));
+//                        AM.put("Hopital",nomH);
+//                        AM.put("id",nomH+nbA);
+//            mAuth.createUserWithEmailAndPassword(email,codeA).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                @Override
+//                public void onComplete(@NonNull Task<AuthResult> task) {
+//
+//                    if(task.isSuccessful()){
+//                        Log.d("hna4",String.valueOf(nomH));
+//                        AM.put("Nom et Prenom", nomprenom.getText().toString().trim());
+//                        AM.put("Email", mail.getText().toString().trim());
+//                        AM.put("Mot de passe", code.getText().toString().trim());
+//                        AM.put("Numero de Telephone", tel.getText().toString().trim());
+//                        AM.put("Date de Naissance", ageN.getText().toString().trim());
+//                        db.collection("Hopital").document(item).update("nbA",nbA+1);
+//                        Log.d("hna4",String.valueOf(AM.get("Email")));
+//                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//                        db.collection("Ambulancier").document(mAuth.getUid())
+//                                .set(AM)
+//                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                    @Override
+//                                    public void onSuccess(Void aVoid) {
+//                                        Toast.makeText(getApplicationContext(), "le compte a été crée ",
+//                                                Toast.LENGTH_SHORT).show();
+//                                        startActivity(new Intent(SignupA.this,adminmenu.class));
+//                                    }
+//                                })
+//                                .addOnFailureListener(new OnFailureListener() {
+//                                    @Override
+//                                    public void onFailure(@NonNull Exception e) {
+//                                        Log.w("Fail", "Error", e);
+//
+//
+//                                    }
+//                                });
+//                    }
+//                }
+//
+//            });
+//                    }
+//                }
+//            });
+
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+}
 
 
 

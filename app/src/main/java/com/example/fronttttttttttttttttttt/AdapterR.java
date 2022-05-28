@@ -40,7 +40,7 @@ import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.List;
 
-public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>  {
+ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>{
     Context context;
     ArrayList<RDVV> list;
     private ArrayAdapter<String> dataAdapter;
@@ -109,18 +109,17 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>  {
             Spinner Spinner =(Spinner) adapterView;
             if(Spinner.getId() == R.id.ambs) {
                 item = (String) adapterView.getItemAtPosition(i);
-                Log.d("itemmmm",String.valueOf(item));
+                Log.d("itemmmm", String.valueOf(item));
                 ArrayList<String> K = new ArrayList<>();
                 K.add(item);
                 it.clear();
                 it.addAll(K);
-                Log.d("itemmmm",String.valueOf(it));
+                Log.d("itemmmm", String.valueOf(it));
 
                 npick.setSelection(fillRDV().indexOf(item));
 
 
             }
-
         }
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
