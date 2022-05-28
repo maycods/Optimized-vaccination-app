@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_height="0dp"
@@ -33,40 +31,40 @@
                 android:src="@drawable/leftarrow"></ImageButton>
         </LinearLayout>
 
-        <HorizontalScrollView
-            android:id="@+id/scrl"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toStartOf="@+id/rght"
             android:layout_toEndOf="@+id/gch"
-            android:scrollbarSize="00dp">
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyT"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ></androidx.recyclerview.widget.RecyclerView>
 
-            <LinearLayout
-                android:id="@+id/hopinf"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toStartOf="@+id/rght"
-                android:layout_toEndOf="@+id/gch"
-                android:orientation="horizontal">
+        </LinearLayout>
 
-            </LinearLayout>
-
-        </HorizontalScrollView>
 
         <LinearLayout
             android:id="@+id/rght"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            >
 
             <ImageButton
-                android:id="@+id/droite"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:id="@+id/droite"
                 android:layout_gravity="center_vertical"
                 android:backgroundTint="@color/none"
                 android:scaleType="fitCenter"
-                android:src="@drawable/rightarrow"></ImageButton>
+                android:src="@drawable/rightarrow">
+
+            </ImageButton>
         </LinearLayout>
 
     </RelativeLayout>
@@ -119,7 +117,7 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/cfrmplace"
+
         app:layout_constraintTop_toBottomOf="@id/header"
         android:scrollbars="none"
         android:layout_weight="1"
@@ -136,45 +134,17 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
                 android:id="@+id/recy0"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                > </androidx.recyclerview.widget.RecyclerView>  <androidx.recyclerview.widget.RecyclerView
+                > </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recy01"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 > </androidx.recyclerview.widget.RecyclerView>
 
-
-
-
         </TableLayout>
 
 
  </ScrollView>
-<LinearLayout
- android:background="@drawable/sidestroke"
-    android:id="@+id/cfrmplace"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-android:paddingVertical="5dp"
-    >
-    <Button
-        android:id="@+id/inscritt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="70dp"
-        android:background="@drawable/bouton"
-        android:backgroundTint="@color/bleu2"
-        android:fontFamily="@font/poppins_semibold"
-        android:padding="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
-        android:text="Confirmer"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16dp" />
-
-</LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

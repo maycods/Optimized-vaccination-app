@@ -40,7 +40,7 @@ import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.List;
 
- public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>{
+public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>{
     Context context;
     ArrayList<RDVV> list;
     private ArrayAdapter<String> dataAdapter;
@@ -90,7 +90,8 @@ import java.util.List;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements AdapterView.OnItemSelectedListener{
 
-        TextView RD;
+
+        TextView RD,nbrA,NomH,nbSP,nbAS,nbJJ,nbSN;
         Spinner npick;
         ImageButton chaterr;
         ArrayList<String> it = new ArrayList<>();
@@ -101,7 +102,13 @@ import java.util.List;
             RD = itemView.findViewById(R.id.rendezvous);
             npick=itemView.findViewById(R.id.ambs);
             chaterr=itemView.findViewById(R.id.chater1);
-            npick.setOnItemSelectedListener(MyViewHolder.this);
+//              NomH = itemView.findViewById(R.id.nomH);
+//            nbrA = itemView.findViewById(R.id.nbAm);
+//            nbSP = itemView.findViewById(R.id.nbSP);
+//            nbAS = itemView.findViewById(R.id.nbAS);
+//            nbJJ = itemView.findViewById(R.id.nbJJ);
+//            nbSN = itemView.findViewById(R.id.nbSN);
+//            npick.setOnItemSelectedListener(MyViewHolder.this);
 
         }
         @Override
@@ -109,13 +116,10 @@ import java.util.List;
             Spinner Spinner =(Spinner) adapterView;
             if(Spinner.getId() == R.id.ambs) {
                 item = (String) adapterView.getItemAtPosition(i);
-                Log.d("itemmmm", String.valueOf(item));
                 ArrayList<String> K = new ArrayList<>();
                 K.add(item);
                 it.clear();
                 it.addAll(K);
-                Log.d("itemmmm", String.valueOf(it));
-
                 npick.setSelection(fillRDV().indexOf(item));
 
 

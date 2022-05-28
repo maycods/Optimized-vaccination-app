@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/border"
+    android:orientation="horizontal"
     >
 
-    <TextView
+
+<TextView
         android:id="@+id/rendezvous"
         android:gravity="center_horizontal"
         android:fontFamily="@font/poppins_light"
@@ -37,4 +40,5 @@
         android:saveEnabled="true"
         ></ImageButton>
 
-</TableRow>
+
+    </LinearLayout>

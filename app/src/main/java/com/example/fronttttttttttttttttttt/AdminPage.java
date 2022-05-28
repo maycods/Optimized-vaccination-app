@@ -68,12 +68,14 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
     public static  int SCROLL;
     private Button cfrm;
     private Spinner A;
-    RecyclerView recyclerView;
+    int pos=0;
+    RecyclerView recyclerView,recyf;
     AdapterR myAdapter;
     FirebaseFirestore db;
     GeoPoint geo;
     ArrayList<RDVV> RDV;
     ArrayList<Hopital> listH;
+    AdapterH AdapterH;
     private Spinner V;
     String ambulance=null,Ambulance;
     DisplayMetrics displayMetric = new DisplayMetrics();
@@ -88,15 +90,18 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin);
-        cfrm=findViewById(R.id.inscritt);
+
         dv =(RelativeLayout)findViewById(R.id.divmenu) ;
         scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
         getWindowManager().getDefaultDisplay().getMetrics(displayMetric);
         SCROLL = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, displayMetric.widthPixels/2-50 , getResources().getDisplayMetrics());
         r = (ImageButton) findViewById(R.id.droite);
         L = (ImageButton) findViewById(R.id.gauche);
-        top =(LinearLayout) findViewById(R.id.hopinf);
+        //top =(LinearLayout) findViewById(R.id.hopinf);
 
+        recyf=findViewById(R.id.recyT);
+        recyf.setHasFixedSize(false);
+        recyf.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         recyclerView=findViewById(R.id.recy0);
         recyclerView.setHasFixedSize(true);
@@ -106,121 +111,31 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
 
         db = FirebaseFirestore.getInstance();
         RDV = new ArrayList<RDVV>();
+        listH = new ArrayList<Hopital>();
 
         myAdapter=new AdapterR(AdminPage.this ,RDV,db);
         recyclerView.setAdapter(myAdapter);
-        db.collection("Hopital").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
-                {
-                    //L1
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                    LinearLayout lt = new LinearLayout(getApplicationContext());
-                    lt.setPadding(38,0,0,0);
-                    if (documentChange.getDocument().get("NomH").toString().equals("Kouba")){
-                        lt.setPadding(0,0,140,0);
-                    }
-                    lt.setLayoutParams(params);
-                    lt.getLayoutParams().height= LinearLayout.LayoutParams.MATCH_PARENT;
-                    lt.setOrientation(LinearLayout.VERTICAL);
-                    //NomH
-                    TextView T = new TextView(getApplicationContext());
-                    T.setText(documentChange.getDocument().get("NomH").toString());
-                    LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                    params1.setMargins(0,0,25,0);
-                    T.setLayoutParams(params1);
-                    T.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.BOLD));
-                    T.setTextColor(Color.rgb(255,255,255));
-                    T.setTextSize(40);
-                    lt.addView(T);
-                    //L2
-                    LinearLayout lt2 = new LinearLayout(getApplicationContext());
-                    params.setMargins(5,0,10,0);
-                    lt2.setLayoutParams(params);
-                    lt2.setOrientation(LinearLayout.VERTICAL);
-
-                    TextView NBA = new TextView(getApplicationContext());
-                    NBA.setText("Ambulanceier : "+documentChange.getDocument().get("nbA"));
-                    NBA.setLayoutParams(params1);
-                    NBA.setPadding(0,10,0,15);
-                    NBA.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.BOLD));
-                    NBA.setTextColor(Color.rgb(255,255,255));
-                    NBA.setTextSize(17);
-                    lt2.addView(NBA);
-
-                    TextView Sp = new TextView(getApplicationContext());
-                    Sp.setText("sputnik : "+documentChange.getDocument().get("DoseSpootnik").toString());
-                    Sp.setLayoutParams(params1);
-                    Sp.setPadding(0,0,0,5);
-                    Sp.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
-                    Sp.setTextColor(Color.rgb(255,255,255));
-                    Sp.setTextSize(15);
-                    lt2.addView(Sp);
-
-                    TextView AS = new TextView(getApplicationContext());
-                    AS.setText("AstraZeneka : "+documentChange.getDocument().get("DoseAstra").toString());
-                    AS.setLayoutParams(params1);
-                    AS.setPadding(0,0,0,5);
-                    AS.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
-                    AS.setTextColor(Color.rgb(255,255,255));
-                    AS.setTextSize(15);
-                    lt2.addView(AS);
-
-                    TextView JS = new TextView(getApplicationContext());
-                    JS.setText("Johnson & Johnson : "+documentChange.getDocument().get("DoseAstra").toString());
-                    JS.setLayoutParams(params1);
-                    JS.setPadding(0,0,0,5);
-                    JS.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
-                    JS.setTextColor(Color.rgb(255,255,255));
-                    JS.setTextSize(15);
-                    lt2.addView(JS);
-
-                    TextView SV = new TextView(getApplicationContext());
-                    SV.setText("Astrazenica : "+documentChange.getDocument().get("DoseAstra").toString());
-                    SV.setLayoutParams(params1);
-                    SV.setPadding(0,0,0,5);
-                    SV.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
-                    SV.setTextColor(Color.rgb(255,255,255));
-                    SV.setTextSize(15);
-                    lt2.addView(SV);
 
 
-                    lt.addView(lt2);
-                    top.addView(lt);
-                }
-            }
-        });
-
-
-
+        AdapterH =new AdapterH(AdminPage.this ,listH,db);
+        recyf.setAdapter(AdapterH);
         EventChangeListener();
 
-        cfrm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Ambulance=ambulance;
-                Toast.makeText(getApplicationContext(),String.valueOf(Ambulance),Toast.LENGTH_LONG).show();
-            }
-        });
         L.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int x = scrollView.getScrollX();
-                if(x - SCROLL_DELTA >= 0) {
-                    scrollView.scrollTo(x-SCROLL, scrollView.getScrollY());
-                }return;
+                if(pos!=listH.size()){
+                    recyf.scrollToPosition(pos);
+                    pos++;}
+                return;
             }
         });
         r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int maxAmount = 4000;
-
-                int x =scrollView.getScrollX();
-                if(x + SCROLL_DELTA <= maxAmount) {
-                    scrollView.scrollTo(x+SCROLL, scrollView.getScrollY());
-                }
+                if(pos!=-1){
+                    recyf.scrollToPosition(pos);
+                    pos--;}
                 return;
             }
         });
@@ -266,8 +181,28 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                         RDV.add(A);
                         myAdapter.notifyDataSetChanged();
 
+
                     }
 
+                }
+            }
+        });
+        db.collection("Hopital").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
+                {
+                    listH.add(documentChange.getDocument().toObject(Hopital.class));
+                    AdapterH.notifyDataSetChanged();
+//                    String Nomh,nbAH,doseSP,doseAS,doseJJ,doseSN;
+//                    Nomh = documentChange.getDocument().getId();
+//                    nbAH =  documentChange.getDocument().get("nbA").toString();
+//                    doseAS= documentChange.getDocument().get("AstraZeneka").toString();
+//                    doseSP= documentChange.getDocument().get("Sputnik V").toString();
+//                    doseJJ= documentChange.getDocument().get("Johnson & Johnson").toString();
+//                    doseSN= documentChange.getDocument().get("Sinovac-CoronaVac").toString();
+//                    Hopital H = new Hopital(Nomh,doseSP,doseAS,doseJJ,doseSN,nbAH);
+//
                 }
             }
         });

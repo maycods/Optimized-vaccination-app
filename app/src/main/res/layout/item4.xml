@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginRight="38dp"
+    >
+
+    <TextView
+        android:id="@+id/nomH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_light"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:textStyle="bold"></TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nbAm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+          android:padding="3dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="18dp"></TextView>
+
+        <TextView
+            android:id="@+id/nbSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:padding="5dp"
+            android:textStyle="italic"
+            android:text="Sputnik:"
+            android:textColor="@color/white"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:id="@+id/nbAS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:padding="5dp"
+            android:textStyle="italic"
+            android:text="AstraZeneka:"
+            android:textColor="@color/white"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:id="@+id/nbJJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:padding="5dp"
+            android:textStyle="italic"
+            android:text="JohnsonJohnson: "
+            android:textColor="@color/white"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:id="@+id/nbSN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:padding="5dp"
+            android:textStyle="italic"
+            android:text="Sinovac-CoronaVac:"
+            android:textColor="@color/white"
+            android:textSize="14dp"></TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
