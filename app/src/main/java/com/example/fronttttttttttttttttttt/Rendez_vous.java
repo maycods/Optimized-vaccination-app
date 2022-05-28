@@ -103,10 +103,10 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
         CalenderEvent calenderEvent = findViewById(R.id.calender_event);
 
         mSearchText = (EditText)findViewById(R.id.search_des) ;
-         gps = (TextView) findViewById(R.id.mapos) ;
+        gps = (TextView) findViewById(R.id.mapos) ;
         retour=(ImageButton)findViewById(R.id.retourR);
         comfirmer=(Button) findViewById(R.id.comfirmerr);
-         V = findViewById(R.id.spinner1);
+        V = findViewById(R.id.spinner1);
 
 
 //idpatient
@@ -144,7 +144,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                             if (typeV==null){
                                 V.setEnabled(true);
                                 V.setOnItemSelectedListener(Rendez_vous.this);
-                        }
+                            }
                             else {
                                 V.setSelection(listV.indexOf(typeV));
                                 V.setEnabled(false);
@@ -163,111 +163,106 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 String jourj;
                 LocalDate  aujourhui = LocalDate.parse(date);
 
-                    if(dayContainerModel.getMonthNumber() + 1 != 10 && dayContainerModel.getMonthNumber() + 1 != 11 && dayContainerModel.getMonthNumber() + 1 != 12) {
-                        jourj = dayContainerModel.getYear() + "-0" + String.valueOf(dayContainerModel.getMonthNumber()+1) + "-" + dayContainerModel.getDay();
-                    }else{
-                        jourj = dayContainerModel.getYear() + "-" + String.valueOf(dayContainerModel.getMonthNumber()+1)+ "-" + dayContainerModel.getDay();
-                    }
-                    LocalDate  j = LocalDate.parse(jourj);
+                if(dayContainerModel.getMonthNumber() + 1 != 10 && dayContainerModel.getMonthNumber() + 1 != 11 && dayContainerModel.getMonthNumber() + 1 != 12) {
+                    jourj = dayContainerModel.getYear() + "-0" + String.valueOf(dayContainerModel.getMonthNumber()+1) + "-" + dayContainerModel.getDay();
+                }else{
+                    jourj = dayContainerModel.getYear() + "-" + String.valueOf(dayContainerModel.getMonthNumber()+1)+ "-" + dayContainerModel.getDay();
+                }
+                LocalDate  j = LocalDate.parse(jourj);
 
 
-                    if(aujourhui.isAfter(j) || aujourhui.isEqual(j)){
-                        Toast.makeText(getApplicationContext(), "vous pouvez pas prendre un rendez-vous pour aujourd hui ou avant", Toast.LENGTH_LONG).show();
+                if(aujourhui.isAfter(j) || aujourhui.isEqual(j)){
+                    Toast.makeText(getApplicationContext(), "vous pouvez pas prendre un rendez-vous pour aujourd hui ou avant", Toast.LENGTH_LONG).show();
 
-                    }else{
-                        date1 = jourj +" "+"00:00:00";
-                        Timestamp timestamp = Timestamp.valueOf(date1);
-                        RDV.put("dateR",timestamp);
+                }else{
+                    date1 = jourj +" "+"00:00:00";
+                    Timestamp timestamp = Timestamp.valueOf(date1);
+                    RDV.put("dateR",timestamp);
 
-                    }
+                }
 
 
             }
         });
 
-      retour.setOnClickListener(new View.OnClickListener() {
-                                  @Override
-                                  public void onClick(View view) {
-                                      startActivity(new Intent(Rendez_vous.this, Menu.class));
-                                  }
-                              });
-      gps.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              askGalleryPermissionLocation();
-          }
-      });
-      comfirmer.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              geoLocate();
-              String search = mSearchText.getText().toString().trim();
-              if(search.isEmpty()){
-                  mSearchText.setError("ce champ est obligatoire");
-                  mSearchText.requestFocus();
-                  return;
-              }
-              if(date1.isEmpty()){
-                  Toast.makeText(getApplicationContext(), "inserer une date correcte", Toast.LENGTH_LONG).show();
-                  return;
-              }
-              db.collection("user").document(currentId).update("Type de vaccin", choixV);
-                              db.collection("Rendez-vous").whereEqualTo("IDP",currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                  @Override
-                                  public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                      if(task.isSuccessful()){
-                                          if(task.getResult().getDocuments().isEmpty()){
-                                              RDV.put("IDP",currentId);
-                                              GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
-                                              RDV.put("Localisation",geo);
-                                              RDV.put("confR",false);
-                                              RDV.put("confV",false);
-                                              RDV.put("comfJJ",true);
-                                              RDV.put("AMB","");
-                                              RDV.put("Type de vaccin", choixV);
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Rendez_vous.this, Menu.class));
+            }
+        });
+        gps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askGalleryPermissionLocation();
+            }
+        });
+        comfirmer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                geoLocate();
+                String search = mSearchText.getText().toString().trim();
+                if(search.isEmpty()){
+                    mSearchText.setError("ce champ est obligatoire");
+                    mSearchText.requestFocus();
+                    return;
+                }
+                if(date1.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "inserer une date correcte", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                db.collection("user").document(currentId).update("Type de vaccin", choixV);
+                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            if(task.getResult().getDocuments().isEmpty()){
+                                RDV.put("IDP",currentId);
+                                GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
+                                RDV.put("Localisation",geo);
+                                RDV.put("confR",false);
+                                RDV.put("confV",false);
+                                RDV.put("comfJJ",true);
+                                RDV.put("AMB","");
+                                RDV.put("Type de vaccin", choixV);
 
-                                              db.collection("Rendez-vous").document()
-                                                      .set(RDV)
-                                                      .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                          @Override
-                                                          public void onSuccess(Void aVoid) {
-                                                              Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
-                                                                      Toast.LENGTH_SHORT).show();
-                                                              mSearchText.setFocusable(false);
-                                                              V.setEnabled(false);
-                                                              calenderEvent.requestFocus();
-                                                          }
-                                                      })
-                                                      .addOnFailureListener(new OnFailureListener() {
-                                                          @Override
-                                                          public void onFailure(@NonNull Exception e) {
-                                                              Log.w("Fail", "Error", e);
+                                db.collection("Rendez-vous").document()
+                                        .set(RDV)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
+                                                        Toast.LENGTH_SHORT).show();
+                                                mSearchText.setFocusable(false);
+                                                V.setEnabled(false);
+                                                calenderEvent.requestFocus();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.w("Fail", "Error", e);
 
-                                                          }
-                                                      });
-                                          }
-                                          else{
-                                              Toast.makeText(getApplicationContext(), "le rendez-vous a deja  ete prit ",
-                                                      Toast.LENGTH_SHORT).show();
-                                              startActivity(new Intent(Rendez_vous.this, Rendez_vous.class));
-                                          }
-                                      }
-                                  }
-                              });
+                                            }
+                                        });
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(), "le rendez-vous a deja  ete prit ",
+                                        Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(Rendez_vous.this, Rendez_vous.class));
+                            }
+                        }
+                    }
+                });
 
-          }
-      });
+            }
+        });
 
-   }
+    }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            choixV = (String) adapterView.getItemAtPosition(i);
-            Log.d("je sui",String.valueOf(choixV));
-            V.setSelection(i);
-            RDV.put("Type de vaccin",choixV);
-            db.collection("user").document(currentId).update("Type de vaccin", choixV);
-        }
-    
+        choixV = (String) adapterView.getItemAtPosition(i);
+    }
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
@@ -327,7 +322,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                 if (task.isSuccessful()) {
                                     Location location = task.getResult();
                                     if (location != null) {
-                                       LatLng P =new LatLng( location.getLatitude(), location.getLongitude());
+                                        LatLng P =new LatLng( location.getLatitude(), location.getLongitude());
                                         Geocoder geocoder = new Geocoder(Rendez_vous.this);
                                         List<Address> list1 = new ArrayList<>();
                                         try {
