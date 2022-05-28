@@ -89,7 +89,7 @@ public class Admin extends Activity {
                                                 Intent i =new Intent(Admin.this,adminmenu.class);
                                                 startActivity(i);
                                             }else{
-                                                Toast.makeText(getApplicationContext(),"ce n'est pas un compte d'un admin tgdeb",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getApplicationContext(),"ce n'est pas un compte d'un admin ",Toast.LENGTH_LONG).show();
                                             }
                                         }
                                     });

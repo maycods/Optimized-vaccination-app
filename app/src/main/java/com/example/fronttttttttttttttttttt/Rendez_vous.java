@@ -292,7 +292,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
         if(Spinner.getId() == R.id.spinner1) {
             choixV = (String) adapterView.getItemAtPosition(i);
             Log.d("je sui",String.valueOf(choixV));
-            V.setSelection(listV.indexOf(choixV));
+            V.setSelection(i);
             RDV.put("Type de vaccin",choixV);
             db.collection("user").document(currentId).update("Type de vaccin", choixV);
         }

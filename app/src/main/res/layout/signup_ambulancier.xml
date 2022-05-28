@@ -255,23 +255,24 @@
                 android:paddingLeft="20dp"
                 />
 
-            <EditText
-                android:textColorHint="@color/HINT"
-                android:id="@+id/hopA"
+
+            <Spinner
+                android:saveEnabled="true"
+                android:id="@+id/sphp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:background="@drawable/input"
-                android:drawableLeft="@drawable/ic_baseline_local_hospital_25"
-                android:hint="Saisir l'hôpital d'affiliation "
-                android:fontFamily="@font/poppins_light"
-                android:inputType="text"
-                android:textColor="@color/bleufoncé"
+                android:background="@drawable/bouton3"
                 android:maxLines="1"
+                android:spinnerMode="dropdown"
+                android:dropDownSelector="@color/bleu2"
+                android:shadowColor="@color/bleufoncé"
                 android:minHeight="48dp"
-                android:paddingLeft="15dp"
-                android:drawablePadding="15dp"
+                android:paddingLeft="20dp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_marginBottom="20dp"
                 android:textSize="15dp" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
