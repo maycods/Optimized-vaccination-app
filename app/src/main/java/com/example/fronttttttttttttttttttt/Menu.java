@@ -78,8 +78,9 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             com.google.firebase.Timestamp timestamp = (Timestamp) document.get("dateR");
-                          LocalDate g  =LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
+                            LocalDate g  =LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
                             LocalDate JJ = LocalDate.now().plusDays(1);
+                            LocalDate today = LocalDate.now();
                             Log.d("lplplp",String.valueOf(System.currentTimeMillis()));
                             if(g.isEqual(JJ)/* && System.currentTimeMillis()/1000< Long.parseLong("46800") */&& !(boolean) document.get("confR")){
 
@@ -96,6 +97,21 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                                     }
                                 });
                             }
+                            Log.d("todayyy",String.valueOf(today));
+                           if(g.isEqual(today)&& (boolean) document.get("confR") && (boolean) document.get("comfJJ")) {
+                               notif.setEnabled(true);
+                               notif.setImageResource (R.drawable.ic_outline_notifications_active_25);
+                               notif.setOnClickListener(new View.OnClickListener() {
+                                   @Override
+                                   public void onClick(View view) {
+                                       Intent intent=  new Intent(Menu.this, NotifV.class);
+                                       startActivity(intent);
+                                       getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+                                               WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+
+                                   }
+                               });
+                           }
                         }
             }
         }

@@ -107,7 +107,7 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
         db = FirebaseFirestore.getInstance();
         RDV = new ArrayList<RDVV>();
 
-        myAdapter=new AdapterR(AdminPage.this ,RDV,db,1);
+        myAdapter=new AdapterR(AdminPage.this ,RDV,db);
         recyclerView.setAdapter(myAdapter);
         db.collection("Hopital").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -261,10 +261,14 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                     String IDR =  documentChange.getDocument().getId();
                     Log.d("adddddd",address);
                     RDVV A = new RDVV(IDR,typeV,address,IDP);
-                    RDV.add(A);
+                    if (documentChange.getType() == DocumentChange.Type.ADDED) {
+
+                        RDV.add(A);
+                        myAdapter.notifyDataSetChanged();
+
+                    }
 
                 }
-                myAdapter.notifyDataSetChanged();
             }
         });
 

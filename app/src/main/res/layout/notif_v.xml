@@ -79,7 +79,7 @@
             />
 
         <Button
-            android:id="@+id/btn_cancel"
+            android:id="@+id/btn_oui"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/btn_okay"
+            android:id="@+id/btn_non"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"

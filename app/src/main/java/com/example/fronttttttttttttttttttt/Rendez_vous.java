@@ -136,7 +136,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if(task.getResult().exists()) {
+                        if(task.isSuccessful()) {
                             typeV = (String) task.getResult().get("Type de vaccin");
                             Log.d("wow", String.valueOf(typeV));
 
@@ -222,6 +222,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                               RDV.put("Localisation",geo);
                                               RDV.put("confR",false);
                                               RDV.put("confV",false);
+                                              RDV.put("comfJJ",true);
                                               RDV.put("AMB","");
                                               RDV.put("Type de vaccin", choixV);
 
