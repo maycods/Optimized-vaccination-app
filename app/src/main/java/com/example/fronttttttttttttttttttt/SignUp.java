@@ -82,8 +82,6 @@ public class SignUp extends Activity {
                 }else{
                             try {
                                 LocalDate.parse(daten);
-                                Log.d("xe",String.valueOf( LocalDate.parse(daten)));
-                                // tell the user the format is right
                             } catch (DateTimeParseException dtpe) {
                               dnn.setError("cette date n'est pas valide voici le format: yyyy-MM-dd");
                               dnn.requestFocus();

@@ -2,6 +2,7 @@ package com.example.fronttttttttttttttttttt;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.versionedparcelable.NonParcelField;
 
@@ -35,6 +37,8 @@ import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.protobuf.Value;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 
 public class SignupA extends Activity {
@@ -63,6 +67,7 @@ public class SignupA extends Activity {
 
 
         sinscrire.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
 
             public void onClick(View view) {
@@ -82,10 +87,19 @@ public class SignupA extends Activity {
                     hop.requestFocus();
                     return;
                 }
-                if(Age.isEmpty()){
+                if(Age.isEmpty()  ){
                     ageN.setError("ce champ est obligatoire");
                     ageN.requestFocus();
                     return;
+                }else{
+                    try {
+                        LocalDate.parse(Age);
+                    } catch (DateTimeParseException dtpe) {
+                        ageN.setError("cette date n'est pas valide voici le format: yyyy-MM-dd");
+                        ageN.requestFocus();
+                        return;
+                    }
+
                 }
                 if(email.isEmpty()){
                     mail.setError("ce champ est obligatoire");
@@ -144,7 +158,7 @@ public class SignupA extends Activity {
                                             AM.put("Email", mail.getText().toString().trim());
                                             AM.put("Mot de passe", code.getText().toString().trim());
                                             AM.put("Numero de Telephone", tel.getText().toString().trim());
-                                            AM.put("Age", ageN.getText().toString().trim());
+                                            AM.put("Date de Naissance", ageN.getText().toString().trim());
                                             AM.put("Hopital", hop.getText().toString().trim());
                                             AM.put("id",nom+nb);
                                             db.collection("Hopital").document(H).update("nbA",Integer.parseInt(nb)+1);
