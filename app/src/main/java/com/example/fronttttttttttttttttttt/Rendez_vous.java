@@ -80,7 +80,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-// TODO: 21/05/2022  si possible rendre calendrier fixe apres confirmation
 public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedListener {
     private ImageButton retour;
     private EditText mSearchText;
@@ -107,9 +106,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
          gps = (TextView) findViewById(R.id.mapos) ;
         retour=(ImageButton)findViewById(R.id.retourR);
         comfirmer=(Button) findViewById(R.id.comfirmerr);
-        Spinner spinner = findViewById(R.id.spinner1);
-        spinner.setEnabled(false);
-        spinner.setClickable(false);
          V = findViewById(R.id.spinner1);
 
 
@@ -135,7 +131,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 (this, R.layout.spinn,
                         listV);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-
         reference=db.collection("user").document(currentId);
         reference.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -144,27 +139,20 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                         if(task.getResult().exists()) {
                             typeV = (String) task.getResult().get("Type de vaccin");
                             Log.d("wow", String.valueOf(typeV));
-                            if (typeV==""){
-                                V.setEnabled(true);
-                                spinner.setAdapter(adapter);
-                                V.setBackgroundColor(0x00000000);
-                                V.setBackgroundResource(R.drawable.bouton2);
-                                V.setOnItemSelectedListener(Rendez_vous.this);
 
+                            V.setAdapter(adapter);
+                            if (typeV==null){
+                                V.setEnabled(true);
+                                V.setOnItemSelectedListener(Rendez_vous.this);
                         }
                             else {
                                 V.setSelection(listV.indexOf(typeV));
                                 V.setEnabled(false);
-                                spinner.setAdapter(adapter);
-                                V.setBackgroundColor(0x00000000);
-                                V.setBackgroundResource(R.drawable.bouton2);
-
-                                RDV.put("Type de vaccin", typeV);
+                                choixV=typeV;
+                                //RDV.put("Type de vaccin", typeV);
                             }
                         }}});
-
 //Date
-
         calenderEvent.initCalderItemClickCallback(new CalenderDayClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -223,20 +211,20 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                   Toast.makeText(getApplicationContext(), "inserer une date correcte", Toast.LENGTH_LONG).show();
                   return;
               }
-
-
+              db.collection("user").document(currentId).update("Type de vaccin", choixV);
                               db.collection("Rendez-vous").whereEqualTo("IDP",currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                   @Override
                                   public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                       if(task.isSuccessful()){
                                           if(task.getResult().getDocuments().isEmpty()){
-                                              Log.d("kkkk","lllll");
                                               RDV.put("IDP",currentId);
                                               GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
                                               RDV.put("Localisation",geo);
                                               RDV.put("confR",false);
                                               RDV.put("confV",false);
                                               RDV.put("AMB","");
+                                              RDV.put("Type de vaccin", choixV);
+
                                               db.collection("Rendez-vous").document()
                                                       .set(RDV)
                                                       .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -246,13 +234,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                                                       Toast.LENGTH_SHORT).show();
                                                               mSearchText.setFocusable(false);
                                                               V.setEnabled(false);
-                                                              spinner.setAdapter(adapter);
-                                                              V.setBackgroundColor(0x00000000);
-                                                              V.setBackgroundResource(R.drawable.bouton2);
-                                                              V.setOnItemSelectedListener(Rendez_vous.this);
-                                                              V.setSelection(listV.indexOf(choixV));
                                                               calenderEvent.requestFocus();
-
                                                           }
                                                       })
                                                       .addOnFailureListener(new OnFailureListener() {
@@ -262,10 +244,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
                                                           }
                                                       });
-
-
-
-
                                           }
                                           else{
                                               Toast.makeText(getApplicationContext(), "le rendez-vous a deja  ete prit ",
@@ -276,29 +254,14 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                                   }
                               });
 
-
-
-              //j jours
-              //Position pos
-              //
-                                                   }
+          }
       });
 
    }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
-        String currentId=user.getUid();        Spinner Spinner =(Spinner) adapterView;
-        if(Spinner.getId() == R.id.spinner1) {
             choixV = (String) adapterView.getItemAtPosition(i);
-            Log.d("je sui",String.valueOf(choixV));
-            V.setSelection(listV.indexOf(choixV));
-            RDV.put("Type de vaccin",choixV);
-            db.collection("user").document(currentId).update("Type de vaccin", choixV);
-        }
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
@@ -317,7 +280,6 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
         if(list.size() > 0){
             Address address = list.get(0);
             Position =new LatLng( address.getLatitude(),address.getLongitude());
-
 
         }
 

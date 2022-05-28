@@ -51,8 +51,7 @@ ImageButton notf;
         notf.setEnabled(false);
         db = FirebaseFirestore.getInstance();
 
-        //LocalDate JJ = LocalDate.now().minusDays(1);
-        LocalDate JJ = LocalDate.now().plusDays(1);
+
       date=new Date();
         Date yesterday = new Date(date.getTime() - (1000 * 60 * 60 * 24));
         yesterday.setSeconds(0);

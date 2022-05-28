@@ -53,7 +53,6 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
     private  FirebaseFirestore db;
     private String spinnerChoiceT=null;
     private  Integer spinnerChoiceD=0;
-    ArrayAdapter<CharSequence> adapter;
     ArrayAdapter<CharSequence> adapter2;
     int iii=0;
     private FirebaseAuth mAuth;
@@ -99,19 +98,16 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
         });
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this, R.layout.spinn,
-                        a);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinn, a);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner2 = findViewById(R.id.nbrdoses);
         spinner2.setEnabled(false);
         spinner2.setClickable(false);
 
         adapter2= ArrayAdapter.createFromResource(this,R.array.nombre, R.layout.spinn);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+
 //
-
-
         vacc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -121,7 +117,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                        dose.setEnabled(true);
                        typevac.setBackgroundColor(0x00000000);
                        dose.setBackgroundColor(0x00000000);
-                       typevac.setBackgroundResource(R.drawable.bouton);
+                       typevac.setBackgroundResource(R.drawable.bouton2);
                        dose.setBackgroundResource(R.drawable.bouton2);
 
                         spinner2.setAdapter(adapter2);
@@ -136,8 +132,8 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                            dose.setEnabled(false);
                            typevac.setBackgroundResource(R.drawable.bouton);
                            dose.setBackgroundResource(R.drawable.bouton);
-
-
+                           spinnerChoiceD = 0;
+                           spinnerChoiceT = null;
                        }
                    }
             }
@@ -234,7 +230,6 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
         Spinner t2 =(Spinner) adapterView;
         if (t1.getId()== R.id.nbrdoses) {
             spinnerChoiceD = parseInt((String) adapterView.getItemAtPosition(i));
-
         }if(t2.getId() == R.id.vactype) {
                 spinnerChoiceT = (String) adapterView.getItemAtPosition(i);
         }
@@ -246,13 +241,10 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
     @Override
     public void  onRestoreInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        // Save UI state changes to the savedInstanceState.
-        // This bundle will be passed to onCreate if the process is
-        // killed and restarted.
+
         inscrit.setVisibility(View.GONE);
         verif.setVisibility(View.VISIBLE);
 
-        // etc.
     }
 
 }
