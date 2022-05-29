@@ -78,6 +78,9 @@ public class Login extends AppCompatActivity {
                                                 Intent i =new Intent(Login.this,Menu.class);
                                                 startActivity(i);
                                             }
+                                            else {
+                                                Toast.makeText(Login.this , "ce n'est pas un compte patient",Toast.LENGTH_SHORT).show();
+                                            }
                                         }
                                     });
 

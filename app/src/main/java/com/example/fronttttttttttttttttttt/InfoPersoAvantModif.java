@@ -62,9 +62,14 @@ import com.google.zxing.WriterException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.HashMap;
@@ -79,10 +84,12 @@ private Button modifier,generer;
 private ImageButton retourpp;
 private TextView nom,mail,tel,dose,type,rdv,motdp,age,Nom_prenom,position,date;
 Bitmap bmp ,bmpQR,USTHB ;
+private int AGEV;
 
 QRGEncoder qrgEncoder;
 int pageWidth =1200;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActivityCompat.requestPermissions(InfoPersoAvantModif.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
@@ -161,7 +168,7 @@ int pageWidth =1200;
     retourpp=(ImageButton)findViewById(R.id.retourP);
     Nom_prenom=(TextView) findViewById(R.id.nom);
 
-    bmp = BitmapFactory.decodeResource(getResources(),R.drawable.pass);
+
 
         retourpp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,11 +248,13 @@ int pageWidth =1200;
             titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
             titlePaint.setTextSize(30);
             canva.drawText(" Nom et Prenom : "+Nom_prenom.getText().toString().trim(),pageWidth/2,720,titlePaint);
-
+            LocalDate l = LocalDate.now();
+            LocalDate br =LocalDate.parse(age.getText().toString());
+            Period p= Period.between(br,l);
             titlePaint.setTextAlign(Paint.Align.CENTER);
             titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
             titlePaint.setTextSize(30);
-            canva.drawText(" Age : "+age.getText().toString().trim()+"ans",pageWidth/2,790,titlePaint);
+            canva.drawText(" Age : "+p.getYears()+" ans",pageWidth/2,790,titlePaint);
 
             titlePaint.setTextAlign(Paint.Align.CENTER);
             titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.ITALIC));
