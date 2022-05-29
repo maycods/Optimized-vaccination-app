@@ -27,13 +27,26 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 //TODO BOUTON JE SS ARRIV2 ET TT TESTER QD CARTE BANCAIRE PRETE
-public class Map extends FragmentActivity implements OnMapReadyCallback, RoutingListener {
+public class Map extends FragmentActivity /*implements OnMapReadyCallback, RoutingListener */{
     GoogleMap map;
     int d=0;
     int r=0;
@@ -44,11 +57,13 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
     private static final int[] COLORS = new int[]{R.color.purple_200};
     Population pop = new Population();
     LatLng A ,B,C,D;
-    LatLng ListePositions [] ={A=new LatLng(	35.55,  6.17 ),B =new LatLng( 35.6976541, -0.6337376),C =new LatLng(35.6976541,5.6337376),D=new LatLng(36.4798683,2.8005677)};
-    Object  M[][] = new Object[ListePositions.length+1][ListePositions.length+1];
-    Vector<Integer> a = new Vector<Integer>(ListePositions.length*ListePositions.length-ListePositions.length);
+    //LatLng ListePositions []={A=new LatLng(	35.55,  6.17 ),B =new LatLng( 35.6976541, -0.6337376),C =new LatLng(35.6976541,5.6337376),D=new LatLng(36.4798683,2.8005677)};
+//   Object  M[][] = new Object[ListePositions.length+1][ListePositions.length+1];
+//    Vector<Integer> a = new Vector<Integer>(ListePositions.length*ListePositions.length-ListePositions.length);
     int [] Vtest = new int[]{2,3,1,1,7,9,2,4,10,4,8,7};
     LatLng sol[] = new LatLng[]{A,B,C,D,A};
+    ArrayList<LatLng> ListeP =new ArrayList<>();
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,13 +72,14 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
             polylines = new ArrayList<>();
            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
-            mapFragment.getMapAsync(this);
+          //  mapFragment.getMapAsync(this);
 
-           remplirM(M);
+     //      remplirM(M);
 arriv=findViewById(R.id.arrived);
 okk=findViewById(R.id.ok);
 leT=findViewById(R.id.leté);
 T=findViewById(R.id.adreTOtype);
+
 arriv.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
@@ -85,7 +101,55 @@ okk.setOnClickListener(new View.OnClickListener() {
     }
 });
 
-        }
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String currentId=user.getUid();
+        LocalDate aujourhui = LocalDate.now();
+        String date1 = aujourhui +" "+"00:00:00";
+        Timestamp timestamp = Timestamp.valueOf(date1);
+
+        db.collection("Ambulancier").document(currentId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+           String AMB =task.getResult().get("id").toString();
+        db.collection("Hopital").document(task.getResult().get("Hopital").toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                GeoPoint geoPoint = (GeoPoint)task.getResult().get("Localisation");
+                double lat = geoPoint.getLatitude();
+                double lng = geoPoint.getLongitude();
+                LatLng latLng = new LatLng(lat, lng);
+                ListeP.add( 0,latLng);
+
+                db.collection("Rendez-vous").whereEqualTo("AMB", AMB).whereEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        int i=1;
+                        for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
+                        {
+                            GeoPoint geoPoint = (GeoPoint) documentChange.getDocument().get("Localisation");
+                            double lat = geoPoint.getLatitude();
+                            double lng = geoPoint.getLongitude();
+                            LatLng latLng = new LatLng(lat, lng);
+                            ListeP.add(i, latLng);
+
+                            i++;
+
+                        } ListeP.add(ListeP.get(0));
+
+                        Log.d("1238888",String.valueOf(ListeP));
+                        Log.d("7123888", String.valueOf(ListeP.size()));
+                    }
+                });
+            }}
+        });
+                       }
+            }
+        });
+
+        }/*
         public void remplirM(Object M[][]){
             int j,i,l=0;
             for( j=1; j<=ListePositions.length;j++) { M[0][j]=ListePositions[j-1]; }
@@ -291,7 +355,7 @@ okk.setOnClickListener(new View.OnClickListener() {
     public void onRoutingStart() {}
     private void getRouteTiMarker(LatLng ok,LatLng ol) {
         Routing routing = new Routing.Builder()
-                .key("AIzaSyClZLvJ8oWCxBw3YlHUMl3846QnJZC_X-4")
+                .key("")
                 .travelMode(AbstractRouting.TravelMode.DRIVING)
                 .withListener(this)
                 .alternativeRoutes(false)
@@ -299,7 +363,7 @@ okk.setOnClickListener(new View.OnClickListener() {
                 .build();
         routing.execute();
 
-    }
+    }*/
 }
 
 
