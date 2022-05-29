@@ -85,6 +85,7 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                             LocalDate JJ = LocalDate.now().plusDays(1);
                             LocalDate today = LocalDate.now();
                             Log.d("lplplp",String.valueOf(System.currentTimeMillis()));
+
                             if(g.isEqual(JJ)/* && System.currentTimeMillis()/1000< Long.parseLong("46800") */&& !(boolean) document.get("confR")){
 
                                 notif.setEnabled(true);
@@ -121,9 +122,6 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                                    public void onClick(View view) {
                                        Intent intent=  new Intent(Menu.this, NotifV.class);
                                        startActivity(intent);
-                                       getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
-                                               WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-
                                    }
                                });
                            }
