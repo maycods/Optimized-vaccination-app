@@ -211,49 +211,61 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                     Toast.makeText(getApplicationContext(), "inserer une date correcte", Toast.LENGTH_LONG).show();
                     return;
                 }
-                db.collection("user").document(currentId).update("Type de vaccin", choixV);
-                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                db.collection("user").document(currentId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            if(task.getResult().getDocuments().isEmpty()){
-                                RDV.put("IDP",currentId);
-                                GeoPoint geo = new GeoPoint(Position.latitude,Position.longitude);
-                                RDV.put("Localisation",geo);
-                                RDV.put("confR",false);
-                                RDV.put("confV",false);
-                                RDV.put("comfJJ",true);
-                                RDV.put("AMB","");
-                                RDV.put("Type de vaccin", choixV);
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                      if(  task.isSuccessful()) {
+                          Long a =(Long) task.getResult().get("Nombre de chance");
+if(a!=0){
+    db.collection("user").document(currentId).update("Type de vaccin", choixV);
+    db.collection("Rendez-vous").whereEqualTo("IDP", currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            if (task.isSuccessful()) {
+                if (task.getResult().getDocuments().isEmpty()) {
+                    RDV.put("IDP", currentId);
+                    GeoPoint geo = new GeoPoint(Position.latitude, Position.longitude);
+                    RDV.put("Localisation", geo);
+                    RDV.put("confR", false);
+                    RDV.put("confV", false);
+                    RDV.put("comfJJ", true);
+                    RDV.put("AMB", "");
+                    RDV.put("Type de vaccin", choixV);
 
-                                db.collection("Rendez-vous").document()
-                                        .set(RDV)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
-                                                        Toast.LENGTH_SHORT).show();
-                                                mSearchText.setFocusable(false);
-                                                V.setEnabled(false);
-                                                calenderEvent.requestFocus();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.w("Fail", "Error", e);
+                    db.collection("Rendez-vous").document()
+                            .set(RDV)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
+                                            Toast.LENGTH_SHORT).show();
+                                    mSearchText.setFocusable(false);
+                                    V.setEnabled(false);
+                                    calenderEvent.requestFocus();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("Fail", "Error", e);
 
-                                            }
-                                        });
-                            }
-                            else{
-                                Toast.makeText(getApplicationContext(), "le rendez-vous a deja  ete prit ",
-                                        Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Rendez_vous.this, Rendez_vous.class));
-                            }
-                        }
+                                }
+                            });
+                } else {
+                    Toast.makeText(getApplicationContext(), "le rendez-vous a deja  ete prit ",
+                            Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Rendez_vous.this, Rendez_vous.class));
+                }
+            }
+        }
+    });
+}else{
+    Toast.makeText(getApplicationContext(),"Vous ne pouvez plus prendre de rendez-vous car vous avez consommez toutes vos chances",Toast.LENGTH_LONG).show();
+}
+                      }
                     }
                 });
+
 
             }
         });
