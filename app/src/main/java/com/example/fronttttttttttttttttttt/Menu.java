@@ -114,7 +114,7 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
 //                                });
 //                            }
                             Log.d("todayyy",String.valueOf(today));
-                           if(g.isEqual(today)&& (boolean) document.get("confR") /* && System.currentTimeMillis()/1000< Long.parseLong("64800") */&& (boolean) document.get("comfJJ")) {
+                           if(g.isEqual(today)&& (boolean) document.get("confR") && (boolean) document.get("comfJJ")) {
                                notif.setEnabled(true);
                                notif.setImageResource (R.drawable.ic_outline_notifications_active_25);
                                notif.setOnClickListener(new View.OnClickListener() {
