@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -79,6 +80,9 @@ ImageButton notf;
 
                            }
                        });
+                   }else{
+                       Toast.makeText(adminmenu.this, "kop", Toast.LENGTH_SHORT).show();
+                       db.collection("Rendez-vous").document(documentChange.getDocument().getId()).delete();
                    }
                 }
 
