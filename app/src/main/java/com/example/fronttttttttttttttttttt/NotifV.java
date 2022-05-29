@@ -8,9 +8,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,8 +61,28 @@ public class NotifV extends Activity {
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                         for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
                             String IDR =documentChange.getDocument().getId();
+
+                            db.collection("user").document(currentId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if(task.isSuccessful()){
+                                        int nbD = Integer.parseInt(task.getResult().get("Nombre de doses").toString());
+                                        db.collection("user").document(currentId).update("Nombre de doses",nbD+1);
+
+                                    }
+                                }
+                            });
                             db.collection("Rendez-vous").document(IDR).update("confV",true);
                             db.collection("Rendez-vous").document(IDR).update("comfJJ",false);
+                            db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                                    for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
+                                        String IDR =documentChange.getDocument().getId();
+                                        db.collection("Rendez-vous").document(IDR).delete();
+                                    }
+                                }
+                            });
                         }
                     }
                 });
