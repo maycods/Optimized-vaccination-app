@@ -9,18 +9,18 @@
 
     <TextView
         android:id="@+id/nomH"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_light"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/white"
-        android:textSize="35dp"
+        android:textSize="33dp"
         android:textStyle="bold"></TextView>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
+
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:orientation="vertical">
@@ -30,7 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-          android:padding="3dp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="18dp"></TextView>
@@ -40,8 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:padding="5dp"
-            android:textStyle="italic"
             android:text="Sputnik:"
             android:textColor="@color/white"
             android:textSize="14dp"></TextView>
@@ -50,8 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:padding="5dp"
-            android:textStyle="italic"
             android:text="AstraZeneka:"
             android:textColor="@color/white"
             android:textSize="14dp"></TextView>
@@ -60,8 +55,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:padding="5dp"
-            android:textStyle="italic"
             android:text="JohnsonJohnson: "
             android:textColor="@color/white"
             android:textSize="14dp"></TextView>
@@ -70,8 +63,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:padding="5dp"
-            android:textStyle="italic"
             android:text="Sinovac-CoronaVac:"
             android:textColor="@color/white"
             android:textSize="14dp"></TextView>

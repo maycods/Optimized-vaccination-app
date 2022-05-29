@@ -46,22 +46,15 @@ int i;
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(i==3){
-            View v = LayoutInflater.from(context).inflate(R.layout.item3,parent,false);
-            return  new MyViewHolder(v);
-        }else{
+
         View v = LayoutInflater.from(context).inflate(R.layout.item,parent,false);
-        return  new MyViewHolder(v);}
+        return  new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Hopital hopital = list.get(position);
-        if(i==3) {
-            holder.nomhs.setText(hopital.NomH);
-            holder.nbrtot.setText("" + ((int) hopital.DoseAstra + (int) hopital.DoseSpootnik + (int) hopital.DoseJohnson + (int) hopital.DoseSinovac));
-            holder.nbrambu.setText("" + (int) hopital.nbA);
-        }else {
+
             holder.hopital.setText(hopital.NomH);
             switch (i) {
                 case -1:
@@ -144,7 +137,7 @@ int i;
                     break;
 
             }
-        }
+
 
 
     }

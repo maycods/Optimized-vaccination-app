@@ -45,7 +45,7 @@ public class AdapterH extends RecyclerView.Adapter<AdapterH.MyViewHolder> {
     public void onBindViewHolder(@NonNull AdapterH.MyViewHolder holder, int position) {
         Hopital hopital = list.get(position);
         holder.NomH.setText(hopital.NomH);
-        holder.nbrA.setText( holder.nbrA.getText().toString()+" "+(int) hopital.nbA+" ambulanciers");
+        holder.nbrA.setText( ""+(int) hopital.nbA+" ambulanciers");
         holder.nbSP.setText(holder.nbSP.getText().toString()+" "+(int) hopital.DoseSpootnik);
         holder.nbAS.setText(holder.nbAS.getText().toString()+" "+(int) hopital.DoseAstra);
         holder.nbJJ.setText(holder.nbJJ.getText().toString()+" "+(int) hopital.DoseJohnson);

@@ -124,27 +124,26 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
         L.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pos!=listH.size()){
-                    recyf.scrollToPosition(pos);
-                    pos++;}
-                return;
-            }
-        });
-        r.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 if(pos!=-1){
                     recyf.scrollToPosition(pos);
                     pos--;}
                 return;
             }
         });
+        r.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    if(pos!=listH.size()){
+                        recyf.scrollToPosition(pos);
+                        pos++;}
+                    return;
+                }
+
+        });
 
 
 
     }
-
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
 
@@ -157,7 +156,6 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
                 {
-
                     String address="";
                     geo= (GeoPoint) documentChange.getDocument().get("Localisation");
                     Geocoder geocoder = new Geocoder(AdminPage.this);
@@ -169,7 +167,6 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                     }
                     if(list1.size() > 0){
                         address = list1.get(0).getAddressLine(0);
-
                     }
                     String IDP =  documentChange.getDocument().getData().get("IDP").toString();
                     String typeV =  documentChange.getDocument().getData().get("Type de vaccin").toString();
@@ -206,7 +203,6 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                 }
             }
         });
-
 
     }
 

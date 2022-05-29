@@ -46,10 +46,6 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>{
     private ArrayAdapter<String> dataAdapter;
     FirebaseFirestore db;
 
-
-
-
-
     public AdapterR(Context context, ArrayList<RDVV> list,FirebaseFirestore db) {
         this.context = context;
         this.list = list;
@@ -76,12 +72,11 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>{
             @Override
             public void onClick(View v) {
                 db.collection("Rendez-vous").document(RA.getIDR()).update("AMB",holder.it.get(0));
+                holder.chaterr.setImageResource(R.drawable.ic_baseline_check_25);
             }
 
         });
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -121,13 +116,10 @@ public class AdapterR extends RecyclerView.Adapter<AdapterR.MyViewHolder>{
                 it.clear();
                 it.addAll(K);
                 npick.setSelection(fillRDV().indexOf(item));
-
-
             }
         }
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
-
         }
 
 

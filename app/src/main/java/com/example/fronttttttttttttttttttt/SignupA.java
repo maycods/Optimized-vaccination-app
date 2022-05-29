@@ -60,7 +60,7 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
     private FirebaseAuth mAuth;
     private String item;
     private HashMap<String, Object> AM = new HashMap<String, Object>();
-
+    ArrayList<String> hopital = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,21 +83,21 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                 addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        ArrayList<String> hopital = new ArrayList<>();
-                        if (error != null) {
-                            Log.d("kop", error.getMessage());
-                            return;
-                        }
+
+//                        if (error != null) {
+//                            Log.d("kop", error.getMessage());
+//                            return;
+//                        }
                         for (DocumentChange dc : value.getDocumentChanges()) {
                             hopital.add(dc.getDocument().getId());
                         }
-                        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getApplicationContext(),
-                                android.R.layout.simple_spinner_item, hopital);
-                        Adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-                        SPH.setAdapter(Adapter);
+
                     }
                 });
-
+        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_spinner_item, hopital);
+        Adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        SPH.setAdapter(Adapter);
 
         SPH.setOnItemSelectedListener(SignupA.this);
         sinscrire.setOnClickListener(new View.OnClickListener() {
@@ -223,8 +223,6 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
 
             }
         });
-
-
         retourS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -236,66 +234,15 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Spinner Spinner =(Spinner) parent;
-        if(Spinner.getId() == R.id.sphp) {
+//        Spinner Spinner =(Spinner) parent;
+//        if(Spinner.getId() == R.id.sphp) {
              item = (String) parent.getItemAtPosition(position);
 
-            SPH.setSelection(position);
-               Log.d("hna1",String.valueOf(item));
-            String email= mail.getText().toString().trim();
-            String codeA= code.getText().toString().trim();
-
-//            db.collection("Hopital").document(item).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                    if (task.isSuccessful()){
-//
-//                        String nomH=task.getResult().get("NomH").toString();
-//                        String nbA = task.getResult().get("nbA").toString();
-//                        Log.d("hna3",String.valueOf(nomH));
-//                        AM.put("Hopital",nomH);
-//                        AM.put("id",nomH+nbA);
-//            mAuth.createUserWithEmailAndPassword(email,codeA).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                @Override
-//                public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                    if(task.isSuccessful()){
-//                        Log.d("hna4",String.valueOf(nomH));
-//                        AM.put("Nom et Prenom", nomprenom.getText().toString().trim());
-//                        AM.put("Email", mail.getText().toString().trim());
-//                        AM.put("Mot de passe", code.getText().toString().trim());
-//                        AM.put("Numero de Telephone", tel.getText().toString().trim());
-//                        AM.put("Date de Naissance", ageN.getText().toString().trim());
-//                        db.collection("Hopital").document(item).update("nbA",nbA+1);
-//                        Log.d("hna4",String.valueOf(AM.get("Email")));
-//                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                        db.collection("Ambulancier").document(mAuth.getUid())
-//                                .set(AM)
-//                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void aVoid) {
-//                                        Toast.makeText(getApplicationContext(), "le compte a été crée ",
-//                                                Toast.LENGTH_SHORT).show();
-//                                        startActivity(new Intent(SignupA.this,adminmenu.class));
-//                                    }
-//                                })
-//                                .addOnFailureListener(new OnFailureListener() {
-//                                    @Override
-//                                    public void onFailure(@NonNull Exception e) {
-//                                        Log.w("Fail", "Error", e);
+//            SPH.setSelection(position);
+//               Log.d("hna1",String.valueOf(item));
 //
 //
-//                                    }
-//                                });
-//                    }
-//                }
-//
-//            });
-//                    }
-//                }
-//            });
-
-        }
+//        }
     }
 
     @Override
