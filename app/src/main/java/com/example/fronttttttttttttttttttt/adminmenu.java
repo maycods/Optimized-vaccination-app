@@ -82,7 +82,7 @@ ImageButton notf;
                        });
                    }else{
                        Toast.makeText(adminmenu.this, "kop", Toast.LENGTH_SHORT).show();
-                       db.collection("Rendez-vous").document(documentChange.getDocument().getId()).delete();
+                     //  db.collection("Rendez-vous").document(documentChange.getDocument().getId()).delete();
                    }
                 }
 
