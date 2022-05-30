@@ -137,7 +137,7 @@
               android:textAllCaps="false"
               android:background="@drawable/bouton"
               android:layout_marginHorizontal="70dp"
-              android:text="Comfirmer"
+              android:text="Confirmer"
               android:textColor="@color/white"
               android:textSize="16dp"
           ></Button>
