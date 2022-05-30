@@ -61,7 +61,7 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="5dp"
                     android:layout_marginLeft="5dp"
-                    android:text="Utilisateur "
+                    android:text="Gestionnaire"
                     android:textColor="@color/bleufoncé"
                     android:textSize="40dp"
                     android:textStyle="bold" />

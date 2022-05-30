@@ -51,7 +51,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Itineraire extends FragmentActivity {
+public class    Itineraire extends FragmentActivity {
     //TODO AFFICHER NOMBRE DE DOSES
 
     private Button annuler,itineraire;

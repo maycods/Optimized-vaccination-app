@@ -95,7 +95,7 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                     }
                 });
         ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getApplicationContext(),
-                android.R.layout.simple_spinner_item, hopital);
+               R.layout.spinn, hopital);
         Adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         SPH.setAdapter(Adapter);
 
@@ -238,7 +238,7 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
 //        if(Spinner.getId() == R.id.sphp) {
              item = (String) parent.getItemAtPosition(position);
 
-//            SPH.setSelection(position);
+         //   SPH.setSelection(position);
 //               Log.d("hna1",String.valueOf(item));
 //
 //

@@ -16,6 +16,7 @@
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/ic_outline_calendar_today_24.xml" value="0.136" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/drawable/white_border.xml" value="0.1" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/activity_adminmenu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/activity_notif_admin.xml" value="0.15670289855072464" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin.xml" value="0.264" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin2.xml" value="0.264" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/first_page.xml" value="0.2078125" />
@@ -36,10 +37,10 @@
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/menu.xml" value="0.4616840113528855" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/notif.xml" value="0.264" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/notif_v.xml" value="0.4" />
-        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/rdv.xml" value="0.264" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/rdv.xml" value="0.1" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup1.xml" value="0.2" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup2.xml" value="0.11302083333333333" />
-        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup_ambulancier.xml" value="0.264" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signup_ambulancier.xml" value="0.1" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/signupu.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/spinn.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/mayah/.gradle/caches/transforms-3/2d91cb6242a0bc00706dab07d0650e2d/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.27447916666666666" />
