@@ -221,8 +221,9 @@ int pageWidth =1200;
     public  void createpdf(){
 
         String doseS =dose.getText().toString().trim();
+        String type1 = type.getText().toString().trim();
 
-        if((Integer.parseInt(doseS)>=2 & !type.equals("Jonson&Jonson"))|| (Integer.parseInt(doseS)>=1 & type.equals("Jonson&Jonson"))){
+        if((Integer.parseInt(doseS)>=2 && !type1.equals("Johnson & Johnson")) || (Integer.parseInt(doseS)>=1 && type1.equals("Johnson & Johnson"))){
             PdfDocument passSanitaire = new  PdfDocument();
             Paint myPaint = new Paint();
             Paint titlePaint = new Paint();
