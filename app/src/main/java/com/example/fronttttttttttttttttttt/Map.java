@@ -374,7 +374,7 @@ p++;
     private void getRouteTiMarker(LatLng ok,LatLng ol) {
 
        Routing routing = new Routing.Builder()
-                .key("AIzaSyClZLvJ8oWCxBw3YlHUMl3846QnJZC_X-4"/*"AIzaSyBGPlS5sQHDfAB3pEVyqXvU8hcuVUdG_gA"*/)
+                .key("AIzaSyBGPlS5sQHDfAB3pEVyqXvU8hcuVUdG_gA")
                 .travelMode(AbstractRouting.TravelMode.DRIVING)
                 .withListener(this)
                 .alternativeRoutes(false)
