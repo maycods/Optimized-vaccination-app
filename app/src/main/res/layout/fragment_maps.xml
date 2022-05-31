@@ -42,11 +42,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
+            android:paddingBottom="15dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Bab El Zouar , 128 , 6"
             android:textColor="#14142B"
-            android:textSize="30dp"></TextView>
+            android:textSize="20dp"></TextView>
         <Button
             android:id="@+id/arrived"
             android:layout_width="match_parent"
