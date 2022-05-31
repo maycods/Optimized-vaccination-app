@@ -77,12 +77,8 @@ ImageButton notf;
                                startActivity(intent);
                                getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
                                        WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-
                            }
                        });
-                   }else{
-                       Toast.makeText(adminmenu.this, "kop", Toast.LENGTH_SHORT).show();
-                     //  db.collection("Rendez-vous").document(documentChange.getDocument().getId()).delete();
                    }
                 }
 

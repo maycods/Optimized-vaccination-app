@@ -51,7 +51,7 @@
                 android:id="@+id/ktiba"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ci-dessous le menu de gestion du bon deroulement de la vaccination"
+                android:text="Pour une gestion efficace de la vaccination"
                 android:layout_gravity="top"
                 android:textSize="18dp"
                 android:paddingLeft="20dp"
