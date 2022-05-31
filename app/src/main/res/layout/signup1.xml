@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/input"
-            android:hint="exemple: 1996-02-09"
+            android:hint="yyyy-mm-dd "
             android:drawableLeft="@drawable/anniv"
             android:drawablePadding="10dp"
             android:inputType="date"

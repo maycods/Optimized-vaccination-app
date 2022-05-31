@@ -62,7 +62,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="25dp"
             android:paddingLeft="20dp"
-            android:text="Reservé aux Utilisateur"
+            android:text="Reservé aux Gestionnaires"
             android:textColor="@color/bleufoncé"
             android:alpha="0.54"
             android:textSize="20dp"
