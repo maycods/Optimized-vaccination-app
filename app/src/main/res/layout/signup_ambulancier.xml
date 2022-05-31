@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/input"
-                android:hint="Saisir la date de naissance"
+                android:hint="exemple: 1980-07-22"
                 android:drawableLeft="@drawable/anniv"
                 android:drawablePadding="10dp"
                 android:inputType="date"

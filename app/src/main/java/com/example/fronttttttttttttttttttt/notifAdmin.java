@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import java.time.LocalDate;
 public class notifAdmin extends AppCompatActivity {
     TextView nume;
     Button okk;
+    ImageButton cls;
     FirebaseFirestore db;
     private static final int REQUEST_CALL = 1;
     @Override
@@ -33,6 +35,13 @@ public class notifAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_notif_admin);
         nume=findViewById(R.id.num);
         okk=findViewById(R.id.ok);
+        cls=findViewById(R.id.closee);
+        cls.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(notifAdmin.this,adminmenu.class));
+            }
+        });
         db = FirebaseFirestore.getInstance();
         String id = getIntent().getStringExtra("iduser");
         db.collection("user").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

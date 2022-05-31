@@ -163,10 +163,17 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 String jourj;
                 LocalDate  aujourhui = LocalDate.parse(date);
 
-                if(dayContainerModel.getMonthNumber() + 1 != 10 && dayContainerModel.getMonthNumber() + 1 != 11 && dayContainerModel.getMonthNumber() + 1 != 12) {
-                    jourj = dayContainerModel.getYear() + "-0" + String.valueOf(dayContainerModel.getMonthNumber()+1) + "-" + dayContainerModel.getDay();
+
+
+                    if(dayContainerModel.getMonthNumber() + 1 != 10 && dayContainerModel.getMonthNumber() + 1 != 11 && dayContainerModel.getMonthNumber() + 1 != 12) {
+                        jourj = dayContainerModel.getYear() + "-0" + String.valueOf(dayContainerModel.getMonthNumber()+1) ;
+                    }else{
+                        jourj = dayContainerModel.getYear() + "-" + String.valueOf(dayContainerModel.getMonthNumber()+1);
+                    }
+                if(dayContainerModel.getDay()  < 10 ) {
+                    jourj = jourj+ "-0" + dayContainerModel.getDay();
                 }else{
-                    jourj = dayContainerModel.getYear() + "-" + String.valueOf(dayContainerModel.getMonthNumber()+1)+ "-" + dayContainerModel.getDay();
+                    jourj = jourj+ "-" + dayContainerModel.getDay();
                 }
                 LocalDate  j = LocalDate.parse(jourj);
 

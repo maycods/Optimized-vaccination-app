@@ -1,7 +1,10 @@
 package com.example.fronttttttttttttttttttt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +42,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -48,27 +52,27 @@ import java.util.Vector;
 //TODO BOUTON JE SS ARRIV2 ET TT TESTER QD CARTE BANCAIRE PRETE
 public class Map extends FragmentActivity implements OnMapReadyCallback, RoutingListener {
     GoogleMap map;
-    int d=0;
-    int r=0;
-    private List<Polyline> polylines;
+    int d=0,r=1,p=2;
+    private List<Polyline> polylines= new ArrayList<Polyline>();
     private Button arriv,okk;
     private TextView leT,T;
-    Boolean b = false;
-    private static final int[] COLORS = new int[]{R.color.purple_200};
+    Boolean b = false,c=false;
+    LatLng[] Q;
+    private static final int[] COLORS = new int[]{R.color.purple_200,R.color.black,R.color.bleu2,R.color.bleu3,R.color.bleufoncé,R.color.teal_200};
     Population pop = new Population();
-    LatLng A ,B,C,D;
-    LatLng ListePositions [] ;//={A=new LatLng(	35.55,  6.17 ),B =new LatLng( 35.6976541, -0.6337376),C =new LatLng(35.6976541,5.6337376),D=new LatLng(36.4798683,2.8005677)};
+    Geocoder geocoder;
+    List<Address> aa = new ArrayList<>();
+    LatLng ListePositions [] ;
     Object  M[][] ;
    Vector<Integer> a ;
-    int [] Vtest = new int[]{2,3,1,1,7,9,2,4,10,4,8,7};
-    LatLng sol[] = new LatLng[]{A,B,C,D,A};
+    LatLng sol[] ;
     ArrayList<LatLng> ListeP =new ArrayList<>();
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_maps);
-
+geocoder=new Geocoder(Map.this);
         polylines = new ArrayList<>();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
@@ -78,8 +82,6 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
         leT=findViewById(R.id.leté);
         T=findViewById(R.id.adreTOtype);
 
-
-
         arriv.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -87,7 +89,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
             T.setText("Spootnik");
             okk.setVisibility(View.VISIBLE);
             arriv.setVisibility(View.GONE);
-            polylines.get(r).setColor(R.color.bleu2);
+            polylines.get(r).setColor(COLORS[2]);
             r++;
             }
             });
@@ -95,10 +97,18 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
           @Override
          public void onClick(View view) {
           leT.setText("Votre prochaine destination est");
-          T.setText("na naana nanana");
+if(p<Q.length){
+              try {
+                  aa = geocoder.getFromLocation(Q[p].latitude,Q[p].longitude,1);
+                  T.setText(aa.get(0).getAddressLine(0));
+              } catch (IOException e) {
+                  e.printStackTrace();
+              }a.clear();
           okk.setVisibility(View.GONE);
           arriv.setVisibility(View.VISIBLE);
-    }
+}else{ startActivity(new Intent(Map.this, Itineraire.class)); }
+p++;
+          }
     });
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -136,12 +146,11 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                             ListeP.add(i, latLng);
                             i++;
                         }
-                        ListeP.add(ListeP.get(0));
-                        Object  M1[][] = new Object[ListeP.size()+1][ListeP.size()+1];
-                        Log.d("7123888", String.valueOf(ListeP.size()));
+                       // ListeP.add(ListeP.get(0)); todo nope na7ou hada psk liste positino machi solu
+                      //  Log.d("7123888", String.valueOf(ListeP.size()));
                         LatLng ListePP [] =new LatLng[ListeP.size()];
                         ListePP= ListeP.toArray(ListePP);
-                        remplirM(M1,ListePP);
+                        remplirM(ListePP);
 
                     }
                 });
@@ -152,47 +161,34 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
         });
 
         }
-        public void remplirM(Object M1[][],LatLng ListePP[]){
+        public void remplirM(LatLng ListePP[]){
             ListePositions = new LatLng[ListePP.length];
+           M = new Object[ListePP.length+1][ListePP.length+1];
         for(int i=0;i<ListePP.length;i++){
-            Log.d("psssst",String.valueOf(ListePP[i]));
             ListePositions[i]=ListePP[i];
         }
         a = new Vector<Integer>(ListePositions.length*ListePositions.length-ListePositions.length);
         M = new Object[ListePP.length+1][ListePP.length+1];
-            int j,i,l=0;
-            for( j=1; j<=ListePP.length;j++) { M1[0][j]=ListePP[j-1]; M[0][j]=ListePP[j-1];}
-            for( i=1; i<=ListePP.length;i++){ M1[i][0]=ListePP[i-1]; M[i][0]=ListePP[i-1];}
+            int j,i;
+            for( j=1; j<=ListePP.length;j++) { M[0][j]=ListePP[j-1];}
+            for( i=1; i<=ListePP.length;i++){ M[i][0]=ListePP[i-1]; }
 
             for( j=1; j<=ListePP.length;j++) {
                 for( i=1; i<=ListePP.length;i++){
                     if(i!=j) {
-                        getRouteTiMarker((LatLng) M1[0][j],(LatLng) M1[i][0]);
-                        M1[i][j]=Vtest[l];
-                        M[i][j]=Vtest[l];
-                        l++;
+                        getRouteTiMarker((LatLng) M[0][j],(LatLng) M[i][0]);
                     }else{
-                        M1[i][j]=null;
                         M[i][j]=null;
                     }
                 }
             }
+
         }
 
         @Override
         public void onRoutingSuccess(ArrayList<Route> route, int shortestRouteIndex) {
-            Log.d("pppp",String.valueOf(M));
-
-            polylines = new ArrayList<Polyline>();
             PolylineOptions polyOptions = new PolylineOptions();
-            polyOptions.color(getResources().getColor(R.color.black));
             polyOptions.addAll(route.get(0).getPoints());
-
-            Log.d("jjjjjjjj",String.valueOf(M));
-
-            if(b==true){
-                polylines.add(map.addPolyline(polyOptions));
-            }
              a.add(route.get(0).getDurationValue());   d++;
      //       Toast.makeText(getApplicationContext(), "Route " + (1) + ": distance  " + route.get(0).getDistanceText() + ": duration  " + route.get(0).getDurationText(), Toast.LENGTH_LONG).show();
 
@@ -213,41 +209,47 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                         }
                     }
                 }
-//                LatLng[] Q= algoPrincipal();
-//                int i;
-//                b=true;
-//               for(  i=0; i< sol.length-1;i++) {
-//                 getRouteTiMarker(Q[i],Q[i+1]);
-//               } getRouteTiMarker(Q[i],Q[0]);
-//
-//             for( i=0; i< sol.length;i++) {
-//                 Log.d("finnnn", String.valueOf(Q[i]));
-//             }
 
-
-
-
-
+                sol = Arrays.copyOf(ListePositions, ListePositions.length + 1);
+                sol[sol.length - 1] = ListePositions[0]; Log.d("finnnn", "0");
+              Q= algoPrincipal(); Log.d("finnnn", "1");
+                try {
+                    aa = geocoder.getFromLocation(Q[1].latitude,Q[1].longitude,1);
+                    T.setText(aa.get(0).getAddressLine(0));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }a.clear();
+                int i;
+                b=true; Log.d("finnnn","2");
+               for(  i=0; i< sol.length-1;i++) {
+                 getRouteTiMarker(Q[i],Q[i+1]);
+               } c=true;
+               getRouteTiMarker(Q[i],Q[0]);
+                Log.d("finnnn","3");
+             for( i=0; i< sol.length;i++) {
+                 Log.d("finnnn", String.valueOf(Q[i]));
+             }
  }
+            if(b==true && d>(ListePositions.length*ListePositions.length)-ListePositions.length){
+                polyOptions.color(getResources().getColor(R.color.black));
+                polylines.add(map.addPolyline(polyOptions));
+                polylines.get(0).setColor(COLORS[2]);
+                int i=0;
+                while(i < Q.length-1 && c==true){
 
-        }
-        @Override
-        public void onMapReady(@NonNull GoogleMap googleMap) {
-        map =googleMap;
-        int i=0;
-             //map.moveCamera(CameraUpdateFactory.newLatLng(sol[0]));
+                    map.addMarker(new MarkerOptions().position(Q[i])).setTitle("Arret numero: "+(i+1));
+                    map.moveCamera(CameraUpdateFactory.newLatLng(Q[0]));
+                    i++;
+                }
 
-        while(i < sol.length-1){
-           // map.addMarker(new MarkerOptions().position(sol[i])).setTitle("Arret numero: "+(i+1));
-           i++;
+            }
         }
 
-        }
 
         public LatLng[] generationIndividu()
         {
             int k=0;
-
+            Log.d("finnnn","0.6");
             ArrayList<LatLng> listeCopie = new ArrayList<LatLng>(Arrays.asList(sol.clone()));
                 //enlever le premier et dernier element(hopital)
                 listeCopie.remove(0);
@@ -256,12 +258,13 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                   int  j;
                 int I =(int)(Math.random()*(listeCopie.size()-1));
                 do
-                {
+                {  Log.d("finnnn","0.61");
                      j =(int)(Math.random()*(listeCopie.size()-1));
                 }while(I==j);
                             //permuter les 2 element d indice i et j
                 LatLng  t=listeCopie.get(I);
                 listeCopie.set(I, listeCopie.get(j));
+            Log.d("finnnn","0.62");
                 listeCopie.set(j ,t);
                         // remettre le premie et le dernier
                 listeCopie.add(0,sol[0]);
@@ -269,9 +272,8 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                // sol=(LatLng[])listeCopie.toArray();
                 for(int p=0;p<listeCopie.size();p++){
                     sol[p]=listeCopie.get(p);
-                    Log.d("oooo",String.valueOf(sol[p]));
                 }
-       //     }while(ExistInPopulation(ListePositions));
+            Log.d("finnnn","0.63");
            return  sol ;
         }
 
@@ -298,7 +300,6 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
 //                               Log.d("Liste", String.valueOf(P.getListIndividus().get(u).getSolution()[l]));
 //                         }
 //                    }
-
                      C.addPod(P);
                      P= new Pod((i/(nbIndiv/(nbPod*nbClan))));
                 }
@@ -307,7 +308,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                       POP.addClan(C);
                        C = new Clan(nbIndiv/nbClan);
                 }
-            }
+            }Log.d("finnnn","0.3");
             return POP;
         }
 
@@ -317,11 +318,10 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
 
             Long  T=System.currentTimeMillis();
            //2;
+            Log.d("finnnn","0.1");
            pop = creationPopulation(nbClan,nbPod,nbIndiv,fmin,fmax,L,IT);
            Individu.A=pop.getListClans().get(0).getListPods().get(0).getListIndividus().get(0).getSolution().length;
-           Log.d("lydia",String.valueOf(Individu.A));
            int t=0;
-
 //            for (Clan d : pop.getListClans()) {
 //                for (Pod o:d.getListPods()) {
 //                    for(Individu i: o.getListIndividus()){
@@ -347,17 +347,18 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                         //10.
                        c.triePod(M);
                        //11.
-
                        c.diversificationP(pop.randomPop(),c.randomP(),M);
                  }
                 //12.
                  t++;
-
             }
-
            return pop.bestC(M).getSolution();
         }
 
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        map=googleMap;
+    }
     @Override
     public void onRoutingCancelled() {}
     @Override
@@ -371,8 +372,8 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
     @Override
     public void onRoutingStart() {}
     private void getRouteTiMarker(LatLng ok,LatLng ol) {
-       Log.d("MMMMMM",String.valueOf(M[1][2]));
-        Routing routing = new Routing.Builder()
+
+       Routing routing = new Routing.Builder()
                 .key("AIzaSyBGPlS5sQHDfAB3pEVyqXvU8hcuVUdG_gA")
                 .travelMode(AbstractRouting.TravelMode.DRIVING)
                 .withListener(this)
@@ -380,6 +381,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                 .waypoints(ok,ol)
                 .build();
         routing.execute();
+
 
     }
 }
