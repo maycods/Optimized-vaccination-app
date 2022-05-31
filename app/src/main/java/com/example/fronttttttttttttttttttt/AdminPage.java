@@ -63,11 +63,7 @@ import java.util.List;
 
 public class AdminPage extends Activity  implements AdapterView.OnItemSelectedListener {
     private ImageButton L,r;
-    private LinearLayout top;
-    private HorizontalScrollView scrollView;
     public static  int SCROLL;
-    private Button cfrm;
-    private Spinner A;
     int pos=0;
     RecyclerView recyclerView,recyf;
     AdapterR myAdapter;
@@ -76,11 +72,9 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
     ArrayList<RDVV> RDV;
     ArrayList<Hopital> listH;
     AdapterH AdapterH;
-    private Spinner V;
-    String ambulance=null,Ambulance;
     DisplayMetrics displayMetric = new DisplayMetrics();
     private ArrayList<RDVV> listAR=new ArrayList<RDVV>();
-    RelativeLayout dv;
+
 
 
     //TODO AFFICHER HOPITEAU INFO DE BDD
@@ -91,13 +85,12 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin);
 
-        dv =(RelativeLayout)findViewById(R.id.divmenu) ;
-        scrollView = (HorizontalScrollView) findViewById(R.id.scrl);
+
+
         getWindowManager().getDefaultDisplay().getMetrics(displayMetric);
         SCROLL = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, displayMetric.widthPixels/2-50 , getResources().getDisplayMetrics());
         r = (ImageButton) findViewById(R.id.droite);
         L = (ImageButton) findViewById(R.id.gauche);
-        //top =(LinearLayout) findViewById(R.id.hopinf);
 
         recyf=findViewById(R.id.recyT);
         recyf.setHasFixedSize(false);
@@ -174,10 +167,8 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                     Log.d("adddddd",address);
                     RDVV A = new RDVV(IDR,typeV,address,IDP);
                     if (documentChange.getType() == DocumentChange.Type.ADDED) {
-
                         RDV.add(A);
                         myAdapter.notifyDataSetChanged();
-
 
                     }
 
@@ -191,15 +182,7 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
                 {
                     listH.add(documentChange.getDocument().toObject(Hopital.class));
                     AdapterH.notifyDataSetChanged();
-//                    String Nomh,nbAH,doseSP,doseAS,doseJJ,doseSN;
-//                    Nomh = documentChange.getDocument().getId();
-//                    nbAH =  documentChange.getDocument().get("nbA").toString();
-//                    doseAS= documentChange.getDocument().get("AstraZeneka").toString();
-//                    doseSP= documentChange.getDocument().get("Sputnik V").toString();
-//                    doseJJ= documentChange.getDocument().get("Johnson & Johnson").toString();
-//                    doseSN= documentChange.getDocument().get("Sinovac-CoronaVac").toString();
-//                    Hopital H = new Hopital(Nomh,doseSP,doseAS,doseJJ,doseSN,nbAH);
-//
+
                 }
             }
         });

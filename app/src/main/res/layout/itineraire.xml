@@ -27,11 +27,11 @@
 
         <RelativeLayout
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.55"
+            app:layout_constraintHeight_percent="0.60"
             android:id="@+id/divmenu"
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            >
+            tools:ignore="MissingConstraints">
             <LinearLayout
                 android:id="@+id/gch"
                 android:layout_width="wrap_content"
@@ -47,118 +47,21 @@
                     android:src="@drawable/ic_baseline_navigate_before_24"></ImageButton>
             </LinearLayout>
 
-            <HorizontalScrollView
-                android:id="@+id/scrl"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toStartOf="@+id/rght"
-                android:layout_toEndOf="@+id/gch"
-                android:scrollbarSize="0dp">
+                android:layout_toEndOf="@+id/gch">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toStartOf="@+id/rght"
-                    android:layout_toEndOf="@+id/gch"
-                    android:orientation="horizontal"
-
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="60dp"
-                        android:layout_toStartOf="@+id/rght"
-                        android:layout_toEndOf="@+id/gch"
-                        android:orientation="vertical">
-
-                        <TextView
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recydose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="30dp"
-                            android:fontFamily="@font/poppins_light"
-                            android:text="Vous devez vacciner"
-                            android:textColor="#4E4B66"
-                            android:textSize="20dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="5 personnes "
-                            android:textColor="#14142B"
-                            android:textSize="30dp"></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/poppins_light"
-                            android:text="avec"
-                            android:textColor="#4E4B66"
-                            android:textSize="20dp"></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="20dp"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="Spootnik"
-                            android:textColor="#14142B"
-                            android:textSize="30dp"></TextView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_gravity="center"
-                        android:layout_marginRight="60dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="30dp"
-                            android:fontFamily="@font/poppins_light"
-                            android:text="Vous devez vacciner"
-                            android:textColor="#4E4B66"
-                            android:textSize="20dp"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="5 personnes "
-                            android:textColor="#14142B"
-                            android:textSize="30dp"></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/poppins_light"
-                            android:text="avec"
-                            android:textColor="#4E4B66"
-                            android:textSize="20dp"></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="20dp"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="Astra"
-                            android:textColor="#14142B"
-                            android:textSize="30dp"></TextView>
-
-                    </LinearLayout>
+                            android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
 
 
                 </LinearLayout>
 
-
-            </HorizontalScrollView>
             <LinearLayout
                 android:id="@+id/rght"
                 android:layout_width="wrap_content"

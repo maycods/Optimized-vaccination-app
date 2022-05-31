@@ -14,7 +14,6 @@
         tools:ignore="MissingConstraints"
         android:background="@drawable/ambulance2"
         >
-
         <LinearLayout
             android:id="@+id/gch"
             android:layout_width="wrap_content"
@@ -36,14 +35,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toStartOf="@+id/rght"
-            android:layout_toEndOf="@+id/gch"
-            >
+            android:layout_toEndOf="@+id/gch">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyT"
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                ></androidx.recyclerview.widget.RecyclerView>
+                android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 

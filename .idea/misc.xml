@@ -18,7 +18,7 @@
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/activity_adminmenu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/activity_notif_admin.xml" value="0.15670289855072464" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin.xml" value="0.264" />
-        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin2.xml" value="0.264" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/admin2.xml" value="0.1" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/first_page.xml" value="0.2078125" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/fragment_first.xml" value="0.215625" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/fragment_maps.xml" value="0.2078125" />
@@ -29,7 +29,8 @@
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/item2.xml" value="0.1671875" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/item3.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/item4.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/itineraire.xml" value="0.10486322188449848" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/item5.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/itineraire.xml" value="0.1" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/login.xml" value="0.176" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/login_ambulancier.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/HP PAVION/Documents/GitHub/PFEofficial/app/src/main/res/layout/loginadmin.xml" value="0.20208333333333334" />
