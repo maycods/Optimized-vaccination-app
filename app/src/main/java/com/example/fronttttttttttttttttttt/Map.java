@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentActivity;
 
@@ -52,7 +53,7 @@ import java.util.Vector;
 //TODO BOUTON JE SS ARRIV2 ET TT TESTER QD CARTE BANCAIRE PRETE
 public class Map extends FragmentActivity implements OnMapReadyCallback, RoutingListener {
     GoogleMap map;
-    int d=0,r=1,p=2;
+    int d=0,r=1,p=2,j;
     private List<Polyline> polylines= new ArrayList<Polyline>();
     private Button arriv,okk;
     private TextView leT,T;
@@ -81,35 +82,6 @@ geocoder=new Geocoder(Map.this);
         okk=findViewById(R.id.ok);
         leT=findViewById(R.id.leté);
         T=findViewById(R.id.adreTOtype);
-
-        arriv.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            leT.setText("Le type de vaccin à administrer est");
-            T.setText("Spootnik");
-            okk.setVisibility(View.VISIBLE);
-            arriv.setVisibility(View.GONE);
-            polylines.get(r).setColor(COLORS[2]);
-            r++;
-            }
-            });
-        okk.setOnClickListener(new View.OnClickListener() {
-          @Override
-         public void onClick(View view) {
-          leT.setText("Votre prochaine destination est");
-if(p<Q.length){
-              try {
-                  aa = geocoder.getFromLocation(Q[p].latitude,Q[p].longitude,1);
-                  T.setText(aa.get(0).getAddressLine(0));
-              } catch (IOException e) {
-                  e.printStackTrace();
-              }a.clear();
-          okk.setVisibility(View.GONE);
-          arriv.setVisibility(View.VISIBLE);
-}else{ startActivity(new Intent(Map.this, Itineraire.class)); }
-p++;
-          }
-    });
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -160,6 +132,61 @@ p++;
             }
         });
 
+        arriv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(r<Q.length-1){
+
+                leT.setText("Le type de vaccin à administrer est");
+                GeoPoint o =new GeoPoint(Q[r].latitude,Q[r].longitude);
+                    if(Q[r]==Q[r-1]){// todo a tester
+                        j++;
+                    }else{
+                        j=0;
+                    }
+                db.collection("Ambulancier").document(currentId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            String AMB =task.getResult().get("id").toString();
+                db.collection("Rendez-vous").whereEqualTo("Localisation", o ).whereEqualTo("dateR",timestamp).whereEqualTo("AMB",AMB).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        T.setText( value.getDocumentChanges().get(j).getDocument().get("Type de vaccin").toString());
+                        }
+                });
+                        }}});
+
+                    polylines.get(r).setColor(COLORS[2]);
+                    r++;
+             }else{
+                    leT.setText("Bravo Vous avez finis votre journée en attibuant:");
+                    int u=Q.length-2;
+                    T.setText( u+" doses");
+                }
+                okk.setVisibility(View.VISIBLE);
+                arriv.setVisibility(View.GONE);
+
+            }
+        });
+
+        okk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                leT.setText("Votre prochaine destination est");
+                if(p<Q.length){
+                    try {
+                        aa = geocoder.getFromLocation(Q[p].latitude,Q[p].longitude,1);
+                        T.setText(aa.get(0).getAddressLine(0));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }a.clear();
+                    okk.setVisibility(View.GONE);
+                    arriv.setVisibility(View.VISIBLE);
+                }else{ startActivity(new Intent(Map.this, Itineraire.class)); }
+                p++;
+            }
+        });
         }
         public void remplirM(LatLng ListePP[]){
             ListePositions = new LatLng[ListePP.length];
@@ -374,7 +401,7 @@ p++;
     private void getRouteTiMarker(LatLng ok,LatLng ol) {
 
        Routing routing = new Routing.Builder()
-                .key("AIzaSyBGPlS5sQHDfAB3pEVyqXvU8hcuVUdG_gA")
+                .key("AIzaSyClZLvJ8oWCxBw3YlHUMl3846QnJZC_X-4"/*""AIzaSyBGPlS5sQHDfAB3pEVyqXvU8hcuVUdG_gA"*/)
                 .travelMode(AbstractRouting.TravelMode.DRIVING)
                 .withListener(this)
                 .alternativeRoutes(false)

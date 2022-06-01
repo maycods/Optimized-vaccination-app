@@ -24,14 +24,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.35"
         android:orientation="vertical"
-
+android:gravity="center"
         >
         <TextView
             android:id="@+id/leté"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:gravity="center"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins_light"
             android:text="Votre prochaine destination est "
@@ -39,9 +39,10 @@
             android:textSize="20dp"></TextView>
         <TextView
             android:id="@+id/adreTOtype"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:paddingBottom="15dp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="#14142B"
