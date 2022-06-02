@@ -3,12 +3,14 @@ package com.example.fronttttttttttttttttttt;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,9 +61,43 @@ public class NotifV extends Activity {
                 db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                        for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
-                            String IDR =documentChange.getDocument().getId();
 
+                            String IDR =documentSnapshots.getDocumentChanges().get(0).getDocument().getId();
+                            String dd = (String) documentSnapshots.getDocumentChanges().get(0).getDocument().get("AMB");
+                            String  typ= documentSnapshots.getDocumentChanges().get(0).getDocument().get("Type de vaccin").toString();
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            db.collection("Ambulancier").whereEqualTo("id",dd).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                  String IDH = (String) value.getDocumentChanges().get(0).getDocument().get("Hopital");
+                                    db.collection("Hopital").document(IDH).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if(task.isSuccessful()) {
+                                                String td;
+                                                switch (typ){
+                                                    case "AstraZeneka":
+                                                        td="DoseAstra";
+                                                        break;
+                                                    case "Sinovac-CoronaVac":
+                                                        td="DoseSinovac";
+                                                        break;
+                                                    case "Sputnik V":
+                                                        td="DoseSpootnik";
+                                                        break;
+                                                    case "Johnson & Johnson":
+                                                        td="Dosejohnson";
+                                                        break;
+                                                    default: td="nop";
+                                                }
+                                                Long nbrr = (Long) task.getResult().get(td)-1;
+                                                db.collection("Hopital").document(IDH).update(td,nbrr);
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             db.collection("user").document(currentId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -74,17 +110,10 @@ public class NotifV extends Activity {
                             });
                             db.collection("Rendez-vous").document(IDR).update("confV",true);
                             db.collection("Rendez-vous").document(IDR).update("comfJJ",false);
-                            db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                @Override
-                                public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                                    for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
-                                        String IDR =documentChange.getDocument().getId();
-                                        db.collection("Rendez-vous").document(IDR).delete();
-                                    }
-                                }
-                            });
+                        db.collection("Rendez-vous").document(IDR).delete();
+
                         }
-                    }
+             
                 });
 
             }

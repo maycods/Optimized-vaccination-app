@@ -19,7 +19,7 @@
         android:background="@drawable/itin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.48"
+        app:layout_constraintHeight_percent="0.57"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         >
@@ -27,7 +27,7 @@
 
         <RelativeLayout
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.60"
+            app:layout_constraintHeight_percent="0.55"
             android:id="@+id/divmenu"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -53,14 +53,14 @@
                 android:layout_toStartOf="@+id/rght"
                 android:layout_toEndOf="@+id/gch">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recydose"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recydose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
 
 
-                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/rght"
@@ -85,6 +85,7 @@
             android:layout_marginHorizontal="70dp"
             android:background="@drawable/bouton"
             android:padding="15dp"
+            android:layout_marginTop="20dp"
             android:drawableLeft="@drawable/ic_outline_location_on_24"
             android:text="itinairaire"
             android:fontFamily="@font/poppins_semibold"

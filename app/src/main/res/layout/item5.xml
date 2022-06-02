@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:fontFamily="@font/poppins_bold"
-        android:text=" personnes "
+        android:text=" personne(s) "
         android:textColor="#14142B"
         android:textSize="30dp"></TextView>
 
