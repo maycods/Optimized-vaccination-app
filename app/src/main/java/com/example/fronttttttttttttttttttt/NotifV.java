@@ -113,7 +113,7 @@ public class NotifV extends Activity {
                         db.collection("Rendez-vous").document(IDR).delete();
 
                         }
-             
+
                 });
 
             }
