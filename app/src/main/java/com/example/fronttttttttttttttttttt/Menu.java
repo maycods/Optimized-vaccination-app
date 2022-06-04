@@ -2,8 +2,12 @@ package com.example.fronttttttttttttttttttt;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.util.DisplayMetrics;
@@ -27,6 +31,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -74,6 +80,11 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentId=user.getUid();
+        if(Build.VERSION.SDK_INT> Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("notification","notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager Manager = getSystemService(NotificationManager.class);
+            Manager.createNotificationChannel(channel);
+        }
         db.collection("Rendez-vous").whereEqualTo("IDP",currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
@@ -90,6 +101,23 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
 
                                 notif.setEnabled(true);
                                 notif.setImageResource (R.drawable.ic_outline_notifications_active_25);
+
+                                NotificationCompat.Builder builder=new NotificationCompat.Builder(Menu.this,"notification");
+                                Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
+
+                                builder.setContentTitle("Confirmer votre rendez-vous");
+                                builder.setContentText("c'est bientot le Jour J , Confirmer votre rendez-vous avant 14h !!");
+                                builder.setSmallIcon(R.drawable.usthblogo);
+                                builder.setAutoCancel(true);
+                                builder.setVibrate( new long []{ 1000 , 1000 , 1000 , 1000 , 1000 });
+                                builder.setSound(alarmSound);
+                                builder.setStyle(new NotificationCompat.BigTextStyle().bigText("c'est bientot le Jour J , Confirmer votre rendez-vous avant 14h !!"));
+                                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Menu.this);
+                                Intent intent=  new Intent(Menu.this, NotifR.class);
+                                PendingIntent pendingIntent = PendingIntent.getActivity(Menu.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                                builder.setContentIntent(pendingIntent);
+                                managerCompat.notify(1,builder.build());
+
                                 notif.setOnClickListener(new View.OnClickListener() { //TODO NOTIFF
                                     @Override
                                     public void onClick(View view) {
@@ -117,6 +145,21 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                            if(g.isEqual(today)&& (boolean) document.get("confR") && (boolean) document.get("comfJJ")) {
                                notif.setEnabled(true);
                                notif.setImageResource (R.drawable.ic_outline_notifications_active_25);
+
+                               NotificationCompat.Builder builder=new NotificationCompat.Builder(Menu.this,"notification");
+                               Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
+                               builder.setContentTitle("Confirmer votre vaccination");
+                               builder.setContentText("c'est le Jour J , Confirmer votre vaccination ");
+                               builder.setSmallIcon(R.drawable.usthblogo);
+                               builder.setAutoCancel(true);
+                               builder.setSound(alarmSound);
+                               builder.setStyle(new NotificationCompat.BigTextStyle().bigText("c'est bientot le Jour J , Confirmer votre rendez-vous avant 14h !!"));
+                               NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Menu.this);
+                               Intent intent=  new Intent(Menu.this, NotifV.class);
+                               PendingIntent pendingIntent = PendingIntent.getActivity(Menu.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                               builder.setContentIntent(pendingIntent);
+                               managerCompat.notify(1,builder.build());
+
                                notif.setOnClickListener(new View.OnClickListener() {
                                    @Override
                                    public void onClick(View view) {

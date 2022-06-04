@@ -1,6 +1,9 @@
 package com.example.fronttttttttttttttttttt;
 
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -22,6 +25,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -63,6 +68,15 @@ ImageButton notf;
         db.collection("Rendez-vous").whereLessThanOrEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                NotificationCompat.Builder builder=new NotificationCompat.Builder(adminmenu.this,"notification");
+                Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
+                builder.setContentTitle("mettez-vous au travaille");
+                builder.setContentText("certain patients n'ont pas confirmer leurs vaccination ");
+                builder.setSmallIcon(R.drawable.usthblogo);
+                builder.setAutoCancel(true);
+                builder.setSound(alarmSound);
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(adminmenu.this);
+                managerCompat.notify(1,builder.build());
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
                 {
                    if( documentChange.getDocument().get("confV").equals(false)){
