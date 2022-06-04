@@ -41,18 +41,6 @@ public class MainActivity extends AppCompatActivity {
         yesterday.setHours(0);
         Timestamp timestamp = new Timestamp(yesterday.getTime());
 
-        db.collection("Rendez-vous").whereLessThanOrEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
-                {
-                    if( documentChange.getDocument().get("confV").equals(true)){
-                        db.collection("Rendez-vous").document(documentChange.getDocument().getId()).delete();
-                    }
-                }
-
-            }
-        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
