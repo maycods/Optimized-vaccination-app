@@ -97,7 +97,7 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                             LocalDate today = LocalDate.now();
                             Log.d("lplplp",String.valueOf(System.currentTimeMillis()));
 
-                            if(g.isEqual(JJ)/* && System.currentTimeMillis()/1000< Long.parseLong("46800") */&& !(boolean) document.get("confR")){
+                            if(g.isEqual(JJ) && System.currentTimeMillis()/1000< Long.parseLong("46800") && !(boolean) document.get("confR")){
 
                                 notif.setEnabled(true);
                                 notif.setImageResource (R.drawable.ic_outline_notifications_active_25);
@@ -106,7 +106,7 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                                 Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
 
                                 builder.setContentTitle("Confirmer votre rendez-vous");
-                                builder.setContentText("Votre rendez-vous est pour demain , Confirmer-le avant 14h !!");
+                                builder.setContentText("Votre rendez-vous est pour demain, Confirmez-le avant 14h");
                                 builder.setSmallIcon(R.drawable.usthblogo);
                                 builder.setAutoCancel(true);
                                 builder.setVibrate( new long []{ 1000 , 1000 , 1000 , 1000 , 1000 });
@@ -148,12 +148,12 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
 
                                NotificationCompat.Builder builder=new NotificationCompat.Builder(Menu.this,"notification");
                                Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
-                               builder.setContentTitle("Confirmer votre vaccination");
-                               builder.setContentText("c'est le Jour J , Confirmer votre vaccination ");
+                               builder.setContentTitle("Confirmez votre vaccination");
+                               builder.setContentText("c'est le Jour de votre vaccination, Confirmez qu'elle a bien eu lieu");
                                builder.setSmallIcon(R.drawable.usthblogo);
                                builder.setAutoCancel(true);
                                builder.setSound(alarmSound);
-                               builder.setStyle(new NotificationCompat.BigTextStyle().bigText("c'est bientot le Jour J , Confirmer votre rendez-vous avant 14h !!"));
+                               builder.setStyle(new NotificationCompat.BigTextStyle().bigText("c'est le Jour de votre vaccination, Confirmez qu'elle a bien eu lieu"));
                                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Menu.this);
                                Intent intent=  new Intent(Menu.this, NotifV.class);
                                PendingIntent pendingIntent = PendingIntent.getActivity(Menu.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);

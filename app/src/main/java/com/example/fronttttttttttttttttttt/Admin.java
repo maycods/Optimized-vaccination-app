@@ -50,7 +50,7 @@ public class Admin extends Activity {
                 String code1= code.getText().toString().trim();
 
                 if(email.isEmpty()){
-                    mail.setError("ce champ est obligatoire");
+                    mail.setError("Ce champ est obligatoire");
                     mail.requestFocus();
                     return;
                 }
@@ -62,12 +62,11 @@ public class Admin extends Activity {
                     }
                 }
                 if(code1.isEmpty() ){
-                    code.setError("ce champ est obligatoire");
+                    code.setError("Ce champ est obligatoire");
                     code.requestFocus();
                     return;
                 }
-                Log.d("emil",String.valueOf(code1));
-                Log.d("code",String.valueOf(email));
+
                 mAuth.signInWithEmailAndPassword(email,code1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                     @Override
@@ -79,24 +78,23 @@ public class Admin extends Activity {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             String currentId;
                             currentId=user.getUid();
-                            reference=db.collection("Admin").document(currentId);
-                            reference.get()
+                        db.collection("Admin").document(currentId).get()
                                     .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             if(task.getResult().exists()){
-                                                Toast.makeText(Admin.this , "Vous ete connecte",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(Admin.this , "Vous etes connecté(e)",Toast.LENGTH_LONG).show();
                                                 Intent i =new Intent(Admin.this,adminmenu.class);
                                                 startActivity(i);
                                             }else{
-                                                Toast.makeText(getApplicationContext(),"ce n'est pas un compte d'un admin ",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getApplicationContext(),"Email ou mot de passe incorrecte(s). Veuillez reessayer",Toast.LENGTH_LONG).show();
                                             }
                                         }
                                     });
 
                         }
                         else {
-                            Toast.makeText(Admin.this , "Vous vous ete trompe d'email ou mot de passe . veuillez reessayer ",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Admin.this , "Email ou mot de passe incorrecte(s). Veuillez reessayer",Toast.LENGTH_LONG).show();
                         }
                     }
                 });

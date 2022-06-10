@@ -161,7 +161,7 @@ public class Ambulence extends AppCompatActivity {
                 String mdp1= mdp.getText().toString().trim();
 
                 if(email.isEmpty()){
-                    mail.setError("ce champ est obligatoire");
+                    mail.setError("Ce champ est obligatoire");
                     mail.requestFocus();
                     return;
                 }
@@ -173,7 +173,7 @@ public class Ambulence extends AppCompatActivity {
                     }
                 }
                 if(mdp1.isEmpty() ){
-                    mdp.setError("ce champ est obligatoire");
+                    mdp.setError("Ce champ est obligatoire");
                     mdp.requestFocus();
                     return;
                 }
@@ -197,18 +197,18 @@ public class Ambulence extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             if(task.getResult().exists()){
-                                                Toast.makeText(Ambulence.this , "Vous ete connecte",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(Ambulence.this , "Vous etes connecté(e)",Toast.LENGTH_LONG).show();
                                                 Intent i =new Intent(Ambulence.this,Itineraire.class);
                                                 startActivity(i);
                                            }else{
-                                                Toast.makeText(getApplicationContext(),"ce n'est pas un compte d'ambulancier",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getApplicationContext(),"Email ou mot de passe incorrecte(s). Veuillez reessayer",Toast.LENGTH_LONG).show();
                                             }
                                         }
                                     });
 
                         }
                         else {
-                            Toast.makeText(Ambulence.this , "Vous vous ete trompe d'email ou mot de passe . veuillez reessayer ",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Ambulence.this , "Email ou mot de passe incorrect. Veuillez reessayer ",Toast.LENGTH_LONG).show();
                         }
                     }
                 });

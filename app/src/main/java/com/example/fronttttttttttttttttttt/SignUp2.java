@@ -152,7 +152,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
-                                            Toast.makeText(view.getContext(), "l'email de confirmation a ete envoyé", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(view.getContext(), "L'email de confirmation a été envoyé", Toast.LENGTH_LONG).show();
                                             inscrit.setVisibility(View.GONE);
                                             verif.setVisibility(View.VISIBLE);
                                             j++;
@@ -160,7 +160,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                                     }
                                 });
       }else {
-             Toast.makeText(getApplicationContext(),"vous avez deja creer un compte avec cette adresse email",Toast.LENGTH_LONG).show();
+             Toast.makeText(getApplicationContext(),"Un compte avec cette adresse email existe deja",Toast.LENGTH_LONG).show();
           }
                     }
 
@@ -172,7 +172,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
 
             @Override
             public void onClick(View view) {
-                if(iii==0){ Toast.makeText(view.getContext(), "appuyer une 2eme fois pour confirmer que vous avez bien appuyé sur le lien l'email", Toast.LENGTH_LONG).show();mAuth.getCurrentUser().reload();iii++;}
+                if(iii==0){ Toast.makeText(view.getContext(), "Appuyer une 2eme fois pour confirmer que vous avez bien appuyé sur le lien l'email", Toast.LENGTH_LONG).show();mAuth.getCurrentUser().reload();iii++;}
                 if(iii==1){
                     mAuth.getCurrentUser().reload();
                     if(mAuth.getCurrentUser().isEmailVerified()){
@@ -194,7 +194,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                                     @Override
                                     public void onSuccess(Void aVoid) {
 
-                                        Toast.makeText(getApplicationContext(), "le compte a été crée ",
+                                        Toast.makeText(getApplicationContext(), "le compte a été crée avec succes",
                                                 Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(SignUp2.this,Menu.class));
                                     }
@@ -203,13 +203,14 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         Log.w("Fail", "Error", e);
-
+                                        Toast.makeText(getApplicationContext(), "Une erreur a eu lieu",
+                                                Toast.LENGTH_SHORT).show();
 
                                 }
                                 });
 
                     }else{
-                        Toast.makeText(getApplicationContext(), "Non vous navez pas verifié l email", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Vous n'avez pas confirmer votre adresse l'email", Toast.LENGTH_LONG).show();
                     }
                 }}
         });

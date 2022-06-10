@@ -112,61 +112,59 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                 String codeA= code.getText().toString().trim();
 
                 if(nompre.isEmpty()){
-                    nomprenom.setError("ce champ est obligatoire");
+                    nomprenom.setError("Champ obligatoire");
                     nomprenom.requestFocus();
                     return;
                 }
 
                 if(Age.isEmpty()  ){
-                    ageN.setError("ce champ est obligatoire");
+                    ageN.setError("Champ obligatoire");
                     ageN.requestFocus();
                     return;
                 }else{
                     try {
                         LocalDate.parse(Age);
                     } catch (DateTimeParseException dtpe) {
-                        ageN.setError("cette date n'est pas valide voici le format: yyyy-MM-dd");
+                        ageN.setError("Date invalide");
                         ageN.requestFocus();
                         return;
                     }
 
                 }
                 if(email.isEmpty()){
-                    mail.setError("ce champ est obligatoire");
+                    mail.setError("Champ obligatoire");
                     mail.requestFocus();
                     return;
                 }
                 else{
                     if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                        mail.setError("Fournissez une adresse mail valide");
+                        mail.setError("Adresse mail invalide");
                         mail.requestFocus();
                         return;
                     }
                 }
                 if(tell.isEmpty()  ){
-                    tel.setError("ce champ est obligatoire");
+                    tel.setError("Champ obligatoire");
                     tel.requestFocus();
                     return;
                 } else{
                     if(!Patterns.PHONE.matcher(tell).matches()){
-                        tel.setError("ce n'est pas un numero de telephone");
+                        tel.setError("Numero de telephone invalide");
                         tel.requestFocus();
                         return;
                     }
                 }
                 if(codeA.isEmpty()  ){
-                    code.setError("ce champ est obligatoire");
+                    code.setError("Champ obligatoire");
                     code.requestFocus();
                     return;
                 }
                 if(codeA.length()<6 ){
-                    code.setError("le mot de passe est trop court");
+                    code.setError("Mot de passe trop court");
                     code.requestFocus();
                     return;
                 }
-                Log.d("hna0","nhnj");
 
-                Log.d("hna2",String.valueOf(item));
             db.collection("Hopital").document(item).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -196,7 +194,7 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Toast.makeText(getApplicationContext(), "le compte a été crée ",
+                                        Toast.makeText(getApplicationContext(), "Le compte a été crée avec succes",
                                                 Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(SignupA.this,adminmenu.class));
                                     }
@@ -205,10 +203,13 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         Log.w("Fail", "Error", e);
-
+                                        Toast.makeText(getApplicationContext(), "Une erreur a eu lieu",
+                                                Toast.LENGTH_SHORT).show();
 
                                     }
                                 });
+                    }else{
+                        Toast.makeText(getApplicationContext(),"Un compte avec cette adresse email existe deja",Toast.LENGTH_LONG).show();
                     }
                 }
 

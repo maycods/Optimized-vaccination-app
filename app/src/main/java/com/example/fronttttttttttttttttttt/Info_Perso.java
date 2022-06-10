@@ -94,12 +94,11 @@ mdp.setText(mdpo);
                 String dt= dtt.getText().toString().trim();
 
 
-       Log.d("mmmm",dat);
                 if(dat!=null){
                     try {
                         LocalDate.parse(dt);
                     } catch (DateTimeParseException dtpe) {
-                        dtt.setError("cette date n'est pas valide");
+                        dtt.setError("Date invalide");
                         dtt.requestFocus();
                         return;
                     }
@@ -115,10 +114,12 @@ mdp.setText(mdpo);
                                     Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dt);
                                     Timestamp timestamp = new Timestamp(date);
                                     db.collection("Rendez-vous").document(idd).update("Localisation", a, "dateR", timestamp);
-                                    Toast.makeText(getApplicationContext(), "Modifié avec success", Toast.LENGTH_LONG).show();
+
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
+                            }else{
+                                Toast.makeText(getApplicationContext(), "Une erreur a eu lieu", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
@@ -130,12 +131,12 @@ mdp.setText(mdpo);
                                 @Override
                                 public void onSuccess(Void unused) {
                                     user.updatePassword(mdpp);
-
+                                    Toast.makeText(getApplicationContext(), "Modifié avec success", Toast.LENGTH_LONG).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getApplicationContext(),"une erreur a eu lieu",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(),"Une erreur a eu lieu",Toast.LENGTH_LONG).show();
                                 }
                             });
             }

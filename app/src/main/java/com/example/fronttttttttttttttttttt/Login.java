@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
                 String mdp1= mdp.getText().toString().trim();
 
                 if(email.isEmpty()){
-                    mail.setError("ce champ est obligatoire");
+                    mail.setError("Ce champ est obligatoire");
                     mail.requestFocus();
                     return;
                 }
@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity {
                     }
                 }
                 if(mdp1.isEmpty() ){
-                    mdp.setError("ce champ est obligatoire");
+                    mdp.setError("Ce champ est obligatoire");
                     mdp.requestFocus();
                     return;
                 }
@@ -74,19 +74,19 @@ public class Login extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             if(task.getResult().exists()){
-                                                Toast.makeText(Login.this , "Vous ete connecte",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Login.this , "Vous etes connecté(e)",Toast.LENGTH_SHORT).show();
                                                 Intent i =new Intent(Login.this,Menu.class);
                                                 startActivity(i);
                                             }
                                             else {
-                                                Toast.makeText(Login.this , "ce n'est pas un compte patient",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Login.this , "Email ou mot de passe incorrecte(s). Veuillez reessayer",Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
 
                         }
                         else {
-                            Toast.makeText(Login.this , "Vous vous ete trompe d'email ou mot de passe . veuillez reessayer ",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this , "Email ou mot de passe incorrecte(s). Veuillez reessayer",Toast.LENGTH_LONG).show();
                         }
                     }
                 });

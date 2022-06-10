@@ -178,8 +178,8 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 LocalDate  j = LocalDate.parse(jourj);
 
 
-                if(aujourhui.isAfter(j) || aujourhui.isEqual(j)){
-                    Toast.makeText(getApplicationContext(), "vous pouvez pas prendre un rendez-vous pour aujourd hui ou avant", Toast.LENGTH_LONG).show();
+                if(aujourhui.isAfter(j) || aujourhui.isEqual(j) || aujourhui.plusDays(1).isEqual(j)){
+                    Toast.makeText(getApplicationContext(), "Il est trop tard pour prendre rendez-vous à cette date", Toast.LENGTH_LONG).show();
 
                 }else{
                     date1 = jourj +" "+"00:00:00";
@@ -210,12 +210,12 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                 geoLocate();
                 String search = mSearchText.getText().toString().trim();
                 if(search.isEmpty()){
-                    mSearchText.setError("ce champ est obligatoire");
+                    mSearchText.setError("Champ obligatoire");
                     mSearchText.requestFocus();
                     return;
                 }
                 if(date1.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "inserer une date correcte", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Selectionnez une date", Toast.LENGTH_LONG).show();
                     return;
                 }
                 db.collection("user").document(currentId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -244,7 +244,7 @@ if(a!=0){
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getApplicationContext(), "le rendez-vous a été prit ",
+                                    Toast.makeText(getApplicationContext(), "Rendez-vous pris avec succes",
                                             Toast.LENGTH_SHORT).show();
                                     mSearchText.setFocusable(false);
                                     V.setEnabled(false);
@@ -259,7 +259,7 @@ if(a!=0){
                                 }
                             });
                 } else {
-                    Toast.makeText(getApplicationContext(), "le rendez-vous a deja  ete prit ",
+                    Toast.makeText(getApplicationContext(), "Rendez-vous deja pris",
                             Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Rendez_vous.this, Rendez_vous.class));
                 }
@@ -267,7 +267,7 @@ if(a!=0){
         }
     });
 }else{
-    Toast.makeText(getApplicationContext(),"Vous ne pouvez plus prendre de rendez-vous car vous avez consommez toutes vos chances",Toast.LENGTH_LONG).show();
+    Toast.makeText(getApplicationContext(),"Vous ne pouvez plus prendre de rendez-vous car vous avez consommé toutes vos tentatives de vaccination de par vos annulations",Toast.LENGTH_LONG).show();
 }
                       }
                     }
@@ -304,21 +304,21 @@ if(a!=0){
         }
 
         else{
-            Toast.makeText(getApplicationContext(),"invalid location",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"adresse invalide",Toast.LENGTH_LONG).show();
         }
     }
     private void askGalleryPermissionLocation() {
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
-        String rationale = "Please provide location permission so that you can use the app or smthg";
+        String rationale = "Fournissez la permission de localisation à Geovax afin d'acceder à votre position";
         Permissions.Options options = new Permissions.Options()
-                .setRationaleDialogTitle("Permission required")
-                .setSettingsDialogTitle("big Warning");
+                .setRationaleDialogTitle("Permission requise")
+                .setSettingsDialogTitle("Attention");
 
         Permissions.check(this/*context*/, permissions, null, null, new PermissionHandler() {
             @Override
             public void onGranted() {
                 getCurrentLocationn();
-                Toast.makeText(getApplicationContext(), "permission granted", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Permission accordée", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -357,13 +357,13 @@ if(a!=0){
                                         }
 
                                     } else {
-                                        Toast.makeText(getApplicationContext(), "no location", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Aucune Adresse", Toast.LENGTH_LONG).show();
                                     }
-                                }else{ Toast.makeText(getApplicationContext(), "no success", Toast.LENGTH_LONG).show();}
+                                }else{ Toast.makeText(getApplicationContext(), "Une erreur a eu lieu", Toast.LENGTH_LONG).show();}
                             }
                         });
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "catch", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Une erreur a eu lieu", Toast.LENGTH_LONG).show();
             }
         }else{
         }
