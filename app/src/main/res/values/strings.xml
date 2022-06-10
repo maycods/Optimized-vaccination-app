@@ -10,9 +10,10 @@
         <item>amb5</item>
     </string-array>
     <string-array name="vaccines">
-        <item>Spootnik</item>
-        <item>Astra</item>
-        <item>Sinovac</item>
+        <item>Sputnik V</item>
+        <item>Sinovac-CoronaVac</item>
+        <item>AstraZeneka</item>
+        <item>Johnson &amp; Johnson</item>
     </string-array>
 
     <string-array name="nombre">

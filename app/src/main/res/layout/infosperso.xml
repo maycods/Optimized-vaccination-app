@@ -169,6 +169,7 @@ android:background="@drawable/flogin"
                     android:shadowColor="@color/black"
                     android:textColor="@color/bleufoncé"
                     android:textColorHint="@color/HINT"
+                    android:inputType="text"
                     android:textSize="15dp" />
 
 

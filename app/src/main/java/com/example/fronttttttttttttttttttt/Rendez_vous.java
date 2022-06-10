@@ -74,6 +74,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
@@ -94,6 +96,8 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
     private ArrayAdapter<CharSequence> adapter;
     private Spinner V;
     private HashMap<String, Object> RDV = new HashMap<String, Object>();
+
+
 
 
     @Override
@@ -117,20 +121,21 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
 
 //vaccin
-        db.collection("Vaccin").document("IDV").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful() && task.getResult().exists() && task.getResult() != null)
-                {
-                    listV.addAll ((ArrayList<String>) task.getResult().get("TypeVaccin"));
-
-                }
-            }
-        });
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this, R.layout.spinn,
-                        listV);
+//        db.collection("Vaccin").document("IDV").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if(task.isSuccessful() && task.getResult().exists() && task.getResult() != null)
+//                {
+//                    listV.addAll ((ArrayList<String>) task.getResult().get("TypeVaccin"));
+//
+//                }
+//            }
+//        });
+        adapter = ArrayAdapter.createFromResource(this,R.array.vaccines, R.layout.spinn);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        String[] l = getResources().getStringArray(R.array.vaccines);
+        Collections.addAll(listV,l);
+        Log.d("vaccccccccc",String.valueOf(listV));
         reference=db.collection("user").document(currentId);
         reference.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -139,10 +144,10 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                         if(task.isSuccessful()) {
                             typeV = (String) task.getResult().get("Type de vaccin");
                             Log.d("wow", String.valueOf(typeV));
-
                             V.setAdapter(adapter);
-                            if (typeV==null){
+                            if (typeV==""){
                                 V.setEnabled(true);
+                                V.setClickable(true);
                                 V.setOnItemSelectedListener(Rendez_vous.this);
                             }
                             else {
