@@ -96,7 +96,7 @@
                 android:layout_marginTop="20dp"
                 android:drawablePadding="5dp"
                 android:drawableLeft="@drawable/ic_baseline_local_shipping_24_white"
-                android:text="Affectation Ambulance"
+                android:text="Affectation Ambulanciers"
                 android:textAllCaps="false"
                 android:fontFamily="@font/poppins_semibold"
                 android:textColor="@color/white"

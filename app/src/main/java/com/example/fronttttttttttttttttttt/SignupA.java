@@ -84,20 +84,15 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-//                        if (error != null) {
-//                            Log.d("kop", error.getMessage());
-//                            return;
-//                        }
                         for (DocumentChange dc : value.getDocumentChanges()) {
                             hopital.add(dc.getDocument().getId());
                         }
-
+                        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getApplicationContext(),
+                                R.layout.spinn, hopital);
+                        Adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                        SPH.setAdapter(Adapter);
                     }
                 });
-        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getApplicationContext(),
-               R.layout.spinn, hopital);
-        Adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        SPH.setAdapter(Adapter);
 
         SPH.setOnItemSelectedListener(SignupA.this);
         sinscrire.setOnClickListener(new View.OnClickListener() {
