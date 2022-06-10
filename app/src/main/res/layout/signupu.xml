@@ -246,17 +246,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 >
+
                 <Button
                     android:id="@+id/sinscrireU"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="70dp"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/bouton"
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center"
                     android:padding="15dp"
-                    android:text="Submit"
-                    android:layout_marginTop="30dp"
+                    android:text="Soumettre"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="16dp" />

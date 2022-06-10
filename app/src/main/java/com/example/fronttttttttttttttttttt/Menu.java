@@ -106,7 +106,7 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                                 Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
 
                                 builder.setContentTitle("Confirmer votre rendez-vous");
-                                builder.setContentText("c'est bientot le Jour J , Confirmer votre rendez-vous avant 14h !!");
+                                builder.setContentText("Votre rendez-vous est pour demain , Confirmer-le avant 14h !!");
                                 builder.setSmallIcon(R.drawable.usthblogo);
                                 builder.setAutoCancel(true);
                                 builder.setVibrate( new long []{ 1000 , 1000 , 1000 , 1000 , 1000 });
