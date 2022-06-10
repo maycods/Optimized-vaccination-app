@@ -58,17 +58,18 @@ public class Info_Perso extends Activity {
 
         String telo = getIntent().getStringExtra("tele");
         String mdpo = getIntent().getStringExtra("mdp");
-     String  endr = getIntent().getStringExtra("endroit");
-     String dat = getIntent().getStringExtra("datee");
-dtt=findViewById(R.id.dtedit);
-lio=findViewById(R.id.lieuedit);
-tel=findViewById(R.id.teledit);
-mdp=findViewById(R.id.mdpedit);
-confirmer=findViewById(R.id.comfirmer);
-dtt.setText(dat);
-lio.setText(endr);
-tel.setText(telo);
-mdp.setText(mdpo);
+        String  endr = getIntent().getStringExtra("endroit");
+        String dat = getIntent().getStringExtra("datee");
+
+        dtt=findViewById(R.id.dtedit);
+        lio=findViewById(R.id.lieuedit);
+        tel=findViewById(R.id.teledit);
+        mdp=findViewById(R.id.mdpedit);
+        confirmer=findViewById(R.id.comfirmer);
+        dtt.setText(dat);
+        lio.setText(endr);
+        tel.setText(telo);
+        mdp.setText(mdpo);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -77,8 +78,8 @@ mdp.setText(mdpo);
 
        retour= (ImageButton)findViewById(R.id.retourPM);
         if(dat== null) {
-            lio.setHint("rendez-vous non encore pris");
-            dtt.setHint("rendez-vous non encore pris");
+            lio.setHint("rendez-vous pas encore pris");
+            dtt.setHint("rendez-vous pas encore pris");
             lio.setEnabled(false);
             dtt.setEnabled(false);
         }
@@ -94,7 +95,7 @@ mdp.setText(mdpo);
                 String dt= dtt.getText().toString().trim();
 
 
-       Log.d("mmmm",dat);
+      // Log.d("mmmm",dat);
                 if(dat!=null){
                     try {
                         LocalDate.parse(dt);
@@ -116,6 +117,7 @@ mdp.setText(mdpo);
                                     Timestamp timestamp = new Timestamp(date);
                                     db.collection("Rendez-vous").document(idd).update("Localisation", a, "dateR", timestamp);
                                     Toast.makeText(getApplicationContext(), "Modifié avec success", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(Info_Perso.this,InfoPersoAvantModif.class));
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -138,8 +140,10 @@ mdp.setText(mdpo);
                                     Toast.makeText(getApplicationContext(),"une erreur a eu lieu",Toast.LENGTH_LONG).show();
                                 }
                             });
-            }
+                //Toast.makeText(getApplicationContext(), "Modifié avec succès", Toast.LENGTH_LONG).show();
+               //
 
+            }
         });
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
