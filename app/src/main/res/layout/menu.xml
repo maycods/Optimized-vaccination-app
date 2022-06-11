@@ -326,7 +326,7 @@
         android:layout_height="wrap_content"
      android:layout_marginHorizontal="40dp"
         android:padding="15dp"
-        android:text="Profile"
+        android:text="Profil"
         android:textAllCaps="false"
         android:fontFamily="@font/poppins_semibold"
         android:drawableLeft="@drawable/personblance"

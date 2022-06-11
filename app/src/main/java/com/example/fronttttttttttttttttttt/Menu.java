@@ -1,7 +1,6 @@
 package com.example.fronttttttttttttttttttt;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -17,16 +16,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
-import android.widget.ScrollView;
 import android.widget.ImageButton;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
-
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,19 +31,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCINS
     private Button profilee, prev, num, Rdv;
@@ -95,9 +83,11 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                             LocalDate g  =LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
                             LocalDate JJ = LocalDate.now().plusDays(1);
                             LocalDate today = LocalDate.now();
-                            Log.d("lplplp",String.valueOf(System.currentTimeMillis()));
+                            Calendar now = Calendar.getInstance();
 
-                            if(g.isEqual(JJ) && System.currentTimeMillis()/1000< Long.parseLong("46800") && !(boolean) document.get("confR")){
+                            Log.d("lplplp",String.valueOf(now.get(Calendar.HOUR_OF_DAY)));
+
+                            if(g.isEqual(JJ) && now.get(Calendar.HOUR_OF_DAY)< 14 && !(boolean) document.get("confR")){
 
                                 notif.setEnabled(true);
                                 notif.setImageResource (R.drawable.ic_outline_notifications_active_25);
@@ -129,7 +119,7 @@ public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCIN
                                     }
                                 });
                             }
-//                            if(g.isEqual(JJ) && System.currentTimeMillis()/1000> Long.parseLong("46800") && !(boolean) document.get("confR")){
+//                            if(g.isEqual(JJ) && now.get(Calendar.HOUR_OF_DAY)< 14 && !(boolean) document.get("confR")){
 //
 //                                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
 //                                    @Override
