@@ -181,7 +181,7 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                         AM.put("Mot de passe", code.getText().toString().trim());
                         AM.put("Numero de Telephone", tel.getText().toString().trim());
                         AM.put("Date de Naissance", ageN.getText().toString().trim());
-                        db.collection("Hopital").document(item).update("nbA",nbA+1);
+                        db.collection("Hopital").document(item).update("nbA",Integer.parseInt(nbA)+1);
                         Log.d("hna4",String.valueOf(AM.get("Email")));
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         db.collection("Ambulancier").document(mAuth.getUid())
