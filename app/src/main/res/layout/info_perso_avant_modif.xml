@@ -22,17 +22,17 @@
             android:src="@drawable/ic_baseline_navigate_before_24"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_marginTop="15dp"
-        android:id="@+id/nompage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/retourP"
-        android:layout_marginLeft="20dp"
-        android:text="Profile"
-        android:textColor="@color/bleufoncé"
-        android:textSize="35dp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/nompage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/retourP"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Profil"
+            android:textColor="@color/bleufoncé"
+            android:textSize="35dp"
+            android:textStyle="bold" />
 
     <TextView
         android:id="@+id/info"
