@@ -135,7 +135,6 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
         });
 
 
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

@@ -71,58 +71,58 @@ public class SignUp extends Activity {
 
 
                 if(nompre.isEmpty() ){
-                    nomprenom.setError("ce champ est obligatoire");
+                    nomprenom.setError("Champ obligatoire");
                     nomprenom.requestFocus();
                     return;
                 }
                 if(daten.isEmpty()  ){
-                    dnn.setError("ce champ est obligatoire");
+                    dnn.setError("Champ obligatoire");
                     dnn.requestFocus();
                     return;
                 }else{
                             try {
                                 LocalDate.parse(daten);
                             } catch (DateTimeParseException dtpe) {
-                              dnn.setError("cette date n'est pas valide voici le format: yyyy-MM-dd");
+                              dnn.setError("Date invalide");
                               dnn.requestFocus();
                               return;
                             }
 
                     }
                 if(email.isEmpty()){
-                    mail.setError("ce champ est obligatoire");
+                    mail.setError("Champ obligatoire");
                     mail.requestFocus();
                     return;
                 }else{
                       if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                          mail.setError("Fournissez une adresse mail valide");
+                          mail.setError("Adresse mail invalide");
                           mail.requestFocus();
                           return;
                       }
                 }
                 if(tell.isEmpty()  ){
-                    tel.setError("ce champ est obligatoire");
+                    tel.setError("Champ obligatoire");
                     tel.requestFocus();
                     return;
                 } else{
                     if(!Patterns.PHONE.matcher(tell).matches()){
-                        tel.setError("ce n'est pas un numero de telephone");
+                        tel.setError("Numero de telephone invalide");
                         tel.requestFocus();
                         return;
                     }
                 }
                 if(mdp1.isEmpty()  ){
-                    mdp.setError("ce champ est obligatoire");
+                    mdp.setError("Champ obligatoire");
                     mdp.requestFocus();
                     return;
                 }
                 if(mdp1.length()<6 ){
-                    mdp.setError("le mot de passe est trop court");
+                    mdp.setError("Mot de passe trop court");
                     mdp.requestFocus();
                     return;
                 }
                 if(!mdp2.equals(mdp1) ){
-                    mdpc.setError("Le mots de passe ne sont pas identiques");
+                    mdpc.setError("Les mots de passe ne sont pas identiques");
                     mdpc.requestFocus();
                     return;
                 }

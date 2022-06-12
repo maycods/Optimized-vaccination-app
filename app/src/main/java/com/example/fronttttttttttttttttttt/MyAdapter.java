@@ -97,25 +97,6 @@ int i;
                         }
                     });
                     break;
-                case 1:
-                    holder.typev.setText("Sinovac");
-                    holder.npick.setText("" + hopital.DoseSinovac);
-                    holder.chaterr.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            db.collection("Hopital").whereEqualTo("NomH", hopital.NomH).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                @Override
-                                public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                                    for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
-                                        String IDR = documentChange.getDocument().getId();
-                                        db.collection("Hopital").document(IDR).update("DoseSinovac", Long.parseLong(holder.npick.getText().toString()));
-                                        holder.chaterr.setImageResource(R.drawable.ic_baseline_check_25);
-                                    }
-                                }
-                            });
-                        }
-                    });
-                    break;
                 case 2:
                     holder.typev.setText("johnson");
                     holder.npick.setText("" + hopital.DoseJohnson);
@@ -128,6 +109,25 @@ int i;
                                     for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
                                         String IDR = documentChange.getDocument().getId();
                                         db.collection("Hopital").document(IDR).update("DoseJohnson", Long.parseLong(holder.npick.getText().toString()));
+                                        holder.chaterr.setImageResource(R.drawable.ic_baseline_check_25);
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    break;
+                case 1:
+                    holder.typev.setText("Sinovac");
+                    holder.npick.setText("" + hopital.DoseSinovac);
+                    holder.chaterr.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            db.collection("Hopital").whereEqualTo("NomH", hopital.NomH).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                                    for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
+                                        String IDR = documentChange.getDocument().getId();
+                                        db.collection("Hopital").document(IDR).update("DoseSinovac", Long.parseLong(holder.npick.getText().toString()));
                                         holder.chaterr.setImageResource(R.drawable.ic_baseline_check_25);
                                     }
                                 }

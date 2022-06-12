@@ -225,22 +225,11 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                 startActivity(new Intent(SignupA.this, adminmenu.class));
             }
         });
-
     }
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        Spinner Spinner =(Spinner) parent;
-//        if(Spinner.getId() == R.id.sphp) {
              item = (String) parent.getItemAtPosition(position);
-
-         //   SPH.setSelection(position);
-//               Log.d("hna1",String.valueOf(item));
-//
-//
-//        }
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 

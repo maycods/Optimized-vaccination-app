@@ -7,6 +7,7 @@ import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,6 +52,10 @@ public class Info_Perso extends Activity {
     private EditText tel,mdp,dtt,lio;
     private  DocumentReference reference;
     String currentId;
+    List<Address> list ;
+    boolean a =true;
+    Date date = null;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +81,9 @@ public class Info_Perso extends Activity {
         currentId=user.getUid();
         reference=db.collection("user").document(currentId);
 
+        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate  aujourhui = LocalDate.parse(dateFormat.format(new Date()));
+
        retour= (ImageButton)findViewById(R.id.retourPM);
         if(dat== null) {
             lio.setHint("rendez-vous pas encore pris");
@@ -94,7 +102,29 @@ public class Info_Perso extends Activity {
                 String loc= lio.getText().toString().trim();
                 String dt= dtt.getText().toString().trim();
 
-
+//
+                if(tell.isEmpty()  ){
+                    tel.setError("Champ obligatoire");
+                    tel.requestFocus();
+                    return;
+                } else{
+                    if(!Patterns.PHONE.matcher(tell).matches()){
+                        tel.setError("Numero de telephone invalide");
+                        tel.requestFocus();
+                        return;
+                    }
+                }
+                if(mdpp.isEmpty()  ){
+                    mdp.setError("Champ obligatoire");
+                    mdp.requestFocus();
+                    return;
+                }
+                if(mdpp.length()<6 ){
+                    mdp.setError("Mot de passe trop court");
+                    mdp.requestFocus();
+                    return;
+                }
+                //
                 if(dat!=null){
                     try {
                         LocalDate.parse(dt);
@@ -102,45 +132,63 @@ public class Info_Perso extends Activity {
                         dtt.setError("Date invalide");
                         dtt.requestFocus();
                         return;
+                    }}
+                Geocoder geocoder=new Geocoder(getApplicationContext());
+                try {
+                    list = geocoder.getFromLocationName(loc, 1);
+                    if(list.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Adresse invalide", Toast.LENGTH_LONG).show();
+                        return;
                     }
-                    Geocoder geocoder=new Geocoder(getApplicationContext());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Adresse invalide", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
+                try {
+                    date = new SimpleDateFormat("yyyy-MM-dd").parse(dt);
+                } catch (ParseException e) { e.printStackTrace(); }
+
+                if(aujourhui.isAfter(LocalDate.parse(dt)) || aujourhui.isEqual(LocalDate.parse(dt)) || aujourhui.plusDays(1).isEqual(LocalDate.parse(dt))){
+                    Toast.makeText(getApplicationContext(), "Il est trop tard pour prendre rendez-vous à cette date", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                     db.collection("Rendez-vous").whereEqualTo("IDP", currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 String idd = task.getResult().getDocuments().get(0).getId();
-                                try {
-                                    List<Address> list = geocoder.getFromLocationName(loc, 1);
+        //localisationn
                                     GeoPoint a = new GeoPoint(list.get(0).getLatitude(), list.get(0).getLongitude());
-                                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dt);
-                                    Timestamp timestamp = new Timestamp(date);
-                                    db.collection("Rendez-vous").document(idd).update("Localisation", a, "dateR", timestamp);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                                    db.collection("Rendez-vous").document(idd).update("Localisation", a);
+        //dateee
+                                   Timestamp timestamp = new Timestamp(date);
+                                    db.collection("Rendez-vous").document(idd).update( "dateR", timestamp);
+
+                                db.collection("user").document(currentId).update("Mot de passe",mdpp,"Numero de Telephone",tell).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        user.updatePassword(mdpp);
+                                        Toast.makeText(getApplicationContext(), "Modifié avec success", Toast.LENGTH_LONG).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getApplicationContext(),"Une erreur a eu lieu",Toast.LENGTH_LONG).show();
+                                    }
+                                });
                             }else{
                                 Toast.makeText(getApplicationContext(), "Une erreur a eu lieu", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
-                }
 
 
 
-                        db.collection("user").document(currentId).update("Mot de passe",mdpp,"Numero de Telephone",tell).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    user.updatePassword(mdpp);
-                                    Toast.makeText(getApplicationContext(), "Modifié avec success", Toast.LENGTH_LONG).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getApplicationContext(),"Une erreur a eu lieu",Toast.LENGTH_LONG).show();
-                                }
-                            });
-                //Toast.makeText(getApplicationContext(), "Modifié avec succès", Toast.LENGTH_LONG).show();
-               //
+
 
             }
         });
