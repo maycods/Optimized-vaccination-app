@@ -64,7 +64,7 @@ ImageButton notf;
         yesterday.setMinutes(0);
         yesterday.setHours(0);
         Timestamp timestamp = new Timestamp(yesterday.getTime());
-
+        Log.d("dateee",String.valueOf(timestamp));
         db.collection("Rendez-vous").whereLessThanOrEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {

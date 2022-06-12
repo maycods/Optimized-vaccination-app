@@ -18,8 +18,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDate;
 
@@ -49,13 +53,28 @@ public class notifAdmin extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     nume.setText(String.valueOf(task.getResult().get("Numero de Telephone")));
-
                 }
             }
         });
         okk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                db.collection("user").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            db.collection("Rendez-vous").whereEqualTo("IDP",task.getResult().getId()    ).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                                    for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
+                                        String IDR =documentChange.getDocument().getId();
+                                        db.collection("Rendez-vous").document(IDR).delete();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
                 startActivity(new Intent(notifAdmin.this, adminmenu.class));
                 callnumber();
             }

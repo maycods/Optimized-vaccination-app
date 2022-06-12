@@ -134,7 +134,7 @@
                 android:hint="exemple: 1990-08-12"
                 android:drawableLeft="@drawable/anniv"
                 android:drawablePadding="10dp"
-                android:inputType="date"
+                android:inputType="phone"
                 android:maxLines="1"
                 android:shadowColor="@color/bleufoncé"
                 android:textColor="@color/bleufoncé"
