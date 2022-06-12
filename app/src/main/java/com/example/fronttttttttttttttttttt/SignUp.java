@@ -117,7 +117,7 @@ public class SignUp extends Activity {
                     return;
                 }
                 if(mdp1.length()<6 ){
-                    mdp.setError("Mot de passe trop court");
+                    mdp.setError("Mot de passe trop court au moins 6 caracteres");
                     mdp.requestFocus();
                     return;
                 }

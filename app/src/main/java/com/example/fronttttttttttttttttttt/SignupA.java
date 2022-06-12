@@ -155,7 +155,7 @@ public class SignupA extends Activity implements AdapterView.OnItemSelectedListe
                     return;
                 }
                 if(codeA.length()<6 ){
-                    code.setError("Mot de passe trop court");
+                    code.setError("Mot de passe trop court au moins 6 caracteres");
                     code.requestFocus();
                     return;
                 }

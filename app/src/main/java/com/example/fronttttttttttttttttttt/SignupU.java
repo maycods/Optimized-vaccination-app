@@ -120,7 +120,7 @@ public class SignupU extends Activity {
                     return;
                 }
                 if(codeA.length()<6 ){
-                    code.setError("Mot de passe trop court");
+                    code.setError("Mot de passe trop court au moins 6 caracteres");
                     code.requestFocus();
                     return;
                 }

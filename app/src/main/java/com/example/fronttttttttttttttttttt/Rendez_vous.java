@@ -145,7 +145,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                             typeV = (String) task.getResult().get("Type de vaccin");
                             Log.d("wow", String.valueOf(typeV));
                             V.setAdapter(adapter);
-                            if (typeV==""){
+                            if (typeV==null){
                                 V.setEnabled(true);
                                 V.setClickable(true);
                                 V.setOnItemSelectedListener(Rendez_vous.this);
@@ -184,7 +184,7 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
 
 
                 if(aujourhui.isAfter(j) || aujourhui.isEqual(j) || aujourhui.plusDays(1).isEqual(j)){
-                    Toast.makeText(getApplicationContext(), "Il est trop tard pour prendre rendez-vous à cette date", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Date de rendez-vous indisponible", Toast.LENGTH_LONG).show();
 
                 }else{
                     date1 = jourj +" "+"00:00:00";
@@ -322,9 +322,9 @@ if(a!=0){
         Permissions.check(this/*context*/, permissions, null, null, new PermissionHandler() {
             @Override
             public void onGranted() {
-                getCurrentLocationn();
-                Toast.makeText(getApplicationContext(), "Permission accordée", Toast.LENGTH_LONG).show();
 
+                Toast.makeText(getApplicationContext(), "Permission accordée", Toast.LENGTH_LONG).show();
+                getCurrentLocationn();
             }
         });
 
@@ -371,6 +371,7 @@ if(a!=0){
                 Toast.makeText(getApplicationContext(), "Une erreur a eu lieu", Toast.LENGTH_LONG).show();
             }
         }else{
+            Toast.makeText(getApplicationContext(), "Une erreur a eu lieu", Toast.LENGTH_LONG).show();
         }
     }
 

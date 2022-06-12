@@ -70,8 +70,8 @@ ImageButton notf;
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 NotificationCompat.Builder builder=new NotificationCompat.Builder(adminmenu.this,"notification");
                 Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
-                builder.setContentTitle("mettez-vous au travaille");
-                builder.setContentText("certain patients n'ont pas confirmer leurs vaccination ");
+                builder.setContentTitle("Vaccination non confirmé");
+                builder.setContentText("Certains patients n'ont pas confirmer leurs vaccination");
                 builder.setSmallIcon(R.drawable.usthblogo);
                 builder.setAutoCancel(true);
                 builder.setSound(alarmSound);

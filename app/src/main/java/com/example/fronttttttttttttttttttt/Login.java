@@ -43,19 +43,19 @@ public class Login extends AppCompatActivity {
                 String mdp1= mdp.getText().toString().trim();
 
                 if(email.isEmpty()){
-                    mail.setError("Ce champ est obligatoire");
+                    mail.setError("Champ obligatoire");
                     mail.requestFocus();
                     return;
                 }
                 else{
                     if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                        mail.setError("Fournissez une adresse mail valide");
+                        mail.setError("Adresse mail invalide");
                         mail.requestFocus();
                         return;
                     }
                 }
                 if(mdp1.isEmpty() ){
-                    mdp.setError("Ce champ est obligatoire");
+                    mdp.setError("Champ obligatoire");
                     mdp.requestFocus();
                     return;
                 }

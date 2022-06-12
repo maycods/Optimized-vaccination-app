@@ -120,7 +120,7 @@ public class Info_Perso extends Activity {
                     return;
                 }
                 if(mdpp.length()<6 ){
-                    mdp.setError("Mot de passe trop court");
+                    mdp.setError("Mot de passe trop court au moins 6 caracteres");
                     mdp.requestFocus();
                     return;
                 }
@@ -132,7 +132,10 @@ public class Info_Perso extends Activity {
                         dtt.setError("Date invalide");
                         dtt.requestFocus();
                         return;
-                    }}
+                    }}else{
+                    dtt.setError("Champ obligatoire");
+                    dtt.requestFocus();
+                }
                 Geocoder geocoder=new Geocoder(getApplicationContext());
                 try {
                     list = geocoder.getFromLocationName(loc, 1);
