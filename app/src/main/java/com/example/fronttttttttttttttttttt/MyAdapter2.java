@@ -45,7 +45,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
         Hopital hopital = list.get(position);
             holder.nomhs.setText(hopital.NomH);
             holder.nbrtot.setText("" + ((int) hopital.DoseAstra + (int) hopital.DoseSpootnik + (int) hopital.DoseJohnson + (int) hopital.DoseSinovac)+" doses au total");
-            holder.nbrambu.setText("" + (int) hopital.nbA+" ambulances");
+            holder.nbrambu.setText("" + (int) hopital.nbA+" ambulanciers");
     }
 
     @Override

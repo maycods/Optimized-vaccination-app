@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
             android:padding="5dp"
-            android:text="4 ambulances"
+            android:text="4 ambulanciers"
             android:textColor="@color/white"
             android:textSize="16dp"></TextView>
 
