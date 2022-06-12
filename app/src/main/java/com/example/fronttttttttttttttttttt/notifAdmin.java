@@ -59,24 +59,27 @@ public class notifAdmin extends AppCompatActivity {
         okk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                callnumber();/*
                 db.collection("user").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful()){
-                            db.collection("Rendez-vous").whereEqualTo("IDP",task.getResult().getId()    ).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            db.collection("Rendez-vous").whereEqualTo("IDP",task.getResult().getId()  ).whereEqualTo("comfJJ",false).addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
                                 public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                                     for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
-                                        String IDR =documentChange.getDocument().getId();
-                                        db.collection("Rendez-vous").document(IDR).delete();
+
+                                            String IDR = documentChange.getDocument().getId();
+                                            db.collection("Rendez-vous").document(IDR).delete();
+
                                     }
                                 }
                             });
                         }
                     }
                 });
-                startActivity(new Intent(notifAdmin.this, adminmenu.class));
-                callnumber();
+                */startActivity(new Intent(notifAdmin.this, adminmenu.class));
+
             }
         });
     }
