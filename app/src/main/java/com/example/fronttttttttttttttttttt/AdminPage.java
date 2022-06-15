@@ -45,7 +45,7 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
 
 
 
-    //TODO AFFICHER HOPITEAU INFO DE BDD
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

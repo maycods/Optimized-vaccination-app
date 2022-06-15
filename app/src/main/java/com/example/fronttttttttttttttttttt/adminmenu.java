@@ -58,21 +58,22 @@ ImageButton notf;
         db.collection("Rendez-vous").whereLessThanOrEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                NotificationCompat.Builder builder=new NotificationCompat.Builder(adminmenu.this,"notification");
-                Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
-                builder.setContentTitle("Vaccination non confirmé");
-                builder.setContentText("Certains patients n'ont pas confirmer leurs vaccination");
-                builder.setSmallIcon(R.drawable.usthblogo);
-                builder.setAutoCancel(true);
-                builder.setSound(alarmSound);
-                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(adminmenu.this);
-                managerCompat.notify(1,builder.build());
+
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
                 {
                    if( documentChange.getDocument().get("confV").equals(false)){
                        notf.setEnabled(true);
                        notf.setImageResource (R.drawable.ic_outline_notifications_active_25);
                        String idu =  (String) documentChange.getDocument().get("IDP");
+                       NotificationCompat.Builder builder=new NotificationCompat.Builder(adminmenu.this,"notification");
+                       Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION);
+                       builder.setContentTitle("Vaccination non confirmé");
+                       builder.setContentText("Certains patients n'ont pas confirmer leurs vaccination");
+                       builder.setSmallIcon(R.drawable.usthblogo);
+                       builder.setAutoCancel(true);
+                       builder.setSound(alarmSound);
+                       NotificationManagerCompat managerCompat = NotificationManagerCompat.from(adminmenu.this);
+                       managerCompat.notify(1,builder.build());
                        notf.setOnClickListener(new View.OnClickListener() {
                            @Override
                            public void onClick(View view) {

@@ -62,18 +62,16 @@ public class AdminPage2 extends Activity   {
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<Hopital>();
 
-
         myAdapter=new MyAdapter(AdminPage2.this ,list,-1,db);
-
         recyclerView.setAdapter(myAdapter);
+
         myAdapter=new MyAdapter(AdminPage2.this ,list,7,db);
-
         recyclerView2.setAdapter(myAdapter);
+
         myAdapter=new MyAdapter(AdminPage2.this ,list,1,db);
-
         recyclerView3.setAdapter(myAdapter);
-        myAdapter=new MyAdapter(AdminPage2.this ,list,2,db);
 
+        myAdapter=new MyAdapter(AdminPage2.this ,list,2,db);
         recyclerView4.setAdapter(myAdapter);
 
         myAdapter2=new MyAdapter2(AdminPage2.this ,list,db);
