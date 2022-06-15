@@ -1,24 +1,15 @@
 
 package com.example.fronttttttttttttttttttt;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.ArrayList;
 
-        import android.content.Context;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.EditText;
-        import android.widget.ImageButton;
-        import android.widget.TextView;
-
-        import androidx.annotation.NonNull;
-        import androidx.recyclerview.widget.RecyclerView;
-
-        import com.google.firebase.firestore.DocumentChange;
-        import com.google.firebase.firestore.EventListener;
-        import com.google.firebase.firestore.FirebaseFirestore;
-        import com.google.firebase.firestore.FirebaseFirestoreException;
-        import com.google.firebase.firestore.QuerySnapshot;
-
-        import java.util.ArrayList;
 
 public class AdapterH extends RecyclerView.Adapter<AdapterH.MyViewHolder> {
 

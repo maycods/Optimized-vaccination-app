@@ -38,10 +38,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
 
 
-public class Menu extends AppCompatActivity {//TODO AFFICHER DE LA BD LES VACCINS
+
+public class Menu extends AppCompatActivity {
     private Button profilee, prev, num, Rdv;
     private ImageButton  notif,L,r;
     private static final int REQUEST_CALL = 1;
