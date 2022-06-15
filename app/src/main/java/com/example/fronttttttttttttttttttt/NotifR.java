@@ -26,6 +26,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -37,6 +38,7 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
     private Button comfirmer,annuler;
     FirebaseFirestore db;
     TextView date;
+    ListenerRegistration listenerReg ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,17 +94,28 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
                         db.collection("user").document(currentId).update("Nombre de chance",Integer.parseInt(String.valueOf(documentSnapshot.get("Nombre de chance")))-1);
                     }
                 });
-                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+
+
+               listenerReg= db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                         for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
                             String IDR =documentChange.getDocument().getId();
                             db.collection("Rendez-vous").document(IDR).delete();
+
                         }
                     }
                 });
             }
         });
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (listenerReg != null) {
+            listenerReg.remove();
+        }
     }
 
 

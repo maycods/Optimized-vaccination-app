@@ -224,6 +224,7 @@ geocoder=new Geocoder(Map.this);
 //                    poly.remove();
 //                }
 //            }
+
             if(d==(ListePositions.length*ListePositions.length)-ListePositions.length){
                 int k=0;
                 for( int j=1; j<=ListePositions.length;j++) {

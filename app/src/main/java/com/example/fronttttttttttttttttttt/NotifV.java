@@ -24,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
@@ -33,6 +34,7 @@ public class NotifV extends Activity {
     private Button oui,non;
     FirebaseFirestore db;
     TextView date;
+    ListenerRegistration listenerReg ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,7 @@ public class NotifV extends Activity {
             public void onClick(View view) {
                 startActivity(new Intent(NotifV.this,Menu.class));
 
-                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                listenerReg = db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
@@ -86,7 +88,7 @@ public class NotifV extends Activity {
                                                         td="DoseSpootnik";
                                                         break;
                                                     case "Johnson & Johnson":
-                                                        td="Dosejohnson";
+                                                        td="DoseJohnson";
                                                         break;
                                                     default: td="nop";
                                                 }
@@ -110,7 +112,7 @@ public class NotifV extends Activity {
                             });
                             db.collection("Rendez-vous").document(IDR).update("confV",true);
                             db.collection("Rendez-vous").document(IDR).update("comfJJ",false);
-                        db.collection("Rendez-vous").document(IDR).delete();
+                            db.collection("Rendez-vous").document(IDR).delete();
 
                         }
 
@@ -135,6 +137,14 @@ public class NotifV extends Activity {
                 });
             }
         });
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (listenerReg != null) {
+            listenerReg.remove();
+        }
     }
 
 

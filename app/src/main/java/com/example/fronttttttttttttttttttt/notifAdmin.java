@@ -23,6 +23,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDate;
@@ -32,6 +33,7 @@ public class notifAdmin extends AppCompatActivity {
     Button okk;
     ImageButton cls;
     FirebaseFirestore db;
+    ListenerRegistration listenerReg ;
     private static final int REQUEST_CALL = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +61,12 @@ public class notifAdmin extends AppCompatActivity {
         okk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callnumber();/*
+                callnumber();
                 db.collection("user").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful()){
-                            db.collection("Rendez-vous").whereEqualTo("IDP",task.getResult().getId()  ).whereEqualTo("comfJJ",false).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            listenerReg =db.collection("Rendez-vous").whereEqualTo("IDP",task.getResult().getId()  ).whereEqualTo("comfJJ",false).addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
                                 public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                                     for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
@@ -78,7 +80,7 @@ public class notifAdmin extends AppCompatActivity {
                         }
                     }
                 });
-                */startActivity(new Intent(notifAdmin.this, adminmenu.class));
+                startActivity(new Intent(notifAdmin.this, adminmenu.class));
 
             }
         });
@@ -102,6 +104,14 @@ public class notifAdmin extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Permission Denined, go to the settings to allow it if you want", Toast.LENGTH_LONG).show();
             }
+        }
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (listenerReg != null) {
+            listenerReg.remove();
         }
     }
 
