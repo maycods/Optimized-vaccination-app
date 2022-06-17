@@ -60,7 +60,7 @@ ImageButton notf;
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
                 for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
-                {
+                { Log.d("mmmmmmmm",timestamp.toString());
                    if( documentChange.getDocument().get("confV").equals(false)){
                        notf.setEnabled(true);
                        notf.setImageResource (R.drawable.ic_outline_notifications_active_25);
