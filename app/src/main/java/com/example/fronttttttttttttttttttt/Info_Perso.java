@@ -41,7 +41,6 @@ public class Info_Perso extends Activity {
     private  DocumentReference reference;
     String currentId;
     List<Address> list ;
-    boolean a =true;
     Date date = null;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -89,76 +88,81 @@ public class Info_Perso extends Activity {
                 String mdpp= mdp.getText().toString().trim();
                 String loc= lio.getText().toString().trim();
                 String dt= dtt.getText().toString().trim();
-
+if(dat!=null) {
 //
-                if(tell.isEmpty()  ){
-                    tel.setError("Champ obligatoire");
-                    tel.requestFocus();
-                    return;
-                } else{
-                    if(!Patterns.PHONE.matcher(tell).matches()){
-                        tel.setError("Numero de telephone invalide");
-                        tel.requestFocus();
-                        return;
-                    }
-                }
-                if(mdpp.isEmpty()  ){
-                    mdp.setError("Champ obligatoire");
-                    mdp.requestFocus();
-                    return;
-                }
-                if(mdpp.length()<6 ){
-                    mdp.setError("Mot de passe trop court au moins 6 caracteres");
-                    mdp.requestFocus();
-                    return;
-                }
-                //
-                if(dat!=null){
-                    try {
-                        LocalDate.parse(dt);
-                    } catch (DateTimeParseException dtpe) {
-                        dtt.setError("Date invalide");
-                        dtt.requestFocus();
-                        return;
-                    }}else{
-                    dtt.setError("Champ obligatoire");
-                    dtt.requestFocus();
-                }
-                Geocoder geocoder=new Geocoder(getApplicationContext());
-                try {
-                    list = geocoder.getFromLocationName(loc, 1);
-                    if(list.isEmpty()){
-                        Toast.makeText(getApplicationContext(), "Adresse invalide", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Adresse invalide", Toast.LENGTH_LONG).show();
-                    return;
-                }
+    if (tell.isEmpty()) {
+        tel.setError("Champ obligatoire");
+        tel.requestFocus();
+        return;
+    } else {
+        if (!Patterns.PHONE.matcher(tell).matches()) {
+            tel.setError("Numero de telephone invalide");
+            tel.requestFocus();
+            return;
+        }
+    }
+    if (mdpp.isEmpty()) {
+        mdp.setError("Champ obligatoire");
+        mdp.requestFocus();
+        return;
+    }
+    if (mdpp.length() < 6) {
+        mdp.setError("Mot de passe trop court au moins 6 caracteres");
+        mdp.requestFocus();
+        return;
+    }
+    //
+    if (dat != null) {
+        try {
+            LocalDate.parse(dt);
+        } catch (DateTimeParseException dtpe) {
+            dtt.setError("Date invalide");
+            dtt.requestFocus();
+            return;
+        }
+    } else {
+        dtt.setError("Champ obligatoire");
+        dtt.requestFocus();
+    }
+    Geocoder geocoder = new Geocoder(getApplicationContext());
+    try {
+        list = geocoder.getFromLocationName(loc, 1);
+        if (list.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Adresse invalide", Toast.LENGTH_LONG).show();
+            return;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        Toast.makeText(getApplicationContext(), "Adresse invalide", Toast.LENGTH_LONG).show();
+        return;
+    }
 
 
-                try {
-                    date = new SimpleDateFormat("yyyy-MM-dd").parse(dt);
-                } catch (ParseException e) { e.printStackTrace(); }
+    try {
+        date = new SimpleDateFormat("yyyy-MM-dd").parse(dt);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
 
-                if(aujourhui.isAfter(LocalDate.parse(dt)) || aujourhui.isEqual(LocalDate.parse(dt)) || aujourhui.plusDays(1).isEqual(LocalDate.parse(dt))){
-                    Toast.makeText(getApplicationContext(), "Il est trop tard pour prendre rendez-vous à cette date", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
+    if (aujourhui.isAfter(LocalDate.parse(dt)) || aujourhui.isEqual(LocalDate.parse(dt)) || aujourhui.plusDays(1).isEqual(LocalDate.parse(dt))) {
+        Toast.makeText(getApplicationContext(), "Il est trop tard pour prendre rendez-vous à cette date", Toast.LENGTH_LONG).show();
+        return;
+    }
+}
                     db.collection("Rendez-vous").whereEqualTo("IDP", currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                String idd = task.getResult().getDocuments().get(0).getId();
-        //localisationn
+
+                                if(dat!=null) {
+                                    String idd = task.getResult().getDocuments().get(0).getId();
+                                    //localisationn
                                     GeoPoint a = new GeoPoint(list.get(0).getLatitude(), list.get(0).getLongitude());
                                     db.collection("Rendez-vous").document(idd).update("Localisation", a);
-        //dateee
-                                   Timestamp timestamp = new Timestamp(date);
-                                    db.collection("Rendez-vous").document(idd).update( "dateR", timestamp);
-
+                                    //dateee
+                                    Timestamp timestamp = new Timestamp(date);
+                                    db.collection("Rendez-vous").document(idd).update("dateR", timestamp);
+                                }
                                 db.collection("user").document(currentId).update("Mot de passe",mdpp,"Numero de Telephone",tell).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
