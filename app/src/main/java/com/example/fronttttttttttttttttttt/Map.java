@@ -46,6 +46,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -107,18 +108,22 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                                 LatLng latLng = new LatLng(lat, lng);
                                 ListeP.add( 0,latLng);
 
-                                db.collection("Rendez-vous").whereEqualTo("AMB", AMB).whereEqualTo("dateR",timestamp).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                db.collection("Rendez-vous").whereEqualTo("AMB", AMB)./*whereEqualTo("dateR",timestamp).*/addSnapshotListener(new EventListener<QuerySnapshot>() {
                                     @Override
                                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                                         int i=1;
                                         for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
                                         {
+                                            com.google.firebase.Timestamp timestamp = (com.google.firebase.Timestamp) documentChange.getDocument().get("dateR");
+                                            LocalDate aujourhui = LocalDate.now();
+                                            LocalDate g  =LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
+                                            if(aujourhui.isEqual(g)){
                                             GeoPoint geoPoint = (GeoPoint) documentChange.getDocument().get("Localisation");
                                             double lat = geoPoint.getLatitude();
                                             double lng = geoPoint.getLongitude();
                                             LatLng latLng = new LatLng(lat, lng);
                                             ListeP.add(i, latLng);
-                                            i++;
+                                            i++;}
                                         }
                                         // ListeP.add(ListeP.get(0)); todo nope na7ou hada psk liste positino machi solu
                                         //  Log.d("7123888", String.valueOf(ListeP.size()));

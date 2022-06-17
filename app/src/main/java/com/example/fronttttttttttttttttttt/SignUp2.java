@@ -31,7 +31,7 @@ import java.util.HashMap;
 
 
 public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListener {
-    private Button inscrit ,verif;
+    private Button inscrit ,verif,verifee;
     private ImageButton retourS2;
    private Spinner typevac, dose ;
     private RadioGroup vacc;
@@ -62,7 +62,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
         retourS2 =findViewById(R.id.retourS2);
         db=  FirebaseFirestore.getInstance();
         verif=findViewById(R.id.verif);
-
+verifee=findViewById(R.id.verife);
         Spinner spinner = findViewById(R.id.vactype);
         spinner.setEnabled(false);
        spinner.setClickable(false);
@@ -159,6 +159,8 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
             public void onClick(View view) {
                 if(iii==0){ Toast.makeText(view.getContext(), "Appuyer une 2eme fois pour confirmer que vous avez bien appuyé sur le lien l'email", Toast.LENGTH_LONG).show();mAuth.getCurrentUser().reload();iii++;}
                 if(iii==1){
+                    verif.setVisibility(View.GONE);
+                    verifee.setVisibility(View.VISIBLE);
                     mAuth.getCurrentUser().reload();
                     if(mAuth.getCurrentUser().isEmailVerified()){
 
