@@ -21,7 +21,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.SimpleDateFormat;
 
 
-public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
+public class NotifR extends Activity {
     private ImageButton close ;
     private Button comfirmer,annuler;
     FirebaseFirestore db;
@@ -60,7 +60,7 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(NotifR.this,Menu.class));
-                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                listenerReg=   db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                         for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
