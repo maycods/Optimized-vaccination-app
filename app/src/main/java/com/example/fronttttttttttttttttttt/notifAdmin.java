@@ -59,12 +59,12 @@ public class notifAdmin extends AppCompatActivity {
         okk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callnumber();
+               callnumber();
                 db.collection("user").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful()){
-                            listenerReg =db.collection("Rendez-vous").whereEqualTo("IDP",task.getResult().getId()  ).whereEqualTo("comfJJ",false).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            listenerReg =db.collection("Rendez-vous").whereEqualTo("IDP",task.getResult().getId()).whereEqualTo("comfJJ",false).addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
                                 public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                                     for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
@@ -78,8 +78,8 @@ public class notifAdmin extends AppCompatActivity {
                         }
                     }
                 });
-                startActivity(new Intent(notifAdmin.this, adminmenu.class));
 
+                startActivity(new Intent(notifAdmin.this, adminmenu.class));
             }
         });
     }
@@ -90,8 +90,9 @@ public class notifAdmin extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(notifAdmin.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(notifAdmin.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
         }else{
-            intent.setData(Uri.parse("tel:" + nume.getText()));
+            intent.setData(Uri.parse("tel:" + nume.getText().toString()));
             startActivity(intent);}
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
