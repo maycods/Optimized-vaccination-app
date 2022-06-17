@@ -159,8 +159,7 @@ verifee=findViewById(R.id.verife);
             public void onClick(View view) {
                 if(iii==0){ Toast.makeText(view.getContext(), "Appuyer une 2eme fois pour confirmer que vous avez bien appuyé sur le lien l'email", Toast.LENGTH_LONG).show();mAuth.getCurrentUser().reload();iii++;}
                 if(iii==1){
-                    verif.setVisibility(View.GONE);
-                    verifee.setVisibility(View.VISIBLE);
+                   verif.setText("se connecter");
                     mAuth.getCurrentUser().reload();
                     if(mAuth.getCurrentUser().isEmailVerified()){
 
@@ -206,8 +205,8 @@ verifee=findViewById(R.id.verife);
             public void onClick(View view) {
                 onBackPressed();
                 if(j==1 ){
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                   user.delete();
+                 //   FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+               //    user.delete();
                 }
             }
         });

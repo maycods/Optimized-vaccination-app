@@ -156,10 +156,15 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Routing
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if(task.isSuccessful()){
                                 String AMB =task.getResult().get("id").toString();
-                                db.collection("Rendez-vous").whereEqualTo("Localisation", o ).whereEqualTo("dateR",timestamp).whereEqualTo("AMB",AMB).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                db.collection("Rendez-vous").whereEqualTo("Localisation", o )/*.whereEqualTo("dateR",timestamp)*/.whereEqualTo("AMB",AMB).addSnapshotListener(new EventListener<QuerySnapshot>() {
                                     @Override
                                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                                        T.setText( value.getDocumentChanges().get(j).getDocument().get("Type de vaccin").toString());
+                                        com.google.firebase.Timestamp timestamp = (com.google.firebase.Timestamp) value.getDocumentChanges().get(0).getDocument().get("dateR");
+                                        LocalDate aujourhui = LocalDate.now();
+                                        LocalDate g  =LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
+                                        if(aujourhui.isEqual(g)) {
+                                            T.setText(value.getDocumentChanges().get(j).getDocument().get("Type de vaccin").toString());
+                                        }
                                     }
                                 });
                             }}});
