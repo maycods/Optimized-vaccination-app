@@ -118,4 +118,10 @@ dose.setOnClickListener(new View.OnClickListener() {
         }
     });
         }
+    @Override
+    public void onBackPressed() {
+        Intent a = new Intent(adminmenu.this,MainActivity.class);
+        startActivity(a);
+
+    }
 }

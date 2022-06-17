@@ -195,7 +195,7 @@ public class SignUp2 extends Activity implements AdapterView.OnItemSelectedListe
                                 });
 
                     }else{
-                        Toast.makeText(getApplicationContext(), "Vous n'avez pas confirmer votre adresse l'email", Toast.LENGTH_LONG).show();
+                       // Toast.makeText(getApplicationContext(), "Vous n'avez pas confirmer votre adresse l'email", Toast.LENGTH_LONG).show();
                     }
                 }}
         });

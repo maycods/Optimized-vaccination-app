@@ -356,4 +356,10 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Intent a = new Intent(Rendez_vous.this,Menu.class);
+        startActivity(a);
+    }
 }

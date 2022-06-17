@@ -193,4 +193,15 @@ if(dat!=null) {
                 startActivity(new Intent(Info_Perso.this,InfoPersoAvantModif.class));
             }
         });
-}}
+}
+    @Override
+    public void onBackPressed() {
+
+
+        Intent a = new Intent(Info_Perso.this,InfoPersoAvantModif.class);
+        startActivity(a);
+
+
+    }
+
+}
