@@ -87,7 +87,7 @@ public class Menu extends AppCompatActivity {
 
                             Log.d("lplplp",String.valueOf(now.get(Calendar.HOUR_OF_DAY)));
 
-                            if(g.isEqual(JJ) && now.get(Calendar.HOUR_OF_DAY)< 14 && !(boolean) document.get("confR")){
+                            if(g.isEqual(JJ) &&/* now.get(Calendar.HOUR_OF_DAY)< 14 && */!(boolean) document.get("confR")){
 
                                 notif.setEnabled(true);
                                 notif.setImageResource (R.drawable.ic_outline_notifications_active_25);

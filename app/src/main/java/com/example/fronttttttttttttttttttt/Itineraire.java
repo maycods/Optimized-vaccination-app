@@ -34,8 +34,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class    Itineraire extends FragmentActivity {
 
@@ -123,9 +125,7 @@ public class    Itineraire extends FragmentActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
 
     private void EventChangeListener(){
-        LocalDate aujourhui = LocalDate.now();
-        String date1 = aujourhui +" "+"00:00:00";
-        Timestamp timestamp = Timestamp.valueOf(date1);
+
         db.collection("Vaccin").document("IDV").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -138,15 +138,21 @@ public class    Itineraire extends FragmentActivity {
                             if (task.isSuccessful()) {
                                 for (int i = 0; i < a.size(); i++) {
                                     db.collection("Rendez-vous").whereEqualTo("AMB", task.getResult().get("id"))
-                                            .whereEqualTo("dateR", timestamp).whereEqualTo("Type de vaccin", a.get(i)).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                            /*.whereEqualTo("dateR", timestamp)*/.whereEqualTo("Type de vaccin", a.get(i)).addSnapshotListener(new EventListener<QuerySnapshot>() {
                                         @Override
                                         public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                                             int nb=0;
 
                                             String typedeV=null;
                                             for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
+
+                                                com.google.firebase.Timestamp timestamp = (com.google.firebase.Timestamp) documentChange.getDocument().get("dateR");
+                                                LocalDate aujourhui = LocalDate.now();
+                                                LocalDate g  =LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(timestamp.toDate())) ;
+                                                if(aujourhui.isEqual(g)){
+
                                                 typedeV = documentChange.getDocument().get("Type de vaccin").toString();
-                                                nb++;
+                                                nb++;}
                                             }
                                             Log.d("vaccccc",String.valueOf(typedeV));
                                             if(typedeV!=null){
