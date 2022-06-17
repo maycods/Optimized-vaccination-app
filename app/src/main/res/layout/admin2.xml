@@ -159,7 +159,7 @@ app:layout_constraintTop_toBottomOf="@+id/titr"
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recy4"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="180dp"
                 > </androidx.recyclerview.widget.RecyclerView>
 
 

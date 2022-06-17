@@ -209,9 +209,9 @@ public class Rendez_vous extends Activity implements AdapterView.OnItemSelectedL
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                       if(  task.isSuccessful()) {
                           Long a =(Long) task.getResult().get("Nombre de chance");
-if(a!=0){
-    db.collection("user").document(currentId).update("Type de vaccin", choixV);
-    db.collection("Rendez-vous").whereEqualTo("IDP", currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    if(a>0){
+         db.collection("user").document(currentId).update("Type de vaccin", choixV);
+         db.collection("Rendez-vous").whereEqualTo("IDP", currentId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
         @Override
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
             if (task.isSuccessful()) {

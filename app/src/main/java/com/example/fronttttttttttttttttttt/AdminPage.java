@@ -1,17 +1,7 @@
 package com.example.fronttttttttttttttttttt;
 
-import static android.service.controls.ControlsProviderService.TAG;
-import static com.example.fronttttttttttttttttttt.Menu.SCROLL_DELTA;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import static java.lang.Integer.parseInt;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.graphics.Paint;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
@@ -21,29 +11,11 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.NumberPicker;
-import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -52,14 +24,9 @@ import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.HashMap;
 import java.util.List;
 
 public class AdminPage extends Activity  implements AdapterView.OnItemSelectedListener {
@@ -78,7 +45,7 @@ public class AdminPage extends Activity  implements AdapterView.OnItemSelectedLi
 
 
 
-    //TODO AFFICHER HOPITEAU INFO DE BDD
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

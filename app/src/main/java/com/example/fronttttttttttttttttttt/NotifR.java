@@ -2,22 +2,12 @@ package com.example.fronttttttttttttttttttt;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,17 +16,17 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
 
 public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
     private ImageButton close ;
     private Button comfirmer,annuler;
     FirebaseFirestore db;
     TextView date;
+    ListenerRegistration listenerReg ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,17 +82,28 @@ public class NotifR extends Activity {// TODO COMFIRMER ET ANNULER
                         db.collection("user").document(currentId).update("Nombre de chance",Integer.parseInt(String.valueOf(documentSnapshot.get("Nombre de chance")))-1);
                     }
                 });
-                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+
+
+               listenerReg= db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                         for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
                             String IDR =documentChange.getDocument().getId();
                             db.collection("Rendez-vous").document(IDR).delete();
+
                         }
                     }
                 });
             }
         });
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (listenerReg != null) {
+            listenerReg.remove();
+        }
     }
 
 

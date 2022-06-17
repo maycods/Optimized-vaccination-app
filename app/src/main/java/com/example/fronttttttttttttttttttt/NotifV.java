@@ -3,7 +3,6 @@ package com.example.fronttttttttttttttttttt;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,12 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
@@ -24,15 +19,16 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.SimpleDateFormat;
 
 public class NotifV extends Activity {
     private ImageButton close ;
     private Button oui,non;
     FirebaseFirestore db;
     TextView date;
+    ListenerRegistration listenerReg ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +54,7 @@ public class NotifV extends Activity {
             public void onClick(View view) {
                 startActivity(new Intent(NotifV.this,Menu.class));
 
-                db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                listenerReg = db.collection("Rendez-vous").whereEqualTo("IDP",currentId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
@@ -86,7 +82,7 @@ public class NotifV extends Activity {
                                                         td="DoseSpootnik";
                                                         break;
                                                     case "Johnson & Johnson":
-                                                        td="Dosejohnson";
+                                                        td="DoseJohnson";
                                                         break;
                                                     default: td="nop";
                                                 }
@@ -110,7 +106,7 @@ public class NotifV extends Activity {
                             });
                             db.collection("Rendez-vous").document(IDR).update("confV",true);
                             db.collection("Rendez-vous").document(IDR).update("comfJJ",false);
-                        db.collection("Rendez-vous").document(IDR).delete();
+                            db.collection("Rendez-vous").document(IDR).delete();
 
                         }
 
@@ -135,6 +131,14 @@ public class NotifV extends Activity {
                 });
             }
         });
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (listenerReg != null) {
+            listenerReg.remove();
+        }
     }
 
 

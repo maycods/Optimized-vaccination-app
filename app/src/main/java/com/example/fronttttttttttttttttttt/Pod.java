@@ -1,10 +1,7 @@
 package com.example.fronttttttttttttttttttt;
 
-import android.os.Build;
+
 import android.util.Log;
-
-import androidx.annotation.RequiresApi;
-
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Collections;

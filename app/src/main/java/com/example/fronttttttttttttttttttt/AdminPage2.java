@@ -1,53 +1,24 @@
 package com.example.fronttttttttttttttttttt;
 
-import static com.example.fronttttttttttttttttttt.Menu.SCROLL_DELTA;
 
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
-import android.widget.NumberPicker;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-// TODO: 22/05/2022 confirmer
+
 public class AdminPage2 extends Activity   {
     private ImageButton L,r;
     public static  int SCROLL;
@@ -91,18 +62,16 @@ public class AdminPage2 extends Activity   {
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<Hopital>();
 
-
         myAdapter=new MyAdapter(AdminPage2.this ,list,-1,db);
-
         recyclerView.setAdapter(myAdapter);
+
         myAdapter=new MyAdapter(AdminPage2.this ,list,7,db);
-
         recyclerView2.setAdapter(myAdapter);
+
         myAdapter=new MyAdapter(AdminPage2.this ,list,1,db);
-
         recyclerView3.setAdapter(myAdapter);
-        myAdapter=new MyAdapter(AdminPage2.this ,list,2,db);
 
+        myAdapter=new MyAdapter(AdminPage2.this ,list,2,db);
         recyclerView4.setAdapter(myAdapter);
 
         myAdapter2=new MyAdapter2(AdminPage2.this ,list,db);
